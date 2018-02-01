@@ -1,0 +1,43 @@
+package Package1;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl;
+
+contains
+  SQL.Enums in '..\Classes\SQL.Enums.pas',
+  SQL.Intf.SQL in '..\Classes\SQL.Intf.SQL.pas',
+  SQL.Intf.SQLColuna in '..\Classes\SQL.Intf.SQLColuna.pas',  
+  SQL.Intf.SQLComando in '..\Classes\SQL.Intf.SQLComando.pas',
+  SQL.Intf.SQLCondicao in '..\Classes\SQL.Intf.SQLCondicao.pas',
+  SQL.Intf.SQLJuncao in '..\Classes\SQL.Intf.SQLJuncao.pas',
+  SQL.Intf.SQLTabela in '..\Classes\SQL.Intf.SQLTabela.pas',
+  SQL.Impl.PadraoSQL3.SQLColuna in '..\Classes\SQL.Impl.PadraoSQL3.SQLColuna.pas',
+  SQL.Impl.PadraoSQL3.SQLTabela in '..\Classes\SQL.Impl.PadraoSQL3.SQLTabela.pas',
+  SQL.Impl.SQL in '..\Classes\SQL.Impl.SQL.pas';
+
+end.
