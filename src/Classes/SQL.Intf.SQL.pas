@@ -6,8 +6,7 @@ uses
   SQL.Enums;
 
 type
-  ISQL = interface(IInterface)    
-    procedure setBanco(const ATipoBanco: TBancoDeDados);
+  ISQL = interface(IInterface)
     function ToString: string;
   end;
 

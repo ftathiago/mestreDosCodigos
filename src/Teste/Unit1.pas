@@ -8,13 +8,13 @@ uses
 
 type
   TForm1 = class(TForm)
-    Edit1: TEdit;
-    Edit2: TEdit;
-    Edit3: TEdit;
+    edtAlias: TEdit;
+    edtTabela: TEdit;
+    edtResultadoTabela: TEdit;
     Button1: TButton;
-    Edit4: TEdit;
-    Edit5: TEdit;
-    Edit6: TEdit;
+    edtNomeCampo: TEdit;
+    edtCampoAliasName: TEdit;
+    edtResultadoCampo: TEdit;
     procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
@@ -28,7 +28,8 @@ var
 implementation
 
 uses
-  SQL.Intf.SQLTabela, SQL.Intf.SQLColuna, SQL.Impl.PadraoSQL3.SQLTabela, SQL.Impl.PadraoSQL3.SQLColuna;
+  SQL.Intf.SQLColuna, SQL.Impl.PadraoSQL3.SQLTabela,
+  SQL.Impl.PadraoSQL3.SQLColuna, SQL.Intf.SQLTabela;
 
 {$R *.dfm}
 
@@ -38,14 +39,14 @@ var
   oColuna: ISQLColuna;
 begin
   oTabela := TSQL3Tabela.New
-    .setAlias(Edit1.Text)
-    .setNome(Edit2.Text);
+    .setAlias(edtAlias.Text)
+    .setNome(edtTabela.Text);
   oColuna := TSQL3Coluna.New
     .setTabela(oTabela)
-    .setColuna(Edit4.Text)
-    .setNomeAlias(Edit5.Text);
-  Edit3.Text := oTabela.ToString;
-  Edit6.Text := oColuna.ToString;
+    .setColuna(edtNomeCampo.Text)
+    .setNomeAlias(edtCampoAliasName.Text);
+  edtResultadoTabela.Text := oTabela.ToString;
+  edtResultadoCampo.Text := oColuna.ToString;
 end;
 
 end.

@@ -3,24 +3,16 @@ unit SQL.Impl.SQL;
 interface
 
 uses
-  SQL.Enums, SQL.Intf.SQL;
+  SQL.Intf.SQL;
 
-type  
-  TSQL = class(TInterfacedObject, ISQL) 
-  protected
-    FBanco: TBancoDeDados;
+type
+  TSQL = class(TInterfacedObject, ISQL)
   public
-    procedure setBanco(const ATipoBanco: TBancoDeDados);
-    function ToString: string; virtual; abstract;
+    function ToString: string; reintroduce; virtual; abstract;
   end;
 
 implementation
 
 { TSQL }
-
-procedure TSQL.setBanco(const ATipoBanco: TBancoDeDados);
-begin
-  FBanco := ATipoBanco;
-end;
 
 end.

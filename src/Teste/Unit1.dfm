@@ -1,9 +1,9 @@
 object Form1: TForm1
   Left = 283
   Top = 200
-  Width = 924
-  Height = 480
   Caption = 'Form1'
+  ClientHeight = 442
+  ClientWidth = 908
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,29 +13,29 @@ object Form1: TForm1
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  object Edit1: TEdit
+  object edtAlias: TEdit
     Left = 16
     Top = 32
     Width = 49
     Height = 21
     TabOrder = 0
-    Text = 'Edit1'
+    Text = 'edtAlias'
   end
-  object Edit2: TEdit
+  object edtTabela: TEdit
     Left = 80
     Top = 32
     Width = 121
     Height = 21
     TabOrder = 1
-    Text = 'Edit2'
+    Text = 'edtTabela'
   end
-  object Edit3: TEdit
+  object edtResultadoTabela: TEdit
     Left = 96
     Top = 112
     Width = 257
     Height = 21
-    TabOrder = 2
-    Text = 'Edit3'
+    TabOrder = 5
+    Text = 'edtResultadoTabela'
   end
   object Button1: TButton
     Left = 152
@@ -43,26 +43,26 @@ object Form1: TForm1
     Width = 75
     Height = 25
     Caption = 'Button1'
-    TabOrder = 3
+    TabOrder = 4
     OnClick = Button1Click
   end
-  object Edit4: TEdit
+  object edtNomeCampo: TEdit
     Left = 208
     Top = 32
     Width = 105
     Height = 21
-    TabOrder = 4
+    TabOrder = 2
     Text = 'Edit1'
   end
-  object Edit5: TEdit
+  object edtCampoAliasName: TEdit
     Left = 312
     Top = 32
     Width = 121
     Height = 21
-    TabOrder = 5
+    TabOrder = 3
     Text = 'Edit2'
   end
-  object Edit6: TEdit
+  object edtResultadoCampo: TEdit
     Left = 96
     Top = 144
     Width = 257
