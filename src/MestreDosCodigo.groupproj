@@ -6,7 +6,7 @@
         <Projects Include="dpk\Package1.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Teste\Project1.dproj">
+        <Projects Include="..\teste\TesteSQL.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -26,23 +26,23 @@
     <Target Name="Package1:Make">
         <MSBuild Projects="dpk\Package1.dproj" Targets="Make"/>
     </Target>
-    <Target Name="Project1">
-        <MSBuild Projects="Teste\Project1.dproj"/>
+    <Target Name="TesteSQL">
+        <MSBuild Projects="..\teste\TesteSQL.dproj"/>
     </Target>
-    <Target Name="Project1:Clean">
-        <MSBuild Projects="Teste\Project1.dproj" Targets="Clean"/>
+    <Target Name="TesteSQL:Clean">
+        <MSBuild Projects="..\teste\TesteSQL.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Project1:Make">
-        <MSBuild Projects="Teste\Project1.dproj" Targets="Make"/>
+    <Target Name="TesteSQL:Make">
+        <MSBuild Projects="..\teste\TesteSQL.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="Package1;Project1"/>
+        <CallTarget Targets="Package1;TesteSQL"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Package1:Clean;Project1:Clean"/>
+        <CallTarget Targets="Package1:Clean;TesteSQL:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Package1:Make;Project1:Make"/>
+        <CallTarget Targets="Package1:Make;TesteSQL:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

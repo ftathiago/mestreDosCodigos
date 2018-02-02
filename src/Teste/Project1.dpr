@@ -9,7 +9,7 @@ uses
   SQL.Impl.SQL in '..\Classes\SQL.Impl.SQL.pas',
   SQL.Intf.SQL in '..\Classes\SQL.Intf.SQL.pas',
   SQL.Intf.SQLColuna in '..\Classes\SQL.Intf.SQLColuna.pas',
-  SQL.Intf.SQLComando in '..\Classes\SQL.Intf.SQLComando.pas',
+  SQL.Intf.SQLSelect in '..\Classes\SQL.Intf.SQLSelect.pas',
   SQL.Intf.SQLCondicao in '..\Classes\SQL.Intf.SQLCondicao.pas',
   SQL.Intf.SQLJuncao in '..\Classes\SQL.Intf.SQLJuncao.pas',
   SQL.Intf.SQLTabela in '..\Classes\SQL.Intf.SQLTabela.pas',

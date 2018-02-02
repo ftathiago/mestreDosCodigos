@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<test-results name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\teste\Win32\Debug\TesteSQL.exe" total="1" errors="0" failures="1" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2018-02-02" time="0.069">
+  <culture-info current-culture="en" current-uiculture="en" />
+  <test-suite type="Assembly" name="TesteSQL.exe" executed="true" result="Failure" success="False" time="0.069" asserts="0">
+    <results>
+        <test-suite type="Namespace" name="uSQLJuncaoTeste" executed="true" result="Failure" success="False" time="0.069" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TSQLJuncaoTeste" executed="True" result="Failure" success="False" time="0.069" >
+                <results>
+                  <test-case name="TestarComTabelaEUmaCondicao" executed="True" result="Failure" success="False" time="0.061" asserts="0" >
+                    <failure>
+                      <message>
+                        <![CDATA[ Expected INNER JOIN NOME_TABELA ALIAS on (ALIAS.COLUNA = VALOR) is not equal to actual join ALIAS.NOME_TABELA on  (ALIAS.COLUNA = VALOR);  ]]>
+                      </message>
+                      <stack-trace>
+                        <![CDATA[  ]]>
+                      </stack-trace>
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+    </results>
+  </test-suite>
+</test-results>

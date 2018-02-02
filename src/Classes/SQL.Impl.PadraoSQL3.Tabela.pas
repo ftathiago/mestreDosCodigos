@@ -1,9 +1,9 @@
-unit SQL.Impl.PadraoSQL3.SQLTabela;
+unit SQL.Impl.PadraoSQL3.Tabela;
 
 interface
 
 uses
-  SysUtils, SQL.Impl.SQL, SQL.Intf.SQLTabela;
+  SysUtils, SQL.Impl.SQL, SQL.Intf.Tabela;
 
 type  
   TSQL3Tabela = class(TSQL, ISQLTabela)

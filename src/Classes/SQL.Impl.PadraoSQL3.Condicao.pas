@@ -1,10 +1,14 @@
-unit SQL.Impl.PadraoSQL3.SQLCondicao;
+unit SQL.Impl.PadraoSQL3.Condicao;
 
 interface
 
 uses
-  System.Rtti, SQL.Impl.SQL, SQL.Intf.SQL, SQL.Intf.SQLCondicao,
-  SQL.Intf.SQLColuna;
+  System.Rtti,
+  SQL.Enums,
+  SQL.Impl.SQL,
+  SQL.Intf.SQL,
+  SQL.Intf.Condicao,
+  SQL.Intf.Coluna;
 
 type
   TSQL3Condicao = class(TSQL, ISQLCondicao)
@@ -19,10 +23,8 @@ type
     class function New: ISQLCondicao;
     function getOperadorLogico: TOperadorLogico;
     function setColuna(const AColuna: ISQLColuna): ISQLCondicao;
-    function setOperadorComparacao(const AOperadorComparacao
-      : TOperadorComparacao): ISQLCondicao;
-    function setOperadorLogico(const AOperadorLogico: TOperadorLogico)
-      : ISQLCondicao;
+    function setOperadorComparacao(const AOperadorComparacao: TOperadorComparacao): ISQLCondicao;
+    function setOperadorLogico(const AOperadorLogico: TOperadorLogico): ISQLCondicao;
     function setTexto(const ATextoDaCondicao: string): ISQLCondicao;
     function setValor(const AColuna: ISQL): ISQLCondicao; overload;
     function setValor(const AValor: TValue): ISQLCondicao; overload;
@@ -32,7 +34,8 @@ type
 implementation
 
 uses
-  System.TypInfo, System.SysUtils;
+  System.TypInfo,
+  System.SysUtils;
 
 { TSQL3Condicao }
 
@@ -61,15 +64,14 @@ begin
   result := self;
 end;
 
-function TSQL3Condicao.setOperadorComparacao(const AOperadorComparacao
-  : TOperadorComparacao): ISQLCondicao;
+function TSQL3Condicao.setOperadorComparacao(const AOperadorComparacao: TOperadorComparacao)
+  : ISQLCondicao;
 begin
   FOperadorComparacao := AOperadorComparacao;
   result := self;
 end;
 
-function TSQL3Condicao.setOperadorLogico(const AOperadorLogico: TOperadorLogico)
-  : ISQLCondicao;
+function TSQL3Condicao.setOperadorLogico(const AOperadorLogico: TOperadorLogico): ISQLCondicao;
 begin
   FOperadorLogico := AOperadorLogico;
   result := self;

@@ -1,9 +1,9 @@
-unit SQL.Intf.SQLColuna;
+unit SQL.Intf.Coluna;
 
 interface
 
 uses
-  SQL.Intf.SQL, SQL.Intf.SQLTabela;
+  SQL.Intf.SQL, SQL.Intf.Tabela;
 
 type
   ISQLColuna = interface(ISQL)

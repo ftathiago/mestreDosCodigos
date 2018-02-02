@@ -1,4 +1,4 @@
-unit SQL.Intf.SQLTabela;
+unit SQL.Intf.Tabela;
 
 interface
 

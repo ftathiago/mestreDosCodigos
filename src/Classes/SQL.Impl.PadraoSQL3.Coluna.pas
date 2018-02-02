@@ -1,9 +1,9 @@
-unit SQL.Impl.PadraoSQL3.SQLColuna;
+unit SQL.Impl.PadraoSQL3.Coluna;
 
 interface
 
 uses
-  SysUtils, SQL.Intf.SQLTabela, SQL.Intf.SQLColuna, SQL.Impl.SQL ;
+  SysUtils, SQL.Intf.Tabela, SQL.Intf.Coluna, SQL.Impl.SQL ;
 
 type
   TSQL3Coluna = class(TSQL, ISQLColuna)
