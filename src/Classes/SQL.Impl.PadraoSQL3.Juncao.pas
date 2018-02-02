@@ -80,7 +80,7 @@ begin
         .Append(' ')
         .Append(_condicoes.ToString);
     end;
-    _sql.Remove(0, FCondicoes[0].getOperadorLogico.getSQLString.Length);
+    _sql.Remove(0, FCondicoes[0].getOperadorLogico.getSQLString.Length + 1);
 
     result := _sql.ToString;
   finally
@@ -102,7 +102,7 @@ end;
 
 function TSQL3Juncao.ToString: string;
 begin
-  result := Format('%s %s on %s;',
+  result := Format('%s %s on %s',
     [FTipoJuncao.getSQLString, FTabelaEstrangeira.ToString, PegarCondicoesEmString]);
 end;
 

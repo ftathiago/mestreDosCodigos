@@ -1,4 +1,4 @@
-package Package1;
+package GeradorSQL;
 
 {$R *.res}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
@@ -33,18 +33,22 @@ requires
 
 contains
   SQL.Enums in '..\Classes\SQL.Enums.pas',
+  SQL.Exceptions in '..\Classes\SQL.Exceptions.pas',
+  SQL.Impl.Fabrica in '..\Classes\SQL.Impl.Fabrica.pas',
+  SQL.Impl.PadraoSQL3.Coluna in '..\Classes\SQL.Impl.PadraoSQL3.Coluna.pas',
+  SQL.Impl.PadraoSQL3.Condicao in '..\Classes\SQL.Impl.PadraoSQL3.Condicao.pas',
+  SQL.Impl.PadraoSQL3.Juncao in '..\Classes\SQL.Impl.PadraoSQL3.Juncao.pas',
+  SQL.Impl.PadraoSQL3.Tabela in '..\Classes\SQL.Impl.PadraoSQL3.Tabela.pas',
+  SQL.Impl.SQL in '..\Classes\SQL.Impl.SQL.pas',
   SQL.Intf.Coluna in '..\Classes\SQL.Intf.Coluna.pas',
   SQL.Intf.Condicao in '..\Classes\SQL.Intf.Condicao.pas',
+  SQL.Intf.Fabrica in '..\Classes\SQL.Intf.Fabrica.pas',
   SQL.Intf.Juncao in '..\Classes\SQL.Intf.Juncao.pas',
   SQL.Intf.Select in '..\Classes\SQL.Intf.Select.pas',
   SQL.Intf.SQL in '..\Classes\SQL.Intf.SQL.pas',
   SQL.Intf.Tabela in '..\Classes\SQL.Intf.Tabela.pas',
-  SQL.Impl.PadraoSQL3.Coluna in '..\Classes\SQL.Impl.PadraoSQL3.Coluna.pas',
-  SQL.Impl.PadraoSQL3.Condicao in '..\Classes\SQL.Impl.PadraoSQL3.Condicao.pas',
-  SQL.Impl.PadraoSQL3.Tabela in '..\Classes\SQL.Impl.PadraoSQL3.Tabela.pas',
-  SQL.Impl.SQL in '..\Classes\SQL.Impl.SQL.pas',
-  SQL.Impl.PadraoSQL3.Juncao in '..\Classes\SQL.Impl.PadraoSQL3.Juncao.pas',
   SQL.Mensagens in '..\Classes\SQL.Mensagens.pas',
-  SQL.Exceptions in '..\Classes\SQL.Exceptions.pas';
+  SQL.Impl.PadraoSQL3.Fabrica in '..\Classes\SQL.Impl.PadraoSQL3.Fabrica.pas',
+  SQL.Constantes in '..\Classes\SQL.Constantes.pas';
 
 end.

@@ -35,7 +35,8 @@ implementation
 
 uses
   System.TypInfo,
-  System.SysUtils;
+  System.SysUtils,
+  SQL.Mensagens;
 
 { TSQL3Condicao }
 

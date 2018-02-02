@@ -3,22 +3,26 @@ unit SQL.Impl.PadraoSQL3.Coluna;
 interface
 
 uses
-  SysUtils, SQL.Intf.Tabela, SQL.Intf.Coluna, SQL.Impl.SQL ;
+  SysUtils,
+  SQL.Intf.Tabela,
+  SQL.Intf.Coluna,
+  SQL.Impl.SQL;
 
 type
   TSQL3Coluna = class(TSQL, ISQLColuna)
   private
     FTabela: ISQLTabela;
     FColuna: string;
-    FNomeAlias: string;
+    FNomeVirtual: string;
   protected
-    function TestarNomeAliasEstaPreenchido: boolean;
+    function TestarNomeVirtualFoiInformado: boolean;
+    function getOrigemDoCampo: string;
   public
     constructor Create;
     class function New: ISQLColuna;
     function setTabela(const ATabela: ISQLTabela): ISQLColuna;
     function setColuna(const AColuna: string): ISQLColuna;
-    function setNomeAlias(const ANomeAlias: string): ISQLColuna;
+    function setNomeVirtual(const ANomeVirtual: string): ISQLColuna;
     function ToString: string; override;
   end;
 
@@ -29,8 +33,21 @@ implementation
 constructor TSQL3Coluna.Create;
 begin
   FColuna := '';
-  FNomeAlias := '';
+  FNomeVirtual := '';
   FTabela := nil;
+end;
+
+function TSQL3Coluna.getOrigemDoCampo: string;
+begin
+  result := '';
+
+  if not Assigned(FTabela) then
+    exit;
+
+  if FTabela.TestarAliasEstaPreenchido then
+    result := Format('%s.', [FTabela.getAlias])
+  else
+    result := Format('%s.', [FTabela.getNome]);
 end;
 
 class function TSQL3Coluna.New: ISQLColuna;
@@ -44,37 +61,35 @@ begin
   result := Self;
 end;
 
-function TSQL3Coluna.setNomeAlias(const ANomeAlias: string): ISQLColuna;
+function TSQL3Coluna.setNomeVirtual(const ANomeVirtual: string): ISQLColuna;
 begin
-  FNomeAlias := ANomeAlias;
-  result := Self;  
+  FNomeVirtual := ANomeVirtual;
+  result := Self;
 end;
 
 function TSQL3Coluna.setTabela(const ATabela: ISQLTabela): ISQLColuna;
 begin
   FTabela := ATabela;
-  result := Self;  
+  result := Self;
 end;
 
-function TSQL3Coluna.TestarNomeAliasEstaPreenchido: boolean;
+function TSQL3Coluna.TestarNomeVirtualFoiInformado: boolean;
 begin
-  result := not (Trim(FNomeAlias) = EmptyStr);
+  result := not(Trim(FNomeVirtual) = EmptyStr);
 end;
 
 function TSQL3Coluna.ToString: string;
 var
-  sAlias: string;
-  sAliasCampo: string;
+  sTabelaDoCampo: string;
+  sNomeVirtual: string;
 begin
-  if FTabela.TestarAliasEstaPreenchido then
-    sAlias := Format('%s.',[FTabela.getAlias])
-  else
-    sAlias := Format('%s.',[FTabela.getNome]);
 
-  if TestarNomeAliasEstaPreenchido then
-    sAliasCampo := Format(' as %s',[FNomeAlias]);
+  sTabelaDoCampo := getOrigemDoCampo;
 
-  result := Format('%s%s%s',[sAlias, FColuna, sAliasCampo]);
+  if TestarNomeVirtualFoiInformado then
+    sNomeVirtual := Format(' as %s', [FNomeVirtual]);
+
+  result := Format('%s%s%s', [sTabelaDoCampo, FColuna, sNomeVirtual]);
 end;
 
 end.

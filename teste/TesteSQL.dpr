@@ -11,7 +11,12 @@ uses
   DUnitX.Loggers.Console,
   DUnitX.Loggers.Xml.NUnit,
   DUnitX.TestFramework,
-  uSQLJuncaoTeste in 'uSQLJuncaoTeste.pas';
+  uSQLJuncaoTeste in 'uSQLJuncaoTeste.pas',
+  SQL.Builder.Tabela in 'SQL.Builder.Tabela.pas',
+  uSQLTabela in 'uSQLTabela.pas',
+  Teste.Constantes in 'Teste.Constantes.pas',
+  SQL.Builder.Coluna in 'SQL.Builder.Coluna.pas',
+  uSQLColunaTeste in 'uSQLColunaTeste.pas';
 
 var
   runner : ITestRunner;

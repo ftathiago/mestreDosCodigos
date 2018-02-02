@@ -66,7 +66,7 @@ end;
 function TSQL3Tabela.ToString: string;
 begin
   if TestarAliasEstaPreenchido then
-    result := Format('%s.%s',[FAlias, FNomeTabela])
+    result := Format('%s %s',[FNomeTabela, FAlias])
   else
     result := FNomeTabela;
 end;

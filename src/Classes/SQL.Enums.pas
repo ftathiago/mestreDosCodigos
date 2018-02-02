@@ -3,7 +3,7 @@ unit SQL.Enums;
 interface
 
 type
-  TBancoDeDados = (bdFireBird);
+  TBancoDeDados = (bdPadraoSQL3);
 
   TOperadorLogico = (olUnknow, olOr, olAnd);
 
@@ -96,11 +96,11 @@ function FTipoJuncaoHelper.getSQLString: string;
 begin
   case self of
     tjInnerJoin:
-      result := 'join';
+      result := 'INNER JOIN';
     tjLeftJoin:
-      result := 'left join';
+      result := 'LEFT JOIN';
     tjRightJoin:
-      result := 'right join';
+      result := 'RIGHT JOIN';
   else
     raise ENotImplemented.CreateFmt(SQL.Mensagens.RECURSO_NAO_IMPLEMENTADO,
       [self.getNome, TObject(self).ClassName]);

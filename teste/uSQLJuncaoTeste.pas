@@ -4,7 +4,9 @@ interface
 
 uses
   DUnitX.TestFramework,
-  SQL.Intf.Juncao;
+  SQL.Intf.Juncao,
+  SQL.Intf.Tabela,
+  SQL.Intf.Coluna;
 
 type
 
@@ -28,7 +30,6 @@ uses
   SQL.Impl.PadraoSQL3.Condicao,
   SQL.Impl.PadraoSQL3.Tabela;
 
-
 { TSQLJuncaoTeste }
 
 procedure TSQLJuncaoTeste.Setup;
@@ -41,20 +42,20 @@ var
   _sql: string;
 begin
   _sql :=
-  FJuncao
+    FJuncao
     .setTabelaEstrangeira(TSQL3Tabela.New.setNome('NOME_TABELA').setAlias('ALIAS'))
     .setTipoJuncao(tjInnerJoin)
     .addCondicao(TSQL3Condicao.New
-      .setOperadorLogico(olAnd)
-      .setColuna(TSQL3Coluna.New
-        .setTabela(TSQL3Tabela.New.setNome('NOME_TABELA').setAlias('ALIAS'))
-        .setColuna('COLUNA')
-        )
-      .setOperadorComparacao(TOperadorComparacao.ocIgual)
-      .setValor('VALOR')
+    .setOperadorLogico(olAnd)
+    .setColuna(TSQL3Coluna.New
+    .setTabela(TSQL3Tabela.New.setNome('NOME_TABELA').setAlias('ALIAS'))
+    .setColuna('COLUNA')
+    )
+    .setOperadorComparacao(TOperadorComparacao.ocIgual)
+    .setValor('VALOR')
     ).ToString;
 
-    Assert.AreEqual('INNER JOIN NOME_TABELA ALIAS on (ALIAS.COLUNA = VALOR)',_sql);
+  Assert.AreEqual('INNER JOIN NOME_TABELA ALIAS on (ALIAS.COLUNA = VALOR)', _sql);
 end;
 
 initialization
