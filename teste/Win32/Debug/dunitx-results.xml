@@ -1,8 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<test-results name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\teste\Win32\Debug\TesteSQL.exe" total="7" errors="0" failures="0" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2018-02-02" time="0.001">
+<test-results name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\teste\Win32\Debug\TesteSQL.exe" total="10" errors="0" failures="0" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2018-02-04" time="3.018">
   <culture-info current-culture="en" current-uiculture="en" />
-  <test-suite type="Assembly" name="TesteSQL.exe" executed="true" result="Success" success="True" time="0.001" asserts="0">
+  <test-suite type="Assembly" name="TesteSQL.exe" executed="true" result="Success" success="True" time="3.018" asserts="0">
     <results>
+        <test-suite type="Namespace" name="uSQLJuncaoTeste" executed="true" result="Success" success="True" time="3.018" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TSQLJuncaoTeste" executed="True" result="Success" success="True" time="3.018" >
+                <results>
+                  <test-case name="TestarComTabelaEUmaCondicao" executed="True" result="Success" success="True" time="2.956" asserts="0" />
+                  <test-case name="TestarComTabelaEDuasCondicoes" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
         <test-suite type="Namespace" name="uSQLTabela" executed="true" result="Success" success="True" time="0.001" asserts="0" >
           <results>
               <test-suite type="Fixture" name="TSQLTabelaTeste" executed="True" result="Success" success="True" time="0.001" >
@@ -13,23 +23,24 @@
               </test-suite>
           </results>
         </test-suite>
-        <test-suite type="Namespace" name="uSQLColunaTeste" executed="true" result="Success" success="True" time="0.001" asserts="0" >
+        <test-suite type="Namespace" name="uSQLCondicao" executed="true" result="Success" success="True" time="0.001" asserts="0" >
           <results>
-              <test-suite type="Fixture" name="TSQLColunaTeste" executed="True" result="Success" success="True" time="0.001" >
+              <test-suite type="Fixture" name="TSQLCondicaoTeste" executed="True" result="Success" success="True" time="0.001" >
+                <results>
+                  <test-case name="TestarCondicao" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestarComColuna" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+        <test-suite type="Namespace" name="uSQLColunaTeste" executed="true" result="Success" success="True" time="0.000" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TSQLColunaTeste" executed="True" result="Success" success="True" time="0.000" >
                 <results>
                   <test-case name="ColunaSimples" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                   <test-case name="ColunaSimplesComTabela" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                   <test-case name="ColunaComAlias" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                   <test-case name="ColunaComAliasETabela" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                </results>
-              </test-suite>
-          </results>
-        </test-suite>
-        <test-suite type="Namespace" name="uSQLJuncaoTeste" executed="true" result="Success" success="True" time="0.000" asserts="0" >
-          <results>
-              <test-suite type="Fixture" name="TSQLJuncaoTeste" executed="True" result="Success" success="True" time="0.000" >
-                <results>
-                  <test-case name="TestarComTabelaEUmaCondicao" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                 </results>
               </test-suite>
           </results>

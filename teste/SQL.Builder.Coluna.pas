@@ -9,10 +9,19 @@ uses
   SQL.Intf.Coluna;
 
 type
-  TBuilderColuna = class
+  IBuilderColuna = interface(IInterface)
+    ['{0F95620B-5C5D-401F-A86D-CE036E1A9B2F}']
+    function getColuna: ISQLColuna;
+    procedure criarNovaColuna(ATabela: ISQLTabela);
+    procedure buildNome();
+    procedure buildNomeVirtual();
+  end;
+
+  TBuilderColuna = class(TInterfacedObject, IBuilderColuna)
   protected
     FColuna: ISQLColuna;
   public
+    class function New: IBuilderColuna;
     function getColuna: ISQLColuna;
     procedure criarNovaColuna(ATabela: ISQLTabela);
     procedure buildNome(); virtual; abstract;
@@ -39,10 +48,10 @@ type
 
   TDirectorColuna = class
   private
-    FColunaBuilder: TBuilderColuna;
+    FColunaBuilder: IBuilderColuna;
     FTabela: ISQLTabela;
   public
-    procedure setBuilderColuna(var ABuilderColuna: TBuilderColuna);
+    procedure setBuilderColuna(const ABuilderColuna: IBuilderColuna);
     procedure setTabela(Tabela: ISQLTabela);
     procedure construirColuna();
     function getColuna: ISQLColuna;
@@ -69,6 +78,11 @@ end;
 function TBuilderColuna.getColuna: ISQLColuna;
 begin
   result := FColuna;
+end;
+
+class function TBuilderColuna.New: IBuilderColuna;
+begin
+  result := Create;
 end;
 
 { TBuilderColunaSimples }
@@ -121,7 +135,7 @@ begin
   result := FColunaBuilder.getColuna;
 end;
 
-procedure TDirectorColuna.setBuilderColuna(var ABuilderColuna: TBuilderColuna);
+procedure TDirectorColuna.setBuilderColuna(const ABuilderColuna: IBuilderColuna);
 begin
   FColunaBuilder := ABuilderColuna;
 end;

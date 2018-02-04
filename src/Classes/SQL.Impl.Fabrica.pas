@@ -6,6 +6,8 @@ uses
   SQL.Enums,
   SQL.Intf.Tabela,
   SQL.Intf.Coluna,
+  SQL.Intf.Condicao,
+  SQL.Intf.Juncao,
   SQL.Intf.Fabrica;
 
 type
@@ -19,6 +21,8 @@ type
     class function New(const ABancoDeDados: TBancoDeDados): IFabrica;
     function Tabela: ISQLTabela;
     function Coluna: ISQLColuna;
+    function Condicao: ISQLCondicao;
+    function Juncao: ISQLJuncao;
     procedure AfterConstruction; override;
   end;
 
@@ -45,10 +49,14 @@ begin
   result := FFabrica.Coluna;
 end;
 
+function TFabrica.Condicao: ISQLCondicao;
+begin
+  result := FFabrica.Condicao;
+end;
+
 constructor TFabrica.Create(const ABancoDeDados: TBancoDeDados);
 begin
   FBancoDeDados := ABancoDeDados;
-
   FFabrica := nil;
 end;
 
@@ -58,6 +66,11 @@ begin
     bdPadraoSQL3:
       FFabrica := TSQL3Fabrica.Create;
   end;
+end;
+
+function TFabrica.Juncao: ISQLJuncao;
+begin
+  result := FFabrica.Juncao;
 end;
 
 class function TFabrica.New(const ABancoDeDados: TBancoDeDados): IFabrica;

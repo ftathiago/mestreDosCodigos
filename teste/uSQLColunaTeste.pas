@@ -76,38 +76,33 @@ end;
 
 function TSQLColunaTeste.getColunaComTabela: ISQLColuna;
 var
-  _builderColuna: TBuilderColuna;
-  _builderTabela: TBuilderTabela;
+  _builderColuna: IBuilderColuna;
+  _builderTabela: IBuilderTabela;
 begin
-  _builderColuna := TBuilderColunaSimples.Create;
-  _builderTabela := TBuilderTabelaComNomeApenas.Create;
-  try
-    FDirectorColuna.setBuilderColuna(_builderColuna);
-    FDirectorColuna.construirColuna;
+  _builderColuna := TBuilderColunaSimples.New;
+  _builderTabela := TBuilderTabelaComNomeApenas.New;
+  FDirectorColuna.setBuilderColuna(_builderColuna);
+  FDirectorColuna.construirColuna;
 
-    FDirectorTabela.setBuilderTabela(_builderTabela);
-    FDirectorTabela.construirTabela;
+  FDirectorTabela.setBuilderTabela(_builderTabela);
+  FDirectorTabela.construirTabela;
 
-    result := FDirectorColuna.getColuna;
+  result := FDirectorColuna.getColuna;
 
-    result.setTabela(FDirectorTabela.getTabela);
-  finally
-    _builderColuna.Free;
-  end;
+  result.setTabela(FDirectorTabela.getTabela);
+
 end;
 
 function TSQLColunaTeste.getColunaSimples: ISQLColuna;
 var
-  _builder: TBuilderColuna;
+  _builder: IBuilderColuna;
 begin
-  _builder := TBuilderColunaSimples.Create;
-  try
-    FDirectorColuna.setBuilderColuna(_builder);
-    FDirectorColuna.construirColuna;
-    result := FDirectorColuna.getColuna;
-  finally
-    _builder.Free;
-  end;
+  _builder := TBuilderColunaSimples.New;
+
+  FDirectorColuna.setBuilderColuna(_builder);
+  FDirectorColuna.construirColuna;
+  result := FDirectorColuna.getColuna;
+
 end;
 
 procedure TSQLColunaTeste.Setup;

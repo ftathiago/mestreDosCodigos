@@ -33,40 +33,33 @@ implementation
 uses
   System.SysUtils;
 
-
 { TSQLTabelaTeste }
 
 procedure TSQLTabelaTeste.ApenasComNome;
 var
-  _builderComNome: TBuilderTabela;
+  _builderComNome: IBuilderTabela;
 begin
-  _builderComNome := TBuilderTabelaComNomeApenas.Create;
-  try
-    FDirectorTabela.setBuilderTabela(_builderComNome);
-    FDirectorTabela.construirTabela;
-    FTabela := FDirectorTabela.getTabela;
+  _builderComNome := TBuilderTabelaComNomeApenas.New;
 
-    Assert.AreEqual(TABELA_SEM_ALIAS, FTabela.ToString);
-  finally
-    _builderComNome.Free;
-  end;
+  FDirectorTabela.setBuilderTabela(_builderComNome);
+  FDirectorTabela.construirTabela;
+  FTabela := FDirectorTabela.getTabela;
+
+  Assert.AreEqual(TABELA_SEM_ALIAS, FTabela.ToString);
+
 end;
 
 procedure TSQLTabelaTeste.ComNomeEAlias;
 var
-  _builder: TBuilderTabela;
+  _builder: IBuilderTabela;
 begin
-  _builder := TBuilderTabelaComNomeEAlias.Create;
-  try
-    FDirectorTabela.setBuilderTabela(_builder);
-    FDirectorTabela.construirTabela;
+  _builder := TBuilderTabelaComNomeEAlias.New;
+  FDirectorTabela.setBuilderTabela(_builder);
+  FDirectorTabela.construirTabela;
 
-    FTabela := FDirectorTabela.getTabela;
+  FTabela := FDirectorTabela.getTabela;
 
-    Assert.AreEqual(Format('%s %s', [TABELA_COM_ALIAS, TABELA_ALIAS]), FTabela.ToString);
-  finally
-    _builder.Free;
-  end;
+  Assert.AreEqual(Format('%s %s', [TABELA_COM_ALIAS, TABELA_ALIAS]), FTabela.ToString);
 end;
 
 procedure TSQLTabelaTeste.Setup;

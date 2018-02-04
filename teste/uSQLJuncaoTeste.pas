@@ -19,43 +19,55 @@ type
     procedure Setup;
     [Test]
     procedure TestarComTabelaEUmaCondicao;
+    [Test]
+    procedure TestarComTabelaEDuasCondicoes;
+
   end;
 
 implementation
 
 uses
+  System.SysUtils,
   SQL.Enums,
+  SQL.Impl.PadraoSQL3.Tabela,
   SQL.Impl.PadraoSQL3.Coluna,
   SQL.Impl.PadraoSQL3.Juncao,
   SQL.Impl.PadraoSQL3.Condicao,
-  SQL.Impl.PadraoSQL3.Tabela;
+  SQL.Builder.Juncao,
+  SQL.Builder.Condicao,
+  Teste.Constantes;
 
 { TSQLJuncaoTeste }
 
 procedure TSQLJuncaoTeste.Setup;
+var
+  _director: TDirectorJuncao;
 begin
-  FJuncao := TSQL3Juncao.New;
+  _director := TDirectorJuncao.Create;
+  try
+    _director.setBuilderJuncao(TBuilderJuncaoApenasTabela.New);
+    _director.construirJuncao;
+
+    FJuncao := _director.getJuncao;
+  finally
+    FreeAndNil(_director);
+  end;
+end;
+
+procedure TSQLJuncaoTeste.TestarComTabelaEDuasCondicoes;
+begin
+  FJuncao.addCondicao(FJuncao.getListaCondicoes.Last);
+  Assert.AreEqual(
+    Format('INNER JOIN %s %s on (%s.COLUNA = VALOR) AND (%s.COLUNA = VALOR)',
+      [TABELA_COM_ALIAS, TABELA_ALIAS, TABELA_ALIAS, TABELA_ALIAS])
+      , FJuncao.ToString);
 end;
 
 procedure TSQLJuncaoTeste.TestarComTabelaEUmaCondicao;
-var
-  _sql: string;
 begin
-  _sql :=
-    FJuncao
-    .setTabelaEstrangeira(TSQL3Tabela.New.setNome('NOME_TABELA').setAlias('ALIAS'))
-    .setTipoJuncao(tjInnerJoin)
-    .addCondicao(TSQL3Condicao.New
-    .setOperadorLogico(olAnd)
-    .setColuna(TSQL3Coluna.New
-    .setTabela(TSQL3Tabela.New.setNome('NOME_TABELA').setAlias('ALIAS'))
-    .setColuna('COLUNA')
-    )
-    .setOperadorComparacao(TOperadorComparacao.ocIgual)
-    .setValor('VALOR')
-    ).ToString;
-
-  Assert.AreEqual('INNER JOIN NOME_TABELA ALIAS on (ALIAS.COLUNA = VALOR)', _sql);
+  Assert.AreEqual(
+    Format('INNER JOIN %s %s on (%s.COLUNA = VALOR)', [TABELA_COM_ALIAS, TABELA_ALIAS, TABELA_ALIAS])
+      , FJuncao.ToString);
 end;
 
 initialization

@@ -17,6 +17,7 @@ type
     function setValor(const AValor: TValue): ISQLCondicao; overload;
     function setTexto(const ATextoDaCondicao: string): ISQLCondicao;
     function getOperadorLogico: TOperadorLogico;
+    function getColuna: ISQLColuna;
   end;
 
 implementation

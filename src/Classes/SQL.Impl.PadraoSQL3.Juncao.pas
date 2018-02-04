@@ -25,6 +25,8 @@ type
     function setTipoJuncao(const ATipoJuncao: TTipoJuncao = tjInnerJoin): ISQLJuncao;
     function setTabelaEstrangeira(const ATabela: ISQLTabela): ISQLJuncao;
     function addCondicao(const ACondicao: ISQLCondicao): ISQLJuncao;
+    function getListaCondicoes: System.Generics.Collections.TList<SQL.Intf.Condicao.ISQLCondicao>;
+    function getTabelaEstrangeira: ISQLTabela;
     function ToString: string; override;
   end;
 
@@ -58,6 +60,17 @@ begin
   inherited;
 end;
 
+function TSQL3Juncao.getListaCondicoes
+  : System.Generics.Collections.TList<SQL.Intf.Condicao.ISQLCondicao>;
+begin
+  result := FCondicoes;
+end;
+
+function TSQL3Juncao.getTabelaEstrangeira: ISQLTabela;
+begin
+  result := FTabelaEstrangeira;
+end;
+
 class function TSQL3Juncao.New: ISQLJuncao;
 begin
   result := Create;
@@ -76,11 +89,12 @@ begin
     for _condicoes in FCondicoes do
     begin
       _sql
+        .Append(' ')
         .Append(_condicoes.getOperadorLogico.getSQLString)
         .Append(' ')
         .Append(_condicoes.ToString);
     end;
-    _sql.Remove(0, FCondicoes[0].getOperadorLogico.getSQLString.Length + 1);
+    _sql.Remove(0, FCondicoes[0].getOperadorLogico.getSQLString.Length + 2);
 
     result := _sql.ToString;
   finally

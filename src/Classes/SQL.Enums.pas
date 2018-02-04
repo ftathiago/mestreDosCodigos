@@ -46,9 +46,9 @@ function TOperadorLogicoHelper.getSQLString: string;
 begin
   case self of
     olOr:
-      result := 'or';
+      result := 'OR';
     olAnd:
-      result := 'and';
+      result := 'AND';
   else
     raise ENotImplemented.CreateFmt(SQL.Mensagens.RECURSO_NAO_IMPLEMENTADO,
       [self.getNome, TObject(self).ClassName]);

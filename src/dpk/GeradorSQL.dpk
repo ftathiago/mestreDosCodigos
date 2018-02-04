@@ -49,6 +49,7 @@ contains
   SQL.Intf.Tabela in '..\Classes\SQL.Intf.Tabela.pas',
   SQL.Mensagens in '..\Classes\SQL.Mensagens.pas',
   SQL.Impl.PadraoSQL3.Fabrica in '..\Classes\SQL.Impl.PadraoSQL3.Fabrica.pas',
-  SQL.Constantes in '..\Classes\SQL.Constantes.pas';
+  SQL.Constantes in '..\Classes\SQL.Constantes.pas',
+  SQL.Impl.PadraoSQL3.Select in '..\Classes\SQL.Impl.PadraoSQL3.Select.pas';
 
 end.

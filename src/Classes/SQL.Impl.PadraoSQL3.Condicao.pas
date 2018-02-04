@@ -15,7 +15,7 @@ type
   private
     FOperadorLogico: TOperadorLogico;
     FOperadorComparacao: TOperadorComparacao;
-    FColuna: string;
+    FColuna: ISQLColuna;
     FTextoDaCondicao: string;
     FValor: string;
   public
@@ -29,6 +29,7 @@ type
     function setValor(const AColuna: ISQL): ISQLCondicao; overload;
     function setValor(const AValor: TValue): ISQLCondicao; overload;
     function ToString: string; override;
+    function getColuna: ISQLColuna;
   end;
 
 implementation
@@ -44,9 +45,14 @@ constructor TSQL3Condicao.Create;
 begin
   FOperadorLogico := olUnknow;
   FOperadorComparacao := ocUnknow;
-  FColuna := EmptyStr;
+  FColuna := nil;
   FTextoDaCondicao := EmptyStr;
   FValor := EmptyStr;
+end;
+
+function TSQL3Condicao.getColuna: ISQLColuna;
+begin
+  result := FColuna;
 end;
 
 function TSQL3Condicao.getOperadorLogico: TOperadorLogico;
@@ -61,7 +67,7 @@ end;
 
 function TSQL3Condicao.setColuna(const AColuna: ISQLColuna): ISQLCondicao;
 begin
-  FColuna := AColuna.ToString;
+  FColuna := AColuna;
   result := self;
 end;
 
@@ -95,7 +101,7 @@ var
   _comparadoCom: string;
 begin
   _comparadoCom := FOperadorComparacao.getSQLString;
-  result := Format('(%s %s %s)', [FColuna, _comparadoCom, FValor]);
+  result := Format('(%s %s %s)', [FColuna.ToString, _comparadoCom, FValor]);
 end;
 
 function TSQL3Condicao.setValor(const AColuna: ISQL): ISQLCondicao;

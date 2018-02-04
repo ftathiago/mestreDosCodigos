@@ -8,10 +8,19 @@ uses
   SQL.Intf.Tabela;
 
 type
-  TBuilderTabela = class
+  IBuilderTabela = interface(IInterface)
+    ['{ED9BF74D-D4F1-4118-8E42-48E775E85161}']
+    function getTabela: ISQLTabela;
+    procedure criarNovaTabela;
+    procedure buildNomeTabela();
+    procedure buildAliasTabela();
+  end;
+
+  TBuilderTabela = class(TInterfacedObject, IBuilderTabela)
   protected
     FTabela: ISQLTabela;
   public
+    class function New: IBuilderTabela;
     function getTabela: ISQLTabela;
     procedure criarNovaTabela;
     procedure buildNomeTabela(); virtual; abstract;
@@ -32,9 +41,9 @@ type
 
   TDirectorTabela = class
   private
-    FTabelaBuilder: TBuilderTabela;
+    FTabelaBuilder: IBuilderTabela;
   public
-    procedure setBuilderTabela(var ABuilderTabela: TBuilderTabela);
+    procedure setBuilderTabela(const ABuilderTabela: IBuilderTabela);
     procedure construirTabela();
     function getTabela: ISQLTabela;
   end;
@@ -43,7 +52,8 @@ implementation
 
 uses
   SQL.Intf.Fabrica,
-  SQL.Impl.Fabrica, Teste.Constantes;
+  SQL.Impl.Fabrica,
+  Teste.Constantes;
 
 { TBuilderTabela }
 
@@ -59,6 +69,11 @@ end;
 function TBuilderTabela.getTabela: ISQLTabela;
 begin
   result := FTabela;
+end;
+
+class function TBuilderTabela.New: IBuilderTabela;
+begin
+  result := Create;
 end;
 
 { TBuilderTabelaComNomeApenas }
@@ -99,7 +114,7 @@ begin
   result := FTabelaBuilder.getTabela;
 end;
 
-procedure TDirectorTabela.setBuilderTabela(var ABuilderTabela: TBuilderTabela);
+procedure TDirectorTabela.setBuilderTabela(const ABuilderTabela: IBuilderTabela);
 begin
   FTabelaBuilder := ABuilderTabela;
 end;
