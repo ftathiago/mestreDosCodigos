@@ -10,19 +10,23 @@ uses
   SQL.Intf.Tabela,
   SQL.Intf.Juncao,
   SQL.Intf.Condicao,
-  SQL.Impl.SQL;
+  SQL.Impl.SQL,
+  SQL.Impl.Coluna.Lista,
+  SQL.Impl.Condicao.Lista,
+  SQL.Impl.Juncao.Lista;
 
 type
   TSQL3Select = class(TSQL, ISQLSelect)
   private
-    FColunas: TList<ISQLColuna>;
-    FCondicoes: TList<ISQLCondicao>;
-    FJuncoes: TList<ISQLJuncao>;
+    FColunas: TListaColunaSelect;
+    FCondicoes: TListaCondicao;
+    FJuncoes: TListaJuncao;
     FTabela: ISQLTabela;
   protected
-    function MontarResultSet: string;
-    function MontarCamposDoWhere: string;
-    function MontarJuncoes: string;
+    function MontarColunas: string; virtual;
+    function MontarFrom: string; virtual;
+    function MontarJuncoes: string; virtual;
+    function MontarWhere: string; virtual;
   public
     constructor Create;
     class function New: ISQLSelect;
@@ -43,7 +47,9 @@ implementation
 
 { TSQL3Select }
 
-uses SQL.Mensagens;
+uses
+  SQL.Mensagens,
+  SQL.Enums;
 
 function TSQL3Select.addCondicao(const ACondicao: ISQLCondicao): ISQLSelect;
 begin
@@ -57,9 +63,9 @@ end;
 
 constructor TSQL3Select.Create;
 begin
-  FCondicoes := TList<ISQLCondicao>.Create;
-  FColunas := TList<ISQLColuna>.Create;
-  FJuncoes := TList<ISQLJuncao>.Create;;
+  FCondicoes := TListaCondicao.Create;
+  FColunas := TListaColunaSelect.Create;
+  FJuncoes := TListaJuncao.Create;
 end;
 
 destructor TSQL3Select.Destroy;
@@ -79,8 +85,7 @@ begin
   result := FColunas;
 end;
 
-function TSQL3Select.getListaCondicoes
-  : TList<SQL.Intf.Condicao.ISQLCondicao>;
+function TSQL3Select.getListaCondicoes: TList<SQL.Intf.Condicao.ISQLCondicao>;
 begin
   result := FCondicoes
 end;
@@ -95,39 +100,47 @@ begin
   result := FTabela
 end;
 
-function TSQL3Select.MontarCamposDoWhere: string;
-const
-  _sSEPARADOR = ', ';
-var
-  _coluna: ISQLColuna;
-  _resultSet: TStringBuilder;
+function TSQL3Select.MontarWhere: string;
 begin
-  if FColunas.Count <= 0 then
-    raise EListError.CreateFmt(LISTA_VAZIA, 'Campos');
+  result := EmptyStr;
 
-  _resultSet := TStringBuilder.Create;
-  try
-    for _coluna in FCondicoes do
-    begin
-      _resultSet
-        .Append(_sSEPARADOR)
-        .Append(_coluna.ToString);
-    end;
-    _resultSet.Remove(0, _sSEPARADOR.Length);
-    result := _resultSet.ToString;
-  finally
-    _resultSet.Free;
-  end;
+  if not Assigned(FCondicoes) then
+    exit;
+
+  result := FCondicoes.ToString;
+
+  if not result.trim.IsEmpty then
+    result := 'where ' + result;
 end;
 
 function TSQL3Select.MontarJuncoes: string;
 begin
+  result := EmptyStr;
 
+  if not Assigned(FJuncoes) then
+    exit;
+
+  result := FJuncoes.ToString;
 end;
 
-function TSQL3Select.MontarResultSet: string;
+function TSQL3Select.MontarColunas: string;
 begin
+  result := EmptyStr;
 
+  if not Assigned(FColunas) then
+    exit;
+
+  result := FColunas.ToString;
+end;
+
+function TSQL3Select.MontarFrom: string;
+begin
+  result := EmptyStr;
+
+  if not Assigned(FTabela) then
+    exit;
+
+  result := FTabela.ToString;
 end;
 
 class function TSQL3Select.New: ISQLSelect;
@@ -141,8 +154,21 @@ begin
 end;
 
 function TSQL3Select.ToString: string;
+var
+  _sql: TStringBuilder;
 begin
-
+  _sql := TStringBuilder.Create;
+  try
+    _sql.Append('select ');
+    _sql.AppendLine(MontarColunas);
+    _sql.Append('from ');
+    _sql.AppendLine(MontarFrom);
+    _sql.AppendLine(MontarJuncoes);
+    _sql.AppendLine(MontarWhere);
+    result := _sql.ToString
+  finally
+    _sql.Free;
+  end;
 end;
 
 function TSQL3Select.addColuna(const AColuna: ISQLColuna): ISQLSelect;

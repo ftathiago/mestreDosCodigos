@@ -29,6 +29,7 @@ implementation
 uses
   System.SysUtils,
   SQL.Enums,
+  SQL.Intf.Director,
   SQL.Impl.PadraoSQL3.Tabela,
   SQL.Impl.PadraoSQL3.Coluna,
   SQL.Impl.PadraoSQL3.Juncao,
@@ -41,17 +42,13 @@ uses
 
 procedure TSQLJuncaoTeste.Setup;
 var
-  _director: TDirectorJuncao;
+  _director: IDirector<IBuilderJuncao, ISQLJuncao>;
 begin
-  _director := TDirectorJuncao.Create;
-  try
-    _director.setBuilderJuncao(TBuilderJuncaoApenasTabela.New);
-    _director.construirJuncao;
+  _director := TDirectorJuncao.New;
+  _director.setBuilder(TBuilderJuncaoApenasTabela.New);
+  _director.Construir;
 
-    FJuncao := _director.getJuncao;
-  finally
-    FreeAndNil(_director);
-  end;
+  FJuncao := _director.getObjetoPronto;
 end;
 
 procedure TSQLJuncaoTeste.TestarComTabelaEDuasCondicoes;

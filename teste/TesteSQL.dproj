@@ -85,10 +85,13 @@
         <DCCReference Include="SQL.Builder.Coluna.pas"/>
         <DCCReference Include="SQL.Builder.Condicao.pas"/>
         <DCCReference Include="SQL.Builder.Juncao.pas"/>
-        <DCCReference Include="uSQLTabela.pas"/>
+        <DCCReference Include="uSQLTabelaTeste.pas"/>
         <DCCReference Include="uSQLColunaTeste.pas"/>
-        <DCCReference Include="uSQLCondicao.pas"/>
+        <DCCReference Include="uSQLCondicaoTeste.pas"/>
         <DCCReference Include="uSQLJuncaoTeste.pas"/>
+        <DCCReference Include="SQL.Impl.Juncao.Lista.pas"/>
+        <DCCReference Include="SQL.Builder.Select.pas"/>
+        <DCCReference Include="uSQLSelectTeste.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

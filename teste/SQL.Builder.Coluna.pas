@@ -5,25 +5,26 @@ interface
 uses
   SQL.Enums,
   SQL.Constantes,
+  SQL.Intf.Director,
+  SQL.Intf.Builder,
   SQL.Intf.Tabela,
-  SQL.Intf.Coluna;
+  SQL.Intf.Coluna,
+  SQL.Impl.Builder,
+  SQL.Impl.Director;
 
 type
-  IBuilderColuna = interface(IInterface)
+  IBuilderColuna = interface(IBuilder<ISQLColuna>)
     ['{0F95620B-5C5D-401F-A86D-CE036E1A9B2F}']
-    function getColuna: ISQLColuna;
-    procedure criarNovaColuna(ATabela: ISQLTabela);
     procedure buildNome();
     procedure buildNomeVirtual();
+    procedure AdicionarTabela(ATabela: ISQLTabela);
   end;
 
-  TBuilderColuna = class(TInterfacedObject, IBuilderColuna)
-  protected
-    FColuna: ISQLColuna;
+  TBuilderColuna = class(TBuilder<ISQLColuna>, IBuilderColuna)
   public
     class function New: IBuilderColuna;
-    function getColuna: ISQLColuna;
-    procedure criarNovaColuna(ATabela: ISQLTabela);
+    procedure ConstruirNovaInstancia; override;
+    procedure AdicionarTabela(ATabela: ISQLTabela);
     procedure buildNome(); virtual; abstract;
     procedure buildNomeVirtual(); virtual; abstract;
   end;
@@ -46,15 +47,13 @@ type
     procedure buildNomeVirtual(); override;
   end;
 
-  TDirectorColuna = class
+  TDirectorColuna = class(TDirector<IBuilderColuna, ISQLColuna>)
   private
-    FColunaBuilder: IBuilderColuna;
     FTabela: ISQLTabela;
   public
     procedure setBuilderColuna(const ABuilderColuna: IBuilderColuna);
     procedure setTabela(Tabela: ISQLTabela);
-    procedure construirColuna();
-    function getColuna: ISQLColuna;
+    procedure Construir(); override;
   end;
 
 implementation
@@ -67,17 +66,14 @@ uses
 
 { TBuilderColuna }
 
-procedure TBuilderColuna.criarNovaColuna(ATabela: ISQLTabela);
+procedure TBuilderColuna.AdicionarTabela(ATabela: ISQLTabela);
 begin
-  FColuna := TFabrica.New(SQL_TIPO_PADRAO).Coluna;
 
-  if Assigned(ATabela) then
-    FColuna.setTabela(ATabela);
 end;
 
-function TBuilderColuna.getColuna: ISQLColuna;
+procedure TBuilderColuna.ConstruirNovaInstancia;
 begin
-  result := FColuna;
+  FObjeto := TFabrica.New(SQL_TIPO_PADRAO).Coluna;
 end;
 
 class function TBuilderColuna.New: IBuilderColuna;
@@ -89,55 +85,52 @@ end;
 
 procedure TBuilderColunaSimples.buildNome;
 begin
-  FColuna.setColuna(COLUNA_SEM_ALIAS);
+  FObjeto.setColuna(COLUNA_SEM_ALIAS);
 end;
 
 procedure TBuilderColunaSimples.buildNomeVirtual;
 begin
-  FColuna.setNomeVirtual('');
+  FObjeto.setNomeVirtual('');
 end;
 
 { TBuilderColunaNomeVirtual }
 
 procedure TBuilderColunaNomeVirtual.buildNome;
 begin
-  FColuna.setColuna(COLUNA_COM_ALIAS);
+  FObjeto.setColuna(COLUNA_COM_ALIAS);
 end;
 
 procedure TBuilderColunaNomeVirtual.buildNomeVirtual;
 begin
-  FColuna.setNomeVirtual(COLUNA_NOME_VIRTUAL);
+  FObjeto.setNomeVirtual(COLUNA_NOME_VIRTUAL);
 end;
 
 { TBuilderColunaTotalmenteVirtual }
 
 procedure TBuilderColunaTotalmenteVirtual.buildNome;
 begin
-  FColuna.setColuna('null')
+  FObjeto.setColuna('null')
 end;
 
 procedure TBuilderColunaTotalmenteVirtual.buildNomeVirtual;
 begin
-  FColuna.setNomeVirtual(COLUNA_NOME_VIRTUAL);
+  FObjeto.setNomeVirtual(COLUNA_NOME_VIRTUAL);
 end;
 
 { TDirectorTabela }
 
-procedure TDirectorColuna.construirColuna;
+procedure TDirectorColuna.Construir;
 begin
-  FColunaBuilder.criarNovaColuna(FTabela);
-  FColunaBuilder.buildNome;
-  FColunaBuilder.buildNomeVirtual;
-end;
-
-function TDirectorColuna.getColuna: ISQLColuna;
-begin
-  result := FColunaBuilder.getColuna;
+  FBuilder.ConstruirNovaInstancia;
+  FBuilder.AdicionarTabela(FTabela);
+  FBuilder.buildNome;
+  FBuilder.buildNomeVirtual;
+  FObjeto := FBuilder.getObjeto
 end;
 
 procedure TDirectorColuna.setBuilderColuna(const ABuilderColuna: IBuilderColuna);
 begin
-  FColunaBuilder := ABuilderColuna;
+  FBuilder := ABuilderColuna;
 end;
 
 procedure TDirectorColuna.setTabela(Tabela: ISQLTabela);

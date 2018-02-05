@@ -7,7 +7,8 @@ uses
   SQL.Intf.Tabela,
   SQL.Intf.Coluna,
   SQL.Intf.Condicao,
-  SQL.Intf.Juncao;
+  SQL.Intf.Juncao,
+  SQL.Intf.Select;
 
 type
   IFabrica = Interface(IInterface)
@@ -16,6 +17,7 @@ type
     function Coluna: ISQLColuna;
     function Condicao: ISQLCondicao;
     function Juncao: ISQLJuncao;
+    function Select: ISQLSelect;
   end;
 
 implementation

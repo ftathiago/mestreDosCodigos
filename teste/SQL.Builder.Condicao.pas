@@ -4,30 +4,25 @@ interface
 
 uses
   System.Rtti,
-  SQL.Enums,
-  SQL.Constantes,
-  SQL.Intf.SQL,
-  SQL.Intf.Tabela,
+  SQL.Intf.Builder,
   SQL.Intf.Coluna,
-  SQL.Intf.Condicao;
+  SQL.Intf.Condicao,
+  SQL.Impl.Builder,
+  SQL.Impl.Director;
 
 type
-  IBuilderCondicao = interface(IInterface)
+  IBuilderCondicao = interface(IBuilder<ISQLCondicao>)
     ['{FB34CE34-00D8-4B1A-8E99-3D2AF86A2A7D}']
-    function getCondicao: ISQLCondicao;
-    procedure criarNovaCondicao();
     procedure buildValor();
   end;
 
-  TBuilderCondicao = class(TInterfacedObject, IBuilderCondicao)
+  TBuilderCondicao = class(TBuilder<ISQLCondicao>, IBuilderCondicao)
   protected
-    FCondicao: ISQLCondicao;
   private
     function getColuna: ISQLColuna;
   public
     class function New: IBuilderCondicao;
-    function getCondicao: ISQLCondicao;
-    procedure criarNovaCondicao();
+    procedure ConstruirNovaInstancia(); override;
     procedure buildValor(); virtual; abstract;
   end;
 
@@ -36,19 +31,18 @@ type
     procedure buildValor(); override;
   end;
 
-  TDirectorCondicao = class
-  private
-    FCondicaoBuilder: IBuilderCondicao;
+  TDirectorCondicao = class(TDirector<IBuilderCondicao, ISQLCondicao>)
   public
-    procedure setBuilderCondicao(const ABuilderCondicao: IBuilderCondicao);
-    procedure construirCondicao();
-    function getCondicao: ISQLCondicao;
+    procedure Construir(); override;
   end;
 
 implementation
 
 uses
   Teste.Constantes,
+  SQL.Enums,
+  SQL.Constantes,
+  SQL.Intf.Director,
   SQL.Intf.Fabrica,
   SQL.Impl.Fabrica,
   SQL.Builder.Tabela,
@@ -56,10 +50,10 @@ uses
 
 { TBuilderCondicao }
 
-procedure TBuilderCondicao.criarNovaCondicao();
+procedure TBuilderCondicao.ConstruirNovaInstancia();
 begin
-  FCondicao := TFabrica.New(SQL_TIPO_PADRAO).Condicao;
-  FCondicao
+  FObjeto := TFabrica.New(SQL_TIPO_PADRAO).Condicao;
+  FObjeto
     .setOperadorLogico(olAnd)
     .setColuna(getColuna)
     .setOperadorComparacao(ocIgual);
@@ -68,22 +62,15 @@ end;
 function TBuilderCondicao.getColuna: ISQLColuna;
 var
   _builder: IBuilderColuna;
-  _director: TDirectorColuna;
+  _director: IDirector<IBuilderColuna, ISQLColuna>;
 begin
-  _director :=  TDirectorColuna.Create;
   _builder := TBuilderColunaSimples.New;
-  try
-    _director.setBuilderColuna(_builder);
-    _director.construirColuna;
-    result := _director.getColuna;
-  finally
-    _director.free;
-  end;
-end;
 
-function TBuilderCondicao.getCondicao: ISQLCondicao;
-begin
-  result := FCondicao;
+  _director := TDirectorColuna.New;
+  _director.setBuilder(_builder);
+  _director.construir;
+
+  result := _director.getObjetoPronto;
 end;
 
 class function TBuilderCondicao.New: IBuilderCondicao;
@@ -93,27 +80,18 @@ end;
 
 { TDirectorTabela }
 
-procedure TDirectorCondicao.construirCondicao;
+procedure TDirectorCondicao.construir;
 begin
-  FCondicaoBuilder.criarNovaCondicao;
-  FCondicaoBuilder.buildValor;
-end;
-
-function TDirectorCondicao.getCondicao: ISQLCondicao;
-begin
-  result := FCondicaoBuilder.getCondicao;
-end;
-
-procedure TDirectorCondicao.setBuilderCondicao(const ABuilderCondicao: IBuilderCondicao);
-begin
-  FCondicaoBuilder := ABuilderCondicao;
+  FBuilder.ConstruirNovaInstancia;
+  FBuilder.buildValor;
+  FObjeto := FBuilder.getObjeto
 end;
 
 { TBuilderCondicaoValor }
 
 procedure TBuilderCondicaoValor.buildValor;
 begin
-  FCondicao.setValor('VALOR')
+  FObjeto.setValor('VALOR')
 end;
 
 end.

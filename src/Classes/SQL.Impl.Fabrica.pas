@@ -8,6 +8,7 @@ uses
   SQL.Intf.Coluna,
   SQL.Intf.Condicao,
   SQL.Intf.Juncao,
+  SQL.Intf.Select,
   SQL.Intf.Fabrica;
 
 type
@@ -23,6 +24,7 @@ type
     function Coluna: ISQLColuna;
     function Condicao: ISQLCondicao;
     function Juncao: ISQLJuncao;
+    function Select:ISQLSelect;
     procedure AfterConstruction; override;
   end;
 
@@ -76,6 +78,11 @@ end;
 class function TFabrica.New(const ABancoDeDados: TBancoDeDados): IFabrica;
 begin
   result := Create(ABancoDeDados);
+end;
+
+function TFabrica.Select: ISQLSelect;
+begin
+  result :=  FFabrica.Select;
 end;
 
 end.

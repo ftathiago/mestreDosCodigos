@@ -5,13 +5,15 @@ interface
 uses
   System.Generics.Collections,
   System.SysUtils,
+  SQL.Intf.SQL,
   SQL.Intf.Coluna,
   SQL.Intf.Tabela,
   SQL.Intf.Condicao,
   SQL.Intf.Juncao;
 
 type
-  ISQLSelect = interface(IInterface)
+  ISQLSelect = interface(ISQL)
+    ['{5DF9430A-2A50-4D3D-B4C8-EEC4D799CC7E}']
     function addColuna(const AColuna: ISQLColuna): ISQLSelect;
     function setTabela(const ATabela: ISQLTabela): ISQLSelect;
     function addJuncao(const AJuncao: ISQLJuncao): ISQLJuncao;

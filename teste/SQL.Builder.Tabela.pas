@@ -3,26 +3,27 @@ unit SQL.Builder.Tabela;
 interface
 
 uses
-  SQL.Enums,
-  SQL.Constantes,
-  SQL.Intf.Tabela;
+  SQL.Intf.Builder,
+  SQL.Intf.Tabela,
+  SQL.Impl.Builder,
+  SQL.Impl.Director;
 
 type
-  IBuilderTabela = interface(IInterface)
+  IBuilderTabela = interface(IBuilder<ISQLTabela>)
     ['{ED9BF74D-D4F1-4118-8E42-48E775E85161}']
-    function getTabela: ISQLTabela;
-    procedure criarNovaTabela;
     procedure buildNomeTabela();
     procedure buildAliasTabela();
   end;
 
-  TBuilderTabela = class(TInterfacedObject, IBuilderTabela)
-  protected
-    FTabela: ISQLTabela;
+  TDirectorTabela = class(TDirector<IBuilderTabela, ISQLTabela>)
+  public
+    procedure Construir; override;
+  end;
+
+  TBuilderTabela = class(TBuilder<ISQLTabela>, IBuilderTabela)
   public
     class function New: IBuilderTabela;
-    function getTabela: ISQLTabela;
-    procedure criarNovaTabela;
+    procedure ConstruirNovaInstancia; override;
     procedure buildNomeTabela(); virtual; abstract;
     procedure buildAliasTabela(); virtual; abstract;
   end;
@@ -39,36 +40,23 @@ type
     procedure buildNomeTabela; override;
   end;
 
-  TDirectorTabela = class
-  private
-    FTabelaBuilder: IBuilderTabela;
-  public
-    procedure setBuilderTabela(const ABuilderTabela: IBuilderTabela);
-    procedure construirTabela();
-    function getTabela: ISQLTabela;
-  end;
-
 implementation
 
 uses
+  SQL.Constantes,
   SQL.Intf.Fabrica,
   SQL.Impl.Fabrica,
   Teste.Constantes;
 
 { TBuilderTabela }
 
-procedure TBuilderTabela.criarNovaTabela;
+procedure TBuilderTabela.ConstruirNovaInstancia;
 var
   _fabrica: IFabrica;
 begin
   _fabrica := TFabrica.New(SQL_TIPO_PADRAO);
 
-  FTabela := _fabrica.Tabela;
-end;
-
-function TBuilderTabela.getTabela: ISQLTabela;
-begin
-  result := FTabela;
+  FObjeto := _fabrica.Tabela;
 end;
 
 class function TBuilderTabela.New: IBuilderTabela;
@@ -80,43 +68,34 @@ end;
 
 procedure TBuilderTabelaComNomeApenas.buildAliasTabela;
 begin
-  FTabela.setAlias('');
+  FObjeto.setAlias('');
 end;
 
 procedure TBuilderTabelaComNomeApenas.buildNomeTabela;
 begin
-  FTabela.setNome(TABELA_SEM_ALIAS);
+  FObjeto.setNome(TABELA_SEM_ALIAS);
 end;
 
 { TBuilderTabelaComNomeEAlias }
 
 procedure TBuilderTabelaComNomeEAlias.buildAliasTabela;
 begin
-  FTabela.setAlias(TABELA_ALIAS)
+  FObjeto.setAlias(TABELA_ALIAS)
 end;
 
 procedure TBuilderTabelaComNomeEAlias.buildNomeTabela;
 begin
-  FTabela.setNome(TABELA_COM_ALIAS);
+  FObjeto.setNome(TABELA_COM_ALIAS);
 end;
 
 { TDirectorTabela }
 
-procedure TDirectorTabela.construirTabela;
+procedure TDirectorTabela.construir;
 begin
-  FTabelaBuilder.criarNovaTabela;
-  FTabelaBuilder.buildNomeTabela;
-  FTabelaBuilder.buildAliasTabela;
-end;
-
-function TDirectorTabela.getTabela: ISQLTabela;
-begin
-  result := FTabelaBuilder.getTabela;
-end;
-
-procedure TDirectorTabela.setBuilderTabela(const ABuilderTabela: IBuilderTabela);
-begin
-  FTabelaBuilder := ABuilderTabela;
+  FBuilder.ConstruirNovaInstancia;
+  FBuilder.buildNomeTabela;
+  FBuilder.buildAliasTabela;
+  FObjeto := FBuilder.getObjeto
 end;
 
 end.

@@ -7,6 +7,7 @@ uses
   SQL.Intf.Coluna,
   SQL.Intf.Condicao,
   SQL.Intf.Juncao,
+  SQL.Intf.Select,
   SQL.Intf.Fabrica;
 
 type
@@ -16,6 +17,7 @@ type
     function Tabela: ISQLTabela;
     function Condicao: ISQLCondicao;
     function Juncao: ISQLJuncao;
+    function Select: ISQLSelect;
   end;
 
 implementation
@@ -24,7 +26,8 @@ uses
   SQL.Impl.PadraoSQL3.Tabela,
   SQL.Impl.PadraoSQL3.Coluna,
   SQL.Impl.PadraoSQL3.Condicao,
-  SQL.Impl.PadraoSQL3.Juncao;
+  SQL.Impl.PadraoSQL3.Juncao,
+  SQL.Impl.PadraoSQL3.Select;
 
 { TSQL3Fabrica }
 
@@ -41,6 +44,11 @@ end;
 function TSQL3Fabrica.Juncao: ISQLJuncao;
 begin
   result := TSQL3Juncao.New;
+end;
+
+function TSQL3Fabrica.Select: ISQLSelect;
+begin
+  result := TSQL3Select.New;
 end;
 
 function TSQL3Fabrica.Tabela: ISQLTabela;

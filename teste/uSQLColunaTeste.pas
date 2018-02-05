@@ -5,6 +5,7 @@ interface
 uses
   DUnitX.TestFramework,
   System.SysUtils,
+  SQL.Intf.Director,
   SQL.Intf.Tabela,
   SQL.Intf.Coluna,
   SQL.Builder.Coluna,
@@ -16,7 +17,7 @@ type
   [TestFixture]
   TSQLColunaTeste = class(TObject)
   private
-    FDirectorColuna: TDirectorColuna;
+    FDirectorColuna: IDirector<IBuilderColuna, ISQLColuna>;
     FDirectorTabela: TDirectorTabela;
     function getColunaSimples: ISQLColuna;
     function getColunaComTabela: ISQLColuna;
@@ -81,16 +82,15 @@ var
 begin
   _builderColuna := TBuilderColunaSimples.New;
   _builderTabela := TBuilderTabelaComNomeApenas.New;
-  FDirectorColuna.setBuilderColuna(_builderColuna);
-  FDirectorColuna.construirColuna;
 
-  FDirectorTabela.setBuilderTabela(_builderTabela);
-  FDirectorTabela.construirTabela;
+  FDirectorColuna.setBuilder(_builderColuna);
+  FDirectorTabela.setBuilder(_builderTabela);
 
-  result := FDirectorColuna.getColuna;
+  FDirectorColuna.construir;
+  FDirectorTabela.construir;
 
-  result.setTabela(FDirectorTabela.getTabela);
-
+  result := FDirectorColuna.getObjetoPronto;
+  result.setTabela(FDirectorTabela.getObjetoPronto);
 end;
 
 function TSQLColunaTeste.getColunaSimples: ISQLColuna;
@@ -99,22 +99,21 @@ var
 begin
   _builder := TBuilderColunaSimples.New;
 
-  FDirectorColuna.setBuilderColuna(_builder);
-  FDirectorColuna.construirColuna;
-  result := FDirectorColuna.getColuna;
+  FDirectorColuna.setBuilder(_builder);
+  FDirectorColuna.construir;
+  result := FDirectorColuna.getObjetoPronto;
 
 end;
 
 procedure TSQLColunaTeste.Setup;
 begin
   FDirectorTabela := TDirectorTabela.Create;
-  FDirectorColuna := TDirectorColuna.Create;
+  FDirectorColuna := TDirectorColuna.New;
 end;
 
 procedure TSQLColunaTeste.TearDown;
 begin
   FreeAndNil(FDirectorTabela);
-  FreeAndNil(FDirectorColuna);
 end;
 
 initialization

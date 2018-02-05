@@ -18,10 +18,13 @@ uses
   SQL.Builder.Coluna in 'SQL.Builder.Coluna.pas',
   SQL.Builder.Condicao in 'SQL.Builder.Condicao.pas',
   SQL.Builder.Juncao in 'SQL.Builder.Juncao.pas',
-  uSQLTabela in 'uSQLTabela.pas',
+  uSQLTabelaTeste in 'uSQLTabelaTeste.pas',
   uSQLColunaTeste in 'uSQLColunaTeste.pas',
-  uSQLCondicao in 'uSQLCondicao.pas',
-  uSQLJuncaoTeste in 'uSQLJuncaoTeste.pas';
+  uSQLCondicaoTeste in 'uSQLCondicaoTeste.pas',
+  uSQLJuncaoTeste in 'uSQLJuncaoTeste.pas',
+  SQL.Impl.Juncao.Lista in 'SQL.Impl.Juncao.Lista.pas',
+  SQL.Builder.Select in 'SQL.Builder.Select.pas',
+  uSQLSelectTeste in 'uSQLSelectTeste.pas';
 
 var
   runner: ITestRunner;

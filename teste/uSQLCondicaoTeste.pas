@@ -1,4 +1,4 @@
-unit uSQLCondicao;
+unit uSQLCondicaoTeste;
 
 interface
 
@@ -27,37 +27,39 @@ implementation
 
 uses
   System.SysUtils,
-  SQL.Builder.Condicao,
   Teste.Constantes,
+  SQL.Intf.Director,
+  SQL.Intf.Coluna,
+  SQL.Builder.Condicao,
   SQL.Builder.Coluna;
 
 procedure TSQLCondicaoTeste.Setup;
 var
-  _director: TDirectorCondicao;
+  _director: IDirector<IBuilderCondicao, ISQLCondicao>;
 begin
-  _director := TDirectorCondicao.Create;
-  _director.setBuilderCondicao(TBuilderCondicaoValor.New);
-  _director.construirCondicao;
-  FCondicao := _director.getCondicao;
+  _director := TDirectorCondicao.New;
+  _director.setBuilder(TBuilderCondicaoValor.New);
+  _director.construir;
+  FCondicao := _director.getObjetoPronto;
 end;
 
 procedure TSQLCondicaoTeste.TearDown;
 begin
+  FCondicao := nil;
 end;
 
 procedure TSQLCondicaoTeste.TestarComColuna;
 var
-  _director: TDirectorColuna;
+  _director: IDirector<IBuilderColuna, ISQLColuna>;
 begin
-  _director := TDirectorColuna.Create;
-  try
-    _director.setBuilderColuna(TBuilderColunaSimples.New);
-    _director.construirColuna;
-    FCondicao.setValor(_director.getColuna);
-    Assert.AreEqual(Format('(%s = %s)', [COLUNA_SEM_ALIAS, COLUNA_SEM_ALIAS]), FCondicao.ToString);
-  finally
-    _director.Free;
-  end;
+  _director := TDirectorColuna.New;
+  _director.setBuilder(TBuilderColunaSimples.New);
+  _director.construir;
+
+  FCondicao.setValor(_director.getObjetoPronto);
+
+  Assert.AreEqual(Format('(%s = %s)', [COLUNA_SEM_ALIAS, COLUNA_SEM_ALIAS]), FCondicao.ToString);
+
 end;
 
 procedure TSQLCondicaoTeste.TestarCondicao;

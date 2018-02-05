@@ -5,24 +5,22 @@ interface
 uses
   SQL.Enums,
   SQL.Constantes,
-  SQL.Intf.Juncao;
+  SQL.Intf.Builder,
+  SQL.Intf.Juncao,
+  SQL.Impl.Builder,
+  SQL.Impl.Director;
 
 type
-  IBuilderJuncao = interface(IInterface)
+  IBuilderJuncao = interface(IBuilder<ISQLJuncao>)
     ['{D1CDB699-1DD2-4F44-BEE4-6587AE3E2735}']
-    function getJuncao: ISQLJuncao;
-    procedure criarNovaJuncao;
     procedure AdicionarTabela;
     procedure AdicionarCondicao;
   end;
 
-  TBuilderJuncao = class(TInterfacedObject, IBuilderJuncao)
-  protected
-    FJuncao: ISQLJuncao;
+  TBuilderJuncao = class(TBuilder<ISQLJuncao>, IBuilderJuncao)
   public
     class function New: IBuilderJuncao;
-    function getJuncao: ISQLJuncao;
-    procedure criarNovaJuncao;
+    procedure ConstruirNovaInstancia; override;
     procedure AdicionarTabela; virtual;
     procedure AdicionarCondicao; virtual; abstract;
   end;
@@ -38,13 +36,9 @@ type
     procedure AdicionarCondicao; override;
   end;
 
-  TDirectorJuncao = class
-  private
-    FJuncaoBuilder: IBuilderJuncao;
+  TDirectorJuncao = class(TDirector<IBuilderJuncao, ISQLJuncao>)
   public
-    procedure setBuilderJuncao(const ABuilderJuncao: IBuilderJuncao);
-    procedure construirJuncao();
-    function getJuncao: ISQLJuncao;
+    procedure Construir(); override;
   end;
 
 implementation
@@ -54,6 +48,9 @@ uses
   Teste.Constantes,
   SQL.Impl.Fabrica,
   SQL.Intf.Condicao,
+  SQL.Intf.Director,
+  SQL.Intf.Tabela,
+  SQL.Intf.Coluna,
   SQL.Builder.Coluna,
   SQL.Builder.Tabela,
   SQL.Builder.Condicao;
@@ -62,33 +59,17 @@ uses
 
 procedure TBuilderJuncao.AdicionarTabela;
 var
-  _directorTabela: TDirectorTabela;
+  _directorTabela: IDirector<IBuilderTabela, ISQLTabela>;
 begin
-  _directorTabela := TDirectorTabela.Create;
-  try
-    _directorTabela.setBuilderTabela(TBuilderTabelaComNomeEAlias.New);
-    _directorTabela.construirTabela;
-    FJuncao.setTabelaEstrangeira(_directorTabela.getTabela);
-  finally
-    FreeAndNil(_directorTabela);
-  end;
+  _directorTabela := TDirectorTabela.New;
+  _directorTabela.setBuilder(TBuilderTabelaComNomeEAlias.New);
+  _directorTabela.construir;
+  FObjeto.setTabelaEstrangeira(_directorTabela.getObjetoPronto);
 end;
 
-procedure TBuilderJuncao.criarNovaJuncao;
-var
-  _director: TDirectorColuna;
+procedure TBuilderJuncao.ConstruirNovaInstancia;
 begin
-  _director := TDirectorColuna.Create;
-  try
-    FJuncao := TFabrica.New(SQL_TIPO_PADRAO).Juncao;
-  finally
-    FreeAndNil(_director);
-  end;
-end;
-
-function TBuilderJuncao.getJuncao: ISQLJuncao;
-begin
-  result := FJuncao;
+  FObjeto := TFabrica.New(SQL_TIPO_PADRAO).Juncao;
 end;
 
 class function TBuilderJuncao.New: IBuilderJuncao;
@@ -98,48 +79,37 @@ end;
 
 { TDirectorJuncao }
 
-procedure TDirectorJuncao.construirJuncao;
+procedure TDirectorJuncao.Construir;
 begin
-  FJuncaoBuilder.criarNovaJuncao;
-  FJuncaoBuilder.AdicionarTabela;
-  FJuncaoBuilder.AdicionarCondicao
+  FBuilder.ConstruirNovaInstancia;
+  FBuilder.AdicionarTabela;
+  FBuilder.AdicionarCondicao;
+  FObjeto := FBuilder.getObjeto;
 end;
 
-function TDirectorJuncao.getJuncao: ISQLJuncao;
-begin
-  result := FJuncaoBuilder.getJuncao;
-end;
 
-procedure TDirectorJuncao.setBuilderJuncao(const ABuilderJuncao: IBuilderJuncao);
-begin
-  FJuncaoBuilder := ABuilderJuncao;
-end;
 
 { TBuilderJuncaoApenasTabela }
 
 procedure TBuilderJuncaoApenasTabela.AdicionarCondicao;
 var
-  _directorCondicao: TDirectorCondicao;
-  _directorTabela: TDirectorTabela;
+  _directorCondicao: IDirector<IBuilderCondicao, ISQLCondicao>;
+  _directorTabela: IDirector<IBuilderTabela, ISQLTabela>;
   _condicao: ISQLCondicao;
 begin
-  _directorCondicao := TDirectorCondicao.Create;
-  _directorTabela := TDirectorTabela.Create;
-  try
-    _directorCondicao.setBuilderCondicao(TBuilderCondicaoValor.New);
-    _directorCondicao.construirCondicao;
-    _condicao := _directorCondicao.getCondicao;
+  _directorCondicao := TDirectorCondicao.New;
+  _directorTabela := TDirectorTabela.New;
 
-    _directorTabela.setBuilderTabela(TBuilderTabelaComNomeEAlias.New);
-    _directorTabela.construirTabela;
+  _directorCondicao.setBuilder(TBuilderCondicaoValor.New);
+  _directorCondicao.construir;
+  _condicao := _directorCondicao.getObjetoPronto;
 
-    _condicao.getColuna.setTabela(_directorTabela.getTabela);
+  _directorTabela.setBuilder(TBuilderTabelaComNomeEAlias.New);
+  _directorTabela.construir;
 
-    FJuncao.addCondicao(_condicao);
-  finally
-    FreeAndNil(_directorCondicao);
-    FreeAndNil(_directorTabela);
-  end;
+  _condicao.getColuna.setTabela(_directorTabela.getObjetoPronto);
+
+  FObjeto.addCondicao(_condicao);
 end;
 
 { TBuilderJuncaoTabelaComAlias }
@@ -153,7 +123,7 @@ end;
 procedure TBuilderJuncaoTabelaComAlias.AdicionarTabela;
 begin
   inherited;
-  FJuncao
+  FObjeto
     .getTabelaEstrangeira
     .setNome(TABELA_COM_ALIAS)
     .setAlias(TABELA_ALIAS);

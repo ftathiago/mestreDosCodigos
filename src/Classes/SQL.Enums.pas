@@ -12,18 +12,23 @@ type
 
   TTipoJuncao = (tjUnknow, tjInnerJoin, tjLeftJoin, tjRightJoin);
 
+  TTipoSQL = (tsSelect, tsInsert, tsDelete, tsUpdate);
+
   { Helpers }
   TOperadorLogicoHelper = record helper for TOperadorLogico
     function getSQLString: string; inline;
     function getNome: string; inline;
   end;
 
-  TOperadorComparacaoHelper = record helper for TOperadorComparacao
+  TOperadorComparacaoHelper = record helper
+    for TOperadorComparacao
     function getSQLString: string; inline;
+
     function getNome: string; inline;
   end;
 
-  FTipoJuncaoHelper = record helper for TTipoJuncao
+  FTipoJuncaoHelper = record helper
+    for TTipoJuncao
     function getSQLString: string; inline;
     function getNome: string; inline;
   end;
