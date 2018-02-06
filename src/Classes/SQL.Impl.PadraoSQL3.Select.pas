@@ -165,7 +165,7 @@ begin
     _sql.AppendLine(MontarFrom);
     _sql.AppendLine(MontarJuncoes);
     _sql.AppendLine(MontarWhere);
-    result := _sql.ToString
+    result := _sql.ToString.trim;
   finally
     _sql.Free;
   end;

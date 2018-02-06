@@ -14,12 +14,12 @@ uses
 type
   TFabrica = class(TInterfacedObject, IFabrica)
   private
-    FBancoDeDados: TBancoDeDados;
+    FBancoDeDados: TOtimizarPara;
     FFabrica: IFabrica;
     procedure InicializarFabrica;
   public
-    constructor Create(const ABancoDeDados: TBancoDeDados);
-    class function New(const ABancoDeDados: TBancoDeDados): IFabrica;
+    constructor Create(const ABancoDeDados: TOtimizarPara);
+    class function New(const ABancoDeDados: TOtimizarPara): IFabrica;
     function Tabela: ISQLTabela;
     function Coluna: ISQLColuna;
     function Condicao: ISQLCondicao;
@@ -56,7 +56,7 @@ begin
   result := FFabrica.Condicao;
 end;
 
-constructor TFabrica.Create(const ABancoDeDados: TBancoDeDados);
+constructor TFabrica.Create(const ABancoDeDados: TOtimizarPara);
 begin
   FBancoDeDados := ABancoDeDados;
   FFabrica := nil;
@@ -65,7 +65,7 @@ end;
 procedure TFabrica.InicializarFabrica;
 begin
   case FBancoDeDados of
-    bdPadraoSQL3:
+    opPadraoSQL3:
       FFabrica := TSQL3Fabrica.Create;
   end;
 end;
@@ -75,7 +75,7 @@ begin
   result := FFabrica.Juncao;
 end;
 
-class function TFabrica.New(const ABancoDeDados: TBancoDeDados): IFabrica;
+class function TFabrica.New(const ABancoDeDados: TOtimizarPara): IFabrica;
 begin
   result := Create(ABancoDeDados);
 end;

@@ -6,7 +6,7 @@ uses
   SQL.Enums;
 
 const
-  SQL_TIPO_PADRAO = bdPadraoSQL3;
+  SQL_TIPO_PADRAO = opPadraoSQL3;
 
 implementation
 

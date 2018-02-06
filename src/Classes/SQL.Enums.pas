@@ -3,7 +3,7 @@ unit SQL.Enums;
 interface
 
 type
-  TBancoDeDados = (bdPadraoSQL3);
+  TOtimizarPara = (opPadraoSQL3);
 
   TOperadorLogico = (olUnknow, olOr, olAnd);
 

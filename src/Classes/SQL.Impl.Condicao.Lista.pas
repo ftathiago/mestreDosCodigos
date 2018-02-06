@@ -27,6 +27,7 @@ var
   _condicao: ISQLCondicao;
   _resultSet: TStringBuilder;
   _primeiroOperadorLogico: TOperadorLogico;
+  i: integer;
 begin
   result := '';
 
@@ -37,17 +38,18 @@ begin
 
   _resultSet := TStringBuilder.Create;
   try
-    for _condicao in Self do
+    for i := 0 to Pred(Count) do
     begin
+      _condicao := Items[i];
       _resultSet
         .Append(_condicao.getOperadorLogico.getSQLString)
         .Append(' ')
-        .Append(_condicao.ToString);
+        .AppendLine(_condicao.ToString);
     end;
 
     _resultSet.Remove(0, _primeiroOperadorLogico.getSQLString.Length + 1);
 
-    result := _resultSet.ToString;
+    result := _resultSet.ToString.Trim;
   finally
     _resultSet.Free;
   end;

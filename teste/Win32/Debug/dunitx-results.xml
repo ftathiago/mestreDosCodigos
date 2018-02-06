@@ -1,11 +1,21 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<test-results name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\teste\Win32\Debug\TesteSQL.exe" total="11" errors="0" failures="1" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2018-02-05" time="0.053">
+<test-results name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\teste\Win32\Debug\TesteSQL.exe" total="12" errors="0" failures="0" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2018-02-05" time="0.002">
   <culture-info current-culture="en" current-uiculture="en" />
-  <test-suite type="Assembly" name="TesteSQL.exe" executed="true" result="Failure" success="False" time="0.053" asserts="0">
+  <test-suite type="Assembly" name="TesteSQL.exe" executed="true" result="Success" success="True" time="0.002" asserts="0">
     <results>
-        <test-suite type="Namespace" name="uSQLColunaTeste" executed="true" result="Success" success="True" time="0.052" asserts="0" >
+        <test-suite type="Namespace" name="uSQLCondicaoTeste" executed="true" result="Success" success="True" time="0.002" asserts="0" >
           <results>
-              <test-suite type="Fixture" name="TSQLColunaTeste" executed="True" result="Success" success="True" time="0.052" >
+              <test-suite type="Fixture" name="TSQLCondicaoTeste" executed="True" result="Success" success="True" time="0.002" >
+                <results>
+                  <test-case name="TestarCondicao" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestarComColuna" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+        <test-suite type="Namespace" name="uSQLColunaTeste" executed="true" result="Success" success="True" time="0.002" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TSQLColunaTeste" executed="True" result="Success" success="True" time="0.002" >
                 <results>
                   <test-case name="ColunaSimples" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                   <test-case name="ColunaSimplesComTabela" executed="True" result="Success" success="True" time="0.000" asserts="0" />
@@ -15,42 +25,12 @@
               </test-suite>
           </results>
         </test-suite>
-        <test-suite type="Namespace" name="uSQLSelectTeste" executed="true" result="Failure" success="False" time="0.051" asserts="0" >
+        <test-suite type="Namespace" name="uSQLSelectTeste" executed="true" result="Success" success="True" time="0.001" asserts="0" >
           <results>
-              <test-suite type="Fixture" name="TSQLSelectTeste" executed="True" result="Failure" success="False" time="0.051" >
+              <test-suite type="Fixture" name="TSQLSelectTeste" executed="True" result="Success" success="True" time="0.001" >
                 <results>
-                  <test-case name="TestarSelect" executed="True" result="Failure" success="False" time="0.050" asserts="0" >
-                    <failure>
-                      <message>
-                        <![CDATA[ Expected  is not equal to actual select COLUNA
-, COLUNA
-, COLUNA
-, COLUNA
-
-from 
-INNER JOIN ANOME_DA_TABELA T_ALIAS on (T_ALIAS.COLUNA = VALOR)
-INNER JOIN ANOME_DA_TABELA T_ALIAS on (T_ALIAS.COLUNA = VALOR)
-INNER JOIN ANOME_DA_TABELA T_ALIAS on (T_ALIAS.COLUNA = VALOR)
-INNER JOIN ANOME_DA_TABELA T_ALIAS on (T_ALIAS.COLUNA = VALOR)
-
-
-  ]]>
-                      </message>
-                      <stack-trace>
-                        <![CDATA[  ]]>
-                      </stack-trace>
-                    </failure>
-                  </test-case>
-                </results>
-              </test-suite>
-          </results>
-        </test-suite>
-        <test-suite type="Namespace" name="uSQLCondicaoTeste" executed="true" result="Success" success="True" time="0.001" asserts="0" >
-          <results>
-              <test-suite type="Fixture" name="TSQLCondicaoTeste" executed="True" result="Success" success="True" time="0.001" >
-                <results>
-                  <test-case name="TestarCondicao" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="TestarComColuna" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestarSelect" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestarSaveToFile" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                 </results>
               </test-suite>
           </results>

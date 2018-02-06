@@ -9,6 +9,12 @@
         <Projects Include="..\teste\TesteSQL.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="dpk\GeradorSQLDT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\apagar\Project1.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +41,32 @@
     <Target Name="TesteSQL:Make">
         <MSBuild Projects="..\teste\TesteSQL.dproj" Targets="Make"/>
     </Target>
+    <Target Name="GeradorSQLDT">
+        <MSBuild Projects="dpk\GeradorSQLDT.dproj"/>
+    </Target>
+    <Target Name="GeradorSQLDT:Clean">
+        <MSBuild Projects="dpk\GeradorSQLDT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GeradorSQLDT:Make">
+        <MSBuild Projects="dpk\GeradorSQLDT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project1">
+        <MSBuild Projects="..\apagar\Project1.dproj"/>
+    </Target>
+    <Target Name="Project1:Clean">
+        <MSBuild Projects="..\apagar\Project1.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project1:Make">
+        <MSBuild Projects="..\apagar\Project1.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="GeradorSQL;TesteSQL"/>
+        <CallTarget Targets="GeradorSQL;TesteSQL;GeradorSQLDT;Project1"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="GeradorSQL:Clean;TesteSQL:Clean"/>
+        <CallTarget Targets="GeradorSQL:Clean;TesteSQL:Clean;GeradorSQLDT:Clean;Project1:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="GeradorSQL:Make;TesteSQL:Make"/>
+        <CallTarget Targets="GeradorSQL:Make;TesteSQL:Make;GeradorSQLDT:Make;Project1:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
