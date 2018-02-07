@@ -6,96 +6,29 @@ uses
   System.Rtti,
   System.Classes,
   System.Generics.Collections,
-  SQL.Enums;
+  SQL.Enums,
+  SQL.Intf.Coluna,
+  SQL.Intf.Fabrica,
+  SQL.Impl.Coluna.Lista,
+  GeradorSQL.Comp.Collection.Tabela,
+  GeradorSQL.Comp.Collection.Coluna,
+  GeradorSQL.Comp.Collection.Condicao,
+  GeradorSQL.Comp.Collection.Juncao;
 
 type
-  TTabela = class(TPersistent)
-  private
-    FAlias: string;
-    FNome: string;
-    procedure SetAlias(const Value: string);
-    procedure SetNome(const Value: string);
-  published
-    property Nome: string read FNome write SetNome;
-    property Alias: string read FAlias write SetAlias;
-  end;
-
-  TColuna = class(TPersistent)
-  private
-    FAlias: string;
-    FNomeVirtual: string;
-    FNome: string;
-    procedure SetAlias(const Value: string);
-    procedure SetNome(const Value: string);
-    procedure SetNomeVirtual(const Value: string);
-  published
-    property Alias: string read FAlias write SetAlias;
-    property Nome: string read FNome write SetNome;
-    property NomeVirtual: string read FNomeVirtual write SetNomeVirtual;
-  end;
-
-  TColunaItem = class(TCollectionItem)
-  private
-    FColuna: TColuna;
-    procedure SetColuna(const Value: TColuna);
-  public
-    constructor Create(Collection: TCollection); override;
-    destructor Destroy; override;
-  published
-    property Coluna: TColuna read FColuna write SetColuna;
-  end;
-
-  TCondicaoItem = class(TCollectionItem)
-  private
-    FOperadorComparacao: TOperadorComparacao;
-    FValor: string;
-    FOperadorLogico: TOperadorLogico;
-    FColuna: TColuna;
-    procedure SetOperadorComparacao(const Value: TOperadorComparacao);
-    procedure SetOperadorLogico(const Value: TOperadorLogico);
-    procedure SetValor(const Value: string);
-    procedure SetColuna(const Value: TColuna);
-  public
-    constructor Create(Collection: TCollection); override;
-    destructor Destroy; override;
-  published
-    property OperadorLogico: TOperadorLogico read FOperadorLogico write SetOperadorLogico
-      Default olAnd;
-    property Coluna: TColuna read FColuna write SetColuna;
-    property OperadorComparacao: TOperadorComparacao read FOperadorComparacao
-      write SetOperadorComparacao Default ocIgual;
-    property Valor: String read FValor write SetValor;
-  end;
-
-  TJuncaoItem = class(TCollectionItem)
-  private
-    FTabela: TTabela;
-    FTipoJuncao: TTipoJuncao;
-    FCondicao: TCollection;
-    procedure SetCondicao(const Value: TCollection);
-    procedure SetTabela(const Value: TTabela);
-    procedure SetTipoJuncao(const Value: TTipoJuncao);
-  public
-    constructor Create(Collection: TCollection); override;
-    destructor Destroy; override;
-  published
-    property TipoJuncao: TTipoJuncao read FTipoJuncao write SetTipoJuncao default tjInnerJoin;
-    property Tabela: TTabela read FTabela write SetTabela;
-    property Condicao: TCollection read FCondicao write SetCondicao;
-  end;
-
-  TSelect = class(TComponent)
+  TMCSelect = class(TComponent)
   private
     FOtimizarPara: TOtimizarPara;
     FFrom: TTabela;
-    FColuna: TCollection;
-    FCondicao: TCollection;
-    FJuncao: TCollection;
+    FColuna: TColunaCollection;
+    FCondicao: TCondicaoCollection;
+    FJuncao: TJuncaoCollection;
     procedure SetOtimizarPara(const Value: TOtimizarPara);
     procedure SetFrom(const Value: TTabela);
-    procedure SetColuna(const Value: TCollection);
-    procedure SetCondicao(const Value: TCollection);
-    procedure SetJuncao(const Value: TCollection);
+    procedure SetColuna(const Value: TColunaCollection);
+    procedure SetCondicao(const Value: TCondicaoCollection);
+    procedure SetJuncao(const Value: TJuncaoCollection);
+    procedure ConstruirColunas(ColunasLista: TListaColunaSelect);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -103,30 +36,49 @@ type
   published
     property OtimizarPara: TOtimizarPara read FOtimizarPara write SetOtimizarPara
       Default opPadraoSQL3;
-    property Coluna: TCollection read FColuna write SetColuna;
+    property Coluna: TColunaCollection read FColuna write SetColuna;
     property From: TTabela read FFrom write SetFrom;
-    property Juncao: TCollection read FJuncao write SetJuncao;
-//    property Condicao: TCollection read FCondicao write SetCondicao;
+    property Juncao: TJuncaoCollection read FJuncao write SetJuncao;
+    property Condicao: TCondicaoCollection read FCondicao write SetCondicao;
+  end;
+
+  TColunaBuilder = class
+  private
+    FFabrica: IFabrica;
+    FColunaCollection: TColunaCollection;
+    FListaColuna: TListaColunaSelect;
+  public
+    constructor Create(OptimizarPara: TOtimizarPara);
+    procedure SetListaColuna(ListaColuna: TListaColunaSelect);
+    procedure SetColunaCollection(ColunaCollection: TColunaCollection);
+    procedure Construir;
   end;
 
 implementation
 
 uses
-  System.SysUtils;
+  System.SysUtils,
+  SQL.Intf.SQL,
+  SQL.Impl.Fabrica;
 
 { TSelect }
 
-constructor TSelect.Create(AOwner: TComponent);
+procedure TMCSelect.ConstruirColunas(ColunasLista: TListaColunaSelect);
+begin
+
+end;
+
+constructor TMCSelect.Create(AOwner: TComponent);
 begin
   inherited;
   FFrom := TTabela.Create;
-  FCondicao := TCollection.Create(TCondicaoItem);
-  FJuncao := TCollection.Create(TJuncaoItem);
-  FColuna := TCollection.Create(TColunaItem);
+  FCondicao := TCondicaoCollection.Create(AOwner);
+  FJuncao := TJuncaoCollection.Create(Self);
+  FColuna := TColunaCollection.Create(AOwner);
   FOtimizarPara := opPadraoSQL3;
 end;
 
-destructor TSelect.Destroy;
+destructor TMCSelect.Destroy;
 begin
   FCondicao.Clear;
   FJuncao.Clear;
@@ -139,152 +91,76 @@ begin
   inherited;
 end;
 
-function TSelect.GerarSQL: string;
+function TMCSelect.GerarSQL: string;
 begin
 
 end;
 
-procedure TSelect.SetColuna(const Value: TCollection);
+procedure TMCSelect.SetColuna(const Value: TColunaCollection);
 begin
   FColuna := Value;
 end;
 
-procedure TSelect.SetCondicao(const Value: TCollection);
+procedure TMCSelect.SetCondicao(const Value: TCondicaoCollection);
 begin
   FCondicao := Value;
 end;
 
-procedure TSelect.SetFrom(const Value: TTabela);
+procedure TMCSelect.SetFrom(const Value: TTabela);
 begin
   FFrom := Value;
 end;
 
-procedure TSelect.SetJuncao(const Value: TCollection);
+procedure TMCSelect.SetJuncao(const Value: TJuncaoCollection);
 begin
   FJuncao := Value;
 end;
 
-procedure TSelect.SetOtimizarPara(const Value: TOtimizarPara);
+procedure TMCSelect.SetOtimizarPara(const Value: TOtimizarPara);
 begin
   FOtimizarPara := Value;
 end;
 
-{ TColunaItem }
-
-constructor TColunaItem.Create(Collection: TCollection);
-begin
-  inherited;
-  FColuna := TColuna.Create;
-end;
-
-destructor TColunaItem.Destroy;
-begin
-  FreeAndNil(FColuna);
-  inherited;
-end;
-
-procedure TColunaItem.SetColuna(const Value: TColuna);
-begin
-  FColuna := Value;
-end;
-
-{ TCondicaoItem }
-
-constructor TCondicaoItem.Create(Collection: TCollection);
-begin
-  inherited;
-  FOperadorComparacao := ocIgual;
-  FOperadorLogico := olAnd;
-  FColuna := TColuna.Create;
-end;
-
-destructor TCondicaoItem.Destroy;
-begin
-  FreeAndNil(FColuna);
-  inherited;
-end;
-
-procedure TCondicaoItem.SetColuna(const Value: TColuna);
-begin
-  FColuna := Value;
-end;
-
-procedure TCondicaoItem.SetOperadorComparacao(const Value: TOperadorComparacao);
-begin
-  FOperadorComparacao := Value;
-end;
-
-procedure TCondicaoItem.SetOperadorLogico(const Value: TOperadorLogico);
-begin
-  FOperadorLogico := Value;
-end;
-
-procedure TCondicaoItem.SetValor(const Value: string);
-begin
-  FValor := Value;
-end;
-
-{ TColuna }
-
-procedure TColuna.SetAlias(const Value: string);
-begin
-  FAlias := Value;
-end;
-
-procedure TColuna.SetNome(const Value: string);
-begin
-  FNome := Value;
-end;
-
-procedure TColuna.SetNomeVirtual(const Value: string);
-begin
-  FNomeVirtual := Value;
-end;
-
-{ TTabela }
-
-procedure TTabela.SetAlias(const Value: string);
-begin
-  FAlias := Value;
-end;
-
-procedure TTabela.SetNome(const Value: string);
-begin
-  FNome := Value;
-end;
-
 { TJuncao }
 
-constructor TJuncaoItem.Create(Collection: TCollection);
+{ TColunaBuilder }
+
+procedure TColunaBuilder.Construir;
+var
+  _coluna: TColuna;
+  _SQLColuna: ISQLColuna;
+  i: integer;
 begin
-  inherited;
-  FCondicao := TCollection.Create(TCondicaoItem);
-  FTabela := TTabela.Create;
-  FTipoJuncao := tjInnerJoin;
+  for i := 0 to Pred(FColunaCollection.Count) do
+  begin
+    _SQLColuna := FFabrica.Coluna;
+    if Assigned(_coluna.Tabela) then
+    begin
+      _SQLColuna.setTabela(
+        FFabrica.Tabela
+          .setNome(_coluna.Tabela.Nome)
+          .setAlias(_coluna.Tabela.Alias));
+    end;
+    _SQLColuna
+      .setColuna(_coluna.Nome)
+      .setNomeVirtual(_coluna.Alias);
+    FListaColuna.Add(_SQLColuna);
+  end;
 end;
 
-destructor TJuncaoItem.Destroy;
+constructor TColunaBuilder.Create(OptimizarPara: TOtimizarPara);
 begin
-  FCondicao.Clear;
-
-  FreeAndNil(FTabela);
-  FreeAndNil(FCondicao);
-  inherited;
+  FFabrica := TFabrica.New(OptimizarPara);
 end;
 
-procedure TJuncaoItem.SetCondicao(const Value: TCollection);
+procedure TColunaBuilder.SetColunaCollection(ColunaCollection: TColunaCollection);
 begin
-  FCondicao := Value;
+  FColunaCollection:= ColunaCollection;
 end;
 
-procedure TJuncaoItem.SetTabela(const Value: TTabela);
+procedure TColunaBuilder.SetListaColuna(ListaColuna: TListaColunaSelect);
 begin
-  FTabela := Value;
-end;
-
-procedure TJuncaoItem.SetTipoJuncao(const Value: TTipoJuncao);
-begin
-  FTipoJuncao := Value;
+  FListaColuna := ListaColuna;
 end;
 
 end.

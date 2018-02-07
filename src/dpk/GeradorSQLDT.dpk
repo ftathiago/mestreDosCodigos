@@ -33,7 +33,10 @@ requires
 contains
   GeradorSQL.Registrar in '..\Componentes\GeradorSQL.Registrar.pas',
   GeradorSQL.Comp.Select in '..\Componentes\GeradorSQL.Comp.Select.pas',
-  SQL.Enums in '..\Classes\SQL.Enums.pas',
-  SQL.Mensagens in '..\Classes\SQL.Mensagens.pas';
+  GeradorSQL.Comp.Collection.Tabela in '..\Componentes\GeradorSQL.Comp.Collection.Tabela.pas',
+  GeradorSQL.Comp.Collection.Coluna in '..\Componentes\GeradorSQL.Comp.Collection.Coluna.pas',
+  GeradorSQL.Comp.Collection.Condicao in '..\Componentes\GeradorSQL.Comp.Collection.Condicao.pas',
+  GeradorSQL.Comp.Collection.Juncao in '..\Componentes\GeradorSQL.Comp.Collection.Juncao.pas';
 
 end.
+

@@ -8,7 +8,7 @@ uses
 
 type
   TForm1 = class(TForm)
-    Select1: TSelect;
+    MCSelect1: TMCSelect;
   private
     { Private declarations }
   public
