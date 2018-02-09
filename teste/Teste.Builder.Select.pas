@@ -1,36 +1,14 @@
-unit SQL.Builder.Select;
+unit Teste.Builder.Select;
 
 interface
 
 uses
   SQL.Intf.Builder,
   SQL.Intf.Select,
-  SQL.Impl.Builder,
-  SQL.Impl.Director;
+  SQL.Intf.Select.Builder,
+  SQL.Impl.Select.Builder;
 
 type
-  IBuilderSelect = interface(IBuilder<ISQLSelect>)
-    ['{ED9BF74D-D4F1-4118-8E42-48E775E85161}']
-    procedure buildCampo;
-    procedure buildFrom;
-    procedure buildJuncao;
-    procedure buildWhere;
-  end;
-
-  TDirectorSelect = class(TDirector<IBuilderSelect, ISQLSelect>)
-  public
-    procedure Construir; override;
-  end;
-
-  TBuilderSelect = class(TBuilder<ISQLSelect>, IBuilderSelect)
-  public
-    class function New: IBuilderSelect;
-    procedure ConstruirNovaInstancia; override;
-    procedure buildCampo; virtual; abstract;
-    procedure buildFrom; virtual; abstract;
-    procedure buildJuncao; virtual; abstract;
-    procedure buildWhere; virtual; abstract;
-  end;
 
   TBuilderSelectSimples = class(TBuilderSelect)
   public
@@ -46,45 +24,23 @@ uses
   Teste.Constantes,
   SQL.Enums,
   SQL.Constantes,
-  SQL.Intf.Director,
+  DesignPattern.Builder.Intf.Director,
   SQL.Intf.Fabrica,
   SQL.Intf.Coluna,
+  SQL.Intf.Coluna.Builder,
   SQL.Intf.Juncao,
   SQL.Intf.Condicao,
+  SQL.Intf.Condicao.Builder,
   SQL.Intf.Tabela,
   SQL.Impl.Fabrica,
-  SQL.Builder.Juncao,
-  SQL.Builder.Coluna,
+  SQL.Impl.Condicao.Director,
+  SQL.Impl.Coluna.Director,
+  SQL.Intf.Juncao.Builder,
+  SQL.Impl.Juncao.Director,
   SQL.Builder.Tabela,
-  SQL.Builder.Condicao;
-
-{ TBuilderSelect }
-
-procedure TBuilderSelect.ConstruirNovaInstancia;
-var
-  _fabrica: IFabrica;
-begin
-  _fabrica := TFabrica.New(SQL_TIPO_PADRAO);
-
-  FObjeto := _fabrica.Select;
-end;
-
-class function TBuilderSelect.New: IBuilderSelect;
-begin
-  result := Create;
-end;
-
-{ TDirectorSelect }
-
-procedure TDirectorSelect.Construir;
-begin
-  FBuilder.ConstruirNovaInstancia;
-  FBuilder.buildCampo;
-  FBuilder.buildFrom;
-  FBuilder.buildJuncao;
-  FBuilder.buildWhere;
-  FObjeto := FBuilder.getObjeto
-end;
+  Teste.Builder.Coluna,
+  Teste.Builder.Condicao,
+  Teste.Builder.Juncao;
 
 { TBuilderSelectSimples }
 
@@ -93,7 +49,7 @@ var
   _director: IDirector<IBuilderColuna, ISQLColuna>;
   _builder: IBuilderColuna;
 begin
-  _builder := TBuilderColunaSimples.New;
+  _builder := TCBColunaSimples.New;
   _director := TDirectorColuna.New;
   _director.setBuilder(_builder);
   _director.Construir;
@@ -102,7 +58,7 @@ begin
   FObjeto.addColuna(_director.getObjetoPronto);
   FObjeto.addColuna(_director.getObjetoPronto);
 
-  _builder := TBuilderColunaTotalmenteVirtual.New;
+  _builder := TCBColunaTotalmenteVirtual.New;
   _director.setBuilder(_builder);
   _director.Construir;
   FObjeto.addColuna(_director.getObjetoPronto);

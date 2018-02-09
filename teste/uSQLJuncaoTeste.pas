@@ -29,13 +29,15 @@ implementation
 uses
   System.SysUtils,
   SQL.Enums,
-  SQL.Intf.Director,
+  DesignPattern.Builder.Intf.Director,
   SQL.Impl.PadraoSQL3.Tabela,
   SQL.Impl.PadraoSQL3.Coluna,
   SQL.Impl.PadraoSQL3.Juncao,
   SQL.Impl.PadraoSQL3.Condicao,
-  SQL.Builder.Juncao,
-  SQL.Builder.Condicao,
+  SQL.Intf.Juncao.Builder,
+  SQL.Impl.Juncao.Director,
+  Teste.Builder.Juncao,
+  Teste.Builder.Condicao,
   Teste.Constantes;
 
 { TSQLJuncaoTeste }

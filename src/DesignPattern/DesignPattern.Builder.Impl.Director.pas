@@ -1,9 +1,9 @@
-unit SQL.Impl.Director;
+unit DesignPattern.Builder.Impl.Director;
 
 interface
 
 uses
-  SQL.Intf.Director;
+  DesignPattern.Builder.Intf.Director;
 
 type
   TDirector<T, R> = class(TInterfacedObject, IDirector<T, R>)

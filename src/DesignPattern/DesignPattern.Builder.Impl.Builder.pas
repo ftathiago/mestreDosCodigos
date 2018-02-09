@@ -1,9 +1,9 @@
-unit SQL.Impl.Builder;
+unit DesignPattern.Builder.Impl.Builder;
 
 interface
 
 uses
-  SQL.Intf.Builder;
+  DesignPattern.Builder.Intf.Builder;
 
 type
   TBuilder<ObjetoSQL> = class(TInterfacedObject, IBuilder<ObjetoSQL>)

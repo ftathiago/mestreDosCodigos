@@ -4,9 +4,9 @@ interface
 
 uses
   DUnitX.TestFramework,
-  SQL.Intf.Director,
+  DesignPattern.Builder.Intf.Director,
   SQL.Intf.Select,
-  SQL.Builder.Select;
+  SQL.Intf.Select.Builder;
 
 type
 
@@ -28,7 +28,9 @@ type
 implementation
 
 uses
-  System.SysUtils;
+  System.SysUtils,
+  SQL.Impl.Select.Director,
+  Teste.Builder.Select;
 
 const
   FILE_NAME = 'C:\arquivo.sql';

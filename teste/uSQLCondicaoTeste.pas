@@ -28,10 +28,14 @@ implementation
 uses
   System.SysUtils,
   Teste.Constantes,
-  SQL.Intf.Director,
+  DesignPattern.Builder.Intf.Director,
+  SQL.Intf.Coluna.Builder,
+  SQL.Impl.Coluna.Director,
   SQL.Intf.Coluna,
-  SQL.Builder.Condicao,
-  SQL.Builder.Coluna;
+  Teste.Builder.Condicao,
+  SQL.Intf.Condicao.Builder,
+  SQL.Impl.Condicao.Director,
+  Teste.Builder.Coluna;
 
 procedure TSQLCondicaoTeste.Setup;
 var
@@ -53,7 +57,7 @@ var
   _director: IDirector<IBuilderColuna, ISQLColuna>;
 begin
   _director := TDirectorColuna.New;
-  _director.setBuilder(TBuilderColunaSimples.New);
+  _director.setBuilder(TCBColunaSimples.New);
   _director.construir;
 
   FCondicao.setValor(_director.getObjetoPronto);

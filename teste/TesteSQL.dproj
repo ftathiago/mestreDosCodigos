@@ -64,6 +64,7 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <DCC_UnitSearchPath>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\Lib;C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\dcp;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_DebugDCUs>false</DCC_DebugDCUs>
         <Manifest_File>None</Manifest_File>
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -81,16 +82,14 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="Teste.Constantes.pas"/>
-        <DCCReference Include="SQL.Builder.Tabela.pas"/>
-        <DCCReference Include="SQL.Builder.Coluna.pas"/>
-        <DCCReference Include="SQL.Builder.Condicao.pas"/>
-        <DCCReference Include="SQL.Builder.Juncao.pas"/>
+        <DCCReference Include="Teste.Builder.Select.pas"/>
+        <DCCReference Include="Teste.Builder.Coluna.pas"/>
+        <DCCReference Include="Teste.Builder.Condicao.pas"/>
+        <DCCReference Include="Teste.Builder.Juncao.pas"/>
         <DCCReference Include="uSQLTabelaTeste.pas"/>
         <DCCReference Include="uSQLColunaTeste.pas"/>
         <DCCReference Include="uSQLCondicaoTeste.pas"/>
         <DCCReference Include="uSQLJuncaoTeste.pas"/>
-        <DCCReference Include="SQL.Impl.Juncao.Lista.pas"/>
-        <DCCReference Include="SQL.Builder.Select.pas"/>
         <DCCReference Include="uSQLSelectTeste.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -109,10 +108,7 @@
         <Borland.ProjectType>Console</Borland.ProjectType>
         <BorlandProject>
             <Delphi.Personality>
-                <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k230.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp230.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
-                </Excluded_Packages>
+                <Excluded_Packages/>
                 <Source>
                     <Source Name="MainSource">TesteSQL.dpr</Source>
                 </Source>

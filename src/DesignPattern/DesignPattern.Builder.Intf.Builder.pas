@@ -1,4 +1,4 @@
-unit SQL.Intf.Builder;
+unit DesignPattern.Builder.Intf.Builder;
 
 interface
 

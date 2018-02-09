@@ -5,10 +5,10 @@ interface
 uses
   DUnitX.TestFramework,
   System.SysUtils,
-  SQL.Intf.Director,
+  DesignPattern.Builder.Intf.Director,
   SQL.Intf.Tabela,
   SQL.Intf.Coluna,
-  SQL.Builder.Coluna,
+  SQL.Intf.Coluna.Builder,
   SQL.Builder.Tabela,
   Teste.Constantes;
 
@@ -38,6 +38,10 @@ type
   end;
 
 implementation
+
+uses
+  SQL.Impl.Coluna.Director,
+  Teste.Builder.Coluna;
 
 procedure TSQLColunaTeste.ColunaComAlias;
 var
@@ -80,7 +84,7 @@ var
   _builderColuna: IBuilderColuna;
   _builderTabela: IBuilderTabela;
 begin
-  _builderColuna := TBuilderColunaSimples.New;
+  _builderColuna := TCBColunaSimples.New;
   _builderTabela := TBuilderTabelaComNomeApenas.New;
 
   FDirectorColuna.setBuilder(_builderColuna);
@@ -97,7 +101,7 @@ function TSQLColunaTeste.getColunaSimples: ISQLColuna;
 var
   _builder: IBuilderColuna;
 begin
-  _builder := TBuilderColunaSimples.New;
+  _builder := TCBColunaSimples.New;
 
   FDirectorColuna.setBuilder(_builder);
   FDirectorColuna.construir;

@@ -28,7 +28,8 @@ package GeradorSQLDT;
 {$IMPLICITBUILD ON}
 
 requires
-  rtl;
+  rtl,
+  GeradorSQL;
 
 contains
   GeradorSQL.Registrar in '..\Componentes\GeradorSQL.Registrar.pas',

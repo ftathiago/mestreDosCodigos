@@ -14,16 +14,14 @@ uses
   DUnitX.Loggers.Xml.NUnit,
   DUnitX.TestFramework,
   Teste.Constantes in 'Teste.Constantes.pas',
-  SQL.Builder.Tabela in 'SQL.Builder.Tabela.pas',
-  SQL.Builder.Coluna in 'SQL.Builder.Coluna.pas',
-  SQL.Builder.Condicao in 'SQL.Builder.Condicao.pas',
-  SQL.Builder.Juncao in 'SQL.Builder.Juncao.pas',
+  Teste.Builder.Select in 'Teste.Builder.Select.pas',
+  Teste.Builder.Coluna in 'Teste.Builder.Coluna.pas',
+  Teste.Builder.Condicao in 'Teste.Builder.Condicao.pas',
+  Teste.Builder.Juncao in 'Teste.Builder.Juncao.pas',
   uSQLTabelaTeste in 'uSQLTabelaTeste.pas',
   uSQLColunaTeste in 'uSQLColunaTeste.pas',
   uSQLCondicaoTeste in 'uSQLCondicaoTeste.pas',
   uSQLJuncaoTeste in 'uSQLJuncaoTeste.pas',
-  SQL.Impl.Juncao.Lista in 'SQL.Impl.Juncao.Lista.pas',
-  SQL.Builder.Select in 'SQL.Builder.Select.pas',
   uSQLSelectTeste in 'uSQLSelectTeste.pas';
 
 var
