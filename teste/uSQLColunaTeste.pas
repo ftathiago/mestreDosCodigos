@@ -7,9 +7,10 @@ uses
   System.SysUtils,
   DesignPattern.Builder.Intf.Director,
   SQL.Intf.Tabela,
+  SQL.Intf.Tabela.Builder,
   SQL.Intf.Coluna,
   SQL.Intf.Coluna.Builder,
-  SQL.Builder.Tabela,
+  Teste.Builder.Tabela,
   Teste.Constantes;
 
 type
@@ -18,7 +19,7 @@ type
   TSQLColunaTeste = class(TObject)
   private
     FDirectorColuna: IDirector<IBuilderColuna, ISQLColuna>;
-    FDirectorTabela: TDirectorTabela;
+    FDirectorTabela: IDirector<IBuilderTabela, ISQLTabela>;
     function getColunaSimples: ISQLColuna;
     function getColunaComTabela: ISQLColuna;
   public
@@ -41,6 +42,7 @@ implementation
 
 uses
   SQL.Impl.Coluna.Director,
+  SQL.Impl.Tabela.Director,
   Teste.Builder.Coluna;
 
 procedure TSQLColunaTeste.ColunaComAlias;
@@ -85,7 +87,7 @@ var
   _builderTabela: IBuilderTabela;
 begin
   _builderColuna := TCBColunaSimples.New;
-  _builderTabela := TBuilderTabelaComNomeApenas.New;
+  _builderTabela := TCBTabelaComNomeApenas.New;
 
   FDirectorColuna.setBuilder(_builderColuna);
   FDirectorTabela.setBuilder(_builderTabela);
@@ -111,13 +113,13 @@ end;
 
 procedure TSQLColunaTeste.Setup;
 begin
-  FDirectorTabela := TDirectorTabela.Create;
+  FDirectorTabela := TDirectorTabela.New;
   FDirectorColuna := TDirectorColuna.New;
 end;
 
 procedure TSQLColunaTeste.TearDown;
 begin
-  FreeAndNil(FDirectorTabela);
+
 end;
 
 initialization

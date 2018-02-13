@@ -20,10 +20,8 @@ type
     function getNome: string; inline;
   end;
 
-  TOperadorComparacaoHelper = record helper
-    for TOperadorComparacao
+  TOperadorComparacaoHelper = record helper for TOperadorComparacao
     function getSQLString: string; inline;
-
     function getNome: string; inline;
   end;
 
@@ -86,7 +84,7 @@ begin
       result := 'between';
   else
     raise ENotImplemented.CreateFmt(SQL.Mensagens.RECURSO_NAO_IMPLEMENTADO,
-      [self.getNome, TObject(self).ClassName]);
+      [self.getNome, 'TOperadorComparacaoHelper']);
   end;
 end;
 

@@ -3,24 +3,24 @@ unit Teste.Builder.Juncao;
 interface
 
 uses
-  SQL.Enums,
-  SQL.Constantes,
-  SQL.Intf.Condicao.Builder,
-  SQL.Intf.Builder,
-  SQL.Intf.Juncao,
-  SQL.Impl.Juncao.Builder,
-  SQL.Impl.Condicao.Director;
+  SQL.Intf.Tabela,
+  SQL.Impl.Juncao.Builder;
 
 type
-  TBuilderJuncaoApenasTabela = class(TBuilderJuncao)
+  TCBJuncaoApenasTabela = class(TBuilderJuncao)
+  private
+    function getTabela: ISQLTabela;
   public
-    procedure AdicionarCondicao; override;
+    procedure buildTabela; override;
+    procedure buildCondicoes; override;
   end;
 
-  TBuilderJuncaoTabelaComAlias = class(TBuilderJuncao)
+  TCBJuncaoTabelaComAlias = class(TBuilderJuncao)
+  private
+    function getTabela: ISQLTabela;
   public
-    procedure AdicionarTabela; override;
-    procedure AdicionarCondicao; override;
+    procedure buildTabela; override;
+    procedure buildCondicoes; override;
   end;
 
 implementation
@@ -30,50 +30,83 @@ uses
   Teste.Constantes,
   DesignPattern.Builder.Intf.Director,
   SQL.Intf.Condicao,
-  SQL.Intf.Tabela,
+  SQL.Intf.Condicao.Builder,
+  SQL.Intf.Tabela.Builder,
   SQL.Intf.Coluna,
+  SQL.Impl.Condicao.Director,
+  SQL.Impl.Tabela.Director,
   Teste.Builder.Coluna,
-  SQL.Builder.Tabela,
+  Teste.Builder.Tabela,
   Teste.Builder.Condicao;
 
 { TBuilderJuncaoApenasTabela }
 
-procedure TBuilderJuncaoApenasTabela.AdicionarCondicao;
+procedure TCBJuncaoApenasTabela.buildCondicoes;
 var
   _directorCondicao: DesignPattern.Builder.Intf.Director.IDirector<IBuilderCondicao, ISQLCondicao>;
-  _directorTabela: DesignPattern.Builder.Intf.Director.IDirector<IBuilderTabela, ISQLTabela>;
+
   _condicao: ISQLCondicao;
 begin
   _directorCondicao := TDirectorCondicao.New;
-  _directorTabela := TDirectorTabela.New;
 
-  _directorCondicao.setBuilder(TBuilderCondicaoValor.New);
+  _directorCondicao.setBuilder(TCBCondicaoValor.New);
   _directorCondicao.construir;
   _condicao := _directorCondicao.getObjetoPronto;
 
-  _directorTabela.setBuilder(TBuilderTabelaComNomeEAlias.New);
-  _directorTabela.construir;
-
-  _condicao.getColuna.setTabela(_directorTabela.getObjetoPronto);
+  _condicao.getColuna.setTabela(getTabela);
 
   FObjeto.addCondicao(_condicao);
 end;
 
 { TBuilderJuncaoTabelaComAlias }
 
-procedure TBuilderJuncaoTabelaComAlias.AdicionarCondicao;
-begin
-  inherited;
+procedure TCBJuncaoTabelaComAlias.buildCondicoes;
+var
+  _directorCondicao: DesignPattern.Builder.Intf.Director.IDirector<IBuilderCondicao, ISQLCondicao>;
 
+  _condicao: ISQLCondicao;
+begin
+  _directorCondicao := TDirectorCondicao.New;
+
+  _directorCondicao.setBuilder(TCBCondicaoValor.New);
+  _directorCondicao.construir;
+  _condicao := _directorCondicao.getObjetoPronto;
+
+  _condicao.getColuna.setTabela(getTabela);
+
+  FObjeto.addCondicao(_condicao);
 end;
 
-procedure TBuilderJuncaoTabelaComAlias.AdicionarTabela;
+procedure TCBJuncaoTabelaComAlias.buildTabela;
 begin
   inherited;
-  FObjeto
-    .getTabelaEstrangeira
-    .setNome(TABELA_COM_ALIAS)
-    .setAlias(TABELA_ALIAS);
+  FObjeto.setTabelaEstrangeira(getTabela);
+end;
+
+function TCBJuncaoTabelaComAlias.getTabela: ISQLTabela;
+var
+  _directorTabela: IDirector<IBuilderTabela, ISQLTabela>;
+begin
+  _directorTabela := TDirectorTabela.New;
+  _directorTabela.setBuilder(TCBTabelaComNomeEAlias.New);
+  _directorTabela.construir;
+  result := _directorTabela.getObjetoPronto;
+end;
+
+procedure TCBJuncaoApenasTabela.buildTabela;
+begin
+  inherited;
+  FObjeto.setTabelaEstrangeira(getTabela);
+end;
+
+function TCBJuncaoApenasTabela.getTabela: ISQLTabela;
+var
+  _directorTabela: DesignPattern.Builder.Intf.Director.IDirector<IBuilderTabela, ISQLTabela>;
+begin
+  _directorTabela := TDirectorTabela.New;
+  _directorTabela.setBuilder(TCBTabelaComNomeApenas.New);
+  _directorTabela.construir;
+  result := _directorTabela.getObjetoPronto;
 end;
 
 end.

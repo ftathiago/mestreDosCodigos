@@ -22,8 +22,9 @@ implementation
 procedure TDirectorColuna.Construir;
 begin
   inherited;
+  FBuilder.ConstruirNovaInstancia;
   FBuilder.buildNome;
-  FBuilder.buildNome;
+  FBuilder.buildNomeVirtual;
   FBuilder.buildTabela;
   FObjeto := FBuilder.getObjeto;
 end;

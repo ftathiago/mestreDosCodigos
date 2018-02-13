@@ -69,7 +69,10 @@ contains
   DesignPattern.Builder.Impl.Builder in '..\DesignPattern\DesignPattern.Builder.Impl.Builder.pas',
   DesignPattern.Builder.Impl.Director in '..\DesignPattern\DesignPattern.Builder.Impl.Director.pas',
   DesignPattern.Builder.Intf.Builder in '..\DesignPattern\DesignPattern.Builder.Intf.Builder.pas',
-  DesignPattern.Builder.Intf.Director in '..\DesignPattern\DesignPattern.Builder.Intf.Director.pas';
+  DesignPattern.Builder.Intf.Director in '..\DesignPattern\DesignPattern.Builder.Intf.Director.pas',
+  SQL.Intf.Tabela.Builder in '..\Classes\SQL.Intf.Tabela.Builder.pas',
+  SQL.Impl.Tabela.Builder in '..\Classes\SQL.Impl.Tabela.Builder.pas',
+  SQL.Impl.Tabela.Director in '..\Classes\SQL.Impl.Tabela.Director.pas';
 
 end.
 

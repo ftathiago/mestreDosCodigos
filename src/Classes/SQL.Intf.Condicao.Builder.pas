@@ -15,7 +15,10 @@ type
     procedure setOperadorComparacao(const OperadorComparacao: TOperadorComparacao);
     procedure setOperadorLogico(const OperadorLogico: TOperadorLogico);
     procedure setValor(const Valor: string);
-    procedure buildCondicao;
+    procedure buildColuna;
+    procedure buildOperadorComparacao;
+    procedure buildOperadorLogico;
+    procedure buildValor;
   end;
 
 implementation

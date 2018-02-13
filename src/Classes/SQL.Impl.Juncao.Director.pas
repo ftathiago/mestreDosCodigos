@@ -21,8 +21,8 @@ procedure TDirectorJuncao.Construir;
 begin
   inherited;
   FBuilder.ConstruirNovaInstancia;
-  FBuilder.AdicionarTabela;
-  FBuilder.AdicionarCondicao;
+  FBuilder.buildTabela;
+  FBuilder.buildCondicoes;
   FObjeto := FBuilder.getObjeto;
 end;
 

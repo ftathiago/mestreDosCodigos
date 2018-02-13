@@ -39,7 +39,7 @@ procedure TSQLSelectTeste.Setup;
 var
   _builder: IBuilderSelect;
 begin
-  _builder := TBuilderSelectSimples.New;
+  _builder := TCBSelectSimples.New;
 
   FDirector := TDirectorSelect.New;
   FDirector.setBuilder(_builder);
@@ -81,7 +81,7 @@ begin
 ''+ #$D#$A +
 'where (COLUNA = VALOR)'+ #$D#$A +
 'OR (COLUNA = VALOR)'+ #$D#$A +
-'AND (COLUNA = VALOR)', _select.ToString);
+'AND (COLUNA = VALOR)', _select.ToString.Trim);
 end;
 
 initialization

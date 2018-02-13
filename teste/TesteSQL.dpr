@@ -22,7 +22,8 @@ uses
   uSQLColunaTeste in 'uSQLColunaTeste.pas',
   uSQLCondicaoTeste in 'uSQLCondicaoTeste.pas',
   uSQLJuncaoTeste in 'uSQLJuncaoTeste.pas',
-  uSQLSelectTeste in 'uSQLSelectTeste.pas';
+  uSQLSelectTeste in 'uSQLSelectTeste.pas',
+  Teste.Builder.Tabela in 'Teste.Builder.Tabela.pas';
 
 var
   runner: ITestRunner;

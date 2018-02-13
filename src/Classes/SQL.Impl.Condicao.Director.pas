@@ -22,7 +22,11 @@ procedure TDirectorCondicao.Construir;
 begin
   inherited;
   FBuilder.ConstruirNovaInstancia;
-  FBuilder.buildCondicao;
+  FBuilder.buildOperadorLogico;
+  FBuilder.buildColuna;
+  FBuilder.buildOperadorComparacao;
+  FBuilder.buildValor;
+
   FObjeto := FBuilder.getObjeto
 end;
 

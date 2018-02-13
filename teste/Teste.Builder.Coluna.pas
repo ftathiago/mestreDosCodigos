@@ -3,44 +3,34 @@ unit Teste.Builder.Coluna;
 interface
 
 uses
-(*
-  SQL.Enums,
-  SQL.Constantes,
-  SQL.Intf.Director,
-  SQL.Intf.Builder,
-  SQL.Intf.Tabela,
-  SQL.Intf.Coluna,
-  SQL.Impl.Builder,
-  SQL.Impl.Director,
- *)
   SQL.Impl.Coluna.Builder;
-type
 
+type
   TCBColunaSimples = class(TBuilderColuna)
   public
-    procedure buildNome(); override;
-    procedure buildNomeVirtual(); override;
+    procedure buildNome; override;
+    procedure buildNomeVirtual; override;
+    procedure buildTabela; override;
   end;
 
   TCBColunaNomeVirtual = class(TBuilderColuna)
   public
     procedure buildNome(); override;
     procedure buildNomeVirtual(); override;
+    procedure buildTabela; override;
   end;
 
   TCBColunaTotalmenteVirtual = class(TBuilderColuna)
   public
     procedure buildNome(); override;
     procedure buildNomeVirtual(); override;
+    procedure buildTabela; override;
   end;
 
 implementation
 
 uses
-  Teste.Constantes,
-  SQL.Intf.Fabrica,
-  SQL.Impl.Fabrica,
-  SQL.Builder.Tabela;
+  Teste.Constantes;
 
 { TBuilderColunaSimples }
 
@@ -52,6 +42,12 @@ end;
 procedure TCBColunaSimples.buildNomeVirtual;
 begin
   FObjeto.setNomeVirtual('');
+end;
+
+procedure TCBColunaSimples.buildTabela;
+begin
+  inherited;
+
 end;
 
 { TBuilderColunaNomeVirtual }
@@ -66,6 +62,12 @@ begin
   FObjeto.setNomeVirtual(COLUNA_NOME_VIRTUAL);
 end;
 
+procedure TCBColunaNomeVirtual.buildTabela;
+begin
+  inherited;
+
+end;
+
 { TBuilderColunaTotalmenteVirtual }
 
 procedure TCBColunaTotalmenteVirtual.buildNome;
@@ -76,6 +78,12 @@ end;
 procedure TCBColunaTotalmenteVirtual.buildNomeVirtual;
 begin
   FObjeto.setNomeVirtual(COLUNA_NOME_VIRTUAL);
+end;
+
+procedure TCBColunaTotalmenteVirtual.buildTabela;
+begin
+  inherited;
+
 end;
 
 end.

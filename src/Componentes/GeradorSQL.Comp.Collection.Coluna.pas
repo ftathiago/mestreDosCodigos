@@ -13,17 +13,17 @@ type
 
   TColuna = class(TPersistent)
   private
-    FAlias: string;
     FNomeVirtual: string;
     FNome: string;
     FTabela: TTabela;
-    procedure SetAlias(const Value: string);
     procedure SetNome(const Value: string);
     procedure SetNomeVirtual(const Value: string);
     procedure SetTabela(const Value: TTabela);
+  public
+    constructor Create; reintroduce;
+    destructor Destroy; override;
   published
     property Tabela: TTabela read FTabela write SetTabela;
-    property Alias: string read FAlias write SetAlias;
     property Nome: string read FNome write SetNome;
     property NomeVirtual: string read FNomeVirtual write SetNomeVirtual;
   end;
@@ -91,9 +91,16 @@ end;
 
 { TColuna }
 
-procedure TColuna.SetAlias(const Value: string);
+constructor TColuna.Create();
 begin
-  FAlias := Value;
+  inherited;
+  FTabela := TTabela.Create;
+end;
+
+destructor TColuna.Destroy;
+begin
+  FTabela.Free;
+  inherited;
 end;
 
 procedure TColuna.SetNome(const Value: string);

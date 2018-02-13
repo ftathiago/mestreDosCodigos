@@ -12,7 +12,7 @@ implementation
 
 procedure Register;
 begin
-  RegisterComponents('Mestre dos Codigos', [TMCSelect]);
+  RegisterComponents('Mestre dos Códigos', [TMCSelect]);
 end;
 
 initialization

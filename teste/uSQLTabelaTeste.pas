@@ -4,9 +4,10 @@ interface
 
 uses
   DUnitX.TestFramework,
+  DesignPattern.Builder.Intf.Builder,
+  DesignPattern.Builder.Intf.Director,
   SQL.Intf.Tabela,
-  SQL.Builder.Tabela,
-  Teste.Constantes;
+  SQL.Intf.Tabela.Builder;
 
 type
 
@@ -14,7 +15,7 @@ type
   TSQLTabelaTeste = class(TObject)
   private
     FTabela: ISQLTabela;
-    FDirectorTabela: TDirectorTabela;
+    FDirectorTabela: IDirector<IBuilderTabela, ISQLTabela>;
   public
     [Setup]
     procedure Setup;
@@ -31,7 +32,10 @@ type
 implementation
 
 uses
-  System.SysUtils;
+  System.SysUtils,
+  Teste.Constantes,
+  Teste.Builder.Tabela,
+  SQL.Impl.Tabela.Director;
 
 { TSQLTabelaTeste }
 
@@ -39,7 +43,7 @@ procedure TSQLTabelaTeste.ApenasComNome;
 var
   _builderComNome: IBuilderTabela;
 begin
-  _builderComNome := TBuilderTabelaComNomeApenas.New;
+  _builderComNome := TCBTabelaComNomeApenas.New;
 
   FDirectorTabela.setBuilder(_builderComNome);
   FDirectorTabela.construir;
@@ -53,7 +57,7 @@ procedure TSQLTabelaTeste.ComNomeEAlias;
 var
   _builder: IBuilderTabela;
 begin
-  _builder := TBuilderTabelaComNomeEAlias.New;
+  _builder := TCBTabelaComNomeEAlias.New;
   FDirectorTabela.setBuilder(_builder);
   FDirectorTabela.construir;
 
@@ -64,12 +68,12 @@ end;
 
 procedure TSQLTabelaTeste.Setup;
 begin
-  FDirectorTabela := TDirectorTabela.Create;
+  FDirectorTabela := TDirectorTabela.New;
 end;
 
 procedure TSQLTabelaTeste.TearDown;
 begin
-  FDirectorTabela.Free;
+
 end;
 
 initialization

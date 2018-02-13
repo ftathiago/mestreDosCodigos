@@ -17,14 +17,17 @@ type
     FOperadorComparacao: TOperadorComparacao;
     FValor: string;
   protected
-  public
-    class function New: IBuilderCondicao;
-    procedure ConstruirNovaInstancia; override;
     procedure setColuna(const Coluna: ISQLColuna);
     procedure setOperadorComparacao(const OperadorComparacao: TOperadorComparacao);
     procedure setOperadorLogico(const OperadorLogico: TOperadorLogico);
     procedure setValor(const Valor: string);
-    procedure buildCondicao; virtual; abstract;
+  public
+    class function New: IBuilderCondicao;
+    procedure ConstruirNovaInstancia; override;
+    procedure buildColuna; virtual; abstract;
+    procedure buildOperadorComparacao; virtual; abstract;
+    procedure buildOperadorLogico; virtual; abstract;
+    procedure buildValor; virtual; abstract;
   end;
 
 implementation

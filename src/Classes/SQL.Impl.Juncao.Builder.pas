@@ -12,8 +12,8 @@ type
   public
     class function New: IBuilderJuncao;
     procedure ConstruirNovaInstancia; override;
-    procedure AdicionarTabela; virtual; abstract;
-    procedure AdicionarCondicao; virtual; abstract;
+    procedure buildTabela; virtual; abstract;
+    procedure buildCondicoes; virtual; abstract;
   end;
 
 

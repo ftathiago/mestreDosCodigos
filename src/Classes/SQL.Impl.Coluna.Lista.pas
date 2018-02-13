@@ -19,7 +19,7 @@ uses
 { TListaColunaSelect }
 
 function TListaColunaSelect.ToString: string;
-CONST
+const
   sSEPARADOR = ', ';
 var
   _coluna: ISQLColuna;

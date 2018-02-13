@@ -44,6 +44,9 @@ begin
   if not Assigned(FTabela) then
     exit;
 
+  if FTabela.getNome.Trim.IsEmpty then
+    exit;
+
   if FTabela.TestarAliasEstaPreenchido then
     result := Format('%s.', [FTabela.getAlias])
   else

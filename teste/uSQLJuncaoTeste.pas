@@ -47,7 +47,7 @@ var
   _director: IDirector<IBuilderJuncao, ISQLJuncao>;
 begin
   _director := TDirectorJuncao.New;
-  _director.setBuilder(TBuilderJuncaoApenasTabela.New);
+  _director.setBuilder(TCBJuncaoTabelaComAlias.New);
   _director.Construir;
 
   FJuncao := _director.getObjetoPronto;

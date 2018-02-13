@@ -42,7 +42,7 @@ var
   _director: IDirector<IBuilderCondicao, ISQLCondicao>;
 begin
   _director := TDirectorCondicao.New;
-  _director.setBuilder(TBuilderCondicaoValor.New);
+  _director.setBuilder(TCBCondicaoValor.New);
   _director.construir;
   FCondicao := _director.getObjetoPronto;
 end;
