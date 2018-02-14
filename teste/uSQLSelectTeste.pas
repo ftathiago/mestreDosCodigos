@@ -68,20 +68,23 @@ var
   _select: ISQLSelect;
 begin
   _select := FDirector.getObjetoPronto;
-  Assert.AreEqual('select COLUNA'+ #$D#$A +
-', COLUNA'+ #$D#$A +
-', COLUNA'+ #$D#$A +
-', null as NOME_VIRTUAL'+ #$D#$A +
-''+ #$D#$A +
-'from ANOME_DA_TABELA T_ALIAS'+ #$D#$A +
-'INNER JOIN ANOME_DA_TABELA T_ALIAS on (T_ALIAS.COLUNA = VALOR)'+ #$D#$A +
-'INNER JOIN ANOME_DA_TABELA T_ALIAS on (T_ALIAS.COLUNA = VALOR)'+ #$D#$A +
-'INNER JOIN ANOME_DA_TABELA T_ALIAS on (T_ALIAS.COLUNA = VALOR)'+ #$D#$A +
-'INNER JOIN ANOME_DA_TABELA T_ALIAS on (T_ALIAS.COLUNA = VALOR)'+ #$D#$A +
-''+ #$D#$A +
-'where (COLUNA = VALOR)'+ #$D#$A +
-'OR (COLUNA = VALOR)'+ #$D#$A +
-'AND (COLUNA = VALOR)', _select.ToString.Trim);
+  Assert.AreEqual('select COLUNA' + #$D#$A +
+      ', COLUNA' + #$D#$A +
+      ', COLUNA' + #$D#$A +
+      ', null as NOME_VIRTUAL' + #$D#$A +
+      '' + #$D#$A +
+      'from ANOME_DA_TABELA T_ALIAS' + #$D#$A +
+      'INNER JOIN ANOME_DA_TABELA T_ALIAS on (T_ALIAS.COLUNA = VALOR)' + #$D#$A +
+      'INNER JOIN ANOME_DA_TABELA T_ALIAS on (T_ALIAS.COLUNA = VALOR)' + #$D#$A +
+      'INNER JOIN ANOME_DA_TABELA T_ALIAS on (T_ALIAS.COLUNA = VALOR)' + #$D#$A +
+      'INNER JOIN ANOME_DA_TABELA T_ALIAS on (T_ALIAS.COLUNA = VALOR)' + #$D#$A +
+      '' + #$D#$A +
+      'where (COLUNA = VALOR)' + #$D#$A +
+      'OR (COLUNA = VALOR)' + #$D#$A +
+      'AND (COLUNA = VALOR)' + #$D#$A +
+      'order by COLUNA' + #$D#$A +
+      ', COLUNA' + #$D#$A +
+      ', COLUNA', _select.ToString.Trim);
 end;
 
 initialization

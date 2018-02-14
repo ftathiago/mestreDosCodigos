@@ -7,6 +7,7 @@ uses
 
 type
   ECondicaoException = class(Exception);
+  ESQLInsert = class(Exception);
 
 
 implementation

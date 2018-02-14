@@ -23,7 +23,8 @@ uses
   uSQLCondicaoTeste in 'uSQLCondicaoTeste.pas',
   uSQLJuncaoTeste in 'uSQLJuncaoTeste.pas',
   uSQLSelectTeste in 'uSQLSelectTeste.pas',
-  Teste.Builder.Tabela in 'Teste.Builder.Tabela.pas';
+  Teste.Builder.Tabela in 'Teste.Builder.Tabela.pas',
+  GeradorSQL.Comp.Collection.OrderBy in 'GeradorSQL.Comp.Collection.OrderBy.pas';
 
 var
   runner: ITestRunner;

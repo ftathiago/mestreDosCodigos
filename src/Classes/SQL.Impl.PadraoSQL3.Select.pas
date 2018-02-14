@@ -19,6 +19,7 @@ type
   TSQL3Select = class(TSQL, ISQLSelect)
   private
     FColunas: TListaColunaSelect;
+    FOrderBy: TListaColunaSelect;
     FCondicoes: TListaCondicao;
     FJuncoes: TListaJuncao;
     FTabela: ISQLTabela;
@@ -27,6 +28,8 @@ type
     function MontarFrom: string; virtual;
     function MontarJuncoes: string; virtual;
     function MontarWhere: string; virtual;
+    function MontarOrderBy: string; virtual;
+    procedure ConstruirSQL; override;
   public
     constructor Create;
     class function New: ISQLSelect;
@@ -34,12 +37,12 @@ type
     function addColuna(const AColuna: ISQLColuna): ISQLSelect;
     function addCondicao(const ACondicao: ISQLCondicao): ISQLSelect;
     function addJuncao(const AJuncao: ISQLJuncao): ISQLJuncao;
+    function addOrderBy(const AColuna: ISQLColuna): ISQLSelect;
     function getListaColuna: TList<SQL.Intf.Coluna.ISQLColuna>;
     function getListaCondicoes: TList<SQL.Intf.Condicao.ISQLCondicao>;
     function getListaJuncao: TList<SQL.Intf.Juncao.ISQLJuncao>;
     function getTabela: ISQLTabela;
     function setTabela(const ATabela: ISQLTabela): ISQLSelect;
-    function ToString: string; override;
   end;
 
 implementation
@@ -61,11 +64,38 @@ begin
   FJuncoes.Add(AJuncao);
 end;
 
+function TSQL3Select.addOrderBy(const AColuna: ISQLColuna): ISQLSelect;
+begin
+  result := Self;
+  FOrderBy.Add(AColuna);
+end;
+
+procedure TSQL3Select.ConstruirSQL;
+var
+  _sql: TStringBuilder;
+begin
+  inherited;
+  _sql := TStringBuilder.Create;
+  try
+    _sql.Append('select ');
+    _sql.AppendLine(MontarColunas);
+    _sql.Append('from ');
+    _sql.AppendLine(MontarFrom);
+    _sql.AppendLine(MontarJuncoes);
+    _sql.AppendLine(MontarWhere);
+    _sql.AppendLine(MontarOrderBy);
+    FTexto := _sql.ToString;
+  finally
+    _sql.Free;
+  end;
+end;
+
 constructor TSQL3Select.Create;
 begin
   FCondicoes := TListaCondicao.Create;
   FColunas := TListaColunaSelect.Create;
   FJuncoes := TListaJuncao.Create;
+  FOrderBy := TListaColunaSelect.Create;
 end;
 
 destructor TSQL3Select.Destroy;
@@ -73,10 +103,12 @@ begin
   FCondicoes.Clear;
   FColunas.Clear;
   FJuncoes.Clear;
+  FOrderBy.Clear;
 
   FreeAndNil(FCondicoes);
   FreeAndNil(FColunas);
   FreeAndNil(FJuncoes);
+  FreeAndNil(FOrderBy);
   inherited;
 end;
 
@@ -109,8 +141,8 @@ begin
 
   result := FCondicoes.ToString;
 
-  if not result.trim.IsEmpty then
-    result := 'where ' + result;
+  if not result.Trim.IsEmpty then
+    result := Format('where %s',[result]);
 end;
 
 function TSQL3Select.MontarJuncoes: string;
@@ -121,6 +153,19 @@ begin
     exit;
 
   result := FJuncoes.ToString;
+end;
+
+function TSQL3Select.MontarOrderBy: string;
+begin
+  result := EmptyStr;
+
+  if not Assigned(FOrderBy) then
+    exit;
+
+  if FOrderBy.Count <= 0 then
+    exit;
+
+  result := Format('order by %s', [FOrderBy.ToString]);
 end;
 
 function TSQL3Select.MontarColunas: string;
@@ -151,24 +196,6 @@ end;
 function TSQL3Select.setTabela(const ATabela: ISQLTabela): ISQLSelect;
 begin
   FTabela := ATabela;
-end;
-
-function TSQL3Select.ToString: string;
-var
-  _sql: TStringBuilder;
-begin
-  _sql := TStringBuilder.Create;
-  try
-    _sql.Append('select ');
-    _sql.AppendLine(MontarColunas);
-    _sql.Append('from ');
-    _sql.AppendLine(MontarFrom);
-    _sql.AppendLine(MontarJuncoes);
-    _sql.AppendLine(MontarWhere);
-    result := _sql.ToString.trim;
-  finally
-    _sql.Free;
-  end;
 end;
 
 function TSQL3Select.addColuna(const AColuna: ISQLColuna): ISQLSelect;

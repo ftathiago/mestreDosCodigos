@@ -18,6 +18,7 @@ type
     procedure buildFrom; override;
     procedure buildJuncao; override;
     procedure buildWhere; override;
+    procedure buildOrderBy; override;
   end;
 
 implementation
@@ -103,6 +104,28 @@ begin
     _director.Construir;
 
     FObjeto.addJuncao(_director.getObjetoPronto);
+  end;
+end;
+
+procedure TCBSelectComponente.buildOrderBy;
+var
+  _director: IDirector<IBuilderColuna, ISQLColuna>;
+  _concreteBuilder: IBuilderColuna;
+  _collectionItem: TColunaCollectionItem;
+  i: Integer;
+begin
+  inherited;
+  _director := TDirectorColuna.New;
+
+  for i := 0 to Pred(FMCSelect.OrderBy.Count) do
+  begin
+    _collectionItem := FMCSelect.OrderBy.Items[i];
+
+    _concreteBuilder := TCBColuna.New(_collectionItem.Coluna);
+    _director.setBuilder(_concreteBuilder);
+    _director.Construir;
+
+    FObjeto.addOrderBy(_director.getObjetoPronto);
   end;
 end;
 

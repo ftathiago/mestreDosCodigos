@@ -27,46 +27,30 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 8
-    ExplicitWidth = 445
-    ExplicitHeight = 282
   end
   object MCSelect: TMCSelect
     Coluna = <
       item
-        Coluna.Tabela.Nome = 'NOME_DA_TABELA'
-        Coluna.Tabela.Alias = 'ALIAS_DA_TABELA'
-        Coluna.Nome = 'NOME_DA_COLUNA'
+        Coluna.Tabela.Nome = 'NOME_TABELA'
+        Coluna.Tabela.Alias = 'ALIAS_TABELA'
+        Coluna.Nome = 'NOME_COLUNA'
         Coluna.NomeVirtual = 'NOME_VIRTUAL'
       end>
-    From.Nome = 'NOME_DA_TABELA'
-    From.Alias = 'ALIA_DA_TABELA'
-    Juncao = <
-      item
-        Tabela.Nome = 'TABELA_DA_JUNCAO'
-        Tabela.Alias = 'ALIAS_DA_TABELA_DA_JUNCAO'
-        Condicao = <
-          item
-            Condicao.Coluna.Nome = 'COLUNA_DA_JUNCAO'
-            Condicao.Valor = 'NOME_DE_UM_CAMPO_ESCRITO'
-          end>
-      end>
+    From.Nome = 'NOME_TABELA'
+    From.Alias = 'ALIAS_TABELA'
+    Juncao = <>
     Condicao = <
       item
-        Condicao.Coluna.Tabela.Nome = 'NOME_DA_TABELA'
-        Condicao.Coluna.Tabela.Alias = 'ALIAS_DA_TABELA'
-        Condicao.Coluna.Nome = 'COLUNA_CONDICAO1'
+        Condicao.Coluna.Tabela.Nome = 'NOME_TABELA'
+        Condicao.Coluna.Tabela.Alias = 'ALIAS_TABELA'
+        Condicao.Coluna.Nome = 'NOME_COLUNA'
         Condicao.Valor = '1'
-      end
-      item
-        Condicao.OperadorLogico = olOr
-        Condicao.Coluna.Tabela.Nome = 'NOME_DA_TABELA'
-        Condicao.Coluna.Tabela.Alias = 'ALIAS_DA_TABELA'
-        Condicao.Coluna.Nome = 'COLUNA_CONDICAO1'
-        Condicao.Valor = '2'
       end>
-    Left = 8
-    Top = 32
+    OrderBy = <
+      item
+        Coluna.Nome = 'COLUNA_ORDER'
+      end>
+    Left = 104
+    Top = 48
   end
 end

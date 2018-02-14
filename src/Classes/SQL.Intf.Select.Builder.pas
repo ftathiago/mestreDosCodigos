@@ -13,6 +13,7 @@ type
     procedure buildFrom;
     procedure buildJuncao;
     procedure buildWhere;
+    procedure buildOrderBy;
   end;
 
 

@@ -72,7 +72,12 @@ contains
   DesignPattern.Builder.Intf.Director in '..\DesignPattern\DesignPattern.Builder.Intf.Director.pas',
   SQL.Intf.Tabela.Builder in '..\Classes\SQL.Intf.Tabela.Builder.pas',
   SQL.Impl.Tabela.Builder in '..\Classes\SQL.Impl.Tabela.Builder.pas',
-  SQL.Impl.Tabela.Director in '..\Classes\SQL.Impl.Tabela.Director.pas';
+  SQL.Impl.Tabela.Director in '..\Classes\SQL.Impl.Tabela.Director.pas',
+  SQL.Intf.Insert in '..\Classes\SQL.Intf.Insert.pas',
+  SQL.Intf.ParColunaValor in '..\Classes\SQL.Intf.ParColunaValor.pas',
+  SQL.Impl.ParColunaValor in '..\Classes\SQL.Impl.ParColunaValor.pas',
+  SQL.Impl.PadraoSQL3.Insert in '..\Classes\SQL.Impl.PadraoSQL3.Insert.pas',
+  SQL.Impl.ParColunaValor.Lista in '..\Classes\SQL.Impl.ParColunaValor.Lista.pas';
 
 end.
 

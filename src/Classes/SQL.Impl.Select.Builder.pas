@@ -16,6 +16,7 @@ type
     procedure buildFrom; virtual; abstract;
     procedure buildJuncao; virtual; abstract;
     procedure buildWhere; virtual; abstract;
+    procedure buildOrderBy; virtual; abstract;
   end;
 
 

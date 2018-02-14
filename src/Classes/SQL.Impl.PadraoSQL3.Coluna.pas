@@ -17,18 +17,33 @@ type
   protected
     function TestarNomeVirtualFoiInformado: boolean;
     function getOrigemDoCampo: string;
+    procedure ConstruirSQL; override;
   public
     constructor Create;
     class function New: ISQLColuna;
     function setTabela(const ATabela: ISQLTabela): ISQLColuna;
     function setColuna(const AColuna: string): ISQLColuna;
     function setNomeVirtual(const ANomeVirtual: string): ISQLColuna;
-    function ToString: string; override;
   end;
 
 implementation
 
 { TSQL3Coluna }
+
+procedure TSQL3Coluna.ConstruirSQL;
+var
+  sTabelaDoCampo: string;
+  sNomeVirtual: string;
+begin
+  inherited;
+
+  sTabelaDoCampo := getOrigemDoCampo;
+
+  if TestarNomeVirtualFoiInformado then
+    sNomeVirtual := Format(' as %s', [FNomeVirtual]);
+
+  FTexto := Format('%s%s%s', [sTabelaDoCampo, FColuna, sNomeVirtual]);
+end;
 
 constructor TSQL3Coluna.Create;
 begin
@@ -79,20 +94,6 @@ end;
 function TSQL3Coluna.TestarNomeVirtualFoiInformado: boolean;
 begin
   result := not(Trim(FNomeVirtual) = EmptyStr);
-end;
-
-function TSQL3Coluna.ToString: string;
-var
-  sTabelaDoCampo: string;
-  sNomeVirtual: string;
-begin
-
-  sTabelaDoCampo := getOrigemDoCampo;
-
-  if TestarNomeVirtualFoiInformado then
-    sNomeVirtual := Format(' as %s', [FNomeVirtual]);
-
-  result := Format('%s%s%s', [sTabelaDoCampo, FColuna, sNomeVirtual]);
 end;
 
 end.

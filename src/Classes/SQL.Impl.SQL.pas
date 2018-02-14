@@ -8,9 +8,14 @@ uses
 
 type
   TSQL = class(TInterfacedObject, ISQL)
+  protected
+    FTexto: string;
+    procedure ConstruirSQL; virtual;
   public
-    function ToString: string; reintroduce; virtual; abstract;
+    constructor Create;
+    function ToString: string; override;
     procedure SaveToFile(const FileName: TFileName);
+    procedure setSQL(const Texto: string); virtual;
   end;
 
 implementation
@@ -19,6 +24,16 @@ uses
   System.Classes;
 
 { TSQL }
+
+procedure TSQL.ConstruirSQL;
+begin
+
+end;
+
+constructor TSQL.Create;
+begin
+  FTexto := EmptyStr;
+end;
 
 procedure TSQL.SaveToFile(const FileName: TFileName);
 var
@@ -31,6 +46,18 @@ begin
   finally
     _strings.Free;
   end;
+end;
+
+procedure TSQL.setSQL(const Texto: string);
+begin
+  FTexto := Texto;
+end;
+
+function TSQL.ToString: string;
+begin
+  ConstruirSQL;
+
+  result := FTexto.Trim;
 end;
 
 end.

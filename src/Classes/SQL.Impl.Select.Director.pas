@@ -25,6 +25,8 @@ begin
   FBuilder.buildFrom;
   FBuilder.buildJuncao;
   FBuilder.buildWhere;
+  FBuilder.buildOrderBy;
+
   FObjeto := FBuilder.getObjeto
 end;
 

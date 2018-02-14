@@ -4,6 +4,7 @@ interface
 
 uses
   DesignPattern.Builder.Intf.Builder,
+  SQL.Intf.Coluna,
   SQL.Intf.Select,
   SQL.Intf.Select.Builder,
   SQL.Impl.Select.Builder;
@@ -11,11 +12,15 @@ uses
 type
 
   TCBSelectSimples = class(TBuilderSelect)
+  private
+    function getCampo: ISQLColuna;
+    function getCampoVirtual: ISQLColuna;
   public
     procedure buildCampo; override;
     procedure buildFrom; override;
     procedure buildJuncao; override;
     procedure buildWhere; override;
+    procedure buildOrderBy; override;
   end;
 
 implementation
@@ -24,7 +29,6 @@ uses
   DesignPattern.Builder.Intf.Director,
   DesignPattern.Builder.Impl.Director,
   SQL.Enums,
-  SQL.Intf.Coluna,
   SQL.Intf.Coluna.Builder,
   SQL.Impl.Coluna.Director,
   SQL.Intf.Tabela,
@@ -45,24 +49,13 @@ uses
 { TBuilderSelectSimples }
 
 procedure TCBSelectSimples.buildCampo;
-var
-  _director: IDirector<IBuilderColuna, ISQLColuna>;
-  _builder: IBuilderColuna;
 begin
-  _builder := TCBColunaSimples.New;
-  _director := TDirectorColuna.New;
-  _director.setBuilder(_builder);
-  _director.Construir;
 
-  FObjeto.addColuna(_director.getObjetoPronto);
-  FObjeto.addColuna(_director.getObjetoPronto);
-  FObjeto.addColuna(_director.getObjetoPronto);
+  FObjeto.addColuna(getCampo);
+  FObjeto.addColuna(getCampo);
+  FObjeto.addColuna(getCampo);
 
-  _builder := TCBColunaTotalmenteVirtual.New;
-  _director.setBuilder(_builder);
-  _director.Construir;
-
-  FObjeto.addColuna(_director.getObjetoPronto);
+  FObjeto.addColuna(getCampoVirtual);
 end;
 
 procedure TCBSelectSimples.buildFrom;
@@ -96,6 +89,14 @@ begin
   FObjeto.addJuncao(_director.getObjetoPronto);
 end;
 
+procedure TCBSelectSimples.buildOrderBy;
+begin
+  inherited;
+  FObjeto.addOrderBy(getCampo);
+  FObjeto.addOrderBy(getCampo);
+  FObjeto.addOrderBy(getCampo);
+end;
+
 procedure TCBSelectSimples.buildWhere;
 var
   _director: IDirector<IBuilderCondicao, ISQLCondicao>;
@@ -120,6 +121,34 @@ begin
   _condicao := _director.getObjetoPronto;
   _condicao.setOperadorLogico(olAnd);
   FObjeto.addCondicao(_condicao);
+end;
+
+function TCBSelectSimples.getCampo: ISQLColuna;
+var
+  _director: IDirector<IBuilderColuna, ISQLColuna>;
+  _builder: IBuilderColuna;
+begin
+  _builder := TCBColunaSimples.New;
+
+  _director := TDirectorColuna.New;
+  _director.setBuilder(_builder);
+  _director.Construir;
+
+  result := _director.getObjetoPronto;
+end;
+
+function TCBSelectSimples.getCampoVirtual: ISQLColuna;
+var
+  _director: IDirector<IBuilderColuna, ISQLColuna>;
+  _builder: IBuilderColuna;
+begin
+  _builder := TCBColunaTotalmenteVirtual.New;
+
+  _director := TDirectorColuna.New;
+  _director.setBuilder(_builder);
+  _director.Construir;
+
+  result := _director.getObjetoPronto;
 end;
 
 end.

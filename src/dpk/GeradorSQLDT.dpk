@@ -1,6 +1,7 @@
 package GeradorSQLDT;
 
 {$R *.res}
+{$R 'GeradorSQL.Comp.Select.dcr'}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
 {$ALIGN 8}
 {$ASSERTIONS ON}
@@ -42,7 +43,8 @@ contains
   GeradorSQL.ConcreteBuilder.Select in '..\Componentes\GeradorSQL.ConcreteBuilder.Select.pas',
   GeradorSQL.ConcreteBuilder.Coluna in '..\Componentes\GeradorSQL.ConcreteBuilder.Coluna.pas',
   GeradorSQL.ConcreteBuilder.Juncao in '..\Componentes\GeradorSQL.ConcreteBuilder.Juncao.pas',
-  GeradorSQL.ConcreteBuilder.Condicao in '..\Componentes\GeradorSQL.ConcreteBuilder.Condicao.pas';
+  GeradorSQL.ConcreteBuilder.Condicao in '..\Componentes\GeradorSQL.ConcreteBuilder.Condicao.pas',
+  GeradorSQL.Comp.Insert in '..\Componentes\GeradorSQL.Comp.Insert.pas';
 
 end.
 

@@ -18,6 +18,8 @@ type
     FColuna: ISQLColuna;
     FTextoDaCondicao: string;
     FValor: string;
+  protected
+    procedure ConstruirSQL; override;
   public
     constructor Create;
     class function New: ISQLCondicao;
@@ -28,7 +30,6 @@ type
     function setTexto(const ATextoDaCondicao: string): ISQLCondicao;
     function setValor(const AColuna: ISQL): ISQLCondicao; overload;
     function setValor(const AValor: TValue): ISQLCondicao; overload;
-    function ToString: string; override;
     function getColuna: ISQLColuna;
   end;
 
@@ -40,6 +41,15 @@ uses
   SQL.Mensagens;
 
 { TSQL3Condicao }
+
+procedure TSQL3Condicao.ConstruirSQL;
+var
+  _comparadoCom: string;
+begin
+  inherited;
+  _comparadoCom := FOperadorComparacao.getSQLString;
+  FTexto := Format('(%s %s %s)', [FColuna.ToString, _comparadoCom, FValor]);
+end;
 
 constructor TSQL3Condicao.Create;
 begin
@@ -94,14 +104,6 @@ function TSQL3Condicao.setValor(const AValor: TValue): ISQLCondicao;
 begin
   FValor := AValor.ToString;
   result := self;
-end;
-
-function TSQL3Condicao.ToString: string;
-var
-  _comparadoCom: string;
-begin
-  _comparadoCom := FOperadorComparacao.getSQLString;
-  result := Format('(%s %s %s)', [FColuna.ToString, _comparadoCom, FValor]);
 end;
 
 function TSQL3Condicao.setValor(const AColuna: ISQL): ISQLCondicao;
