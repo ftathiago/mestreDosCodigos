@@ -77,7 +77,9 @@ contains
   SQL.Intf.ParColunaValor in '..\Classes\SQL.Intf.ParColunaValor.pas',
   SQL.Impl.ParColunaValor in '..\Classes\SQL.Impl.ParColunaValor.pas',
   SQL.Impl.PadraoSQL3.Insert in '..\Classes\SQL.Impl.PadraoSQL3.Insert.pas',
-  SQL.Impl.ParColunaValor.Lista in '..\Classes\SQL.Impl.ParColunaValor.Lista.pas';
+  SQL.Impl.ParColunaValor.Lista in '..\Classes\SQL.Impl.ParColunaValor.Lista.pas',
+  SQL.Intf.Builder in '..\Classes\SQL.Intf.Builder.pas',
+  SQL.Builder in '..\Classes\SQL.Builder.pas';
 
 end.
 

@@ -3,14 +3,14 @@ unit SQL.Impl.Condicao.Builder;
 interface
 
 uses
-  DesignPattern.Builder.Impl.Builder,
+  SQL.Builder,
   SQL.Enums,
   SQL.Intf.Coluna,
   SQL.Intf.Condicao,
   SQL.Intf.Condicao.Builder;
 
 type
-  TBuilderCondicao = class(TBuilder<ISQLCondicao>, IBuilderCondicao)
+  TBuilderCondicao = class(TSQLBuilder<ISQLCondicao>, IBuilderCondicao)
   private
     FColuna: ISQLColuna;
     FOperadorLogico: TOperadorLogico;
@@ -41,7 +41,7 @@ uses
 procedure TBuilderCondicao.ConstruirNovaInstancia;
 begin
   inherited;
-  FObjeto := TFabrica.New(SQL_TIPO_PADRAO).Condicao;
+  FObjeto := TFabrica.New(getOtimizarPara).Condicao;
 end;
 
 class function TBuilderCondicao.New: IBuilderCondicao;

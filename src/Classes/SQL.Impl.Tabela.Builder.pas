@@ -3,13 +3,13 @@ unit SQL.Impl.Tabela.Builder;
 interface
 
 uses
-  DesignPattern.Builder.Intf.Builder,
+  SQL.Builder,
   DesignPattern.Builder.Impl.Builder,
   SQL.Intf.Tabela.Builder,
   SQL.Intf.Tabela;
 
 type
-  TBuilderTabela = class(TBuilder<ISQLTabela>, IBuilderTabela)
+  TBuilderTabela = class(TSQLBuilder<ISQLTabela>, IBuilderTabela)
   public
     class function New: IBuilderTabela;
     procedure ConstruirNovaInstancia; override;
@@ -31,7 +31,7 @@ procedure TBuilderTabela.ConstruirNovaInstancia;
 var
   _fabrica: IFabrica;
 begin
-  _fabrica := TFabrica.New(SQL_TIPO_PADRAO);
+  _fabrica := TFabrica.New(getOtimizarPara);
 
   FObjeto := _fabrica.Tabela;
 end;

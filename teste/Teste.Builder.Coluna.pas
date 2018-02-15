@@ -6,21 +6,27 @@ uses
   SQL.Impl.Coluna.Builder;
 
 type
-  TCBColunaSimples = class(TBuilderColuna)
+  TCBColunaBase = class(TBuilderColuna)
+  public
+    procedure AfterConstruction; override;
+  end;
+
+  TCBColunaSimples = class(TCBColunaBase)
   public
     procedure buildNome; override;
     procedure buildNomeVirtual; override;
     procedure buildTabela; override;
+    procedure AfterConstruction; override;
   end;
 
-  TCBColunaNomeVirtual = class(TBuilderColuna)
+  TCBColunaNomeVirtual = class(TCBColunaBase)
   public
     procedure buildNome(); override;
     procedure buildNomeVirtual(); override;
     procedure buildTabela; override;
   end;
 
-  TCBColunaTotalmenteVirtual = class(TBuilderColuna)
+  TCBColunaTotalmenteVirtual = class(TCBColunaBase)
   public
     procedure buildNome(); override;
     procedure buildNomeVirtual(); override;
@@ -33,6 +39,12 @@ uses
   Teste.Constantes;
 
 { TBuilderColunaSimples }
+
+procedure TCBColunaSimples.AfterConstruction;
+begin
+  inherited;
+
+end;
 
 procedure TCBColunaSimples.buildNome;
 begin
@@ -84,6 +96,14 @@ procedure TCBColunaTotalmenteVirtual.buildTabela;
 begin
   inherited;
 
+end;
+
+{ TCBColunaBase }
+
+procedure TCBColunaBase.AfterConstruction;
+begin
+  inherited;
+  setOtimizarPara(OTIMIZAR_PARA);
 end;
 
 end.

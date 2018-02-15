@@ -13,7 +13,6 @@ uses
   DUnitX.Loggers.Console,
   DUnitX.Loggers.Xml.NUnit,
   DUnitX.TestFramework,
-  Teste.Constantes in 'Teste.Constantes.pas',
   Teste.Builder.Select in 'Teste.Builder.Select.pas',
   Teste.Builder.Coluna in 'Teste.Builder.Coluna.pas',
   Teste.Builder.Condicao in 'Teste.Builder.Condicao.pas',
@@ -24,7 +23,7 @@ uses
   uSQLJuncaoTeste in 'uSQLJuncaoTeste.pas',
   uSQLSelectTeste in 'uSQLSelectTeste.pas',
   Teste.Builder.Tabela in 'Teste.Builder.Tabela.pas',
-  GeradorSQL.Comp.Collection.OrderBy in 'GeradorSQL.Comp.Collection.OrderBy.pas';
+  Teste.Constantes in 'Teste.Constantes.pas';
 
 var
   runner: ITestRunner;

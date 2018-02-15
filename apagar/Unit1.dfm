@@ -50,6 +50,10 @@ object Form1: TForm1
       item
         Coluna.Nome = 'COLUNA_ORDER'
       end>
+    GroupBy = <
+      item
+        Coluna.Nome = 'coluna1'
+      end>
     Left = 104
     Top = 48
   end

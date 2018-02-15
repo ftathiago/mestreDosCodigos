@@ -7,7 +7,12 @@ uses
   SQL.Impl.Juncao.Builder;
 
 type
-  TCBJuncaoApenasTabela = class(TBuilderJuncao)
+  TCBJuncaoBase = class(TBuilderJuncao)
+  public
+    procedure AfterConstruction; override;
+  end;
+
+  TCBJuncaoApenasTabela = class(TCBJuncaoBase)
   private
     function getTabela: ISQLTabela;
   public
@@ -15,7 +20,7 @@ type
     procedure buildCondicoes; override;
   end;
 
-  TCBJuncaoTabelaComAlias = class(TBuilderJuncao)
+  TCBJuncaoTabelaComAlias = class(TCBJuncaoBase)
   private
     function getTabela: ISQLTabela;
   public
@@ -107,6 +112,14 @@ begin
   _directorTabela.setBuilder(TCBTabelaComNomeApenas.New);
   _directorTabela.construir;
   result := _directorTabela.getObjetoPronto;
+end;
+
+{ TCBJuncaoBase }
+
+procedure TCBJuncaoBase.AfterConstruction;
+begin
+  inherited;
+  setOtimizarPara(OTIMIZAR_PARA);
 end;
 
 end.

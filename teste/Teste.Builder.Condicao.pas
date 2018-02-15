@@ -13,6 +13,7 @@ type
     procedure buildOperadorComparacao; override;
     procedure buildValor; override;
     procedure buildOperadorLogico; override;
+    procedure AfterConstruction; override;
   end;
 
 implementation
@@ -25,7 +26,14 @@ uses
   SQL.Impl.Coluna.Director,
   Teste.Constantes,
   Teste.Builder.Coluna;
+
 { TBuilderCondicaoValor }
+
+procedure TCBCondicaoValor.AfterConstruction;
+begin
+  inherited;
+  setOtimizarPara(OTIMIZAR_PARA);
+end;
 
 procedure TCBCondicaoValor.buildColuna;
 var

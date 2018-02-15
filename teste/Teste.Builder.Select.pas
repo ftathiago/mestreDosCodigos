@@ -21,6 +21,7 @@ type
     procedure buildJuncao; override;
     procedure buildWhere; override;
     procedure buildOrderBy; override;
+    procedure AfterConstruction; override;
   end;
 
 implementation
@@ -47,6 +48,12 @@ uses
   Teste.Builder.Condicao;
 
 { TBuilderSelectSimples }
+
+procedure TCBSelectSimples.AfterConstruction;
+begin
+  inherited;
+  setOtimizarPara(OTIMIZAR_PARA);
+end;
 
 procedure TCBSelectSimples.buildCampo;
 begin

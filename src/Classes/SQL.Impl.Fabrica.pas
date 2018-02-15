@@ -24,7 +24,7 @@ type
     function Coluna: ISQLColuna;
     function Condicao: ISQLCondicao;
     function Juncao: ISQLJuncao;
-    function Select:ISQLSelect;
+    function Select: ISQLSelect;
     procedure AfterConstruction; override;
   end;
 
@@ -33,7 +33,10 @@ implementation
 { TFabrica }
 
 uses
-  SQL.Impl.PadraoSQL3.Fabrica;
+  System.TypInfo,
+  SQL.Impl.PadraoSQL3.Fabrica,
+  SQL.Exceptions,
+  SQL.Mensagens;
 
 function TFabrica.Tabela: ISQLTabela;
 begin
@@ -67,6 +70,10 @@ begin
   case FBancoDeDados of
     opPadraoSQL3:
       FFabrica := TSQL3Fabrica.Create;
+  else
+    begin
+      raise EFabricaNaoImplementada.CreateFmt(FABRICA_NAO_IMPLEMENTADA, [FBancoDeDados.getNome]);
+    end;
   end;
 end;
 
@@ -82,7 +89,7 @@ end;
 
 function TFabrica.Select: ISQLSelect;
 begin
-  result :=  FFabrica.Select;
+  result := FFabrica.Select;
 end;
 
 end.

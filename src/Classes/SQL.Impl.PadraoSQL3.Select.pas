@@ -20,6 +20,7 @@ type
   private
     FColunas: TListaColunaSelect;
     FOrderBy: TListaColunaSelect;
+    FGroupBy: TListaColunaSelect;
     FCondicoes: TListaCondicao;
     FJuncoes: TListaJuncao;
     FTabela: ISQLTabela;
@@ -29,6 +30,7 @@ type
     function MontarJuncoes: string; virtual;
     function MontarWhere: string; virtual;
     function MontarOrderBy: string; virtual;
+    function MontarGroupBy: string; virtual;
     procedure ConstruirSQL; override;
   public
     constructor Create;
@@ -38,6 +40,7 @@ type
     function addCondicao(const ACondicao: ISQLCondicao): ISQLSelect;
     function addJuncao(const AJuncao: ISQLJuncao): ISQLJuncao;
     function addOrderBy(const AColuna: ISQLColuna): ISQLSelect;
+    function addGroupBy(const AColuna: ISQLColuna): ISQLSelect;
     function getListaColuna: TList<SQL.Intf.Coluna.ISQLColuna>;
     function getListaCondicoes: TList<SQL.Intf.Condicao.ISQLCondicao>;
     function getListaJuncao: TList<SQL.Intf.Juncao.ISQLJuncao>;
@@ -57,6 +60,11 @@ uses
 function TSQL3Select.addCondicao(const ACondicao: ISQLCondicao): ISQLSelect;
 begin
   FCondicoes.Add(ACondicao);
+end;
+
+function TSQL3Select.addGroupBy(const AColuna: ISQLColuna): ISQLSelect;
+begin
+  FGroupBy.Add(AColuna);
 end;
 
 function TSQL3Select.addJuncao(const AJuncao: ISQLJuncao): ISQLJuncao;
@@ -84,6 +92,7 @@ begin
     _sql.AppendLine(MontarJuncoes);
     _sql.AppendLine(MontarWhere);
     _sql.AppendLine(MontarOrderBy);
+    _sql.AppendLine(MontarGroupBy);
     FTexto := _sql.ToString;
   finally
     _sql.Free;
@@ -96,6 +105,7 @@ begin
   FColunas := TListaColunaSelect.Create;
   FJuncoes := TListaJuncao.Create;
   FOrderBy := TListaColunaSelect.Create;
+  FGroupBy := TListaColunaSelect.Create;
 end;
 
 destructor TSQL3Select.Destroy;
@@ -104,11 +114,13 @@ begin
   FColunas.Clear;
   FJuncoes.Clear;
   FOrderBy.Clear;
+  FGroupBy.Clear;
 
   FreeAndNil(FCondicoes);
   FreeAndNil(FColunas);
   FreeAndNil(FJuncoes);
   FreeAndNil(FOrderBy);
+  FreeAndNil(FGroupBy);
   inherited;
 end;
 
@@ -142,7 +154,7 @@ begin
   result := FCondicoes.ToString;
 
   if not result.Trim.IsEmpty then
-    result := Format('where %s',[result]);
+    result := Format('where %s', [result]);
 end;
 
 function TSQL3Select.MontarJuncoes: string;
@@ -186,6 +198,19 @@ begin
     exit;
 
   result := FTabela.ToString;
+end;
+
+function TSQL3Select.MontarGroupBy: string;
+begin
+  result := EmptyStr;
+
+  if not Assigned(FGroupBy) then
+    exit;
+
+  if FOrderBy.Count <= 0 then
+    exit;
+
+  result := Format('group by %s', [FGroupBy.ToString]);
 end;
 
 class function TSQL3Select.New: ISQLSelect;

@@ -3,12 +3,12 @@ unit SQL.Impl.Select.Builder;
 interface
 
 uses
-  DesignPattern.Builder.Impl.Builder,
+  SQL.Builder,
   SQL.Intf.Select,
   SQL.Intf.Select.Builder;
 
 type
-  TBuilderSelect = class(TBuilder<ISQLSelect>, IBuilderSelect)
+  TBuilderSelect = class(TSQLBuilder<ISQLSelect>, IBuilderSelect)
   public
     class function New: IBuilderSelect;
     procedure ConstruirNovaInstancia; override;
@@ -17,6 +17,7 @@ type
     procedure buildJuncao; virtual; abstract;
     procedure buildWhere; virtual; abstract;
     procedure buildOrderBy; virtual; abstract;
+    procedure buildGroupBy; virtual; abstract;
   end;
 
 
@@ -31,7 +32,7 @@ uses
 procedure TBuilderSelect.ConstruirNovaInstancia;
 begin
   inherited;
-  FObjeto := TFabrica.New(SQL_TIPO_PADRAO).Select;
+  FObjeto := TFabrica.New(getOtimizarPara).Select;
 end;
 
 class function TBuilderSelect.New: IBuilderSelect;

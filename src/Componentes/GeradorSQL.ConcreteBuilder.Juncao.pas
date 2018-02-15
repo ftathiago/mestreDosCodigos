@@ -4,6 +4,7 @@ interface
 
 uses
   GeradorSQL.Comp.Collection.Juncao,
+  SQL.Enums,
   SQL.Intf.Juncao.Builder,
   SQL.Impl.Juncao.Builder;
 
@@ -12,8 +13,8 @@ type
   private
     FJuncao: TJuncaoCollectionItem;
   public
-    constructor Create(AJuncao: TJuncaoCollectionItem); reintroduce;
-    class function New(AJuncao: TJuncaoCollectionItem): IBuilderJuncao;
+    constructor Create(AJuncao: TJuncaoCollectionItem; const OtimizarPara: TOtimizarPara); reintroduce;
+    class function New(AJuncao: TJuncaoCollectionItem; const OtimizarPara: TOtimizarPara): IBuilderJuncao;
     procedure buildTabela; override;
     procedure buildCondicoes; override;
   end;
@@ -49,7 +50,7 @@ begin
   for i := 0 to Pred(FJuncao.Condicao.Count) do
   begin
     _condicaoItem := FJuncao.Condicao.Items[i];
-    _builder := TCBCondicao.New(_condicaoItem);
+    _builder := TCBCondicao.New(_condicaoItem, getOtimizarPara);
     _director.setBuilder(_builder);
     _director.Construir;
     FObjeto.addCondicao(_director.getObjetoPronto);
@@ -62,7 +63,7 @@ var
   _builder: IBuilderTabela;
 begin
   inherited;
-  _builder := TCBTabela.New(FJuncao.Tabela);
+  _builder := TCBTabela.New(FJuncao.Tabela, getOtimizarPara);
 
   _director := TDirectorTabela.New;
   _director.setBuilder(_builder);
@@ -71,15 +72,16 @@ begin
   FObjeto.setTabelaEstrangeira(_director.getObjetoPronto);
 end;
 
-constructor TCBJuncao.Create(AJuncao: TJuncaoCollectionItem);
+constructor TCBJuncao.Create(AJuncao: TJuncaoCollectionItem; const OtimizarPara: TOtimizarPara);
 begin
   inherited Create;
   FJuncao := AJuncao;
+  setOtimizarPara(OtimizarPara);
 end;
 
-class function TCBJuncao.New(AJuncao: TJuncaoCollectionItem): IBuilderJuncao;
+class function TCBJuncao.New(AJuncao: TJuncaoCollectionItem; const OtimizarPara: TOtimizarPara): IBuilderJuncao;
 begin
-  Result := Create(AJuncao);
+  Result := Create(AJuncao, OtimizarPara);
 end;
 
 end.

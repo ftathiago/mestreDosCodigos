@@ -75,10 +75,10 @@
         <DCC_UnitSearchPath>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\Lib;C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\dcp;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_DcuOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\Lib\</DCC_DcuOutput>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_Build>130</VerInfo_Build>
+        <VerInfo_Build>156</VerInfo_Build>
         <DCC_OutputXMLDocumentation>true</DCC_OutputXMLDocumentation>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.130;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.156;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <BRCC_OutputDir>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\dpk\bin\</BRCC_OutputDir>
     </PropertyGroup>
     <ItemGroup>
@@ -133,6 +133,8 @@
         <DCCReference Include="..\Classes\SQL.Impl.ParColunaValor.pas"/>
         <DCCReference Include="..\Classes\SQL.Impl.PadraoSQL3.Insert.pas"/>
         <DCCReference Include="..\Classes\SQL.Impl.ParColunaValor.Lista.pas"/>
+        <DCCReference Include="..\Classes\SQL.Intf.Builder.pas"/>
+        <DCCReference Include="..\Classes\SQL.Builder.pas"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

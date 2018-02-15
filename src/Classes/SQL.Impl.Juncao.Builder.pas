@@ -3,19 +3,18 @@ unit SQL.Impl.Juncao.Builder;
 interface
 
 uses
-  DesignPattern.Builder.Impl.Builder,
+  SQL.Builder,
   SQL.Intf.Juncao,
   SQL.Intf.Juncao.Builder;
 
 type
-  TBuilderJuncao = class(TBuilder<ISQLJuncao>, IBuilderJuncao)
+  TBuilderJuncao = class(TSQLBuilder<ISQLJuncao>, IBuilderJuncao)
   public
     class function New: IBuilderJuncao;
     procedure ConstruirNovaInstancia; override;
     procedure buildTabela; virtual; abstract;
     procedure buildCondicoes; virtual; abstract;
   end;
-
 
 implementation
 
@@ -28,7 +27,7 @@ uses
 procedure TBuilderJuncao.ConstruirNovaInstancia;
 begin
   inherited;
-  FObjeto := TFabrica.New(SQL_TIPO_PADRAO).Juncao;
+  FObjeto := TFabrica.New(getOtimizarPara).Juncao;
 end;
 
 class function TBuilderJuncao.New: IBuilderJuncao;

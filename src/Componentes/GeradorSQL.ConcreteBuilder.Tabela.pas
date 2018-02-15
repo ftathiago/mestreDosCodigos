@@ -4,6 +4,7 @@ interface
 
 uses
   GeradorSQL.Comp.Collection.Tabela,
+  SQL.Enums,
   SQL.Intf.Tabela.Builder,
   SQL.Impl.Tabela.Builder;
 
@@ -12,8 +13,8 @@ type
   private
     FTabela: TTabela;
   public
-    constructor Create(ATabela: TTabela); reintroduce;
-    class function New(ATabela: TTabela): IBuilderTabela; reintroduce;
+    constructor Create(ATabela: TTabela; const OtimizarPara: TOtimizarPara); reintroduce;
+    class function New(ATabela: TTabela; const OtimizarPara: TOtimizarPara): IBuilderTabela; reintroduce;
     procedure buildAliasTabela; override;
     procedure buildNomeTabela; override;
   end;
@@ -34,14 +35,15 @@ begin
   FObjeto.setNome(FTabela.Nome);
 end;
 
-constructor TCBTabela.Create(ATabela: TTabela);
+constructor TCBTabela.Create(ATabela: TTabela; const OtimizarPara: TOtimizarPara);
 begin
   FTabela := ATabela;
+  setOtimizarPara(OtimizarPara);
 end;
 
-class function TCBTabela.New(ATabela: TTabela): IBuilderTabela;
+class function TCBTabela.New(ATabela: TTabela; const OtimizarPara: TOtimizarPara): IBuilderTabela;
 begin
-  Result := Create(ATabela);
+  Result := Create(ATabela, OtimizarPara);
 end;
 
 end.

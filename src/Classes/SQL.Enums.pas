@@ -3,7 +3,7 @@ unit SQL.Enums;
 interface
 
 type
-  TOtimizarPara = (opPadraoSQL3);
+  TOtimizarPara = (opUnknow, opPadraoSQL3);
 
   TOperadorLogico = (olUnknow, olOr, olAnd);
 
@@ -15,6 +15,11 @@ type
   TTipoSQL = (tsSelect, tsInsert, tsDelete, tsUpdate);
 
   { Helpers }
+
+  TOtimizarParaHelper = record helper for TOtimizarPara
+    function getNome: string; inline;
+  end;
+
   TOperadorLogicoHelper = record helper for TOperadorLogico
     function getSQLString: string; inline;
     function getNome: string; inline;
@@ -108,6 +113,13 @@ begin
     raise ENotImplemented.CreateFmt(SQL.Mensagens.RECURSO_NAO_IMPLEMENTADO,
       [self.getNome, TObject(self).ClassName]);
   end;
+end;
+
+{ TOtimizarParaHelper }
+
+function TOtimizarParaHelper.getNome: string;
+begin
+  result := GetEnumName(TypeInfo(TOperadorLogico), Ord(self));
 end;
 
 end.

@@ -26,6 +26,7 @@ type
     FCondicao: TCondicaoCollection;
     FJuncao: TJuncaoCollection;
     FOrderBy: TColunaCollection;
+    FGroupBy: TColunaCollection;
     procedure SetOtimizarPara(const Value: TOtimizarPara);
     procedure SetFrom(const Value: TTabela);
     procedure SetColuna(const Value: TColunaCollection);
@@ -33,6 +34,7 @@ type
     procedure SetJuncao(const Value: TJuncaoCollection);
     procedure ConstruirSelect;
     procedure SetOrderBy(const Value: TColunaCollection);
+    procedure SetGroupBy(const Value: TColunaCollection);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -45,6 +47,7 @@ type
     property Juncao: TJuncaoCollection read FJuncao write SetJuncao;
     property Condicao: TCondicaoCollection read FCondicao write SetCondicao;
     property OrderBy: TColunaCollection read FOrderBy write SetOrderBy;
+    property GroupBy: TColunaCollection read FGroupBy write SetGroupBy;
   end;
 
 implementation
@@ -87,6 +90,7 @@ begin
   FJuncao := TJuncaoCollection.Create(Self);
   FColuna := TColunaCollection.Create(AOwner);
   FOrderBy := TColunaCollection.Create(Self);
+  FGroupBy := TColunaCollection.Create(Self);
   FOtimizarPara := opPadraoSQL3;
 end;
 
@@ -96,12 +100,14 @@ begin
   FJuncao.Clear;
   FColuna.Clear;
   FOrderBy.Clear;
+  FGroupBy.Clear;
 
   FreeAndNil(FCondicao);
   FreeAndNil(FJuncao);
   FreeAndNil(FColuna);
   FreeAndNil(FFrom);
   FreeAndNil(FOrderBy);
+  FreeAndNil(FGroupBy);
   inherited;
 end;
 
@@ -124,6 +130,11 @@ end;
 procedure TMCSelect.SetFrom(const Value: TTabela);
 begin
   FFrom := Value;
+end;
+
+procedure TMCSelect.SetGroupBy(const Value: TColunaCollection);
+begin
+  FGroupBy := Value;
 end;
 
 procedure TMCSelect.SetJuncao(const Value: TJuncaoCollection);

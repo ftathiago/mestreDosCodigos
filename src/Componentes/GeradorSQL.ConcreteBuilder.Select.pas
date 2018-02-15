@@ -4,12 +4,14 @@ interface
 
 uses
   GeradorSQL.Comp.Select,
+  SQL.Enums,
   SQL.Intf.Select.Builder,
   SQL.Impl.Select.Builder,
   SQL.Intf.Tabela;
 
 type
   TCBSelectComponente = class(TBuilderSelect)
+  private
     FMCSelect: TMCSelect;
   public
     constructor Create(AMCSelect: TMCSelect); reintroduce;
@@ -19,6 +21,7 @@ type
     procedure buildJuncao; override;
     procedure buildWhere; override;
     procedure buildOrderBy; override;
+    procedure buildGroupBy; override;
   end;
 
 implementation
@@ -61,8 +64,8 @@ begin
   for i := 0 to Pred(FMCSelect.Coluna.Count) do
   begin
     _collectionItem := FMCSelect.Coluna.Items[i];
+    _concreteBuilder := TCBColuna.New(_collectionItem.Coluna, getOtimizarPara);
 
-    _concreteBuilder := TCBColuna.New(_collectionItem.Coluna);
     _director.setBuilder(_concreteBuilder);
     _director.Construir;
 
@@ -76,13 +79,36 @@ var
   _concreteBuilder: IBuilderTabela;
 begin
   inherited;
-  _concreteBuilder := TCBTabela.New(FMCSelect.From);
+  _concreteBuilder := TCBTabela.New(FMCSelect.From, getOtimizarPara);
+  _concreteBuilder.SetOtimizarPara(getOtimizarPara);
 
   _director := TDirectorTabela.New;
   _director.setBuilder(_concreteBuilder);
   _director.Construir;
 
   FObjeto.setTabela(_director.getObjetoPronto)
+end;
+
+procedure TCBSelectComponente.buildGroupBy;
+var
+  _director: IDirector<IBuilderColuna, ISQLColuna>;
+  _concreteBuilder: IBuilderColuna;
+  _collectionItem: TColunaCollectionItem;
+  i: Integer;
+begin
+  inherited;
+  _director := TDirectorColuna.New;
+
+  for i := 0 to Pred(FMCSelect.GroupBy.Count) do
+  begin
+    _collectionItem := FMCSelect.GroupBy.Items[i];
+
+    _concreteBuilder := TCBColuna.New(_collectionItem.Coluna, getOtimizarPara);
+    _director.setBuilder(_concreteBuilder);
+    _director.Construir;
+
+    FObjeto.addGroupBy(_director.getObjetoPronto);
+  end;
 end;
 
 procedure TCBSelectComponente.buildJuncao;
@@ -98,7 +124,7 @@ begin
   for i := 0 to Pred(FMCSelect.Juncao.Count) do
   begin
     _juncaoItem := FMCSelect.Juncao.Items[i];
-    _builder := TCBJuncao.New(_juncaoItem);
+    _builder := TCBJuncao.New(_juncaoItem, getOtimizarPara);
 
     _director.setBuilder(_builder);
     _director.Construir;
@@ -121,7 +147,7 @@ begin
   begin
     _collectionItem := FMCSelect.OrderBy.Items[i];
 
-    _concreteBuilder := TCBColuna.New(_collectionItem.Coluna);
+    _concreteBuilder := TCBColuna.New(_collectionItem.Coluna, getOtimizarPara);
     _director.setBuilder(_concreteBuilder);
     _director.Construir;
 
@@ -142,7 +168,8 @@ begin
   begin
     _condicaoItem := FMCSelect.Condicao.Items[i];
 
-    _builder := TCBCondicao.New(_condicaoItem);
+    _builder := TCBCondicao.New(_condicaoItem, getOtimizarPara);
+
     _director.setBuilder(_builder);
     _director.Construir;
 
@@ -154,6 +181,7 @@ constructor TCBSelectComponente.Create(AMCSelect: TMCSelect);
 begin
   inherited Create;
   FMCSelect := AMCSelect;
+  setOtimizarPara(AMCSelect.OtimizarPara);
 end;
 
 class function TCBSelectComponente.New(AMCSelect: TMCSelect): IBuilderSelect;

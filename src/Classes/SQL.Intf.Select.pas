@@ -19,6 +19,7 @@ type
     function addJuncao(const AJuncao: ISQLJuncao): ISQLJuncao;
     function addCondicao(const ACondicao: ISQLCondicao): ISQLSelect;
     function addOrderBy(const AColuna: ISQLColuna): ISQLSelect;
+    function addGroupBy(const AColuna: ISQLColuna): ISQLSelect;
     function getTabela: ISQLTabela;
     function getListaColuna: TList<ISQLColuna>;
     function getListaCondicoes: TList<ISQLCondicao>;

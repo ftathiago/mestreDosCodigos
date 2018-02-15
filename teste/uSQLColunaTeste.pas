@@ -41,6 +41,7 @@ type
 implementation
 
 uses
+  SQL.Enums,
   SQL.Impl.Coluna.Director,
   SQL.Impl.Tabela.Director,
   Teste.Builder.Coluna;
@@ -87,7 +88,10 @@ var
   _builderTabela: IBuilderTabela;
 begin
   _builderColuna := TCBColunaSimples.New;
+  _builderColuna.SetOtimizarPara(OTIMIZAR_PARA);
+
   _builderTabela := TCBTabelaComNomeApenas.New;
+  _builderTabela.SetOtimizarPara(OTIMIZAR_PARA);
 
   FDirectorColuna.setBuilder(_builderColuna);
   FDirectorTabela.setBuilder(_builderTabela);

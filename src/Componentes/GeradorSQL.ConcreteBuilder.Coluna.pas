@@ -4,6 +4,7 @@ interface
 
 uses
   GeradorSQL.Comp.Collection.Coluna,
+  SQL.Enums,
   SQL.Intf.Coluna.Builder,
   SQL.Impl.Coluna.Builder;
 
@@ -12,8 +13,8 @@ type
   private
     FColuna: TColuna;
   public
-    constructor Create(AColuna: TColuna); reintroduce;
-    class function New(AColuna: TColuna): IBuilderColuna; reintroduce;
+    constructor Create(const AColuna: TColuna; const OtimizarPara: TOtimizarPara); reintroduce;
+    class function New(const AColuna: TColuna; const OtimizarPara: TOtimizarPara): IBuilderColuna; reintroduce;
     procedure buildNome; override;
     procedure buildNomeVirtual; override;
     procedure buildTabela; override;
@@ -52,7 +53,7 @@ begin
   if FColuna.Tabela.Nome.Trim.IsEmpty then
     exit;
 
-  _concreteBuilder := TCBTabela.New(FColuna.Tabela);
+  _concreteBuilder := TCBTabela.New(FColuna.Tabela, getOtimizarPara);
 
   _director := TDirectorTabela.New;
   _director.setBuilder(_concreteBuilder);
@@ -61,14 +62,15 @@ begin
   FObjeto.setTabela(_director.getObjetoPronto);
 end;
 
-constructor TCBColuna.Create(AColuna: TColuna);
+constructor TCBColuna.Create(const AColuna: TColuna; const OtimizarPara: TOtimizarPara);
 begin
   FColuna := AColuna;
+  setOtimizarPara(OtimizarPara);
 end;
 
-class function TCBColuna.New(AColuna: TColuna): IBuilderColuna;
+class function TCBColuna.New(const AColuna: TColuna; const OtimizarPara: TOtimizarPara): IBuilderColuna;
 begin
-  Result := Create(AColuna);
+  Result := Create(AColuna, OtimizarPara);
 end;
 
 

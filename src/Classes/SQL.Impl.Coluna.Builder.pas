@@ -3,13 +3,13 @@ unit SQL.Impl.Coluna.Builder;
 interface
 
 uses
-  DesignPattern.Builder.Impl.Builder,
+  SQL.Builder,
   SQL.Intf.Coluna,
   SQL.Intf.Coluna.Builder,
   SQL.Intf.Tabela;
 
 type
-  TBuilderColuna = class(TBuilder<ISQLColuna>, IBuilderColuna)
+  TBuilderColuna = class(TSQLBuilder<ISQLColuna>, IBuilderColuna)
   private
     FTabela: ISQLTabela;
   protected
@@ -39,7 +39,7 @@ end;
 
 procedure TBuilderColuna.ConstruirNovaInstancia;
 begin
-  FObjeto := TFabrica.New(SQL_TIPO_PADRAO).Coluna;
+  FObjeto := TFabrica.New(getOtimizarPara).Coluna;
 end;
 
 function TBuilderColuna.getTabela: ISQLTabela;

@@ -4,6 +4,7 @@ interface
 
 uses
   GeradorSQL.Comp.Collection.Condicao,
+  SQL.Enums,
   SQL.Intf.Condicao.Builder,
   SQL.Impl.Condicao.Builder;
 
@@ -12,8 +13,8 @@ type
   private
     FCondicaoCollectionItem: TCondicaoCollectionItem;
   public
-    constructor Create(ACondicao: TCondicaoCollectionItem); reintroduce;
-    class function New(ACondicao: TCondicaoCollectionItem): IBuilderCondicao; reintroduce;
+    constructor Create(ACondicao: TCondicaoCollectionItem; const OtimizarPara: TOtimizarPara); reintroduce;
+    class function New(ACondicao: TCondicaoCollectionItem; const OtimizarPara: TOtimizarPara): IBuilderCondicao; reintroduce;
     procedure buildValor; override;
     procedure buildColuna; override;
     procedure buildOperadorComparacao; override;
@@ -38,7 +39,7 @@ var
   _builder: IBuilderColuna;
 begin
   inherited;
-  _builder := TCBColuna.New(FCondicaoCollectionItem.Condicao.Coluna);
+  _builder := TCBColuna.New(FCondicaoCollectionItem.Condicao.Coluna, getOtimizarPara);
 
   _director := TDirectorColuna.New;
   _director.setBuilder(_builder);
@@ -65,14 +66,15 @@ begin
   FObjeto.setValor(FCondicaoCollectionItem.Condicao.Valor)
 end;
 
-constructor TCBCondicao.Create(ACondicao: TCondicaoCollectionItem);
+constructor TCBCondicao.Create(ACondicao: TCondicaoCollectionItem; const OtimizarPara: TOtimizarPara);
 begin
   FCondicaoCollectionItem := ACondicao;
+  setOtimizarPara(OtimizarPara);
 end;
 
-class function TCBCondicao.New(ACondicao: TCondicaoCollectionItem): IBuilderCondicao;
+class function TCBCondicao.New(ACondicao: TCondicaoCollectionItem; const OtimizarPara: TOtimizarPara): IBuilderCondicao;
 begin
-  result := Create(ACondicao);
+  result := Create(ACondicao, OtimizarPara);
 end;
 
 end.

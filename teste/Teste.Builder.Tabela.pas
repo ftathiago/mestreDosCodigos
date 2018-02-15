@@ -6,13 +6,18 @@ uses
   SQL.Impl.Tabela.Builder;
 
 type
-  TCBTabelaComNomeApenas = class(TBuilderTabela)
+  TCBTabelaBase= class(TBuilderTabela)
+  public
+    procedure AfterConstruction; override;
+  end;
+
+  TCBTabelaComNomeApenas = class(TCBTabelaBase)
   public
     procedure buildAliasTabela; override;
     procedure buildNomeTabela; override;
   end;
 
-  TCBTabelaComNomeEAlias = class(TBuilderTabela)
+  TCBTabelaComNomeEAlias = class(TCBTabelaBase)
   public
     procedure buildAliasTabela; override;
     procedure buildNomeTabela; override;
@@ -48,5 +53,13 @@ begin
   FObjeto.setNome(TABELA_COM_ALIAS);
 end;
 
+
+{ TCBTabelaBase }
+
+procedure TCBTabelaBase.AfterConstruction;
+begin
+  inherited;
+  setOtimizarPara(OTIMIZAR_PARA);
+end;
 
 end.
