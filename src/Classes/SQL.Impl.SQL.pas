@@ -9,13 +9,17 @@ uses
 type
   TSQL = class(TInterfacedObject, ISQL)
   protected
+    FTextoSetado: string;
     FTexto: string;
-    procedure ConstruirSQL; virtual;
+    FSQL: ISQL;
+    procedure ConstruirSQL; virtual; abstract;
   public
-    constructor Create;
+    constructor Create; virtual;
+    class function New: ISQL;
+    function setTextoSQL(const Texto: string): ISQL;
+    function setSQL(const ASQL: ISQL): ISQL;
     function ToString: string; override;
     procedure SaveToFile(const FileName: TFileName);
-    procedure setSQL(const Texto: string); virtual;
   end;
 
 implementation
@@ -25,14 +29,17 @@ uses
 
 { TSQL }
 
-procedure TSQL.ConstruirSQL;
-begin
-
-end;
-
 constructor TSQL.Create;
 begin
+  inherited Create;
+  FTextoSetado := EmptyStr;
   FTexto := EmptyStr;
+  FSQL := nil;
+end;
+
+class function TSQL.New: ISQL;
+begin
+  result := Create;
 end;
 
 procedure TSQL.SaveToFile(const FileName: TFileName);
@@ -44,18 +51,31 @@ begin
     _strings.add(ToString);
     _strings.SaveToFile(FileName);
   finally
-    _strings.Free;
+    FreeAndNil(_strings);
   end;
 end;
 
-procedure TSQL.setSQL(const Texto: string);
+function TSQL.setSQL(const ASQL: ISQL): ISQL;
 begin
-  FTexto := Texto;
+  result := self;
+
+  FSQL := ASQL;
+end;
+
+function TSQL.setTextoSQL(const Texto: string): ISQL;
+begin
+  FTextoSetado := Texto;
 end;
 
 function TSQL.ToString: string;
 begin
-  ConstruirSQL;
+  FTexto := FTextoSetado.Trim;
+
+  if Assigned(FSQL) then
+    FTexto := FSQL.ToString;
+
+  if FTexto.IsEmpty then
+    ConstruirSQL;
 
   result := FTexto.Trim;
 end;

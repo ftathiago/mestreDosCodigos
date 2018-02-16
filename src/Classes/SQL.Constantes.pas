@@ -7,6 +7,7 @@ uses
 
 const
   SQL_TIPO_PADRAO = opPadraoSQL3;
+  STRING_INDEFINIDA = '';
 
 implementation
 

@@ -21,6 +21,10 @@ procedure TDirectorSelect.Construir;
 begin
   inherited;
   FBuilder.ConstruirNovaInstancia;
+
+  FBuilder.buildSQL;
+  FBuilder.buildLimite;
+  FBuilder.buildSalto;
   FBuilder.buildCampo;
   FBuilder.buildFrom;
   FBuilder.buildJuncao;

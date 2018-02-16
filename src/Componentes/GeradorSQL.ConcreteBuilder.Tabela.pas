@@ -17,6 +17,7 @@ type
     class function New(ATabela: TTabela; const OtimizarPara: TOtimizarPara): IBuilderTabela; reintroduce;
     procedure buildAliasTabela; override;
     procedure buildNomeTabela; override;
+    procedure buildSQL; override;
   end;
 
 implementation
@@ -33,6 +34,13 @@ procedure TCBTabela.buildNomeTabela;
 begin
   inherited;
   FObjeto.setNome(FTabela.Nome);
+end;
+
+procedure TCBTabela.buildSQL;
+begin
+  inherited;
+  if FTabela.SQLTexto.Count > 0 then
+    FObjeto.setTextoSQL(FTabela.SQLTexto.Text)
 end;
 
 constructor TCBTabela.Create(ATabela: TTabela; const OtimizarPara: TOtimizarPara);

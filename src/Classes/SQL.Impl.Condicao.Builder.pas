@@ -3,7 +3,7 @@ unit SQL.Impl.Condicao.Builder;
 interface
 
 uses
-  SQL.Builder,
+  SQL.Impl.Builder,
   SQL.Enums,
   SQL.Intf.Coluna,
   SQL.Intf.Condicao,

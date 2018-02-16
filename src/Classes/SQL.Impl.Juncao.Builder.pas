@@ -3,7 +3,7 @@ unit SQL.Impl.Juncao.Builder;
 interface
 
 uses
-  SQL.Builder,
+  SQL.Impl.Builder,
   SQL.Intf.Juncao,
   SQL.Intf.Juncao.Builder;
 

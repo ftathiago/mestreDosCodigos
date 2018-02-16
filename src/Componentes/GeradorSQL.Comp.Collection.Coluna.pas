@@ -4,6 +4,7 @@ interface
 
 uses
   System.Classes,
+  GeradorSQL.Comp.SQLDTO,
   GeradorSQL.Comp.Collection.Tabela;
 
 type
@@ -11,7 +12,7 @@ type
   TColunaCollection = class;
   TColunaCollectionItem = class;
 
-  TColuna = class(TPersistent)
+  TColuna = class(TSQLDTO)
   private
     FNomeVirtual: string;
     FNome: string;

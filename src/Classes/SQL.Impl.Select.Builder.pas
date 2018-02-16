@@ -3,7 +3,7 @@ unit SQL.Impl.Select.Builder;
 interface
 
 uses
-  SQL.Builder,
+  SQL.Impl.Builder,
   SQL.Intf.Select,
   SQL.Intf.Select.Builder;
 
@@ -12,6 +12,10 @@ type
   public
     class function New: IBuilderSelect;
     procedure ConstruirNovaInstancia; override;
+    procedure buildSQLAntes; virtual; abstract;
+    procedure buildSQLApos; virtual; abstract;
+    procedure buildLimite; virtual; abstract;
+    procedure buildSalto; virtual; abstract;
     procedure buildCampo; virtual; abstract;
     procedure buildFrom; virtual; abstract;
     procedure buildJuncao; virtual; abstract;
@@ -19,7 +23,6 @@ type
     procedure buildOrderBy; virtual; abstract;
     procedure buildGroupBy; virtual; abstract;
   end;
-
 
 implementation
 

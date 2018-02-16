@@ -19,8 +19,8 @@ type
     function getOrigemDoCampo: string;
     procedure ConstruirSQL; override;
   public
-    constructor Create;
-    class function New: ISQLColuna;
+    constructor Create; override;
+    class function New: ISQLColuna; reintroduce;
     function setTabela(const ATabela: ISQLTabela): ISQLColuna;
     function setColuna(const AColuna: string): ISQLColuna;
     function setNomeVirtual(const ANomeVirtual: string): ISQLColuna;
@@ -47,6 +47,7 @@ end;
 
 constructor TSQL3Coluna.Create;
 begin
+  inherited;
   FColuna := '';
   FNomeVirtual := '';
   FTabela := nil;

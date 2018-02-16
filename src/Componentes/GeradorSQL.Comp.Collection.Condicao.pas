@@ -6,6 +6,7 @@ uses
   System.Classes,
   System.SysUtils,
   SQL.Enums,
+  GeradorSQL.Comp.SQLDTO,
   GeradorSQL.Comp.Collection.Coluna;
 
 type
@@ -13,7 +14,7 @@ type
   TCondicaoCollection = class;
   TCondicaoCollectionItem = class;
 
-  TCondicao = class(TPersistent)
+  TCondicao = class(TSQLDTO)
   private
     FOperadorComparacao: TOperadorComparacao;
     FValor: String;

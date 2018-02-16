@@ -5,6 +5,7 @@ interface
 uses
   System.Generics.Collections,
   System.SysUtils,
+  SQL.Intf.SQL,
   SQL.Intf.Select,
   SQL.Intf.Coluna,
   SQL.Intf.Tabela,
@@ -24,18 +25,32 @@ type
     FCondicoes: TListaCondicao;
     FJuncoes: TListaJuncao;
     FTabela: ISQLTabela;
+    FLimite: integer;
+    FSaltar: integer;
+    FSQLAntes: ISQL;
+    FSQLApos: ISQL;
   protected
+    function MontarSQLAntes: string; virtual;
+    function MontarLimite: string; virtual;
+    function MontarSalto: string; virtual;
     function MontarColunas: string; virtual;
     function MontarFrom: string; virtual;
     function MontarJuncoes: string; virtual;
     function MontarWhere: string; virtual;
     function MontarOrderBy: string; virtual;
     function MontarGroupBy: string; virtual;
+    function MontarSQLApos: string; virtual;
     procedure ConstruirSQL; override;
   public
-    constructor Create;
-    class function New: ISQLSelect;
+    constructor Create; override;
+    class function New: ISQLSelect; reintroduce;
     destructor Destroy; override;
+    function injectSQLAntes(const SQLAntes: ISQL): ISQLSelect;
+    function injectSQLApos(const SQLApos: ISQL): ISQLSelect;
+    function getLimite: integer;
+    function setLimite(const Registros: integer): ISQLSelect;
+    function getSaltar: integer;
+    function setSaltar(const Registros: integer): ISQLSelect;
     function addColuna(const AColuna: ISQLColuna): ISQLSelect;
     function addCondicao(const ACondicao: ISQLCondicao): ISQLSelect;
     function addJuncao(const AJuncao: ISQLJuncao): ISQLJuncao;
@@ -54,7 +69,9 @@ implementation
 { TSQL3Select }
 
 uses
+  System.TypInfo,
   SQL.Mensagens,
+  SQL.Exceptions,
   SQL.Enums;
 
 function TSQL3Select.addCondicao(const ACondicao: ISQLCondicao): ISQLSelect;
@@ -85,15 +102,25 @@ begin
   inherited;
   _sql := TStringBuilder.Create;
   try
+    if Assigned(FSQLAntes) then
+      _sql.AppendLine(MontarSQLAntes);
+
     _sql.Append('select ');
+
+    if FLimite > 0 then
+      _sql.AppendLine(MontarLimite);
+
     _sql.AppendLine(MontarColunas);
-    _sql.Append('from ');
     _sql.AppendLine(MontarFrom);
     _sql.AppendLine(MontarJuncoes);
     _sql.AppendLine(MontarWhere);
     _sql.AppendLine(MontarOrderBy);
     _sql.AppendLine(MontarGroupBy);
-    FTexto := _sql.ToString;
+
+    if Assigned(FSQLApos) then
+      _sql.AppendLine(MontarSQLApos);
+
+    FTexto := _sql.ToString.Trim;
   finally
     _sql.Free;
   end;
@@ -101,6 +128,9 @@ end;
 
 constructor TSQL3Select.Create;
 begin
+  inherited;
+  FSQLAntes := nil;
+  FSQLApos := nil;
   FCondicoes := TListaCondicao.Create;
   FColunas := TListaColunaSelect.Create;
   FJuncoes := TListaJuncao.Create;
@@ -124,6 +154,11 @@ begin
   inherited;
 end;
 
+function TSQL3Select.getLimite: integer;
+begin
+  result := FLimite;
+end;
+
 function TSQL3Select.getListaColuna: TList<SQL.Intf.Coluna.ISQLColuna>;
 begin
   result := FColunas;
@@ -139,9 +174,26 @@ begin
   result := FJuncoes;
 end;
 
+function TSQL3Select.getSaltar: integer;
+begin
+  result := FSaltar;
+end;
+
 function TSQL3Select.getTabela: ISQLTabela;
 begin
   result := FTabela
+end;
+
+function TSQL3Select.injectSQLAntes(const SQLAntes: ISQL): ISQLSelect;
+begin
+  result := Self;
+  FSQLAntes := SQLAntes;
+end;
+
+function TSQL3Select.injectSQLApos(const SQLApos: ISQL): ISQLSelect;
+begin
+  result := Self;
+  FSQLApos := SQLApos;
 end;
 
 function TSQL3Select.MontarWhere: string;
@@ -167,6 +219,13 @@ begin
   result := FJuncoes.ToString;
 end;
 
+function TSQL3Select.MontarLimite: string;
+begin
+  result := EmptyStr;
+  if FLimite > 0 then
+    result := Format('top %d', [FLimite]);
+end;
+
 function TSQL3Select.MontarOrderBy: string;
 begin
   result := EmptyStr;
@@ -178,6 +237,27 @@ begin
     exit;
 
   result := Format('order by %s', [FOrderBy.ToString]);
+end;
+
+function TSQL3Select.MontarSalto: string;
+begin
+  if FSaltar > 0 then
+    raise ESQLFeatureNaoImplementada.CreateFmt(SQL_FEATURE_NAO_IMPLEMENTADA_PARA,
+      ['de salto', opPadraoSQL3.getNome]);
+end;
+
+function TSQL3Select.MontarSQLAntes: string;
+begin
+  result := EmptyStr;
+  if Assigned(FSQLAntes) then
+    result := FSQLAntes.ToString;
+end;
+
+function TSQL3Select.MontarSQLApos: string;
+begin
+  result := EmptyStr;
+  if Assigned(FSQLApos) then
+    result := FSQLApos.ToString
 end;
 
 function TSQL3Select.MontarColunas: string;
@@ -197,7 +277,7 @@ begin
   if not Assigned(FTabela) then
     exit;
 
-  result := FTabela.ToString;
+  result := Format('from %s', [FTabela.ToString]);
 end;
 
 function TSQL3Select.MontarGroupBy: string;
@@ -207,7 +287,7 @@ begin
   if not Assigned(FGroupBy) then
     exit;
 
-  if FOrderBy.Count <= 0 then
+  if FGroupBy.Count <= 0 then
     exit;
 
   result := Format('group by %s', [FGroupBy.ToString]);
@@ -216,6 +296,18 @@ end;
 class function TSQL3Select.New: ISQLSelect;
 begin
   result := Create;
+end;
+
+function TSQL3Select.setLimite(const Registros: integer): ISQLSelect;
+begin
+  result := Self;
+
+  FLimite := Registros;
+end;
+
+function TSQL3Select.setSaltar(const Registros: integer): ISQLSelect;
+begin
+  FSaltar := Registros;
 end;
 
 function TSQL3Select.setTabela(const ATabela: ISQLTabela): ISQLSelect;

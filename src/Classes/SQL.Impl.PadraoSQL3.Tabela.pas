@@ -11,7 +11,7 @@ type
     FNomeTabela: string;
     FAlias: string;
   public
-    constructor Create;
+    constructor Create; override;
     class function New: ISQLTabela;
     function setNome(const ANomeTabela: string):ISQLTabela;
     function setAlias(const AAlias: string): ISQLTabela;
@@ -27,6 +27,7 @@ implementation
 
 constructor TSQL3Tabela.Create;
 begin
+  inherited;
   FNomeTabela := '';
   FAlias := '';
 end;

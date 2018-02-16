@@ -20,8 +20,10 @@ implementation
 procedure TDirectorTabela.construir;
 begin
   FBuilder.ConstruirNovaInstancia;
+  FBuilder.buildSQL;
   FBuilder.buildNomeTabela;
   FBuilder.buildAliasTabela;
+
   FObjeto := FBuilder.getObjeto
 end;
 

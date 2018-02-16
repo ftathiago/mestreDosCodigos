@@ -41,10 +41,8 @@ object Form1: TForm1
     Juncao = <>
     Condicao = <
       item
-        Condicao.Coluna.Tabela.Nome = 'NOME_TABELA'
-        Condicao.Coluna.Tabela.Alias = 'ALIAS_TABELA'
-        Condicao.Coluna.Nome = 'NOME_COLUNA'
-        Condicao.Valor = '1'
+        Condicao.Coluna.Nome = 'asdf'
+        Condicao.Coluna.NomeVirtual = 'werwe'
       end>
     OrderBy = <
       item
@@ -54,6 +52,10 @@ object Form1: TForm1
       item
         Coluna.Nome = 'coluna1'
       end>
+    LimitarRegistros = 10
+    SaltarRegistros = 0
+    SQLTexto.Strings = (
+      '')
     Left = 104
     Top = 48
   end

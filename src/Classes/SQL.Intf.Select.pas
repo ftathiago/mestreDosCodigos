@@ -14,6 +14,8 @@ uses
 type
   ISQLSelect = interface(ISQL)
     ['{5DF9430A-2A50-4D3D-B4C8-EEC4D799CC7E}']
+    function injectSQLAntes(const SQLAntes: ISQL): ISQLSelect;
+    function injectSQLApos(const SQLApos: ISQL): ISQLSelect;
     function addColuna(const AColuna: ISQLColuna): ISQLSelect;
     function setTabela(const ATabela: ISQLTabela): ISQLSelect;
     function addJuncao(const AJuncao: ISQLJuncao): ISQLJuncao;
@@ -24,6 +26,10 @@ type
     function getListaColuna: TList<ISQLColuna>;
     function getListaCondicoes: TList<ISQLCondicao>;
     function getListaJuncao: TList<ISQLJuncao>;
+    function getLimite: integer;
+    function setLimite(const Registros: integer): ISQLSelect;
+    function getSaltar: integer;
+    function setSaltar(const Registros: integer): ISQLSelect;
   end;
 
 implementation

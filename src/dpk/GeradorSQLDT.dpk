@@ -44,7 +44,8 @@ contains
   GeradorSQL.ConcreteBuilder.Coluna in '..\Componentes\GeradorSQL.ConcreteBuilder.Coluna.pas',
   GeradorSQL.ConcreteBuilder.Juncao in '..\Componentes\GeradorSQL.ConcreteBuilder.Juncao.pas',
   GeradorSQL.ConcreteBuilder.Condicao in '..\Componentes\GeradorSQL.ConcreteBuilder.Condicao.pas',
-  GeradorSQL.Comp.Insert in '..\Componentes\GeradorSQL.Comp.Insert.pas';
+  GeradorSQL.Comp.Insert in '..\Componentes\GeradorSQL.Comp.Insert.pas',
+  GeradorSQL.Comp.SQLDTO in '..\Componentes\GeradorSQL.Comp.SQLDTO.pas';
 
 end.
 

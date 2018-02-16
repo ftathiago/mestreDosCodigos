@@ -14,6 +14,7 @@ type
     procedure buildValor; override;
     procedure buildOperadorLogico; override;
     procedure AfterConstruction; override;
+    procedure buildSQL; override;
   end;
 
 implementation
@@ -59,6 +60,12 @@ procedure TCBCondicaoValor.buildOperadorLogico;
 begin
   inherited;
   FObjeto.setOperadorLogico(olAnd)
+end;
+
+procedure TCBCondicaoValor.buildSQL;
+begin
+  inherited;
+
 end;
 
 procedure TCBCondicaoValor.buildValor;

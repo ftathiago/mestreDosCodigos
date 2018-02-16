@@ -16,12 +16,17 @@ type
   public
     constructor Create(AMCSelect: TMCSelect); reintroduce;
     class function New(AMCSelect: TMCSelect): IBuilderSelect;
+    procedure buildSQLAntes; override;
+    procedure buildSQLApos; override;
+    procedure buildLimite; override;
+    procedure buildSalto; override;
     procedure buildCampo; override;
     procedure buildFrom; override;
     procedure buildJuncao; override;
     procedure buildWhere; override;
     procedure buildOrderBy; override;
     procedure buildGroupBy; override;
+    procedure buildSQL; override;
   end;
 
 implementation
@@ -30,6 +35,8 @@ uses
   System.Classes,
   System.Generics.Collections,
   DesignPattern.Builder.Intf.Director,
+  SQL.Intf.SQL,
+  SQL.Impl.SQL,
   SQL.Intf.Tabela.Builder,
   SQL.Impl.Tabela.Director,
   SQL.Intf.Coluna,
@@ -133,6 +140,12 @@ begin
   end;
 end;
 
+procedure TCBSelectComponente.buildLimite;
+begin
+  inherited;
+  FObjeto.setLimite(FMCSelect.LimitarRegistros);
+end;
+
 procedure TCBSelectComponente.buildOrderBy;
 var
   _director: IDirector<IBuilderColuna, ISQLColuna>;
@@ -153,6 +166,41 @@ begin
 
     FObjeto.addOrderBy(_director.getObjetoPronto);
   end;
+end;
+
+procedure TCBSelectComponente.buildSalto;
+begin
+  inherited;
+  FObjeto.setSaltar(FMCSelect.SaltarRegistros);
+end;
+
+procedure TCBSelectComponente.buildSQL;
+begin
+  inherited;
+  if FMCSelect.SQLTexto.Count > 0 then
+    FObjeto.setTextoSQL(FMCSelect.SQLTexto.Text)
+end;
+
+procedure TCBSelectComponente.buildSQLAntes;
+var
+  _sqlAntes: ISQL;
+begin
+  inherited;
+  _sqlAntes := TSQL.New;
+  _sqlAntes.setTextoSQL(FMCSelect.InjetarSQLAntes);
+
+  FObjeto.injectSQLAntes(_sqlAntes);
+end;
+
+procedure TCBSelectComponente.buildSQLApos;
+var
+  _sqlApos: ISQL;
+begin
+  inherited;
+  _sqlApos := TSQL.New;
+  _sqlApos.setTextoSQL(FMCSelect.InjetarSQLApos);
+
+  FObjeto.injectSQLApos(_sqlApos);
 end;
 
 procedure TCBSelectComponente.buildWhere;
@@ -181,7 +229,7 @@ constructor TCBSelectComponente.Create(AMCSelect: TMCSelect);
 begin
   inherited Create;
   FMCSelect := AMCSelect;
-  setOtimizarPara(AMCSelect.OtimizarPara);
+  SetOtimizarPara(AMCSelect.OtimizarPara);
 end;
 
 class function TCBSelectComponente.New(AMCSelect: TMCSelect): IBuilderSelect;

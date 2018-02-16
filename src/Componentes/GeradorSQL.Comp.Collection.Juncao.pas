@@ -6,6 +6,7 @@ uses
   System.Classes,
   System.SysUtils,
   SQL.Enums,
+  GeradorSQL.Comp.SQLDTO,
   GeradorSQL.Comp.Collection.Tabela,
   GeradorSQL.Comp.Collection.Condicao;
 
@@ -13,7 +14,7 @@ type
   TJuncaoCollection = class;
   TJuncaoCollectionItem = class;
 
-  TJuncaoCollectionItem = class(TCollectionItem)
+  TJuncaoCollectionItem = class(TSQLDTOCollectionItem)
   private
     FTabela: TTabela;
     FTipoJuncao: TTipoJuncao;

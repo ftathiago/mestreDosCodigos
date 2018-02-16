@@ -5,10 +5,10 @@ interface
 type
   TOtimizarPara = (opUnknow, opPadraoSQL3);
 
-  TOperadorLogico = (olUnknow, olOr, olAnd);
+  TOperadorLogico = (olUnknow, olAll, olAnd, olAny, olExists, olOr, olSome);
 
   TOperadorComparacao = (ocUnknow, ocIgual, ocDiferente, ocMenorQue, ocMaiorQue, ocMenorOuIgual,
-    ocMaiorOuIgual, ocEntre, ocContenha, ocLike);
+    ocLista, ocMaiorOuIgual, ocEntre, ocIniciaCom, ocContenha, ocTerminaCom);
 
   TTipoJuncao = (tjUnknow, tjInnerJoin, tjLeftJoin, tjRightJoin);
 
@@ -87,6 +87,8 @@ begin
       result := '>=';
     ocEntre:
       result := 'between';
+//    ocIniciaCom:
+//      result := ', ocContenha, ocTerminaCom
   else
     raise ENotImplemented.CreateFmt(SQL.Mensagens.RECURSO_NAO_IMPLEMENTADO,
       [self.getNome, 'TOperadorComparacaoHelper']);

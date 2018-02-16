@@ -7,8 +7,10 @@ uses
 
 type
   EFabricaNaoImplementada = class(Exception);
-  ECondicaoException = class(Exception);
-  ESQLInsert = class(Exception);
+  ESQLException = class(Exception);
+  ECondicaoException = class(ESQLException);
+  ESQLInsert = class(ESQLException);
+  ESQLFeatureNaoImplementada = class(ESQLException);
 
 
 implementation

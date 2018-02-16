@@ -21,8 +21,8 @@ type
     procedure ConstruirValues(var SQL: TStringBuilder);
     procedure ConstruirSQL; override;
   public
-    constructor Create; reintroduce;
-    class function New: ISQLInsert;
+    constructor Create; override;
+    class function New: ISQLInsert; reintroduce;
     destructor Destroy; override;
     function addParColunaValor(const AParColunaValor: ISQLParColunaValor): ISQLInsert;
     function setSelectInsert(const ASelect: ISQLSelect): ISQLInsert;
@@ -89,7 +89,7 @@ end;
 
 constructor TSQL3Insert.Create();
 begin
-  inherited Create;
+  inherited;
   FParColunaValor := TListaParColunaValor.Create;
 end;
 

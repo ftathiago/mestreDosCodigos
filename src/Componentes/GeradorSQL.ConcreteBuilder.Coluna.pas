@@ -14,16 +14,20 @@ type
     FColuna: TColuna;
   public
     constructor Create(const AColuna: TColuna; const OtimizarPara: TOtimizarPara); reintroduce;
-    class function New(const AColuna: TColuna; const OtimizarPara: TOtimizarPara): IBuilderColuna; reintroduce;
+    class function New(const AColuna: TColuna; const OtimizarPara: TOtimizarPara): IBuilderColuna;
+      reintroduce;
     procedure buildNome; override;
     procedure buildNomeVirtual; override;
     procedure buildTabela; override;
+    procedure buildSQL; override;
   end;
 
 implementation
 
 uses
   System.SysUtils,
+  SQL.Impl.SQL,
+  SQL.Intf.SQL,
   DesignPattern.Builder.Intf.Director,
   SQL.Intf.Tabela,
   SQL.Intf.Tabela.Builder,
@@ -44,9 +48,16 @@ begin
   FObjeto.setNomeVirtual(FColuna.NomeVirtual);
 end;
 
+procedure TCBColuna.buildSQL;
+begin
+  inherited;
+  if FColuna.SQLTexto.Count > 0 then
+    FObjeto.setTextoSQL(FColuna.SQLTexto.Text);
+end;
+
 procedure TCBColuna.buildTabela;
 var
-  _director: IDirector<IBuilderTabela,ISQLTabela>;
+  _director: IDirector<IBuilderTabela, ISQLTabela>;
   _concreteBuilder: IBuilderTabela;
 begin
   inherited;
@@ -68,10 +79,10 @@ begin
   setOtimizarPara(OtimizarPara);
 end;
 
-class function TCBColuna.New(const AColuna: TColuna; const OtimizarPara: TOtimizarPara): IBuilderColuna;
+class function TCBColuna.New(const AColuna: TColuna; const OtimizarPara: TOtimizarPara)
+  : IBuilderColuna;
 begin
   Result := Create(AColuna, OtimizarPara);
 end;
-
 
 end.

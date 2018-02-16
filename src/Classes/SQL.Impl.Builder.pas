@@ -1,4 +1,4 @@
-unit SQL.Builder;
+unit SQL.Impl.Builder;
 
 interface
 
@@ -16,8 +16,8 @@ type
     function getOtimizarPara: TOtimizarPara;
   public
     constructor Create; reintroduce;
+    procedure buildSQL; virtual; abstract;
   end;
-
 
 implementation
 
@@ -26,7 +26,6 @@ uses
   SQL.Constantes;
 
 { TSQLBuilder<ObjetoSQL> }
-
 
 constructor TSQLBuilder<ObjetoSQL>.Create;
 begin

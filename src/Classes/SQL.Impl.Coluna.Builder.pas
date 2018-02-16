@@ -3,7 +3,7 @@ unit SQL.Impl.Coluna.Builder;
 interface
 
 uses
-  SQL.Builder,
+  SQL.Impl.Builder,
   SQL.Intf.Coluna,
   SQL.Intf.Coluna.Builder,
   SQL.Intf.Tabela;

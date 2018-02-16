@@ -10,6 +10,8 @@ type
   TCBJuncaoBase = class(TBuilderJuncao)
   public
     procedure AfterConstruction; override;
+    procedure buildSQL; override;
+
   end;
 
   TCBJuncaoApenasTabela = class(TCBJuncaoBase)
@@ -120,6 +122,12 @@ procedure TCBJuncaoBase.AfterConstruction;
 begin
   inherited;
   setOtimizarPara(OTIMIZAR_PARA);
+end;
+
+procedure TCBJuncaoBase.buildSQL;
+begin
+  inherited;
+
 end;
 
 end.

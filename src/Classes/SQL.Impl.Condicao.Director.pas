@@ -7,7 +7,6 @@ uses
   SQL.Intf.Condicao,
   SQL.Intf.Condicao.Builder;
 
-
 type
   TDirectorCondicao = class(TDirector<IBuilderCondicao, ISQLCondicao>)
   public
@@ -22,6 +21,8 @@ procedure TDirectorCondicao.Construir;
 begin
   inherited;
   FBuilder.ConstruirNovaInstancia;
+
+  FBuilder.buildSQL;
   FBuilder.buildOperadorLogico;
   FBuilder.buildColuna;
   FBuilder.buildOperadorComparacao;

@@ -23,11 +23,12 @@ procedure TDirectorColuna.Construir;
 begin
   inherited;
   FBuilder.ConstruirNovaInstancia;
+
+  FBuilder.buildSQL;
   FBuilder.buildNome;
   FBuilder.buildNomeVirtual;
   FBuilder.buildTabela;
   FObjeto := FBuilder.getObjeto;
 end;
-
 
 end.

@@ -15,7 +15,6 @@ type
     function setOperadorComparacao(const AOperadorLogico: TOperadorComparacao): ISQLCondicao;
     function setValor(const AColuna: ISQL): ISQLCondicao; overload;
     function setValor(const AValor: TValue): ISQLCondicao; overload;
-    function setTexto(const ATextoDaCondicao: string): ISQLCondicao;
     function getOperadorLogico: TOperadorLogico;
     function getColuna: ISQLColuna;
   end;

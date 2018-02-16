@@ -14,7 +14,7 @@ type
     FColuna: ISQLColuna;
     FTexto: string;
   public
-    class function New: ISQLParColunaValor;
+    class function New: ISQLParColunaValor; reintroduce;
     function setColuna(const AColuna: ISQLColuna): ISQLParColunaValor;
     function setValor(const SQL: ISQL): ISQLParColunaValor; overload;
     function setValor(const Texto: string): ISQLParColunaValor; overload;

@@ -9,6 +9,7 @@ type
   TCBColunaBase = class(TBuilderColuna)
   public
     procedure AfterConstruction; override;
+    procedure buildSQL; override;
   end;
 
   TCBColunaSimples = class(TCBColunaBase)
@@ -104,6 +105,12 @@ procedure TCBColunaBase.AfterConstruction;
 begin
   inherited;
   setOtimizarPara(OTIMIZAR_PARA);
+end;
+
+procedure TCBColunaBase.buildSQL;
+begin
+  inherited;
+
 end;
 
 end.

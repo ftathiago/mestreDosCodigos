@@ -16,18 +16,16 @@ type
     FOperadorLogico: TOperadorLogico;
     FOperadorComparacao: TOperadorComparacao;
     FColuna: ISQLColuna;
-    FTextoDaCondicao: string;
     FValor: string;
   protected
     procedure ConstruirSQL; override;
   public
-    constructor Create;
-    class function New: ISQLCondicao;
+    constructor Create; override;
+    class function New: ISQLCondicao; reintroduce;
     function getOperadorLogico: TOperadorLogico;
     function setColuna(const AColuna: ISQLColuna): ISQLCondicao;
     function setOperadorComparacao(const AOperadorComparacao: TOperadorComparacao): ISQLCondicao;
     function setOperadorLogico(const AOperadorLogico: TOperadorLogico): ISQLCondicao;
-    function setTexto(const ATextoDaCondicao: string): ISQLCondicao;
     function setValor(const AColuna: ISQL): ISQLCondicao; overload;
     function setValor(const AValor: TValue): ISQLCondicao; overload;
     function getColuna: ISQLColuna;
@@ -53,10 +51,10 @@ end;
 
 constructor TSQL3Condicao.Create;
 begin
+  inherited;
   FOperadorLogico := olUnknow;
   FOperadorComparacao := ocUnknow;
   FColuna := nil;
-  FTextoDaCondicao := EmptyStr;
   FValor := EmptyStr;
 end;
 
@@ -93,13 +91,6 @@ begin
   FOperadorLogico := AOperadorLogico;
   result := self;
 end;
-
-function TSQL3Condicao.setTexto(const ATextoDaCondicao: string): ISQLCondicao;
-begin
-  FTextoDaCondicao := ATextoDaCondicao;
-  result := self;
-end;
-
 function TSQL3Condicao.setValor(const AValor: TValue): ISQLCondicao;
 begin
   FValor := AValor.ToString;

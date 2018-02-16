@@ -11,14 +11,17 @@ uses
 type
   TCBCondicao = class(TBuilderCondicao)
   private
-    FCondicaoCollectionItem: TCondicaoCollectionItem;
+    FCondicao: TCondicao;
   public
-    constructor Create(ACondicao: TCondicaoCollectionItem; const OtimizarPara: TOtimizarPara); reintroduce;
-    class function New(ACondicao: TCondicaoCollectionItem; const OtimizarPara: TOtimizarPara): IBuilderCondicao; reintroduce;
+    constructor Create(ACondicaoCollectionItem: TCondicaoCollectionItem;
+      const OtimizarPara: TOtimizarPara); reintroduce;
+    class function New(ACondicaoCollectionItem: TCondicaoCollectionItem;
+      const OtimizarPara: TOtimizarPara): IBuilderCondicao; reintroduce;
     procedure buildValor; override;
     procedure buildColuna; override;
     procedure buildOperadorComparacao; override;
     procedure buildOperadorLogico; override;
+    procedure buildSQL; override;
   end;
 
 implementation
@@ -26,6 +29,8 @@ implementation
 uses
   DesignPattern.Builder.Intf.Director,
   DesignPattern.Builder.Impl.Director,
+  SQL.Intf.SQL,
+  SQL.Impl.SQL,
   SQL.Intf.Coluna,
   SQL.Intf.Coluna.Builder,
   SQL.Impl.Coluna.Director,
@@ -39,7 +44,7 @@ var
   _builder: IBuilderColuna;
 begin
   inherited;
-  _builder := TCBColuna.New(FCondicaoCollectionItem.Condicao.Coluna, getOtimizarPara);
+  _builder := TCBColuna.New(FCondicao.Coluna, getOtimizarPara);
 
   _director := TDirectorColuna.New;
   _director.setBuilder(_builder);
@@ -51,30 +56,39 @@ end;
 procedure TCBCondicao.buildOperadorComparacao;
 begin
   inherited;
-  FObjeto.setOperadorComparacao(FCondicaoCollectionItem.Condicao.OperadorComparacao);
+  FObjeto.setOperadorComparacao(FCondicao.OperadorComparacao);
 end;
 
 procedure TCBCondicao.buildOperadorLogico;
 begin
   inherited;
-  FObjeto.setOperadorLogico(FCondicaoCollectionItem.Condicao.OperadorLogico);
+  FObjeto.setOperadorLogico(FCondicao.OperadorLogico);
+end;
+
+procedure TCBCondicao.buildSQL;
+begin
+  inherited;
+  if FCondicao.SQLTexto.Count > 0 then
+    FObjeto.setTextoSQL(FCondicao.SQLTexto.Text);
 end;
 
 procedure TCBCondicao.buildValor;
 begin
   inherited;
-  FObjeto.setValor(FCondicaoCollectionItem.Condicao.Valor)
+  FObjeto.setValor(FCondicao.Valor)
 end;
 
-constructor TCBCondicao.Create(ACondicao: TCondicaoCollectionItem; const OtimizarPara: TOtimizarPara);
+constructor TCBCondicao.Create(ACondicaoCollectionItem: TCondicaoCollectionItem;
+  const OtimizarPara: TOtimizarPara);
 begin
-  FCondicaoCollectionItem := ACondicao;
+  FCondicao := ACondicaoCollectionItem.Condicao;
   setOtimizarPara(OtimizarPara);
 end;
 
-class function TCBCondicao.New(ACondicao: TCondicaoCollectionItem; const OtimizarPara: TOtimizarPara): IBuilderCondicao;
+class function TCBCondicao.New(ACondicaoCollectionItem: TCondicaoCollectionItem;
+  const OtimizarPara: TOtimizarPara): IBuilderCondicao;
 begin
-  result := Create(ACondicao, OtimizarPara);
+  result := Create(ACondicaoCollectionItem, OtimizarPara);
 end;
 
 end.

@@ -27,6 +27,11 @@ type
     FJuncao: TJuncaoCollection;
     FOrderBy: TColunaCollection;
     FGroupBy: TColunaCollection;
+    FSaltarRegistros: integer;
+    FLimitarRegistros: integer;
+    FInjetarSQLApos: string;
+    FInjetarSQLAntes: string;
+    FSQLTexto: TStrings;
     procedure SetOtimizarPara(const Value: TOtimizarPara);
     procedure SetFrom(const Value: TTabela);
     procedure SetColuna(const Value: TColunaCollection);
@@ -35,11 +40,18 @@ type
     procedure ConstruirSelect;
     procedure SetOrderBy(const Value: TColunaCollection);
     procedure SetGroupBy(const Value: TColunaCollection);
+    procedure SetLimitarRegistros(const Value: integer);
+    procedure SetSaltarRegistros(const Value: integer);
+    procedure SetInjetarSQLAntes(const Value: string);
+    procedure SetInjetarSQLApos(const Value: string);
+    procedure SetSQLTexto(const Value: TStrings);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     function GerarSQL: string;
   published
+    property InjetarSQLAntes: string read FInjetarSQLAntes write SetInjetarSQLAntes;
+    property InjetarSQLApos: string read FInjetarSQLApos write SetInjetarSQLApos;
     property OtimizarPara: TOtimizarPara read FOtimizarPara write SetOtimizarPara
       Default opPadraoSQL3;
     property Coluna: TColunaCollection read FColuna write SetColuna;
@@ -48,6 +60,9 @@ type
     property Condicao: TCondicaoCollection read FCondicao write SetCondicao;
     property OrderBy: TColunaCollection read FOrderBy write SetOrderBy;
     property GroupBy: TColunaCollection read FGroupBy write SetGroupBy;
+    property LimitarRegistros: integer read FLimitarRegistros write SetLimitarRegistros;
+    property SaltarRegistros: integer read FSaltarRegistros write SetSaltarRegistros;
+    property SQLTexto: TStrings read FSQLTexto write SetSQLTexto;
   end;
 
 implementation
@@ -92,6 +107,7 @@ begin
   FOrderBy := TColunaCollection.Create(Self);
   FGroupBy := TColunaCollection.Create(Self);
   FOtimizarPara := opPadraoSQL3;
+  FSQLTexto := TStringList.Create;
 end;
 
 destructor TMCSelect.Destroy;
@@ -101,6 +117,7 @@ begin
   FColuna.Clear;
   FOrderBy.Clear;
   FGroupBy.Clear;
+  FSQLTexto.Clear;
 
   FreeAndNil(FCondicao);
   FreeAndNil(FJuncao);
@@ -108,6 +125,7 @@ begin
   FreeAndNil(FFrom);
   FreeAndNil(FOrderBy);
   FreeAndNil(FGroupBy);
+  FreeAndNil(FSQLTexto);
   inherited;
 end;
 
@@ -137,9 +155,24 @@ begin
   FGroupBy := Value;
 end;
 
+procedure TMCSelect.SetInjetarSQLAntes(const Value: string);
+begin
+  FInjetarSQLAntes := Value;
+end;
+
+procedure TMCSelect.SetInjetarSQLApos(const Value: string);
+begin
+  FInjetarSQLApos := Value;
+end;
+
 procedure TMCSelect.SetJuncao(const Value: TJuncaoCollection);
 begin
   FJuncao := Value;
+end;
+
+procedure TMCSelect.SetLimitarRegistros(const Value: integer);
+begin
+  FLimitarRegistros := Value;
 end;
 
 procedure TMCSelect.SetOrderBy(const Value: TColunaCollection);
@@ -150,6 +183,17 @@ end;
 procedure TMCSelect.SetOtimizarPara(const Value: TOtimizarPara);
 begin
   FOtimizarPara := Value;
+end;
+
+procedure TMCSelect.SetSaltarRegistros(const Value: integer);
+begin
+  FSaltarRegistros := Value;
+end;
+
+procedure TMCSelect.SetSQLTexto(const Value: TStrings);
+begin
+  FSQLTexto.Clear;
+  FSQLTexto.Assign(Value);
 end;
 
 end.

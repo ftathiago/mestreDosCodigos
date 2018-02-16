@@ -22,6 +22,12 @@ type
     procedure buildWhere; override;
     procedure buildOrderBy; override;
     procedure AfterConstruction; override;
+    procedure buildGroupBy; override;
+    procedure buildLimite; override;
+    procedure buildSQLAntes; override;
+    procedure buildSQLApos; override;
+    procedure buildSalto; override;
+    procedure buildSQL; override;
   end;
 
 implementation
@@ -79,6 +85,12 @@ begin
   FObjeto.setTabela(_director.getObjetoPronto);
 end;
 
+procedure TCBSelectSimples.buildGroupBy;
+begin
+  inherited;
+
+end;
+
 procedure TCBSelectSimples.buildJuncao;
 var
   _director: IDirector<IBuilderJuncao, ISQLJuncao>;
@@ -96,12 +108,42 @@ begin
   FObjeto.addJuncao(_director.getObjetoPronto);
 end;
 
+procedure TCBSelectSimples.buildLimite;
+begin
+  inherited;
+
+end;
+
 procedure TCBSelectSimples.buildOrderBy;
 begin
   inherited;
   FObjeto.addOrderBy(getCampo);
   FObjeto.addOrderBy(getCampo);
   FObjeto.addOrderBy(getCampo);
+end;
+
+procedure TCBSelectSimples.buildSalto;
+begin
+  inherited;
+
+end;
+
+procedure TCBSelectSimples.buildSQL;
+begin
+  inherited;
+
+end;
+
+procedure TCBSelectSimples.buildSQLAntes;
+begin
+  inherited;
+
+end;
+
+procedure TCBSelectSimples.buildSQLApos;
+begin
+  inherited;
+
 end;
 
 procedure TCBSelectSimples.buildWhere;

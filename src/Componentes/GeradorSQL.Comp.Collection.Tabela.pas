@@ -3,14 +3,15 @@ unit GeradorSQL.Comp.Collection.Tabela;
 interface
 
 uses
-  System.Classes;
+  System.Classes,
+  GeradorSQL.Comp.SQLDTO;
 
 type
   TTabela = class;
   TTabelaCollection = class;
   TTabelaCollectionItem = class;
 
-  TTabela = class(TPersistent)
+  TTabela = class(TSQLDTO)
   private
     FAlias: string;
     FNome: string;

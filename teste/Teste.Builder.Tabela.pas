@@ -9,6 +9,7 @@ type
   TCBTabelaBase= class(TBuilderTabela)
   public
     procedure AfterConstruction; override;
+    procedure buildSQL; override;
   end;
 
   TCBTabelaComNomeApenas = class(TCBTabelaBase)
@@ -60,6 +61,12 @@ procedure TCBTabelaBase.AfterConstruction;
 begin
   inherited;
   setOtimizarPara(OTIMIZAR_PARA);
+end;
+
+procedure TCBTabelaBase.buildSQL;
+begin
+  inherited;
+
 end;
 
 end.

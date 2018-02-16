@@ -13,10 +13,13 @@ type
   private
     FJuncao: TJuncaoCollectionItem;
   public
-    constructor Create(AJuncao: TJuncaoCollectionItem; const OtimizarPara: TOtimizarPara); reintroduce;
-    class function New(AJuncao: TJuncaoCollectionItem; const OtimizarPara: TOtimizarPara): IBuilderJuncao;
+    constructor Create(AJuncao: TJuncaoCollectionItem; const OtimizarPara: TOtimizarPara);
+      reintroduce;
+    class function New(AJuncao: TJuncaoCollectionItem; const OtimizarPara: TOtimizarPara)
+      : IBuilderJuncao;
     procedure buildTabela; override;
     procedure buildCondicoes; override;
+    procedure buildSQL; override;
   end;
 
 implementation
@@ -25,6 +28,8 @@ uses
   System.Classes,
   DesignPattern.Builder.Intf.Director,
   DesignPattern.Builder.Impl.Director,
+  SQL.Intf.SQL,
+  SQL.Impl.SQL,
   SQL.Intf.Tabela,
   SQL.Intf.Tabela.Builder,
   SQL.Impl.Tabela.Director,
@@ -57,6 +62,13 @@ begin
   end;
 end;
 
+procedure TCBJuncao.buildSQL;
+begin
+  inherited;
+  if FJuncao.SQLTexto.Count <= 0 then
+    FObjeto.setTextoSQL(FJuncao.SQLTexto.Text)
+end;
+
 procedure TCBJuncao.buildTabela;
 var
   _director: IDirector<IBuilderTabela, ISQLTabela>;
@@ -79,7 +91,8 @@ begin
   setOtimizarPara(OtimizarPara);
 end;
 
-class function TCBJuncao.New(AJuncao: TJuncaoCollectionItem; const OtimizarPara: TOtimizarPara): IBuilderJuncao;
+class function TCBJuncao.New(AJuncao: TJuncaoCollectionItem; const OtimizarPara: TOtimizarPara)
+  : IBuilderJuncao;
 begin
   Result := Create(AJuncao, OtimizarPara);
 end;

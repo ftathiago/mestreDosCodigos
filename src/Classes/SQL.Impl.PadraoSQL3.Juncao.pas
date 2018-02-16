@@ -19,9 +19,9 @@ type
     FCondicoes: TList<ISQLCondicao>;
     function PegarCondicoesEmString: string;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
-    class function New: ISQLJuncao;
+    class function New: ISQLJuncao; reintroduce;
     function setTipoJuncao(const ATipoJuncao: TTipoJuncao = tjInnerJoin): ISQLJuncao;
     function setTabelaEstrangeira(const ATabela: ISQLTabela): ISQLJuncao;
     function addCondicao(const ACondicao: ISQLCondicao): ISQLJuncao;
