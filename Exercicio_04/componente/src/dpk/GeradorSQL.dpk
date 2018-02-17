@@ -79,7 +79,8 @@ contains
   SQL.Impl.PadraoSQL3.Insert in '..\Classes\SQL.Impl.PadraoSQL3.Insert.pas',
   SQL.Impl.ParColunaValor.Lista in '..\Classes\SQL.Impl.ParColunaValor.Lista.pas',
   SQL.Intf.Builder in '..\Classes\SQL.Intf.Builder.pas',
-  SQL.Impl.Builder in '..\Classes\SQL.Impl.Builder.pas';
+  SQL.Impl.Builder in '..\Classes\SQL.Impl.Builder.pas',
+  SQL.Impl.Select in '..\Classes\SQL.Impl.Select.pas';
 
 end.
 

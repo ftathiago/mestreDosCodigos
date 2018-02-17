@@ -49,6 +49,13 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     function GerarSQL: string;
+    procedure AddColuna(const NomeColuna: string; const NomeVirtual: string = '';
+      const Tabela: string = ''; const AliasTabela: string = '');
+    procedure setTabela(const NomeTabela: string; const Alias: string = ''); overload;
+    procedure setTabela(const SQL: string); overload;
+    procedure AddJuncao(const TipoJuncao: TTipoJuncao; const Tabela: string;
+      const Condicao: string);
+    procedure AddCondicao(const Condicao: string);
   published
     property InjetarSQLAntes: string read FInjetarSQLAntes write SetInjetarSQLAntes;
     property InjetarSQLApos: string read FInjetarSQLApos write SetInjetarSQLApos;
@@ -79,6 +86,45 @@ uses
   GeradorSQL.ConcreteBuilder.Select;
 
 { TSelect }
+
+procedure TMCSelect.AddCondicao(const Condicao: string);
+var
+  _condicao: TCondicaoCollectionItem;
+begin
+  _condicao := FCondicao.Add as TCondicaoCollectionItem;
+  _condicao.Condicao.SQLTexto.Text := Condicao;
+  _condicao.Condicao.OperadorLogico := olAnd;
+end;
+
+procedure TMCSelect.AddJuncao(const TipoJuncao: TTipoJuncao; const Tabela: string;
+  const Condicao: string);
+var
+  _juncao: TJuncaoCollectionItem;
+  _condicao: TCondicaoCollectionItem;
+begin
+  _juncao := FJuncao.Add as TJuncaoCollectionItem;
+
+  _juncao.TipoJuncao := TipoJuncao;
+
+  _juncao.Tabela.Nome := Tabela.Substring(0, Tabela.IndexOf(' ')).Trim;
+  _juncao.Tabela.Alias := Tabela.Substring(Tabela.IndexOf(' ')).Trim;
+
+  _condicao := _juncao.Condicao.Add as TCondicaoCollectionItem;
+  _condicao.Condicao.SQLTexto.Text := Condicao;
+end;
+
+procedure TMCSelect.AddColuna(const NomeColuna: string; const NomeVirtual: string = '';
+  const Tabela: string = ''; const AliasTabela: string = '');
+var
+  _coluna: TColunaCollectionItem;
+begin
+  _coluna := FColuna.Add as TColunaCollectionItem;
+
+  _coluna.Coluna.Tabela.Alias := AliasTabela;
+  _coluna.Coluna.Tabela.Nome := Tabela;
+  _coluna.Coluna.Nome := NomeColuna;
+  _coluna.Coluna.NomeVirtual := NomeVirtual;
+end;
 
 procedure TMCSelect.ConstruirSelect;
 var
@@ -194,6 +240,18 @@ procedure TMCSelect.SetSQLTexto(const Value: TStrings);
 begin
   FSQLTexto.Clear;
   FSQLTexto.Assign(Value);
+end;
+
+procedure TMCSelect.setTabela(const NomeTabela, Alias: string);
+begin
+  From.Nome := NomeTabela;
+  From.Alias := Alias;
+end;
+
+procedure TMCSelect.setTabela(const SQL: string);
+begin
+  From.SQLTexto.Clear;
+  From.SQLTexto.Add(SQL);
 end;
 
 end.

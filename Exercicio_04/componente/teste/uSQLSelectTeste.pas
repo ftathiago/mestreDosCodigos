@@ -68,7 +68,8 @@ var
   _select: ISQLSelect;
 begin
   _select := FDirector.getObjetoPronto;
-  Assert.AreEqual('select COLUNA' + #$D#$A +
+  Assert.AreEqual(
+    'select COLUNA' + #$D#$A +
       ', COLUNA' + #$D#$A +
       ', COLUNA' + #$D#$A +
       ', null as NOME_VIRTUAL' + #$D#$A +
@@ -84,7 +85,8 @@ begin
       'AND (COLUNA = VALOR)' + #$D#$A +
       'order by COLUNA' + #$D#$A +
       ', COLUNA' + #$D#$A +
-      ', COLUNA', _select.ToString.Trim);
+      ', COLUNA'
+      , _select.ToString.Trim);
 end;
 
 initialization

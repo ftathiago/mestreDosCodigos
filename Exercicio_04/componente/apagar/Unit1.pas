@@ -3,8 +3,17 @@ unit Unit1;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.Generics.Collections, GeradorSQL.Comp.Select,
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  System.Generics.Collections,
+  GeradorSQL.Comp.Select,
   Vcl.StdCtrls;
 
 type
@@ -23,10 +32,17 @@ var
 
 implementation
 
+uses
+  SQL.Enums;
+
 {$R *.dfm}
+
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
+  ReportMemoryLeaksOnShutdown := True;
+  MCSelect.AddColuna('adicionada na mão');
+  MCSelect.AddJuncao(tjInnerJoin, 'Tabela alias', 'coluna1 = coluna2');
   Memo1.Text := MCSelect.GerarSQL;
 end;
 
