@@ -1,21 +1,12 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{D16BC520-372B-41FC-BD86-F46961B8AB9C}</ProjectGuid>
+        <ProjectGuid>{AD7C3BA1-0754-4730-802B-58B434524509}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="Exercicio_04\componente\src\dpk\pkgUtils.dproj">
+        <Projects Include="FrameworkDpk\FrameworkDpk.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Exercicio_04\componente\src\dpk\GeradorSQL.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="Exercicio_04\componente\src\dpk\GeradorSQLDT.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="Exercicio_04\componente\teste\TesteSQL.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="Exercicio_04\componente\apagar\Project1.dproj">
+        <Projects Include="Exercicio_12\FrameWork.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -26,59 +17,32 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="pkgUtils">
-        <MSBuild Projects="Exercicio_04\componente\src\dpk\pkgUtils.dproj"/>
+    <Target Name="FrameworkDpk">
+        <MSBuild Projects="FrameworkDpk\FrameworkDpk.dproj"/>
     </Target>
-    <Target Name="pkgUtils:Clean">
-        <MSBuild Projects="Exercicio_04\componente\src\dpk\pkgUtils.dproj" Targets="Clean"/>
+    <Target Name="FrameworkDpk:Clean">
+        <MSBuild Projects="FrameworkDpk\FrameworkDpk.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="pkgUtils:Make">
-        <MSBuild Projects="Exercicio_04\componente\src\dpk\pkgUtils.dproj" Targets="Make"/>
+    <Target Name="FrameworkDpk:Make">
+        <MSBuild Projects="FrameworkDpk\FrameworkDpk.dproj" Targets="Make"/>
     </Target>
-    <Target Name="GeradorSQL">
-        <MSBuild Projects="Exercicio_04\componente\src\dpk\GeradorSQL.dproj"/>
+    <Target Name="FrameWork">
+        <MSBuild Projects="Exercicio_12\FrameWork.dproj"/>
     </Target>
-    <Target Name="GeradorSQL:Clean">
-        <MSBuild Projects="Exercicio_04\componente\src\dpk\GeradorSQL.dproj" Targets="Clean"/>
+    <Target Name="FrameWork:Clean">
+        <MSBuild Projects="Exercicio_12\FrameWork.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="GeradorSQL:Make">
-        <MSBuild Projects="Exercicio_04\componente\src\dpk\GeradorSQL.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="GeradorSQLDT">
-        <MSBuild Projects="Exercicio_04\componente\src\dpk\GeradorSQLDT.dproj"/>
-    </Target>
-    <Target Name="GeradorSQLDT:Clean">
-        <MSBuild Projects="Exercicio_04\componente\src\dpk\GeradorSQLDT.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="GeradorSQLDT:Make">
-        <MSBuild Projects="Exercicio_04\componente\src\dpk\GeradorSQLDT.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="TesteSQL">
-        <MSBuild Projects="Exercicio_04\componente\teste\TesteSQL.dproj"/>
-    </Target>
-    <Target Name="TesteSQL:Clean">
-        <MSBuild Projects="Exercicio_04\componente\teste\TesteSQL.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="TesteSQL:Make">
-        <MSBuild Projects="Exercicio_04\componente\teste\TesteSQL.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="Project1">
-        <MSBuild Projects="Exercicio_04\componente\apagar\Project1.dproj"/>
-    </Target>
-    <Target Name="Project1:Clean">
-        <MSBuild Projects="Exercicio_04\componente\apagar\Project1.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="Project1:Make">
-        <MSBuild Projects="Exercicio_04\componente\apagar\Project1.dproj" Targets="Make"/>
+    <Target Name="FrameWork:Make">
+        <MSBuild Projects="Exercicio_12\FrameWork.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="pkgUtils;GeradorSQL;GeradorSQLDT;TesteSQL;Project1"/>
+        <CallTarget Targets="FrameworkDpk;FrameWork"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="pkgUtils:Clean;GeradorSQL:Clean;GeradorSQLDT:Clean;TesteSQL:Clean;Project1:Clean"/>
+        <CallTarget Targets="FrameworkDpk:Clean;FrameWork:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="pkgUtils:Make;GeradorSQL:Make;GeradorSQLDT:Make;TesteSQL:Make;Project1:Make"/>
+        <CallTarget Targets="FrameworkDpk:Make;FrameWork:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
