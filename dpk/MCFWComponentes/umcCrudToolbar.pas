@@ -50,7 +50,10 @@ type
     procedure SetOnDesfazerClick(const Value: TDataSetClick);
     procedure SetOnImprimirClick(const Value: TDataSetClick);
     procedure SetOnSalvarClick(const Value: TDataSetClick);
+    procedure MonitorarEventos;
+    procedure DesmonitorarEventos;
   protected
+    function getDataSet: TDataSet;
     function TestarDataSetAtribuido: boolean;
     function TestarDataSetVazio: boolean;
     function TestarDataSetEditavel: boolean;
@@ -65,6 +68,10 @@ type
     { Public declarations }
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
+    procedure Salvar;
+    procedure Desfazer;
+    procedure Apagar;
+    procedure Imprimir;
   published
     property DataSource: TDataSource read FDataSource write SetDataSource;
     property Acoes: TCRUDAcoesSet read FAcoes write SetAcoes
@@ -81,24 +88,32 @@ implementation
 
 { TFrame1 }
 
+procedure TCrudToolbar.Apagar;
+begin
+  if not TestarDataSetVazio then
+    getDataSet.Delete;
+
+  DoApagarClick;
+end;
+
 procedure TCrudToolbar.btnCrudApagarClick(Sender: TObject);
 begin
-  DoApagarClick;
+  Apagar;
 end;
 
 procedure TCrudToolbar.btnCrudDesfazerClick(Sender: TObject);
 begin
-  DoDesfazerClick;
+  Desfazer;
 end;
 
 procedure TCrudToolbar.btnCrudImprimirClick(Sender: TObject);
 begin
-  DoApagarClick;
+  Imprimir;
 end;
 
 procedure TCrudToolbar.btnCrudSalvarClick(Sender: TObject);
 begin
-  DoSalvarClick;
+  Salvar;
 end;
 
 constructor TCrudToolbar.Create(AOwner: TComponent);
@@ -113,14 +128,26 @@ begin
     FOnDataChange(Sender, Field);
 end;
 
+procedure TCrudToolbar.Desfazer;
+begin
+  if TestarDataSetEditavel then
+    getDataSet.Cancel;
+
+  DoDesfazerClick;
+end;
+
+procedure TCrudToolbar.DesmonitorarEventos;
+begin
+  FDataSource.OnStateChange := FOnStateChange;
+  FDataSource.OnDataChange := FOnDataChange;
+  FDataSource.OnUpdateData := FOnUpdateData;
+end;
+
 destructor TCrudToolbar.Destroy;
 begin
   if Assigned(FDataSource) then
-  begin
-    FDataSource.OnStateChange := FOnStateChange;
-    FDataSource.OnDataChange := FOnDataChange;
-    FDataSource.OnUpdateData := FOnUpdateData;
-  end;
+    DesmonitorarEventos;
+
   inherited;
 end;
 
@@ -148,6 +175,37 @@ begin
     FOnSalvarClick(DataSource.DataSet);
 end;
 
+function TCrudToolbar.getDataSet: TDataSet;
+begin
+  result := nil;
+  if TestarDataSetAtribuido then
+    result := FDataSource.DataSet;
+end;
+
+procedure TCrudToolbar.Imprimir;
+begin
+  DoImprimirClick
+end;
+
+procedure TCrudToolbar.MonitorarEventos;
+begin
+  FOnStateChange := FDataSource.OnStateChange;
+  FOnDataChange := FDataSource.OnDataChange;
+  FOnUpdateData := FDataSource.OnUpdateData;
+
+  FDataSource.OnStateChange := StateChange;
+  FDataSource.OnDataChange := DataChange;
+  FDataSource.OnUpdateData := UpdateData;
+end;
+
+procedure TCrudToolbar.Salvar;
+begin
+  if TestarDataSetEditavel then
+    getDataSet.Post;
+
+  DoSalvarClick;
+end;
+
 procedure TCrudToolbar.SetAcoes(const Value: TCRUDAcoesSet);
 begin
   FAcoes := Value;
@@ -156,15 +214,12 @@ end;
 
 procedure TCrudToolbar.SetDataSource(const Value: TDataSource);
 begin
+  if Assigned(FDataSource) then
+    DesmonitorarEventos;
+
   FDataSource := Value;
 
-  FOnStateChange := FDataSource.OnStateChange;
-  FOnDataChange := FDataSource.OnDataChange;
-  FOnUpdateData := FDataSource.OnUpdateData;
-
-  FDataSource.OnStateChange := StateChange;
-  FDataSource.OnDataChange := DataChange;
-  FDataSource.OnUpdateData := UpdateData;
+  MonitorarEventos;
 
   SincronizarBotoes;
 end;
@@ -233,7 +288,7 @@ begin
   if TestarDataSetVazio then
     exit;
 
-  result := FDataSource.DataSet.State in dsEditModes;
+  result := FDataSource.State in dsEditModes;
 end;
 
 function TCrudToolbar.TestarDataSetVazio: boolean;
@@ -243,7 +298,7 @@ begin
   if not TestarDataSetAtribuido then
     exit;
 
-  result := FDataSource.DataSet.IsEmpty;
+  result := getDataSet.IsEmpty;
 end;
 
 procedure TCrudToolbar.UpdateData(Sender: TObject);

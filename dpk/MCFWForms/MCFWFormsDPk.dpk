@@ -1,4 +1,4 @@
-package FrameworkDpk;
+package MCFWFormsDPk;
 
 {$R *.res}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
@@ -31,13 +31,16 @@ requires
   rtl,
   vcl,
   dbrtl,
+  FireDAC,
+  FireDACCommonDriver,
+  FireDACCommon,
   vcldb,
-  dxCoreRS23,
-  cxLibraryRS23,
-  dxGDIPlusRS23,
-  dxThemeRS23;
+  MCFWComponentes;
 
 contains
-  umcFrmConsulta in 'umcFrmConsulta.pas' {fmcFrmConsulta: TFrame};
+  umcForm in 'umcForm.pas' {fmcForm},
+  umcDBForm in 'umcDBForm.pas' {fmcDBForm},
+  umcDBPesquisa in 'umcDBPesquisa.pas' {fmcDBPesquisa},
+  umcCRUD in 'umcCRUD.pas' {fmcCRUD};
 
 end.

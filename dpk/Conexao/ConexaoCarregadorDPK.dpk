@@ -1,0 +1,58 @@
+package ConexaoCarregadorDPK;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  xmlrtl,
+  vcl,
+  dbrtl,
+  DbxCommonDriver,
+  vclFireDAC,
+  FireDAC,
+  FireDACCommonDriver,
+  FireDACCommon,
+  FireDACPgDriver,
+  FireDACODBCDriver,
+  FireDACIBDriver,
+  FireDACMySQLDriver,
+  dbexpress,
+  FireDACDb2Driver,
+  FireDACMSSQLDriver,
+  FireDACOracleDriver,
+  FireDACDBXDriver;
+
+contains
+  Conexao.Impl.Configuracao in 'Conexao.Impl.Configuracao.pas',
+  Conexao.Intf.Configuracao in 'Conexao.Intf.Configuracao.pas',
+  Conexao.Impl.ConfiguracaoIni in 'Conexao.Impl.ConfiguracaoIni.pas',
+  Conexao.Impl.Configuracao.Fabrica in 'Conexao.Impl.Configuracao.Fabrica.pas',
+  Conexao.Intf.ConfiguracaoDeConexao in 'Conexao.Intf.ConfiguracaoDeConexao.pas',
+  Conexao.Impl.FDConfiguracaoDeConexao in 'Conexao.Impl.FDConfiguracaoDeConexao.pas';
+
+end.

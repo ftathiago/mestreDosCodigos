@@ -41,8 +41,6 @@ object fmcFrmConsulta: TfmcFrmConsulta
     ShowHint = True
     TabOrder = 1
     TabStop = True
-    ExplicitWidth = 320
-    ExplicitHeight = 104
     object btnSelecionar: TToolButton
       Left = 0
       Top = 0
@@ -81,7 +79,6 @@ object fmcFrmConsulta: TfmcFrmConsulta
     BevelOuter = bvNone
     ShowCaption = False
     TabOrder = 2
-    ExplicitWidth = 320
     object Label1: TLabel
       Left = 8
       Top = 4
@@ -148,7 +145,7 @@ object fmcFrmConsulta: TfmcFrmConsulta
     Left = 48
     Top = 72
     Bitmap = {
-      494C0101050008006C0020002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010105000900040020002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000004000000001002000000000000080
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

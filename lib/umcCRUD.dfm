@@ -11,7 +11,7 @@ inherited fmcCRUD: TfmcCRUD
     Top = 0
     Width = 697
     Height = 408
-    ActivePage = tbsCadastro
+    ActivePage = tbsPesquisa
     Align = alClient
     TabOrder = 0
     object tbsPesquisa: TTabSheet
@@ -32,15 +32,15 @@ inherited fmcCRUD: TfmcCRUD
         OnSelecionarClick = fmcFrmConsultaSelecionarClick
         OnNovoClick = fmcFrmConsultaNovoClick
         OnFecharClick = fmcFrmConsultaFecharClick
-        ExplicitLeft = 96
-        ExplicitTop = 72
-        ExplicitWidth = 494
-        ExplicitHeight = 240
       end
     end
     object tbsCadastro: TTabSheet
       Caption = ' Cadastro '
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object CrudToolbar: TCrudToolbar
         Left = 0
         Top = 328
@@ -52,9 +52,6 @@ inherited fmcCRUD: TfmcCRUD
         OnSalvarClick = CrudToolbarSalvarClick
         OnDesfazerClick = CrudToolbarDesfazerClick
         OnApagarClick = CrudToolbarApagarClick
-        ExplicitLeft = 232
-        ExplicitTop = 168
-        ExplicitWidth = 232
       end
     end
   end

@@ -1,4 +1,4 @@
-package FrameworkDpk;
+package MCFWComponentes;
 
 {$R *.res}
 {$R 'umcFrmConsulta.dcr'}
@@ -37,13 +37,17 @@ requires
   dxCoreRS23,
   cxLibraryRS23,
   dxGDIPlusRS23,
-  dxThemeRS23;
+  dxThemeRS23,
+  FireDAC,
+  FireDACCommon;
 
 contains
   umcFrmConsulta in 'umcFrmConsulta.pas' {fmcFrmConsulta: TFrame},
   umcRegistrationUnit in 'umcRegistrationUnit.pas',
   umcFrameWorkTypes in 'umcFrameWorkTypes.pas',
-  umcCrudToolbar in 'umcCrudToolbar.pas' {CrudToolbar: TFrame};
+  umcCrudToolbar in 'umcCrudToolbar.pas' {CrudToolbar: TFrame},
+  DataSet.Intf.ConfiguradorMetaData in 'DataSet.Intf.ConfiguradorMetaData.pas',
+  DataSet.Impl.ConfiguradorMetaData in 'DataSet.Impl.ConfiguradorMetaData.pas';
 
 end.
 

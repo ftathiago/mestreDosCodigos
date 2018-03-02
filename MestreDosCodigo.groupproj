@@ -3,7 +3,16 @@
         <ProjectGuid>{AD7C3BA1-0754-4730-802B-58B434524509}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="FrameworkDpk\FrameworkDpk.dproj">
+        <Projects Include="dpk\Conexao\ConexaoCarregadorDPK.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="dpk\MCFWComponentes\MCFWComponentes.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="dpk\MCFWComponentes\teste\Project1.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="dpk\MCFWForms\MCFWFormsDpk.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Exercicio_12\FrameWork.dproj">
@@ -17,14 +26,41 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="FrameworkDpk">
-        <MSBuild Projects="FrameworkDpk\FrameworkDpk.dproj"/>
+    <Target Name="ConexaoCarregadorDPK">
+        <MSBuild Projects="dpk\Conexao\ConexaoCarregadorDPK.dproj"/>
     </Target>
-    <Target Name="FrameworkDpk:Clean">
-        <MSBuild Projects="FrameworkDpk\FrameworkDpk.dproj" Targets="Clean"/>
+    <Target Name="ConexaoCarregadorDPK:Clean">
+        <MSBuild Projects="dpk\Conexao\ConexaoCarregadorDPK.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="FrameworkDpk:Make">
-        <MSBuild Projects="FrameworkDpk\FrameworkDpk.dproj" Targets="Make"/>
+    <Target Name="ConexaoCarregadorDPK:Make">
+        <MSBuild Projects="dpk\Conexao\ConexaoCarregadorDPK.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MCFWComponentes">
+        <MSBuild Projects="dpk\MCFWComponentes\MCFWComponentes.dproj"/>
+    </Target>
+    <Target Name="MCFWComponentes:Clean">
+        <MSBuild Projects="dpk\MCFWComponentes\MCFWComponentes.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MCFWComponentes:Make">
+        <MSBuild Projects="dpk\MCFWComponentes\MCFWComponentes.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project1">
+        <MSBuild Projects="dpk\MCFWComponentes\teste\Project1.dproj"/>
+    </Target>
+    <Target Name="Project1:Clean">
+        <MSBuild Projects="dpk\MCFWComponentes\teste\Project1.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project1:Make">
+        <MSBuild Projects="dpk\MCFWComponentes\teste\Project1.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MCFWFormsDpk">
+        <MSBuild Projects="dpk\MCFWForms\MCFWFormsDpk.dproj"/>
+    </Target>
+    <Target Name="MCFWFormsDpk:Clean">
+        <MSBuild Projects="dpk\MCFWForms\MCFWFormsDpk.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MCFWFormsDpk:Make">
+        <MSBuild Projects="dpk\MCFWForms\MCFWFormsDpk.dproj" Targets="Make"/>
     </Target>
     <Target Name="FrameWork">
         <MSBuild Projects="Exercicio_12\FrameWork.dproj"/>
@@ -36,13 +72,13 @@
         <MSBuild Projects="Exercicio_12\FrameWork.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="FrameworkDpk;FrameWork"/>
+        <CallTarget Targets="ConexaoCarregadorDPK;MCFWComponentes;Project1;MCFWFormsDpk;FrameWork"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="FrameworkDpk:Clean;FrameWork:Clean"/>
+        <CallTarget Targets="ConexaoCarregadorDPK:Clean;MCFWComponentes:Clean;Project1:Clean;MCFWFormsDpk:Clean;FrameWork:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="FrameworkDpk:Make;FrameWork:Make"/>
+        <CallTarget Targets="ConexaoCarregadorDPK:Make;MCFWComponentes:Make;Project1:Make;MCFWFormsDpk:Make;FrameWork:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

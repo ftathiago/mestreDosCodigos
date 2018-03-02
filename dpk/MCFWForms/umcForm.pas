@@ -15,6 +15,7 @@ uses
 
 type
   TfmcForm = class(TForm)
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -27,5 +28,10 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfmcForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+end;
 
 end.

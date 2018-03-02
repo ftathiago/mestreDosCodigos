@@ -1,9 +1,9 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{940D4599-927B-4058-BEB0-D5A13F547424}</ProjectGuid>
-        <MainSource>FrameworkDpk.dpk</MainSource>
+        <ProjectGuid>{3CB3F153-B645-4F0F-9F0D-CD66764B6323}</ProjectGuid>
+        <MainSource>ConexaoCarregadorDPK.dpk</MainSource>
         <ProjectVersion>18.0</ProjectVersion>
-        <FrameworkType>VCL</FrameworkType>
+        <FrameworkType>None</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
@@ -35,11 +35,11 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <GenDll>true</GenDll>
-        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <GenPackage>true</GenPackage>
-        <SanitizedProjectName>FrameworkDpk</SanitizedProjectName>
+        <SanitizedProjectName>ConexaoCarregadorDPK</SanitizedProjectName>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
+        <GenDll>true</GenDll>
+        <GenPackage>true</GenPackage>
         <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
         <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
         <DCC_E>false</DCC_E>
@@ -49,11 +49,10 @@
         <DCC_K>false</DCC_K>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Locale>1033</VerInfo_Locale>
-        <DCC_UsePackage>rtl;vcl;dbrtl;vcldb;dxCoreRS23;cxLibraryRS23;dxGDIPlusRS23;dxThemeRS23;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
@@ -64,15 +63,14 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <DCC_DcpOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\FrameworkDpk\lib\</DCC_DcpOutput>
-        <DCC_BplOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\FrameworkDpk\lib\</DCC_BplOutput>
-        <BRCC_OutputDir>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\FrameworkDpk\lib\</BRCC_OutputDir>
+        <DCC_DcpOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\</DCC_DcpOutput>
+        <DCC_UnitSearchPath>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_BplOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\</DCC_BplOutput>
+        <DCC_DcuOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\</DCC_DcuOutput>
+        <BRCC_IncludePath>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib;$(BRCC_IncludePath)</BRCC_IncludePath>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <PostBuildEvent><![CDATA[copy $(PROJECTDIR)\*.dfm $(OUTPUTDIR)
-$(PostBuildEvent)]]></PostBuildEvent>
-        <DCC_CBuilderOutput>None</DCC_CBuilderOutput>
-        <DCC_DcuOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\FrameworkDpk\lib\</DCC_DcuOutput>
         <VerInfo_Locale>1033</VerInfo_Locale>
+        <BRCC_OutputDir>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\</BRCC_OutputDir>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -85,27 +83,30 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="umcFrmConsulta.dcr"/>
         <DCCReference Include="rtl.dcp"/>
+        <DCCReference Include="xmlrtl.dcp"/>
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="dbrtl.dcp"/>
-        <DCCReference Include="vcldb.dcp"/>
-        <DCCReference Include="designide.dcp"/>
-        <DCCReference Include="dxCoreRS23.dcp"/>
-        <DCCReference Include="cxLibraryRS23.dcp"/>
-        <DCCReference Include="dxGDIPlusRS23.dcp"/>
-        <DCCReference Include="dxThemeRS23.dcp"/>
-        <DCCReference Include="umcFrmConsulta.pas">
-            <Form>fmcFrmConsulta</Form>
-            <DesignClass>TFrame</DesignClass>
-        </DCCReference>
-        <DCCReference Include="umcRegistrationUnit.pas"/>
-        <DCCReference Include="umcFrameWorkTypes.pas"/>
-        <DCCReference Include="umcCrudToolbar.pas">
-            <Form>CrudToolbar</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TFrame</DesignClass>
-        </DCCReference>
+        <DCCReference Include="DbxCommonDriver.dcp"/>
+        <DCCReference Include="vclFireDAC.dcp"/>
+        <DCCReference Include="FireDAC.dcp"/>
+        <DCCReference Include="FireDACCommonDriver.dcp"/>
+        <DCCReference Include="FireDACCommon.dcp"/>
+        <DCCReference Include="FireDACPgDriver.dcp"/>
+        <DCCReference Include="FireDACODBCDriver.dcp"/>
+        <DCCReference Include="FireDACIBDriver.dcp"/>
+        <DCCReference Include="FireDACMySQLDriver.dcp"/>
+        <DCCReference Include="dbexpress.dcp"/>
+        <DCCReference Include="FireDACDb2Driver.dcp"/>
+        <DCCReference Include="FireDACMSSQLDriver.dcp"/>
+        <DCCReference Include="FireDACOracleDriver.dcp"/>
+        <DCCReference Include="FireDACDBXDriver.dcp"/>
+        <DCCReference Include="Conexao.Impl.Configuracao.pas"/>
+        <DCCReference Include="Conexao.Intf.Configuracao.pas"/>
+        <DCCReference Include="Conexao.Impl.ConfiguracaoIni.pas"/>
+        <DCCReference Include="Conexao.Impl.Configuracao.Fabrica.pas"/>
+        <DCCReference Include="Conexao.Intf.ConfiguracaoDeConexao.pas"/>
+        <DCCReference Include="Conexao.Impl.FDConfiguracaoDeConexao.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -124,13 +125,32 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">FrameworkDpk.dpk</Source>
+                    <Source Name="MainSource">ConexaoCarregadorDPK.dpk</Source>
                 </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\dcp\GeradorSQL.bpl">File C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\dcp\GeradorSQL.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\dcp\GeradorSQLDT.bpl">File C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\dcp\GeradorSQLDT.bpl not found</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="2">
-                <DeployFile LocalName="lib\FrameworkDpk.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\lib\ConexaoCarregadorDPK.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>FrameworkDpk.bpl</RemoteName>
+                        <RemoteName>ConexaoCarregadorDPK.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -475,12 +495,4 @@ $(PostBuildEvent)]]></PostBuildEvent>
     <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
     <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
     <Import Project="$(MSBuildProjectName).deployproj" Condition="Exists('$(MSBuildProjectName).deployproj')"/>
-    <PropertyGroup Condition="'$(Config)'=='Debug' And '$(Platform)'=='Win32'">
-        <PreBuildEvent/>
-        <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
-        <PreLinkEvent/>
-        <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>copy $(PROJECTDIR)\*.dfm $(OUTPUTDIR)</PostBuildEvent>
-        <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
-    </PropertyGroup>
 </Project>
