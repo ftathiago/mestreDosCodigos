@@ -26,7 +26,8 @@ implementation
 
 { TFabricaCarregador }
 
-uses Conexao.Impl.ConfiguracaoIni;
+uses
+  Conexao.Impl.ConfiguracaoIni;
 
 constructor TFabricaCarregador.Create(const TipoOrigem: TTipoOrigem);
 begin

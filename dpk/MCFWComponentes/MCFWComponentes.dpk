@@ -39,7 +39,19 @@ requires
   dxGDIPlusRS23,
   dxThemeRS23,
   FireDAC,
-  FireDACCommon;
+  FireDACCommon,
+  DbxCommonDriver,
+  vclFireDAC,
+  FireDACPgDriver,
+  FireDACODBCDriver,
+  FireDACIBDriver,
+  FireDACMySQLDriver,
+  dbexpress,
+  FireDACDb2Driver,
+  FireDACMSSQLDriver,
+  FireDACOracleDriver,
+  FireDACDBXDriver,
+  ConexaoCarregadorDPK;
 
 contains
   umcFrmConsulta in 'umcFrmConsulta.pas' {fmcFrmConsulta: TFrame},
@@ -47,7 +59,12 @@ contains
   umcFrameWorkTypes in 'umcFrameWorkTypes.pas',
   umcCrudToolbar in 'umcCrudToolbar.pas' {CrudToolbar: TFrame},
   DataSet.Intf.ConfiguradorMetaData in 'DataSet.Intf.ConfiguradorMetaData.pas',
-  DataSet.Impl.ConfiguradorMetaData in 'DataSet.Impl.ConfiguradorMetaData.pas';
+  DataSet.Impl.ConfiguradorMetaData in 'DataSet.Impl.ConfiguradorMetaData.pas',
+  umcConstantes in 'umcConstantes.pas',
+  uRTTIUtils in 'uRTTIUtils.pas',
+  DataSet.Intf.DataSetContainer in 'DataSet.Intf.DataSetContainer.pas',
+  DataSet.Intf.MetaDataContainer in 'DataSet.Intf.MetaDataContainer.pas',
+  DataSet.Impl.MetaDataContainer in 'DataSet.Impl.MetaDataContainer.pas';
 
 end.
 

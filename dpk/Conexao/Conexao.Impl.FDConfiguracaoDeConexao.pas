@@ -3,7 +3,7 @@ unit Conexao.Impl.FDConfiguracaoDeConexao;
 interface
 
 uses
-  Conexao.Intf.FDConfiguracaoDeConexao,
+  Conexao.Intf.ConfiguracaoDeConexao,
   Conexao.Intf.Configuracao,
   Data.DB,
   FireDAC.Stan.Intf,

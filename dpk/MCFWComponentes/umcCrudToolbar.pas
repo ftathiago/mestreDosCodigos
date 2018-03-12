@@ -24,16 +24,18 @@ type
     ToolBar: TToolBar;
     btnCrudSalvar: TToolButton;
     btnCrudDesfazer: TToolButton;
-    ToolButton3: TToolButton;
+    btnSeparator1: TToolButton;
     btnCrudApagar: TToolButton;
     btnCrudImprimir: TToolButton;
     ImageList: TImageList;
+    btnCrudAtualizar: TToolButton;
+    ImageListDisabled: TImageList;
     procedure btnCrudSalvarClick(Sender: TObject);
     procedure btnCrudDesfazerClick(Sender: TObject);
     procedure btnCrudApagarClick(Sender: TObject);
     procedure btnCrudImprimirClick(Sender: TObject);
+    procedure btnCrudAtualizarClick(Sender: TObject);
   private
-    { Private declarations }
     FAcoes: TCRUDAcoesSet;
     FDataSource: TDataSource;
     FOnStateChange: TNotifyEvent;
@@ -43,6 +45,7 @@ type
     FOnImprimirClick: TDataSetClick;
     FOnApagarClick: TDataSetClick;
     FOnDesfazerClick: TDataSetClick;
+    FOnAtualizarClick: TDataSetAtualizarClick;
     procedure SincronizarBotoes;
     procedure SetAcoes(const Value: TCRUDAcoesSet);
     procedure SetDataSource(const Value: TDataSource);
@@ -50,6 +53,7 @@ type
     procedure SetOnDesfazerClick(const Value: TDataSetClick);
     procedure SetOnImprimirClick(const Value: TDataSetClick);
     procedure SetOnSalvarClick(const Value: TDataSetClick);
+    procedure SetOnAtualizarClick(const Value: TDataSetAtualizarClick);
     procedure MonitorarEventos;
     procedure DesmonitorarEventos;
   protected
@@ -64,14 +68,15 @@ type
     procedure DoDesfazerClick;
     procedure DoApagarClick;
     procedure DoImprimirClick;
+    procedure DoAtualizarClick;
   public
-    { Public declarations }
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure Salvar;
     procedure Desfazer;
     procedure Apagar;
     procedure Imprimir;
+    procedure Atualizar;
   published
     property DataSource: TDataSource read FDataSource write SetDataSource;
     property Acoes: TCRUDAcoesSet read FAcoes write SetAcoes
@@ -80,6 +85,8 @@ type
     property OnDesfazerClick: TDataSetClick read FOnDesfazerClick write SetOnDesfazerClick;
     property OnApagarClick: TDataSetClick read FOnApagarClick write SetOnApagarClick;
     property OnImprimirClick: TDataSetClick read FOnImprimirClick write SetOnImprimirClick;
+    property OnAtualizarClick: TDataSetAtualizarClick read FOnAtualizarClick
+      write SetOnAtualizarClick;
   end;
 
 implementation
@@ -96,9 +103,19 @@ begin
   DoApagarClick;
 end;
 
+procedure TCrudToolbar.Atualizar;
+begin
+  DoAtualizarClick;
+end;
+
 procedure TCrudToolbar.btnCrudApagarClick(Sender: TObject);
 begin
   Apagar;
+end;
+
+procedure TCrudToolbar.btnCrudAtualizarClick(Sender: TObject);
+begin
+  Atualizar;
 end;
 
 procedure TCrudToolbar.btnCrudDesfazerClick(Sender: TObject);
@@ -155,6 +172,19 @@ procedure TCrudToolbar.DoApagarClick;
 begin
   if Assigned(FOnApagarClick) then
     FOnApagarClick(DataSource.DataSet);
+end;
+
+procedure TCrudToolbar.DoAtualizarClick;
+var
+  _atualizado: boolean;
+begin
+  _atualizado := False;
+
+  if Assigned(FOnAtualizarClick) then
+    FOnAtualizarClick(DataSource.DataSet, _atualizado);
+
+  if not _atualizado then
+    getDataSet.Refresh;
 end;
 
 procedure TCrudToolbar.DoDesfazerClick;
@@ -229,6 +259,11 @@ begin
   FOnApagarClick := Value;
 end;
 
+procedure TCrudToolbar.SetOnAtualizarClick(const Value: TDataSetAtualizarClick);
+begin
+  FOnAtualizarClick := Value;
+end;
+
 procedure TCrudToolbar.SetOnDesfazerClick(const Value: TDataSetClick);
 begin
   FOnDesfazerClick := Value;
@@ -250,11 +285,15 @@ begin
   btnCrudDesfazer.Visible := (crudCancelar in Acoes);
   btnCrudApagar.Visible := (crudApagar in Acoes);
   btnCrudImprimir.Visible := (crudImprimir in Acoes);
+  btnCrudAtualizar.Visible := (crudAtualizar in Acoes);
 
-  btnCrudSalvar.Enabled := (not TestarDataSetVazio) and btnCrudSalvar.Visible;
-  btnCrudDesfazer.Enabled := (not TestarDataSetVazio) and btnCrudDesfazer.Visible;
+  btnCrudSalvar.Enabled := (TestarDataSetEditavel) and btnCrudSalvar.Visible;
+  btnCrudDesfazer.Enabled := (TestarDataSetEditavel) and btnCrudDesfazer.Visible;
   btnCrudApagar.Enabled := (not TestarDataSetVazio) and btnCrudApagar.Visible;
-  btnCrudImprimir.Enabled := (not TestarDataSetVazio) and btnCrudImprimir.Visible;
+  btnCrudImprimir.Enabled := (not TestarDataSetVazio) and (not TestarDataSetEditavel) and
+    btnCrudImprimir.Visible;
+  btnCrudAtualizar.Enabled := (TestarDataSetAtribuido) and (not TestarDataSetEditavel)
+    and btnCrudAtualizar.Visible;
 end;
 
 procedure TCrudToolbar.StateChange(Sender: TObject);
@@ -267,7 +306,7 @@ end;
 
 function TCrudToolbar.TestarDataSetAtribuido: boolean;
 begin
-  result := false;
+  result := False;
 
   if not Assigned(FDataSource) then
     exit;
@@ -275,12 +314,12 @@ begin
   if not Assigned(FDataSource.DataSet) then
     exit;
 
-  result := true;
+  result := True;
 end;
 
 function TCrudToolbar.TestarDataSetEditavel: boolean;
 begin
-  result := false;
+  result := False;
 
   if not TestarDataSetAtribuido then
     exit;
@@ -293,7 +332,7 @@ end;
 
 function TCrudToolbar.TestarDataSetVazio: boolean;
 begin
-  result := true;
+  result := True;
 
   if not TestarDataSetAtribuido then
     exit;

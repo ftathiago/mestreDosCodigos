@@ -1,4 +1,4 @@
-program Project1;
+program TesteComponente;
 
 {$IFNDEF TESTINSIGHT}
 {$APPTYPE CONSOLE}
@@ -11,9 +11,10 @@ uses
   DUnitX.Loggers.Console,
   DUnitX.Loggers.Xml.NUnit,
   DUnitX.TestFramework,
-  Unit1 in 'Unit1.pas',
+  Teste.ConfiguradorMeta in 'Teste.ConfiguradorMeta.pas',
   ufwAplicacao in '..\..\..\Exercicio_12\ufwAplicacao.pas',
-  Teste.FonteDados in 'Teste.FonteDados.pas';
+  Teste.Util.FonteDados in 'Teste.Util.FonteDados.pas',
+  uRTTIUtils in '..\uRTTIUtils.pas';
 
 var
   runner : ITestRunner;

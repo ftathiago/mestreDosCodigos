@@ -50,12 +50,18 @@ uses
   FireDAC.Phys.PG,
   FireDAC.Phys.MySQL,
   Conexao.Intf.Configuracao,
-  Conexao.Intf.FDConfiguracaoDeConexao,
+  Conexao.Intf.ConfiguracaoDeConexao,
   Vcl.Menus,
   FireDAC.Stan.Param,
   FireDAC.DatS,
   FireDAC.DApt.Intf,
-  FireDAC.Comp.DataSet;
+  FireDAC.Comp.DataSet,
+  System.ImageList,
+  Vcl.ImgList,
+  Vcl.ToolWin,
+  Vcl.ComCtrls,
+  System.Actions,
+  Vcl.ActnList;
 
 type
   TffwPrincipal = class(TForm)
@@ -64,6 +70,11 @@ type
     Cadastro1: TMenuItem;
     mnuffwConfigEntidade: TMenuItem;
     FDMemTable1: TFDMemTable;
+    ToolBar1: TToolBar;
+    iml32: TImageList;
+    ToolButton1: TToolButton;
+    ActionList: TActionList;
+    actffwConfigEntidade: TAction;
     procedure FormCreate(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure AbrirForm(Sender: TObject);
@@ -94,7 +105,6 @@ var
   _nomeComponente: string;
 begin
   _nomeComponente := 'T' + String(TComponent(Sender).Name).Substring(3);
-
   _aplicacao := TAplicacao.ObterInstancia;
   _aplicacao.CriarFormulario(_nomeComponente, Self, _form);
 

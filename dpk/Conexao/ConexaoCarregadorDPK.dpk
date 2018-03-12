@@ -53,6 +53,10 @@ contains
   Conexao.Impl.ConfiguracaoIni in 'Conexao.Impl.ConfiguracaoIni.pas',
   Conexao.Impl.Configuracao.Fabrica in 'Conexao.Impl.Configuracao.Fabrica.pas',
   Conexao.Intf.ConfiguracaoDeConexao in 'Conexao.Intf.ConfiguracaoDeConexao.pas',
-  Conexao.Impl.FDConfiguracaoDeConexao in 'Conexao.Impl.FDConfiguracaoDeConexao.pas';
+  Conexao.Impl.FDConfiguracaoDeConexao in 'Conexao.Impl.FDConfiguracaoDeConexao.pas',
+  Conexao.Intf.Fabrica in 'Conexao.Intf.Fabrica.pas',
+  Conexao.Impl.Fabrica.FireDac in 'Conexao.Impl.Fabrica.FireDac.pas';
 
 end.
+
+

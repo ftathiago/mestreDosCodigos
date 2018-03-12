@@ -52,7 +52,7 @@
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <DCC_UsePackage>rtl;vcl;dbrtl;vcldb;dxCoreRS23;cxLibraryRS23;dxGDIPlusRS23;dxThemeRS23;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>rtl;vcl;dbrtl;vcldb;dxCoreRS23;cxLibraryRS23;dxGDIPlusRS23;dxThemeRS23;DbxCommonDriver;vclFireDAC;FireDAC;FireDACCommon;FireDACPgDriver;FireDACODBCDriver;FireDACIBDriver;FireDACMySQLDriver;dbexpress;FireDACDb2Driver;FireDACMSSQLDriver;FireDACOracleDriver;FireDACDBXDriver;ConexaoCarregadorDPK;$(DCC_UsePackage)</DCC_UsePackage>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
@@ -97,6 +97,18 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DCCReference Include="dxThemeRS23.dcp"/>
         <DCCReference Include="FireDAC.dcp"/>
         <DCCReference Include="FireDACCommon.dcp"/>
+        <DCCReference Include="DbxCommonDriver.dcp"/>
+        <DCCReference Include="vclFireDAC.dcp"/>
+        <DCCReference Include="FireDACPgDriver.dcp"/>
+        <DCCReference Include="FireDACODBCDriver.dcp"/>
+        <DCCReference Include="FireDACIBDriver.dcp"/>
+        <DCCReference Include="FireDACMySQLDriver.dcp"/>
+        <DCCReference Include="dbexpress.dcp"/>
+        <DCCReference Include="FireDACDb2Driver.dcp"/>
+        <DCCReference Include="FireDACMSSQLDriver.dcp"/>
+        <DCCReference Include="FireDACOracleDriver.dcp"/>
+        <DCCReference Include="FireDACDBXDriver.dcp"/>
+        <DCCReference Include="ConexaoCarregadorDPK.dcp"/>
         <DCCReference Include="umcFrmConsulta.pas">
             <Form>fmcFrmConsulta</Form>
             <DesignClass>TFrame</DesignClass>
@@ -110,6 +122,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
         </DCCReference>
         <DCCReference Include="DataSet.Intf.ConfiguradorMetaData.pas"/>
         <DCCReference Include="DataSet.Impl.ConfiguradorMetaData.pas"/>
+        <DCCReference Include="umcConstantes.pas"/>
+        <DCCReference Include="uRTTIUtils.pas"/>
+        <DCCReference Include="DataSet.Intf.DataSetContainer.pas"/>
+        <DCCReference Include="DataSet.Intf.MetaDataContainer.pas"/>
+        <DCCReference Include="DataSet.Impl.MetaDataContainer.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -142,7 +159,16 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\Resources</RemoteDir>
@@ -456,16 +482,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>

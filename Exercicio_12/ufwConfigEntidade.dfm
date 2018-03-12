@@ -16,7 +16,6 @@ inherited ffwConfigEntidade: TffwConfigEntidade
     Height = 185
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 116
     object grdENTIDADE: TDBGrid
       Left = 1
       Top = 1
@@ -41,7 +40,6 @@ inherited ffwConfigEntidade: TffwConfigEntidade
     Align = alClient
     AutoSize = True
     TabOrder = 1
-    ExplicitWidth = 116
     object grdENT_PROPRIEDADE: TDBGrid
       Left = 1
       Top = 1
@@ -49,7 +47,7 @@ inherited ffwConfigEntidade: TffwConfigEntidade
       Height = 260
       Align = alClient
       DataSource = dsEntPropriedade
-      TabOrder = 0
+      TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -11
@@ -70,39 +68,50 @@ inherited ffwConfigEntidade: TffwConfigEntidade
       DrawingStyle = dsGradient
       Images = imgEntidades
       ShowCaptions = True
-      TabOrder = 1
-      ExplicitTop = 201
-      ExplicitWidth = 114
-      object CrudToolbar: TCrudToolbar
-        Left = 0
-        Top = 0
-        Width = 212
-        Height = 52
-        AutoSize = True
-        TabOrder = 0
-        DataSource = dsEntidade
-        OnSalvarClick = CrudToolbarSalvarClick
-        OnDesfazerClick = CrudToolbarDesfazerClick
-      end
+      TabOrder = 0
       object ToolButton1: TToolButton
-        Left = 212
+        Left = 0
         Top = 0
         Action = actLerEstruturaDoBanco
         AutoSize = True
         Style = tbsTextButton
       end
       object ToolButton2: TToolButton
-        Left = 333
+        Left = 121
         Top = 0
-        Width = 8
+        Width = 10
         Caption = 'ToolButton2'
-        ImageIndex = 1
         Style = tbsSeparator
+      end
+      object CrudToolbar: TCrudToolbar
+        Left = 131
+        Top = 0
+        Width = 261
+        Height = 52
+        Align = alBottom
+        AutoSize = True
+        Constraints.MaxHeight = 52
+        Constraints.MaxWidth = 261
+        Constraints.MinHeight = 38
+        Constraints.MinWidth = 261
+        TabOrder = 0
+        DataSource = dsEntidade
+        OnSalvarClick = CrudToolbarSalvarClick
+        OnDesfazerClick = CrudToolbarDesfazerClick
       end
     end
   end
   object ENT_PROPRIEDADE: TFDQuery
+    AfterOpen = ENT_PROPRIEDADEAfterOpen
     CachedUpdates = True
+    Indexes = <
+      item
+        Active = True
+        Selected = True
+        Name = 'IDX_POSICAO'
+        Fields = 'ENTIDADE_ID;POSICAO'
+      end>
+    IndexName = 'IDX_POSICAO'
     MasterSource = dsEntidade
     MasterFields = 'ID'
     DetailFields = 'ID'
@@ -118,10 +127,11 @@ inherited ffwConfigEntidade: TffwConfigEntidade
       '     , ENT_PROPRIEDADE.ENTIDADE_ID'
       '     , ENT_PROPRIEDADE.NOME'
       '     , ENT_PROPRIEDADE.DESCRICAO'
-      '     , ENT_PROPRIEDADE.TAMANHO'
-      '     , ENT_PROPRIEDADE.CASAS_DECIMAIS'
       '     , ENT_PROPRIEDADE.REQUERIDO'
       '     , ENT_PROPRIEDADE.SOMENTE_LEITURA'
+      '     , ENT_PROPRIEDADE.VISIVEL'
+      '     , ENT_PROPRIEDADE.TAMANHO_DISPLAY'
+      '     , ENT_PROPRIEDADE.POSICAO'
       'from ENT_PROPRIEDADE'
       'where ENT_PROPRIEDADE.ENTIDADE_ID = :ID')
     Left = 168
@@ -134,12 +144,11 @@ inherited ffwConfigEntidade: TffwConfigEntidade
         Size = 4
         Value = Null
       end>
-    object ENT_PROPRIEDADEID: TIntegerField
-      AutoGenerateValue = arAutoInc
+    object ENT_PROPRIEDADEID: TFDAutoIncField
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
+      IdentityInsert = True
     end
     object ENT_PROPRIEDADEENTIDADE_ID: TIntegerField
       FieldName = 'ENTIDADE_ID'
@@ -158,16 +167,6 @@ inherited ffwConfigEntidade: TffwConfigEntidade
       Required = True
       Size = 100
     end
-    object ENT_PROPRIEDADETAMANHO: TIntegerField
-      FieldName = 'TAMANHO'
-      Origin = 'TAMANHO'
-      Required = True
-    end
-    object ENT_PROPRIEDADECASAS_DECIMAIS: TIntegerField
-      FieldName = 'CASAS_DECIMAIS'
-      Origin = 'CASAS_DECIMAIS'
-      Required = True
-    end
     object ENT_PROPRIEDADEREQUERIDO: TStringField
       FieldName = 'REQUERIDO'
       Origin = 'REQUERIDO'
@@ -181,6 +180,23 @@ inherited ffwConfigEntidade: TffwConfigEntidade
       Required = True
       FixedChar = True
       Size = 1
+    end
+    object ENT_PROPRIEDADEVISIVEL: TStringField
+      FieldName = 'VISIVEL'
+      Origin = 'VISIVEL'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object ENT_PROPRIEDADETAMANHO_DISPLAY: TIntegerField
+      FieldName = 'TAMANHO_DISPLAY'
+      Origin = 'TAMANHO_DISPLAY'
+      Required = True
+    end
+    object ENT_PROPRIEDADEPOSICAO: TSmallintField
+      FieldName = 'POSICAO'
+      Origin = 'POSICAO'
+      Required = True
     end
   end
   object dsEntidade: TDataSource
@@ -849,6 +865,7 @@ inherited ffwConfigEntidade: TffwConfigEntidade
     end
   end
   object ENTIDADE: TFDQuery
+    AfterOpen = ENTIDADEAfterOpen
     CachedUpdates = True
     Connection = ffwPrincipal.FDConnection
     UpdateOptions.AssignedValues = [uvGeneratorName]

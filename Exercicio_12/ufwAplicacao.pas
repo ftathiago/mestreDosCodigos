@@ -5,7 +5,7 @@ interface
 uses
   System.Classes,
   Vcl.Forms,
-  Conexao.Intf.FDConfiguracaoDeConexao,
+  Conexao.Intf.ConfiguracaoDeConexao,
   Conexao.Intf.Configuracao;
 
 type
@@ -16,13 +16,14 @@ type
     FConexaoConfiguracao: IConexaoConfiguracao;
     procedure CriarConexaoConfiguracao;
     function GetCarregadorINI: IConexaoCarregador;
+    function PegarFormJaCriado(const FormClass: TFormClass; const Owner: TForm): TForm;
     constructor Create;
   public
     class function ObterInstancia: TAplicacao;
     class function NewInstance: TObject; override;
     function GetConfiguracaoConexao: IConexaoConfiguracao;
     procedure ConfigurarConexao(Configurador: IFDConfiguracaoDeConexao);
-    procedure CriarFormulario(const NomeDoForm: string; const Owner: TComponent; out obj);
+    procedure CriarFormulario(const NomeDoForm: string; const Owner: TForm; out obj);
     destructor Destroy; override;
   end;
 
@@ -53,12 +54,19 @@ begin
   GetCarregadorINI.CarregarConfiguracoes(FConexaoConfiguracao);
 end;
 
-procedure TAplicacao.CriarFormulario(const NomeDoForm: string; const Owner: TComponent; out obj);
+procedure TAplicacao.CriarFormulario(const NomeDoForm: string; const Owner: TForm; out obj);
 var
   _frmClass: TFormClass;
+  _form: TForm;
 begin
   _frmClass := TFormClass(FindClass(NomeDoForm));
-  TForm(obj) := _frmClass.Create(Owner);
+
+  _form := PegarFormJaCriado(_frmClass, Owner);
+
+  if not Assigned(_form) then
+    _form := _frmClass.Create(Owner);
+
+    TForm(obj) := _form
 end;
 
 destructor TAplicacao.Destroy;
@@ -89,6 +97,21 @@ end;
 class function TAplicacao.ObterInstancia: TAplicacao;
 begin
   result := TAplicacao.Create;
+end;
+
+function TAplicacao.PegarFormJaCriado(const FormClass: TFormClass; const Owner: TForm): TForm;
+var
+  i: Integer;
+begin
+  result := nil;
+  for i := 0 to Pred(Owner.MDIChildCount) do
+  begin
+    if Owner.MDIChildren[i].ClassNameIs(FormClass.ClassName) then
+    begin
+      result := Owner.MDIChildren[i];
+      break;
+    end;
+  end;
 end;
 
 initialization
