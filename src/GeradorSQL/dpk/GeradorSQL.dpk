@@ -1,0 +1,87 @@
+package GeradorSQL;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl;
+
+contains
+  DesignPattern.Builder.Impl.Builder in '..\..\DesignPattern\DesignPattern.Builder.Impl.Builder.pas',
+  DesignPattern.Builder.Impl.Director in '..\..\DesignPattern\DesignPattern.Builder.Impl.Director.pas',
+  DesignPattern.Builder.Intf.Builder in '..\..\DesignPattern\DesignPattern.Builder.Intf.Builder.pas',
+  DesignPattern.Builder.Intf.Director in '..\..\DesignPattern\DesignPattern.Builder.Intf.Director.pas',
+  SQL.Enums in '..\RT\SQL.Enums.pas',
+  SQL.Exceptions in '..\RT\SQL.Exceptions.pas',
+  SQL.Mensagens in '..\RT\SQL.Mensagens.pas',
+  SQL.Constantes in '..\RT\SQL.Constantes.pas',
+  SQL.Intf.Fabrica in '..\RT\SQL.Intf.Fabrica.pas',
+  SQL.Intf.Coluna in '..\RT\SQL.Intf.Coluna.pas',
+  SQL.Intf.Condicao in '..\RT\SQL.Intf.Condicao.pas',
+  SQL.Intf.Juncao in '..\RT\SQL.Intf.Juncao.pas',
+  SQL.Intf.SQL in '..\RT\SQL.Intf.SQL.pas',
+  SQL.Intf.Tabela in '..\RT\SQL.Intf.Tabela.pas',
+  SQL.Impl.SQL in '..\RT\SQL.Impl.SQL.pas',
+  SQL.Impl.Fabrica in '..\RT\SQL.Impl.Fabrica.pas',
+  SQL.Impl.Condicao.Lista in '..\RT\SQL.Impl.Condicao.Lista.pas',
+  SQL.Impl.Coluna.Lista in '..\RT\SQL.Impl.Coluna.Lista.pas',
+  SQL.Impl.PadraoSQL3.Coluna in '..\RT\SQL.Impl.PadraoSQL3.Coluna.pas',
+  SQL.Impl.PadraoSQL3.Condicao in '..\RT\SQL.Impl.PadraoSQL3.Condicao.pas',
+  SQL.Impl.PadraoSQL3.Juncao in '..\RT\SQL.Impl.PadraoSQL3.Juncao.pas',
+  SQL.Impl.PadraoSQL3.Tabela in '..\RT\SQL.Impl.PadraoSQL3.Tabela.pas',
+  SQL.Impl.PadraoSQL3.Fabrica in '..\RT\SQL.Impl.PadraoSQL3.Fabrica.pas',
+  SQL.Impl.PadraoSQL3.Select in '..\RT\SQL.Impl.PadraoSQL3.Select.pas',
+  SQL.Intf.Coluna.Builder in '..\RT\SQL.Intf.Coluna.Builder.pas',
+  SQL.Impl.Coluna.Builder in '..\RT\SQL.Impl.Coluna.Builder.pas',
+  SQL.Impl.Coluna.Director in '..\RT\SQL.Impl.Coluna.Director.pas',
+  SQL.Intf.Coluna.Director in '..\RT\SQL.Intf.Coluna.Director.pas',
+  SQL.Intf.Condicao.Builder in '..\RT\SQL.Intf.Condicao.Builder.pas',
+  SQL.Impl.Condicao.Builder in '..\RT\SQL.Impl.Condicao.Builder.pas',
+  SQL.Impl.Condicao.Director in '..\RT\SQL.Impl.Condicao.Director.pas',
+  SQL.Impl.Juncao.Director in '..\RT\SQL.Impl.Juncao.Director.pas',
+  SQL.Impl.Juncao.Builder in '..\RT\SQL.Impl.Juncao.Builder.pas',
+  SQL.Intf.Juncao.Builder in '..\RT\SQL.Intf.Juncao.Builder.pas',
+  SQL.Impl.Juncao.Lista in '..\RT\SQL.Impl.Juncao.Lista.pas',
+  SQL.Impl.Select.Builder in '..\RT\SQL.Impl.Select.Builder.pas',
+  SQL.Impl.Select.Director in '..\RT\SQL.Impl.Select.Director.pas',
+  SQL.Intf.Select.Builder in '..\RT\SQL.Intf.Select.Builder.pas',
+  SQL.Intf.Select in '..\RT\SQL.Intf.Select.pas',
+  SQL.Intf.Tabela.Builder in '..\RT\SQL.Intf.Tabela.Builder.pas',
+  SQL.Impl.Tabela.Builder in '..\RT\SQL.Impl.Tabela.Builder.pas',
+  SQL.Impl.Tabela.Director in '..\RT\SQL.Impl.Tabela.Director.pas',
+  SQL.Intf.Insert in '..\RT\SQL.Intf.Insert.pas',
+  SQL.Intf.ParColunaValor in '..\RT\SQL.Intf.ParColunaValor.pas',
+  SQL.Impl.ParColunaValor in '..\RT\SQL.Impl.ParColunaValor.pas',
+  SQL.Impl.PadraoSQL3.Insert in '..\RT\SQL.Impl.PadraoSQL3.Insert.pas',
+  SQL.Impl.ParColunaValor.Lista in '..\RT\SQL.Impl.ParColunaValor.Lista.pas',
+  SQL.Intf.Builder in '..\RT\SQL.Intf.Builder.pas',
+  SQL.Impl.Builder in '..\RT\SQL.Impl.Builder.pas',
+  SQL.Impl.Select in '..\RT\SQL.Impl.Select.pas';
+
+end.
+
+

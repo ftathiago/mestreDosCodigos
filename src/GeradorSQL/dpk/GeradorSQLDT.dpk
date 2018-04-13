@@ -1,0 +1,53 @@
+package GeradorSQLDT;
+
+{$R *.res}
+{$R 'GeradorSQL.Comp.Select.dcr'}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  GeradorSQL;
+
+contains
+  GeradorSQL.Registrar in '..\DT\GeradorSQL.Registrar.pas',
+  GeradorSQL.Comp.Select in '..\DT\GeradorSQL.Comp.Select.pas',
+  GeradorSQL.Comp.Collection.Tabela in '..\DT\GeradorSQL.Comp.Collection.Tabela.pas',
+  GeradorSQL.Comp.Collection.Coluna in '..\DT\GeradorSQL.Comp.Collection.Coluna.pas',
+  GeradorSQL.Comp.Collection.Condicao in '..\DT\GeradorSQL.Comp.Collection.Condicao.pas',
+  GeradorSQL.Comp.Collection.Juncao in '..\DT\GeradorSQL.Comp.Collection.Juncao.pas',
+  GeradorSQL.ConcreteBuilder.Tabela in '..\DT\GeradorSQL.ConcreteBuilder.Tabela.pas',
+  GeradorSQL.ConcreteBuilder.Select in '..\DT\GeradorSQL.ConcreteBuilder.Select.pas',
+  GeradorSQL.ConcreteBuilder.Coluna in '..\DT\GeradorSQL.ConcreteBuilder.Coluna.pas',
+  GeradorSQL.ConcreteBuilder.Juncao in '..\DT\GeradorSQL.ConcreteBuilder.Juncao.pas',
+  GeradorSQL.ConcreteBuilder.Condicao in '..\DT\GeradorSQL.ConcreteBuilder.Condicao.pas',
+  GeradorSQL.Comp.Insert in '..\DT\GeradorSQL.Comp.Insert.pas',
+  GeradorSQL.Comp.SQLDTO in '..\DT\GeradorSQL.Comp.SQLDTO.pas';
+
+end.
+
+
+

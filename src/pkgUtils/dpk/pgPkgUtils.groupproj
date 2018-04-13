@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{BB5E68E4-2116-4783-AE34-73093B97E6B0}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="pkgUtils.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\Teste\pkgUtilsTeste.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="pkgUtils">
+        <MSBuild Projects="pkgUtils.dproj"/>
+    </Target>
+    <Target Name="pkgUtils:Clean">
+        <MSBuild Projects="pkgUtils.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgUtils:Make">
+        <MSBuild Projects="pkgUtils.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="pkgUtilsTeste">
+        <MSBuild Projects="..\Teste\pkgUtilsTeste.dproj"/>
+    </Target>
+    <Target Name="pkgUtilsTeste:Clean">
+        <MSBuild Projects="..\Teste\pkgUtilsTeste.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgUtilsTeste:Make">
+        <MSBuild Projects="..\Teste\pkgUtilsTeste.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="pkgUtils;pkgUtilsTeste"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="pkgUtils:Clean;pkgUtilsTeste:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="pkgUtils:Make;pkgUtilsTeste:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

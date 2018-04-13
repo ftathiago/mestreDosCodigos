@@ -1,0 +1,19 @@
+unit Conexao.Constantes;
+
+interface
+
+const
+  DEFAULT_SERVER = '127.0.0.1';
+  DEFAULT_DATABASE = 'DATABASE';
+  DEFAULT_SCHEMA = 'SCHEMA';
+  DEFAULT_USERNAME = 'USERNAME';
+  DEFAULT_PASSWORD = 'password';
+  DEFAULT_PROTOCOLO = '';
+  DEFAULT_PORTA = 0;
+  DEFAULT_CHARACTER = 'NONE';
+  DEFAULT_DRIVERID = '';
+  DEFAULT_POOLED = False;
+
+implementation
+
+end.

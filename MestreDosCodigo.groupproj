@@ -3,19 +3,28 @@
         <ProjectGuid>{AD7C3BA1-0754-4730-802B-58B434524509}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="dpk\Conexao\ConexaoCarregadorDPK.dproj">
+        <Projects Include="src\Conexao\ConexaoCarregadorDPK.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="dpk\MCFWComponentes\MCFWComponentes.dproj">
+        <Projects Include="src\pkgUtils\dpk\pkgUtils.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="dpk\MCFWComponentes\teste\TesteComponente.dproj">
+        <Projects Include="src\GeradorSQL\dpk\GeradorSQL.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="dpk\MCFWForms\MCFWFormsDpk.dproj">
+        <Projects Include="src\GeradorSQL\dpk\GeradorSQLDT.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Exercicio_12\MetaDataConf.dproj">
+        <Projects Include="src\FrameWork\MCFWComponentes\MCFWComponentes.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="src\FrameWork\MCFWForms\MCFWFormsDpk.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="src\MetaDataConf\MetaDataConf.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="src\AplicacaoFinal\OMestreDosCodigos.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -27,58 +36,85 @@
         </BorlandProject>
     </ProjectExtensions>
     <Target Name="ConexaoCarregadorDPK">
-        <MSBuild Projects="dpk\Conexao\ConexaoCarregadorDPK.dproj"/>
+        <MSBuild Projects="src\Conexao\ConexaoCarregadorDPK.dproj"/>
     </Target>
     <Target Name="ConexaoCarregadorDPK:Clean">
-        <MSBuild Projects="dpk\Conexao\ConexaoCarregadorDPK.dproj" Targets="Clean"/>
+        <MSBuild Projects="src\Conexao\ConexaoCarregadorDPK.dproj" Targets="Clean"/>
     </Target>
     <Target Name="ConexaoCarregadorDPK:Make">
-        <MSBuild Projects="dpk\Conexao\ConexaoCarregadorDPK.dproj" Targets="Make"/>
+        <MSBuild Projects="src\Conexao\ConexaoCarregadorDPK.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="pkgUtils">
+        <MSBuild Projects="src\pkgUtils\dpk\pkgUtils.dproj"/>
+    </Target>
+    <Target Name="pkgUtils:Clean">
+        <MSBuild Projects="src\pkgUtils\dpk\pkgUtils.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgUtils:Make">
+        <MSBuild Projects="src\pkgUtils\dpk\pkgUtils.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GeradorSQL">
+        <MSBuild Projects="src\GeradorSQL\dpk\GeradorSQL.dproj"/>
+    </Target>
+    <Target Name="GeradorSQL:Clean">
+        <MSBuild Projects="src\GeradorSQL\dpk\GeradorSQL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GeradorSQL:Make">
+        <MSBuild Projects="src\GeradorSQL\dpk\GeradorSQL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GeradorSQLDT">
+        <MSBuild Projects="src\GeradorSQL\dpk\GeradorSQLDT.dproj"/>
+    </Target>
+    <Target Name="GeradorSQLDT:Clean">
+        <MSBuild Projects="src\GeradorSQL\dpk\GeradorSQLDT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GeradorSQLDT:Make">
+        <MSBuild Projects="src\GeradorSQL\dpk\GeradorSQLDT.dproj" Targets="Make"/>
     </Target>
     <Target Name="MCFWComponentes">
-        <MSBuild Projects="dpk\MCFWComponentes\MCFWComponentes.dproj"/>
+        <MSBuild Projects="src\FrameWork\MCFWComponentes\MCFWComponentes.dproj"/>
     </Target>
     <Target Name="MCFWComponentes:Clean">
-        <MSBuild Projects="dpk\MCFWComponentes\MCFWComponentes.dproj" Targets="Clean"/>
+        <MSBuild Projects="src\FrameWork\MCFWComponentes\MCFWComponentes.dproj" Targets="Clean"/>
     </Target>
     <Target Name="MCFWComponentes:Make">
-        <MSBuild Projects="dpk\MCFWComponentes\MCFWComponentes.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="TesteComponente">
-        <MSBuild Projects="dpk\MCFWComponentes\teste\TesteComponente.dproj"/>
-    </Target>
-    <Target Name="TesteComponente:Clean">
-        <MSBuild Projects="dpk\MCFWComponentes\teste\TesteComponente.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="TesteComponente:Make">
-        <MSBuild Projects="dpk\MCFWComponentes\teste\TesteComponente.dproj" Targets="Make"/>
+        <MSBuild Projects="src\FrameWork\MCFWComponentes\MCFWComponentes.dproj" Targets="Make"/>
     </Target>
     <Target Name="MCFWFormsDpk">
-        <MSBuild Projects="dpk\MCFWForms\MCFWFormsDpk.dproj"/>
+        <MSBuild Projects="src\FrameWork\MCFWForms\MCFWFormsDpk.dproj"/>
     </Target>
     <Target Name="MCFWFormsDpk:Clean">
-        <MSBuild Projects="dpk\MCFWForms\MCFWFormsDpk.dproj" Targets="Clean"/>
+        <MSBuild Projects="src\FrameWork\MCFWForms\MCFWFormsDpk.dproj" Targets="Clean"/>
     </Target>
     <Target Name="MCFWFormsDpk:Make">
-        <MSBuild Projects="dpk\MCFWForms\MCFWFormsDpk.dproj" Targets="Make"/>
+        <MSBuild Projects="src\FrameWork\MCFWForms\MCFWFormsDpk.dproj" Targets="Make"/>
     </Target>
     <Target Name="MetaDataConf">
-        <MSBuild Projects="Exercicio_12\MetaDataConf.dproj"/>
+        <MSBuild Projects="src\MetaDataConf\MetaDataConf.dproj"/>
     </Target>
     <Target Name="MetaDataConf:Clean">
-        <MSBuild Projects="Exercicio_12\MetaDataConf.dproj" Targets="Clean"/>
+        <MSBuild Projects="src\MetaDataConf\MetaDataConf.dproj" Targets="Clean"/>
     </Target>
     <Target Name="MetaDataConf:Make">
-        <MSBuild Projects="Exercicio_12\MetaDataConf.dproj" Targets="Make"/>
+        <MSBuild Projects="src\MetaDataConf\MetaDataConf.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OMestreDosCodigos">
+        <MSBuild Projects="src\AplicacaoFinal\OMestreDosCodigos.dproj"/>
+    </Target>
+    <Target Name="OMestreDosCodigos:Clean">
+        <MSBuild Projects="src\AplicacaoFinal\OMestreDosCodigos.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OMestreDosCodigos:Make">
+        <MSBuild Projects="src\AplicacaoFinal\OMestreDosCodigos.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="ConexaoCarregadorDPK;MCFWComponentes;TesteComponente;MCFWFormsDpk;MetaDataConf"/>
+        <CallTarget Targets="ConexaoCarregadorDPK;pkgUtils;GeradorSQL;GeradorSQLDT;MCFWComponentes;MCFWFormsDpk;MetaDataConf;OMestreDosCodigos"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ConexaoCarregadorDPK:Clean;MCFWComponentes:Clean;TesteComponente:Clean;MCFWFormsDpk:Clean;MetaDataConf:Clean"/>
+        <CallTarget Targets="ConexaoCarregadorDPK:Clean;pkgUtils:Clean;GeradorSQL:Clean;GeradorSQLDT:Clean;MCFWComponentes:Clean;MCFWFormsDpk:Clean;MetaDataConf:Clean;OMestreDosCodigos:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ConexaoCarregadorDPK:Make;MCFWComponentes:Make;TesteComponente:Make;MCFWFormsDpk:Make;MetaDataConf:Make"/>
+        <CallTarget Targets="ConexaoCarregadorDPK:Make;pkgUtils:Make;GeradorSQL:Make;GeradorSQLDT:Make;MCFWComponentes:Make;MCFWFormsDpk:Make;MetaDataConf:Make;OMestreDosCodigos:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

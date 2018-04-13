@@ -1,0 +1,66 @@
+package pkgUtils;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  xmlrtl,
+  vcl,
+  dbrtl,
+  DbxCommonDriver,
+  vclFireDAC,
+  FireDAC,
+  FireDACCommonDriver,
+  FireDACCommon,
+  FireDACPgDriver,
+  FireDACODBCDriver,
+  FireDACIBDriver,
+  FireDACMySQLDriver,
+  dbexpress,
+  FireDACDb2Driver,
+  FireDACMSSQLDriver,
+  FireDACOracleDriver,
+  FireDACDBXDriver,
+  ConexaoCarregadorDPK;
+
+contains
+  DesignPattern.Builder.Impl.Builder in '..\DesignPattern.Builder.Impl.Builder.pas',
+  DesignPattern.Builder.Impl.Director in '..\DesignPattern.Builder.Impl.Director.pas',
+  DesignPattern.Builder.Intf.Builder in '..\DesignPattern.Builder.Intf.Builder.pas',
+  DesignPattern.Builder.Intf.Director in '..\DesignPattern.Builder.Intf.Director.pas',
+  pkgUtils.Intf.EMail in '..\pkgUtils.Intf.EMail.pas',
+  pkgUtils.Intf.Telefone in '..\pkgUtils.Intf.Telefone.pas',
+  pkgUtils.Intf.Validavel in '..\pkgUtils.Intf.Validavel.pas',
+  ufwAplicacao in '..\ufwAplicacao.pas',
+  pkgUtils.Intf.Endereco in '..\pkgUtils.Intf.Endereco.pas',
+  pkgUtils.Impl.EMail in '..\pkgUtils.Impl.EMail.pas',
+  pkgUtils.Intf.ListaRetornoValidacao in '..\pkgUtils.Intf.ListaRetornoValidacao.pas',
+  pkgUtils.Impl.ListaRetornoValidacao in '..\pkgUtils.Impl.ListaRetornoValidacao.pas';
+
+end.
+
