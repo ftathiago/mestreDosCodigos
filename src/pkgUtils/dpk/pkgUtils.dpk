@@ -60,7 +60,9 @@ contains
   pkgUtils.Intf.Endereco in '..\pkgUtils.Intf.Endereco.pas',
   pkgUtils.Impl.EMail in '..\pkgUtils.Impl.EMail.pas',
   pkgUtils.Intf.ListaRetornoValidacao in '..\pkgUtils.Intf.ListaRetornoValidacao.pas',
-  pkgUtils.Impl.ListaRetornoValidacao in '..\pkgUtils.Impl.ListaRetornoValidacao.pas';
+  pkgUtils.Impl.ListaRetornoValidacao in '..\pkgUtils.Impl.ListaRetornoValidacao.pas',
+  pkgUtils.Impl.Endereco in '..\pkgUtils.Impl.Endereco.pas',
+  pkgUtils.Impl.Telefone in '..\pkgUtils.Impl.Telefone.pas';
 
 end.
 

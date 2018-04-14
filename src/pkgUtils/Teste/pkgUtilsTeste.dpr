@@ -11,7 +11,19 @@ uses
   DUnitX.Loggers.Console,
   DUnitX.Loggers.Xml.NUnit,
   DUnitX.TestFramework,
-  uEmailTeste in 'uEmailTeste.pas';
+  uEmailTeste in 'uEmailTeste.pas',
+  uListaRetornoValidacaoTeste in 'uListaRetornoValidacaoTeste.pas',
+  uEnderecoTeste in 'uEnderecoTeste.pas',
+  pkgUtils.Impl.EMail in '..\pkgUtils.Impl.EMail.pas',
+  pkgUtils.Impl.Endereco in '..\pkgUtils.Impl.Endereco.pas',
+  pkgUtils.Impl.ListaRetornoValidacao in '..\pkgUtils.Impl.ListaRetornoValidacao.pas',
+  pkgUtils.Intf.EMail in '..\pkgUtils.Intf.EMail.pas',
+  pkgUtils.Intf.Endereco in '..\pkgUtils.Intf.Endereco.pas',
+  pkgUtils.Intf.ListaRetornoValidacao in '..\pkgUtils.Intf.ListaRetornoValidacao.pas',
+  pkgUtils.Intf.Telefone in '..\pkgUtils.Intf.Telefone.pas',
+  pkgUtils.Intf.Validavel in '..\pkgUtils.Intf.Validavel.pas',
+  uTelefoneTeste in 'uTelefoneTeste.pas',
+  pkgUtils.Impl.Telefone in '..\pkgUtils.Impl.Telefone.pas';
 
 var
   runner : ITestRunner;

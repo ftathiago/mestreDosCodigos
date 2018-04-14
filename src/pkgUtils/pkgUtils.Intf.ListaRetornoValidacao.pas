@@ -14,6 +14,7 @@ type
     function getValidacao(const Numero: integer): TRetornoValidacao;
     function EstaVazio: boolean;
     procedure AddListaValidacoes(const AListaValidacoes: IListaRetornoValidacao);
+    procedure AdicionarRetorno(const ARetornoValidacao: TRetornoValidacao);
   end;
 
 implementation

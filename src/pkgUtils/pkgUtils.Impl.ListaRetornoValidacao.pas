@@ -17,6 +17,7 @@ type
     constructor Create(const ARetornoValidacao: TArray<TRetornoValidacao>);
     destructor Destroy; override;
     procedure AddListaValidacoes(const AListaRetornoValidacoes: IListaRetornoValidacao);
+    procedure AdicionarRetorno(const ARetornoValidacao: TRetornoValidacao);
     function getQtd: Integer;
     function getValidacao(const Indice: Integer): TRetornoValidacao;
     function EstaVazio: boolean;
@@ -42,6 +43,11 @@ begin
 
   for _retornoValidacao in ARetornoValidacao do
     FListaRetornoValidacoes.Add(_retornoValidacao);
+end;
+
+procedure TListaRetornoValidacao.AdicionarRetorno(const ARetornoValidacao: TRetornoValidacao);
+begin
+  FListaRetornoValidacoes.Add(ARetornoValidacao);
 end;
 
 constructor TListaRetornoValidacao.Create(const ARetornoValidacao: TArray<TRetornoValidacao>);

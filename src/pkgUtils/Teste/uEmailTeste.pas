@@ -4,13 +4,15 @@ interface
 
 uses
   pkgUtils.Intf.Email,
+  pkgUtils.Intf.ListaRetornoValidacao,
   DUnitX.TestFramework;
 
 type
 
   [TestFixture]
-  TMyTestObject = class(TObject)
+  TEmailTeste = class(TObject)
   private
+    FRetorno: IListaRetornoValidacao;
     function RetornarEmailValido: IEmail;
     function RetornarEmailInvalido: IEmail;
   public
@@ -23,75 +25,78 @@ type
     [Test]
     procedure DadoEmailValidoRetornaValido;
     [Test]
-    procedure DadoEmailValidoValidarDeveRetornarNil;
-    [Test]
     procedure DadoEmailInvalidoRetornaInValido;
     [Test]
-    procedure DadoEmailInValidoValidarNaoDeveRetornarNil;
+    procedure DadoEmailValidoRetornoDeveEstarVazio;
+    [Test]
+    procedure DadoEmailInValidoRetornoDeveConterValor;
   end;
 
 implementation
 
 uses
+  pkgUtils.Impl.ListaRetornoValidacao,
   pkgUtils.Impl.Email;
 
 
 
-procedure TMyTestObject.Setup;
+procedure TEmailTeste.Setup;
 begin
+  FRetorno := TListaRetornoValidacao.New([]);
 end;
 
-procedure TMyTestObject.TearDown;
+procedure TEmailTeste.TearDown;
 begin
+  FRetorno := nil;
 end;
 
 
-function TMyTestObject.RetornarEmailInvalido: IEmail;
+function TEmailTeste.RetornarEmailInvalido: IEmail;
 begin
   result := TEmail.New('ftathiago@');
 end;
 
-function TMyTestObject.RetornarEmailValido: IEmail;
+function TEmailTeste.RetornarEmailValido: IEmail;
 begin
   result := TEmail.New('ftathiago@gmail.com');
 end;
 
-procedure TMyTestObject.DadoEmailInvalidoRetornaInValido;
+procedure TEmailTeste.DadoEmailInvalidoRetornaInValido;
 var
   _email: IEmail;
 begin
   _email := RetornarEmailInvalido;
-  _email.Validar;
-  Assert.IsFalse(_email.EhValido);
+  Assert.IsFalse(_email.Validar(FRetorno));
 end;
 
-procedure TMyTestObject.DadoEmailInValidoValidarNaoDeveRetornarNil;
+procedure TEmailTeste.DadoEmailInValidoRetornoDeveConterValor;
 var
   _email :IEmail;
 begin
   _email := RetornarEmailInvalido;
-  Assert.IsTrue(Assigned(_email.Validar));
+  _email.Validar(FRetorno);
+  Assert.IsTrue(FRetorno.getQtd > 0);
 end;
 
-procedure TMyTestObject.DadoEmailValidoRetornaValido;
+procedure TEmailTeste.DadoEmailValidoRetornaValido;
 var
   _email: IEmail;
 begin
   _email := RetornarEmailValido;
-  _email.Validar;
-  Assert.IsTrue(_email.EhValido);
+  Assert.IsTrue(_email.Validar(FRetorno));
 end;
 
-procedure TMyTestObject.DadoEmailValidoValidarDeveRetornarNil;
+procedure TEmailTeste.DadoEmailValidoRetornoDeveEstarVazio;
 var
   _email: IEmail;
 begin
   _email := RetornarEmailValido;
-  Assert.IsFalse(Assigned(_email.Validar));
+  _email.Validar(FRetorno);
+  Assert.IsFalse(FRetorno.EstaVazio);
 end;
 
 initialization
 
-TDUnitX.RegisterTestFixture(TMyTestObject);
+TDUnitX.RegisterTestFixture(TEmailTeste);
 
 end.

@@ -14,9 +14,8 @@ type
   public
     class function New(const AEMail: string): IEMail;
     constructor Create(const AEMail: string);
-    function EhValido: boolean;
     procedure ModificarEmail(const ANovoEmail: string);
-    function Validar: IListaRetornoValidacao;
+    function Validar(const ARetornoValidacao: IListaRetornoValidacao):boolean;
   end;
 
 implementation
@@ -41,20 +40,12 @@ begin
   FEhValido := False;
   FEmail := AEMail;
 end;
-
-function TEmail.EhValido: boolean;
-begin
-  Validar;
-  Result := FEhValido;
-end;
-
 procedure TEmail.ModificarEmail(const ANovoEmail: string);
 begin
   FEmail := ANovoEmail;
-  Validar;
 end;
 
-function TEmail.Validar: IListaRetornoValidacao;
+function TEmail.Validar(const ARetornoValidacao: IListaRetornoValidacao): boolean;
 var
   _retornoValidacao: TRetornoValidacao;
 begin
@@ -63,8 +54,10 @@ begin
   begin
     _retornoValidacao.CodigoRetorno := 1;
     _retornoValidacao.MensagemDeErro := 'E-mail inválido!';
-    result := TListaRetornoValidacao.New([_retornoValidacao]);
+    ARetornoValidacao.AdicionarRetorno(_retornoValidacao);
   end;
+
+  result := FEhValido;
 end;
 
 end.

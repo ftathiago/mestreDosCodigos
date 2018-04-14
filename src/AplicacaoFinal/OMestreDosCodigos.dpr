@@ -8,8 +8,7 @@ uses
   uCliente in 'uCliente.pas',
   uICliente in 'uICliente.pas',
   pkgUtils.Intf.EMail in '..\pkgUtils\pkgUtils.Intf.EMail.pas',
-  pkgUtils.Intf.Telefone in '..\pkgUtils\pkgUtils.Intf.Telefone.pas',
-  pkgUtils.Intf.Comparavel in '..\pkgUtils\pkgUtils.Intf.Comparavel.pas';
+  pkgUtils.Intf.Telefone in '..\pkgUtils\pkgUtils.Intf.Telefone.pas';
 
 {$R *.res}
 
