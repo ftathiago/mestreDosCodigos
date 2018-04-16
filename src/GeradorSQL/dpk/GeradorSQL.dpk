@@ -31,10 +31,10 @@ requires
   rtl;
 
 contains
-  DesignPattern.Builder.Impl.Builder in '..\..\DesignPattern\DesignPattern.Builder.Impl.Builder.pas',
-  DesignPattern.Builder.Impl.Director in '..\..\DesignPattern\DesignPattern.Builder.Impl.Director.pas',
-  DesignPattern.Builder.Intf.Builder in '..\..\DesignPattern\DesignPattern.Builder.Intf.Builder.pas',
-  DesignPattern.Builder.Intf.Director in '..\..\DesignPattern\DesignPattern.Builder.Intf.Director.pas',
+  DesignPattern.Builder.Impl.Builder in '..\..\pkgUtils\DesignPattern.Builder.Impl.Builder.pas',
+  DesignPattern.Builder.Impl.Director in '..\..\pkgUtils\DesignPattern.Builder.Impl.Director.pas',
+  DesignPattern.Builder.Intf.Builder in '..\..\pkgUtils\DesignPattern.Builder.Intf.Builder.pas',
+  DesignPattern.Builder.Intf.Director in '..\..\pkgUtils\DesignPattern.Builder.Intf.Director.pas',
   SQL.Enums in '..\RT\SQL.Enums.pas',
   SQL.Exceptions in '..\RT\SQL.Exceptions.pas',
   SQL.Mensagens in '..\RT\SQL.Mensagens.pas',

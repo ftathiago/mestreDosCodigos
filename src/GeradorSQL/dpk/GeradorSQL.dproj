@@ -76,10 +76,10 @@
         <DCC_UnitSearchPath>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\Lib;C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\dcp;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_DcuOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\Lib\</DCC_DcuOutput>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_Build>286</VerInfo_Build>
+        <VerInfo_Build>292</VerInfo_Build>
         <DCC_OutputXMLDocumentation>true</DCC_OutputXMLDocumentation>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.286;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.292;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <BRCC_OutputDir>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\dpk\bin\</BRCC_OutputDir>
     </PropertyGroup>
     <ItemGroup>
@@ -87,10 +87,10 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="rtl.dcp"/>
-        <DCCReference Include="..\..\DesignPattern\DesignPattern.Builder.Impl.Builder.pas"/>
-        <DCCReference Include="..\..\DesignPattern\DesignPattern.Builder.Impl.Director.pas"/>
-        <DCCReference Include="..\..\DesignPattern\DesignPattern.Builder.Intf.Builder.pas"/>
-        <DCCReference Include="..\..\DesignPattern\DesignPattern.Builder.Intf.Director.pas"/>
+        <DCCReference Include="..\..\pkgUtils\DesignPattern.Builder.Impl.Builder.pas"/>
+        <DCCReference Include="..\..\pkgUtils\DesignPattern.Builder.Impl.Director.pas"/>
+        <DCCReference Include="..\..\pkgUtils\DesignPattern.Builder.Intf.Builder.pas"/>
+        <DCCReference Include="..\..\pkgUtils\DesignPattern.Builder.Intf.Director.pas"/>
         <DCCReference Include="..\RT\SQL.Enums.pas"/>
         <DCCReference Include="..\RT\SQL.Exceptions.pas"/>
         <DCCReference Include="..\RT\SQL.Mensagens.pas"/>
@@ -169,7 +169,16 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\Resources</RemoteDir>
@@ -483,16 +492,7 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>

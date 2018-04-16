@@ -31,7 +31,7 @@ implementation
 
 uses
   System.SysUtils,
-  Conexao.Intf.Fabrica,
+  Conexao.Intf.DataFabrica,
   Conexao.Impl.Fabrica.FireDac;
 
 { TMetaDataContainer }

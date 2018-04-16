@@ -95,7 +95,7 @@ implementation
 
 uses
   System.VarUtils,
-  ufwAplicacao,
+  pkgUtils.Intf.Aplicacao,
   Conexao.Impl.FDConfiguracaoDeConexao;
 
 procedure TffwPrincipal.AbrirForm(Sender: TObject);

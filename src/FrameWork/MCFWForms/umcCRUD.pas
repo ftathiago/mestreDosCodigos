@@ -15,8 +15,7 @@ uses
   Vcl.ToolWin,
   Vcl.ActnList,
   Vcl.ImgList,
-  Data.DB,
-  cxGraphics;
+  Data.DB;
 
 type
   TfmcCRUD = class(TfmcDBForm)

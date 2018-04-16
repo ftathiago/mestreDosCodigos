@@ -93,10 +93,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DCCReference Include="dbrtl.dcp"/>
         <DCCReference Include="vcldb.dcp"/>
         <DCCReference Include="designide.dcp"/>
-        <DCCReference Include="dxCoreRS23.dcp"/>
-        <DCCReference Include="cxLibraryRS23.dcp"/>
-        <DCCReference Include="dxGDIPlusRS23.dcp"/>
-        <DCCReference Include="dxThemeRS23.dcp"/>
         <DCCReference Include="FireDAC.dcp"/>
         <DCCReference Include="FireDACCommon.dcp"/>
         <DCCReference Include="DbxCommonDriver.dcp"/>
@@ -105,7 +101,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DCCReference Include="FireDACODBCDriver.dcp"/>
         <DCCReference Include="FireDACIBDriver.dcp"/>
         <DCCReference Include="FireDACMySQLDriver.dcp"/>
-        <DCCReference Include="dbexpress.dcp"/>
         <DCCReference Include="FireDACDb2Driver.dcp"/>
         <DCCReference Include="FireDACMSSQLDriver.dcp"/>
         <DCCReference Include="FireDACOracleDriver.dcp"/>
@@ -159,7 +154,16 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\Resources</RemoteDir>
@@ -473,16 +477,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
@@ -505,7 +500,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>copy $(PROJECTDIR)\CrudToolbar\*.dfm $(OUTPUTDIR)&amp;&amp;copy $(PROJECTDIR)\FrmConsulta\*.dfm $(OUTPUTDIR)</PostBuildEvent>
+        <PostBuildEvent>copy $(PROJECTDIR)\CrudToolbar\*.dfm $(OUTPUTDIR)&amp;&amp;copy $(PROJECTDIR)\FrmConsulta\*.dfm $(OUTPUTDIR)</PostBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
 </Project>

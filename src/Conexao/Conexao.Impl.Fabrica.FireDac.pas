@@ -5,7 +5,7 @@ interface
 uses
   Data.DB,
   Conexao.Intf.Configuracao,
-  Conexao.Intf.Fabrica,
+  Conexao.Intf.DataFabrica,
   FireDac.DApt,
   FireDac.Stan.Option,
   FireDac.Comp.Client;
