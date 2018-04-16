@@ -64,6 +64,7 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <DCC_MapFile>3</DCC_MapFile>
         <DCC_DcpOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\</DCC_DcpOutput>
         <DCC_UnitSearchPath>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_BplOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\</DCC_BplOutput>
@@ -108,7 +109,7 @@
         <DCCReference Include="Conexao.Impl.Configuracao.Fabrica.pas"/>
         <DCCReference Include="Conexao.Intf.ConfiguracaoDeConexao.pas"/>
         <DCCReference Include="Conexao.Impl.FDConfiguracaoDeConexao.pas"/>
-        <DCCReference Include="Conexao.Intf.Fabrica.pas"/>
+        <DCCReference Include="Conexao.Intf.DataFabrica.pas"/>
         <DCCReference Include="Conexao.Impl.Fabrica.FireDac.pas"/>
         <DCCReference Include="Conexao.Constantes.pas"/>
         <DCCReference Include="Conexao.Intf.Configuracao.Fabrica.pas"/>
@@ -132,10 +133,7 @@
                 <Source>
                     <Source Name="MainSource">ConexaoCarregadorDPK.dpk</Source>
                 </Source>
-                <Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\dcp\GeradorSQL.bpl">File C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\dcp\GeradorSQL.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\dcp\GeradorSQLDT.bpl">File C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\dcp\GeradorSQLDT.bpl not found</Excluded_Packages>
-                </Excluded_Packages>
+                <Excluded_Packages/>
             </Delphi.Personality>
             <Deployment Version="2">
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
@@ -159,7 +157,16 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\Resources</RemoteDir>
@@ -473,16 +480,7 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>

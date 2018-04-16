@@ -19,7 +19,7 @@ type
     constructor Create(const TelefoneComDDD: string);
     function getDDD: string;
     function getTelefone: string;
-    function getTelefoneCompleto: string;
+    function AsString: string;
     function EhValido: boolean;
     function Validar(const RetornoValidacao: IListaRetornoValidacao):boolean;
   end;
@@ -84,7 +84,7 @@ begin
   result := FTelefone;
 end;
 
-function TTelefone.getTelefoneCompleto: string;
+function TTelefone.AsString: string;
 begin
   result := Format('%s%s', [FDDD, FTelefone]);
 end;
@@ -100,7 +100,7 @@ const
 var
   _retornoValidacao: TRetornoValidacao;
 begin
-  FEhValido := TRegEx.IsMatch(getTelefoneCompleto, TEL_REGEX);
+  FEhValido := TRegEx.IsMatch(AsString, TEL_REGEX);
   if not FEhValido then
   begin
     _retornoValidacao.CodigoRetorno := 1;

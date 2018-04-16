@@ -1,13 +1,13 @@
-unit ufwConfigEntidade;
+unit MetaDataConf.UI.ffwConfigEntidade;
 
 interface
 
 uses
-  ufwPrincipal,
   ufwForm,
   umcFDCrudToolbar,
   DataSet.Intf.MetaDataContainer,
   DataSet.Intf.ConfiguradorMetaData,
+  DataSet.Intf.MetaDataController,
   Winapi.Windows,
   Winapi.Messages,
   System.SysUtils,
@@ -38,7 +38,14 @@ uses
   FireDAC.DApt,
   FireDAC.Comp.DataSet,
   FireDAC.Comp.Client,
-  FireDAC.Stan.StorageBin, umcCrudToolbar;
+  FireDAC.Stan.StorageBin,
+  umcCrudToolbar,
+  GeradorSQL.Comp.Select,
+  FireDAC.UI.Intf,
+  FireDAC.Stan.Def,
+  FireDAC.Stan.Pool,
+  FireDAC.Phys,
+  FireDAC.VCLUI.Wait;
 
 type
   TffwConfigEntidade = class(TffwForm)
@@ -70,19 +77,27 @@ type
     ENT_PROPRIEDADEPOSICAO: TSmallintField;
     ToolButton2: TToolButton;
     ToolButton3: TToolButton;
-    actLimpar: TAction;
+    actApagarTodaEstrutura: TAction;
+    mcsEntidade: TMCSelect;
+    mcsEntPropriedade: TMCSelect;
     procedure FormCreate(Sender: TObject);
     procedure ENTIDADEAfterOpen(DataSet: TDataSet);
     procedure ENT_PROPRIEDADEAfterOpen(DataSet: TDataSet);
     procedure grdENTIDADEEnter(Sender: TObject);
     procedure actLerEstruturaDoBancoExecute(Sender: TObject);
-    procedure actLimparExecute(Sender: TObject);
+    procedure actApagarTodaEstruturaExecute(Sender: TObject);
     procedure CrudToolbarSalvarClick(const DataSet: TDataSet);
     procedure CrudToolbarDesfazerClick(const DataSet: TDataSet);
   private
     { Private declarations }
+    FFDConnection: TFDConnection;
     FMetaData: IMetaDataContainer;
     FConfiguradorMetaData: IConfiguradorMetaData;
+    function getMetaDataController: ImcMetaDataController;
+    procedure ConfigurarDataSets(const FDConnection: TFDConnection);
+    procedure CarregarEstruturaDoBancoNasTabelas;
+    procedure AlterarDataSourceDoToolbar(const Sender: TObject);
+    procedure ApagarTodosOsMetaDados;
   public
     { Public declarations }
   end;
@@ -94,7 +109,8 @@ implementation
 
 uses
   umcConstantes,
-  DataSet.Intf.MetaDataController,
+  Conexao.Intf.Fabrica,
+  Conexao.Impl.Fabrica.FireDAC,
   DataSet.Impl.MetaDataController,
   DataSet.Impl.MetaDataContainer,
   DataSet.Impl.ConfiguradorMetaData;
@@ -102,34 +118,62 @@ uses
 procedure TffwConfigEntidade.FormCreate(Sender: TObject);
 begin
   inherited;
-  FMetaData := TMetaDataContainer.New(ENTIDADE.Connection);
+  FFDConnection := TFabricaFireDac.New.getConexao as TFDConnection;
+
+  FMetaData := TMetaDataContainer.New(FFDConnection);
   FConfiguradorMetaData := TConfiguradorMetaData.New(FMetaData.ENTIDADE, FMetaData.EntPropriedade);
+
+  ConfigurarDataSets(FFDConnection);
+end;
+
+procedure TffwConfigEntidade.ConfigurarDataSets(const FDConnection: TFDConnection);
+begin
+  ENTIDADE.Close;
+  ENT_PROPRIEDADE.Close;
+
+  ENTIDADE.SQL.Text := mcsEntidade.GerarSQL;
+  ENT_PROPRIEDADE.SQL.Text := mcsEntPropriedade.GerarSQL;
+
+  ENTIDADE.Connection := FDConnection;
+  ENT_PROPRIEDADE.Connection := FDConnection;
 
   ENTIDADE.Open();
   ENT_PROPRIEDADE.Open();
 end;
 
 procedure TffwConfigEntidade.actLerEstruturaDoBancoExecute(Sender: TObject);
-var
-
-  _metaDataController: ImcMetaDataController;
 begin
   inherited;
-  _metaDataController := TmcMetaDataController.New(ffwPrincipal.FDConnection);
-  _metaDataController.SetMetaDataContainer(FMetaData);
-  _metaDataController.Carregar;
+  CarregarEstruturaDoBancoNasTabelas;
+end;
+
+procedure TffwConfigEntidade.actApagarTodaEstruturaExecute(Sender: TObject);
+begin
+  inherited;
+  ApagarTodosOsMetaDados;
+end;
+
+procedure TffwConfigEntidade.AlterarDataSourceDoToolbar(const Sender: TObject);
+var
+  _grid: TDBGrid;
+begin
+  if not(Sender is TDBGrid) then
+    exit;
+
+  _grid := Sender as TDBGrid;
+  CrudToolbar.DataSource := _grid.DataSource;
+end;
+
+procedure TffwConfigEntidade.ApagarTodosOsMetaDados;
+begin
+  getMetaDataController.Limpar();
   ENTIDADE.Close;
   ENTIDADE.Open();
 end;
 
-procedure TffwConfigEntidade.actLimparExecute(Sender: TObject);
-var
-  _metaDataController: ImcMetaDataController;
+procedure TffwConfigEntidade.CarregarEstruturaDoBancoNasTabelas;
 begin
-  inherited;
-  _metaDataController := TmcMetaDataController.New(ffwPrincipal.FDConnection);
-  _metaDataController.SetMetaDataContainer(FMetaData);
-  _metaDataController.Limpar;
+  getMetaDataController.Carregar;
   ENTIDADE.Close;
   ENTIDADE.Open();
 end;
@@ -178,13 +222,22 @@ begin
   FConfiguradorMetaData.setConfigurarDataSet(DataSet, ['ENT_PROPRIEDADE']);
 end;
 
-procedure TffwConfigEntidade.grdENTIDADEEnter(Sender: TObject);
+function TffwConfigEntidade.getMetaDataController: ImcMetaDataController;
 var
-  _grid: TDBGrid;
+  _metaDataController: ImcMetaDataController;
 begin
   inherited;
-  _grid := Sender as TDBGrid;
-  CrudToolbar.DataSource := _grid.DataSource;
+  result := TmcMetaDataController.New(FFDConnection);
+  result.SetMetaDataContainer(FMetaData);
+  _metaDataController.Limpar;
+  ENTIDADE.Close;
+  ENTIDADE.Open();
+end;
+
+procedure TffwConfigEntidade.grdENTIDADEEnter(Sender: TObject);
+begin
+  inherited;
+  AlterarDataSourceDoToolbar(Sender);
 end;
 
 initialization

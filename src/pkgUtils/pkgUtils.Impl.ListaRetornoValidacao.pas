@@ -21,6 +21,7 @@ type
     function getQtd: Integer;
     function getValidacao(const Indice: Integer): TRetornoValidacao;
     function EstaVazio: boolean;
+    function ToString(): string; override;
   end;
 
 implementation
@@ -31,6 +32,22 @@ class function TListaRetornoValidacao.New(const ARetornoValidacao: TArray<TRetor
   : IListaRetornoValidacao;
 begin
   result := Create(ARetornoValidacao);
+end;
+
+function TListaRetornoValidacao.ToString: string;
+var
+  _str: TStringBuilder;
+  _retorno: TRetornoValidacao;
+begin
+  _str := TStringBuilder.Create;
+  try
+    for _retorno in FListaRetornoValidacoes.ToArray do
+      _str.AppendLine(_retorno.MensagemDeErro);
+
+    result := _str.ToString;
+  finally
+    FreeAndNil(_str);
+  end;
 end;
 
 procedure TListaRetornoValidacao.AdicionarArrayListaRetorno(

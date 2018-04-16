@@ -1,4 +1,4 @@
-unit uTelefoneTeste;
+unit pkgUtils.Teste.TelefoneTeste;
 
 interface
 
@@ -109,7 +109,7 @@ var
   _telefone: ITelefone;
 begin
   _telefone := TTelefone.New(TELEFONE_COMPLETO);
-  Assert.AreEqual(TELEFONE_COMPLETO, _telefone.getTelefoneCompleto);
+  Assert.AreEqual(TELEFONE_COMPLETO, _telefone.AsString);
 end;
 
 procedure TTelefoneTeste.CriarTelefoneVazio;
@@ -119,7 +119,7 @@ begin
   _telefone := TTelefone.New(EmptyStr);
   Assert.IsEmpty(_telefone.getDDD);
   Assert.IsEmpty(_telefone.getTelefone);
-  Assert.IsEmpty(_telefone.getTelefoneCompleto);
+  Assert.IsEmpty(_telefone.AsString);
 end;
 
 procedure TTelefoneTeste.Setup;

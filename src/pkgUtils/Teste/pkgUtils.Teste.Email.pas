@@ -1,11 +1,13 @@
-unit uEmailTeste;
+unit pkgUtils.Teste.Email;
 
 interface
 
 uses
+  DUnitX.TestFramework,
   pkgUtils.Intf.Email,
   pkgUtils.Intf.ListaRetornoValidacao,
-  DUnitX.TestFramework;
+  pkgUtils.Impl.ListaRetornoValidacao,
+  pkgUtils.Impl.Email;
 
 type
 
@@ -34,11 +36,6 @@ type
 
 implementation
 
-uses
-  pkgUtils.Impl.ListaRetornoValidacao,
-  pkgUtils.Impl.Email;
-
-
 
 procedure TEmailTeste.Setup;
 begin
@@ -49,7 +46,6 @@ procedure TEmailTeste.TearDown;
 begin
   FRetorno := nil;
 end;
-
 
 function TEmailTeste.RetornarEmailInvalido: IEmail;
 begin
@@ -71,7 +67,7 @@ end;
 
 procedure TEmailTeste.DadoEmailInValidoRetornoDeveConterValor;
 var
-  _email :IEmail;
+  _email: IEmail;
 begin
   _email := RetornarEmailInvalido;
   _email.Validar(FRetorno);
@@ -92,7 +88,7 @@ var
 begin
   _email := RetornarEmailValido;
   _email.Validar(FRetorno);
-  Assert.IsFalse(FRetorno.EstaVazio);
+  Assert.IsTrue(FRetorno.EstaVazio);
 end;
 
 initialization

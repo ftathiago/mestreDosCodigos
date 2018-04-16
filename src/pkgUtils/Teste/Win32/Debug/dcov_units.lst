@@ -1,0 +1,14 @@
+pkgUtils.Intf.ListaRetornoValidacao
+pkgUtils.Impl.ListaRetornoValidacao
+DesignPattern.Builder.Impl.Builder
+DesignPattern.Builder.Impl.Director
+DesignPattern.Builder.Intf.Builder
+DesignPattern.Builder.Intf.Director
+pkgUtils.Intf.EMail
+pkgUtils.Intf.Telefone
+pkgUtils.Intf.Validavel
+ufwAplicacao
+pkgUtils.Intf.Endereco
+pkgUtils.Impl.EMail
+pkgUtils.Impl.Endereco
+pkgUtils.Impl.Telefone

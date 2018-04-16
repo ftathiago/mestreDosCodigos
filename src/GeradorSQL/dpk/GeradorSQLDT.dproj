@@ -64,6 +64,7 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <DCC_MapFile>3</DCC_MapFile>
         <DCC_BplOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\dcp\</DCC_BplOutput>
         <DCC_DcuOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\</DCC_DcuOutput>
         <DCC_UnitSearchPath>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\dcp;C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
@@ -119,10 +120,7 @@
                 <Source>
                     <Source Name="MainSource">GeradorSQLDT.dpk</Source>
                 </Source>
-                <Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\ConexaoCarregadorDPK.bpl">(untitled)</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\dcp\GeradorSQL.bpl">(untitled)</Excluded_Packages>
-                </Excluded_Packages>
+                <Excluded_Packages/>
             </Delphi.Personality>
             <Deployment Version="2">
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">

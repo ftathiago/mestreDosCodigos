@@ -54,7 +54,7 @@ contains
   Conexao.Impl.Configuracao.Fabrica in 'Conexao.Impl.Configuracao.Fabrica.pas',
   Conexao.Intf.ConfiguracaoDeConexao in 'Conexao.Intf.ConfiguracaoDeConexao.pas',
   Conexao.Impl.FDConfiguracaoDeConexao in 'Conexao.Impl.FDConfiguracaoDeConexao.pas',
-  Conexao.Intf.Fabrica in 'Conexao.Intf.Fabrica.pas',
+  Conexao.Intf.DataFabrica in 'Conexao.Intf.DataFabrica.pas',
   Conexao.Impl.Fabrica.FireDac in 'Conexao.Impl.Fabrica.FireDac.pas',
   Conexao.Constantes in 'Conexao.Constantes.pas',
   Conexao.Intf.Configuracao.Fabrica in 'Conexao.Intf.Configuracao.Fabrica.pas';

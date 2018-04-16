@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="Windows-1252" standalone="no"?>
+<report>
+  <stats>
+    <packages value="7"/>
+    <classes value="10"/>
+    <methods value="104"/>
+    <srcfiles value="7"/>
+    <srclines value="446"/>
+    <totallines value="446"/>
+    <coveredlines value="356"/>
+    <coveredpercent value="79"/>
+  </stats>
+  <data>
+    <all name="all classes">
+      <coverage type="class, %" value="100%   (10/10)"/>
+      <coverage type="method, %" value="83%   (86/104)"/>
+      <coverage type="block, %" value="80%   (356/446)"/>
+      <coverage type="line, %" value="80%   (356/446)"/>
+      <package name="pkgUtils.Impl.Telefone">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="67%   (6/9)"/>
+        <coverage type="block, %" value="70%   (30/43)"/>
+        <coverage type="line, %" value="70%   (30/43)"/>
+        <srcfile name="pkgUtils.Impl.Telefone.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="67%   (6/9)"/>
+          <coverage type="block, %" value="70%   (30/43)"/>
+          <coverage type="line, %" value="70%   (30/43)"/>
+          <class name="TTelefone">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="67%   (6/9)"/>
+            <coverage type="block, %" value="70%   (30/43)"/>
+            <coverage type="line, %" value="70%   (30/43)"/>
+            <method name="getDDD">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="EhValido">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="ExtrairDDD">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (6/6)"/>
+              <coverage type="line, %" value="100%   (6/6)"/>
+            </method>
+            <method name="AsString">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getTelefone">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Create">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (5/5)"/>
+              <coverage type="line, %" value="100%   (5/5)"/>
+            </method>
+            <method name="Validar">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="62%   (5/8)"/>
+              <coverage type="line, %" value="62%   (5/8)"/>
+            </method>
+            <method name="ExtrairTelefone">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="89%   (8/9)"/>
+              <coverage type="line, %" value="89%   (8/9)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="pkgUtils.Impl.Endereco">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="73%   (16/22)"/>
+        <coverage type="block, %" value="67%   (65/97)"/>
+        <coverage type="line, %" value="67%   (65/97)"/>
+        <srcfile name="pkgUtils.Impl.Endereco.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="73%   (16/22)"/>
+          <coverage type="block, %" value="67%   (65/97)"/>
+          <coverage type="line, %" value="67%   (65/97)"/>
+          <class name="TEndereco">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="73%   (16/22)"/>
+            <coverage type="block, %" value="67%   (65/97)"/>
+            <coverage type="line, %" value="67%   (65/97)"/>
+            <method name="getLogradouro">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="ValidarUF">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="57%   (4/7)"/>
+              <coverage type="line, %" value="57%   (4/7)"/>
+            </method>
+            <method name="ValidarCidade">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="57%   (4/7)"/>
+              <coverage type="line, %" value="57%   (4/7)"/>
+            </method>
+            <method name="getCidade">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="ModificarCEP">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Validar">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (9/9)"/>
+              <coverage type="line, %" value="100%   (9/9)"/>
+            </method>
+            <method name="ModificarUF">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getComplemento">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="ModificarBairro">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="ValidarCEP">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="57%   (4/7)"/>
+              <coverage type="line, %" value="57%   (4/7)"/>
+            </method>
+            <method name="getUF">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/2)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="ValidarLogradouro">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="57%   (4/7)"/>
+              <coverage type="line, %" value="57%   (4/7)"/>
+            </method>
+            <method name="getCEP">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="ModificarNumero">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Create">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (9/9)"/>
+              <coverage type="line, %" value="100%   (9/9)"/>
+            </method>
+            <method name="getBairro">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="ModificarCidade">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getNumero">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="ModificarComplemento">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="ModificarLogradouro">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="ValidarNumero">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="57%   (4/7)"/>
+              <coverage type="line, %" value="57%   (4/7)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="OMestreDosCodigos.Impl.Cliente">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="100%   (14/14)"/>
+        <coverage type="block, %" value="93%   (54/58)"/>
+        <coverage type="line, %" value="93%   (54/58)"/>
+        <srcfile name="OMestreDosCodigos.Impl.Cliente.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="100%   (14/14)"/>
+          <coverage type="block, %" value="93%   (54/58)"/>
+          <coverage type="line, %" value="93%   (54/58)"/>
+          <class name="TCliente">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (14/14)"/>
+            <coverage type="block, %" value="93%   (54/58)"/>
+            <coverage type="line, %" value="93%   (54/58)"/>
+            <method name="ValidarRequeridos">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="56%   (5/9)"/>
+              <coverage type="line, %" value="56%   (5/9)"/>
+            </method>
+            <method name="getEmail">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getTelefone">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Validar">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (8/8)"/>
+              <coverage type="line, %" value="100%   (8/8)"/>
+            </method>
+            <method name="getDataNascimeto">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="ModificarTelefone">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="ModificarEmail">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Create">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (8/8)"/>
+              <coverage type="line, %" value="100%   (8/8)"/>
+            </method>
+            <method name="ModificarEndereco">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getNome">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="ModificarNome">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="ModificarDataNascimento">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getEndereco">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="pkgUtils.Impl.ListaRetornoValidacao">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="40%   (4/10)"/>
+        <coverage type="block, %" value="36%   (15/42)"/>
+        <coverage type="line, %" value="36%   (15/42)"/>
+        <srcfile name="pkgUtils.Impl.ListaRetornoValidacao.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="40%   (4/10)"/>
+          <coverage type="block, %" value="36%   (15/42)"/>
+          <coverage type="line, %" value="36%   (15/42)"/>
+          <class name="TListaRetornoValidacao">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="40%   (4/10)"/>
+            <coverage type="block, %" value="36%   (15/42)"/>
+            <coverage type="line, %" value="36%   (15/42)"/>
+            <method name="AdicionarArrayListaRetorno">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="60%   (3/5)"/>
+              <coverage type="line, %" value="60%   (3/5)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getQtd">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="Create">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="AdicionarRetorno">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="EstaVazio">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="AddListaValidacoes">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/5)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+            <method name="getValidacao">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="Destroy">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (5/5)"/>
+              <coverage type="line, %" value="100%   (5/5)"/>
+            </method>
+            <method name="ToString">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/8)"/>
+              <coverage type="line, %" value="0%   (0/8)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="OMestreDosCodigos.Teste.Cliente.ListaArrayDinamico">
+        <coverage type="class, %" value="100%   (3/3)"/>
+        <coverage type="method, %" value="90%   (27/30)"/>
+        <coverage type="block, %" value="92%   (121/132)"/>
+        <coverage type="line, %" value="92%   (121/132)"/>
+        <srcfile name="OMestreDosCodigos.Teste.Cliente.ListaArrayDinamico.pas">
+          <coverage type="class, %" value="100%   (3/3)"/>
+          <coverage type="method, %" value="90%   (27/30)"/>
+          <coverage type="block, %" value="92%   (121/132)"/>
+          <coverage type="line, %" value="92%   (121/132)"/>
+          <class name="OMestreDosCodigos_Teste_Cliente_ListaArrayDinamico">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (2/2)"/>
+            <coverage type="line, %" value="100%   (2/2)"/>
+            <method name="Initialization">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (2/2)"/>
+              <coverage type="line, %" value="100%   (2/2)"/>
+            </method>
+          </class>
+          <class name="TTesteArrayDinamico">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (14/14)"/>
+            <coverage type="block, %" value="98%   (63/64)"/>
+            <coverage type="line, %" value="98%   (63/64)"/>
+            <method name="AdicionarArray">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (5/5)"/>
+              <coverage type="line, %" value="100%   (5/5)"/>
+            </method>
+            <method name="AdicionarItem">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (5/5)"/>
+              <coverage type="line, %" value="100%   (5/5)"/>
+            </method>
+            <method name="TearDown">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="CriarListaInicializada">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="AlterarRegistro">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (5/5)"/>
+              <coverage type="line, %" value="100%   (5/5)"/>
+            </method>
+            <method name="RemoverIndiceMaiorQueOTamanho">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="ClienteDadosCompletos">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (5/5)"/>
+              <coverage type="line, %" value="100%   (5/5)"/>
+            </method>
+            <method name="getListaComQuatroCoisas">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="CriarListaArrayDinamico">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="RemoverItem">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (6/6)"/>
+              <coverage type="line, %" value="100%   (6/6)"/>
+            </method>
+            <method name="AlterarNome">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (8/8)"/>
+              <coverage type="line, %" value="100%   (8/8)"/>
+            </method>
+            <method name="Setup">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="RecuperarODoMeio">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (5/5)"/>
+              <coverage type="line, %" value="100%   (5/5)"/>
+            </method>
+            <method name="RetirarOIndice20">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="67%   (2/3)"/>
+              <coverage type="line, %" value="67%   (2/3)"/>
+            </method>
+          </class>
+          <class name="{OMestreDosCodigos.Impl.Cliente.ListaArrayDinamico}TListaArrayDinamico&lt;OMestreDosCodigos.Intf.Cliente.ICliente&gt;">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="80%   (12/15)"/>
+            <coverage type="block, %" value="85%   (56/66)"/>
+            <coverage type="line, %" value="85%   (56/66)"/>
+            <method name="IncrementarTamanhoDoArrayEm">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="setNotificarMudanca">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="getTamanho">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Remover">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (11/11)"/>
+              <coverage type="line, %" value="100%   (11/11)"/>
+            </method>
+            <method name="TestarEstaVazio">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="Alterar">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (5/5)"/>
+              <coverage type="line, %" value="100%   (5/5)"/>
+            </method>
+            <method name="getNotificarMudanca">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="Adicionar">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (5/5)"/>
+              <coverage type="line, %" value="100%   (5/5)"/>
+            </method>
+            <method name="UltimoIndice">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="ValidarAcessoAoIndice">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="Create">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (5/5)"/>
+              <coverage type="line, %" value="100%   (5/5)"/>
+            </method>
+            <method name="NotificarMudanca">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="75%   (3/4)"/>
+              <coverage type="line, %" value="75%   (3/4)"/>
+            </method>
+            <method name="Retornar">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="AdicionarArray">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (6/6)"/>
+              <coverage type="line, %" value="100%   (6/6)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="pkgUtils.Impl.EMail">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="100%   (5/5)"/>
+        <coverage type="block, %" value="86%   (18/21)"/>
+        <coverage type="line, %" value="86%   (18/21)"/>
+        <srcfile name="pkgUtils.Impl.EMail.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="100%   (5/5)"/>
+          <coverage type="block, %" value="86%   (18/21)"/>
+          <coverage type="line, %" value="86%   (18/21)"/>
+          <class name="TEmail">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (5/5)"/>
+            <coverage type="block, %" value="86%   (18/21)"/>
+            <coverage type="line, %" value="86%   (18/21)"/>
+            <method name="AsString">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Validar">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="62%   (5/8)"/>
+              <coverage type="line, %" value="62%   (5/8)"/>
+            </method>
+            <method name="ModificarEmail">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Create">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="OMestreDosCodigos.Impl.Cliente.Builder">
+        <coverage type="class, %" value="100%   (2/2)"/>
+        <coverage type="method, %" value="100%   (14/14)"/>
+        <coverage type="block, %" value="100%   (53/53)"/>
+        <coverage type="line, %" value="100%   (53/53)"/>
+        <srcfile name="OMestreDosCodigos.Impl.Cliente.Builder.pas">
+          <coverage type="class, %" value="100%   (2/2)"/>
+          <coverage type="method, %" value="100%   (14/14)"/>
+          <coverage type="block, %" value="100%   (53/53)"/>
+          <coverage type="line, %" value="100%   (53/53)"/>
+          <class name="TClienteBuilder">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (13/13)"/>
+            <coverage type="block, %" value="100%   (50/50)"/>
+            <coverage type="line, %" value="100%   (50/50)"/>
+            <method name="Telefone">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="Logradouro">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="Numero">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="CEP">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="DataNascimento">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="Cidade">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Email">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="ConstruirNovaInstancia">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="UF">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="Bairro">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="Nome">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="Complemento">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+          </class>
+          <class name="{DesignPattern.Builder.Impl.Builder}TBuilder&lt;OMestreDosCodigos.Intf.Cliente.ICliente&gt;">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (3/3)"/>
+            <coverage type="line, %" value="100%   (3/3)"/>
+            <method name="getObjeto">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+    </all>
+  </data>
+</report>

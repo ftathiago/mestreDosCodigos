@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>Delphi CodeCoverage Coverage Report</title>
+<style type="text/css">
+table {border-spacing:0; border-collapse:collapse;}
+table, td, th {border: 1px solid black;}
+td, th {background: white; margin: 0; padding: 2px 0.5em 2px 0.5em}
+td {border-width: 0 1px 0 0;}
+th {border-width: 1px 1px 1px 0;}
+p, h1, h2, h3, th {font-family: verdana,arial,sans-serif; font-size: 10pt;}
+td {font-family: courier,monospace; font-size: 10pt;}
+th {background: #CCCCCC;}
+table.o tr td:nth-child(1) {font-weight: bold;}
+table.o tr td:nth-child(2) {text-align: right;}
+table.o tr td {border-width: 1px;}
+table.s {width: 100%;}
+table.s tr td {padding: 0 0.25em 0 0.25em;}
+table.s tr td:first-child {text-align: right; font-weight: bold;}
+table.s tr.notcovered td {background: #DDDDFF;}
+table.s tr.nocodegen td {background: #FFFFEE;}
+table.s tr.covered td {background: #CCFFCC;}
+table.s tr.covered td:first-child {color: green;}
+table.s {border-width: 1px 0 1px 1px;}
+table.sum tr td {border-width: 1px;}
+table.sum tr th {text-align:right;}
+table.sum tr th:first-child {text-align:center;}
+table.sum tr td {text-align:right;}
+table.sum tr td:first-child {text-align:left;}
+</style>
+</head>
+<body>
+<p>Coverage report for <strong>OMesteDosCodigos.Teste.Cliente (C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\AplicacaoFinal\Teste\OMesteDosCodigos.Teste.Cliente.pas)</strong>.</p>
+<p> Generated at 15/04/2018 02:10:18 by <a href="http://code.google.com/p/delphi-code-coverage/" title="Code Coverage for Delphi 5+">DelphiCodeCoverage</a> - an open source tool for Delphi Code Coverage.</p>
+<p> Statistics for C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\AplicacaoFinal\Teste\OMesteDosCodigos.Teste.Cliente.pas </p>
+<table  class="o"><tr><td>Number of lines covered</td><td>67</td></tr><tr><td>Number of lines with code gen</td><td>68</td></tr><tr><td>Line coverage</td><td>98%</td></tr></table>
+<br /><br />
+<table  class="s">
+<tr class="nocodegen"><td>1</td><td><pre style="display:inline;">unit OMesteDosCodigos.Teste.Cliente;</pre></td></tr>
+<tr class="nocodegen"><td>2</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>3</td><td><pre style="display:inline;">interface</pre></td></tr>
+<tr class="nocodegen"><td>4</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>5</td><td><pre style="display:inline;">uses</pre></td></tr>
+<tr class="nocodegen"><td>6</td><td><pre style="display:inline;"> &nbsp;DUnitX.TestFramework,</pre></td></tr>
+<tr class="nocodegen"><td>7</td><td><pre style="display:inline;"> &nbsp;OMestreDosCodigos.Intf.Cliente;</pre></td></tr>
+<tr class="nocodegen"><td>8</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>9</td><td><pre style="display:inline;">type</pre></td></tr>
+<tr class="nocodegen"><td>10</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>11</td><td><pre style="display:inline;"> &nbsp;[TestFixture]</pre></td></tr>
+<tr class="nocodegen"><td>12</td><td><pre style="display:inline;"> &nbsp;TTesteCliente = class(TObject)</pre></td></tr>
+<tr class="nocodegen"><td>13</td><td><pre style="display:inline;"> &nbsp;private</pre></td></tr>
+<tr class="nocodegen"><td>14</td><td><pre style="display:inline;"> &nbsp; &nbsp;FClienteCompleto: ICliente;</pre></td></tr>
+<tr class="nocodegen"><td>15</td><td><pre style="display:inline;"> &nbsp; &nbsp;function ClienteDadosCompletos: ICliente;</pre></td></tr>
+<tr class="nocodegen"><td>16</td><td><pre style="display:inline;"> &nbsp;public</pre></td></tr>
+<tr class="nocodegen"><td>17</td><td><pre style="display:inline;"> &nbsp; &nbsp;[Setup]</pre></td></tr>
+<tr class="nocodegen"><td>18</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure Setup;</pre></td></tr>
+<tr class="nocodegen"><td>19</td><td><pre style="display:inline;"> &nbsp; &nbsp;[TearDown]</pre></td></tr>
+<tr class="nocodegen"><td>20</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure TearDown;</pre></td></tr>
+<tr class="nocodegen"><td>21</td><td><pre style="display:inline;"> &nbsp; &nbsp;// Sample Methods</pre></td></tr>
+<tr class="nocodegen"><td>22</td><td><pre style="display:inline;"> &nbsp; &nbsp;// Simple single Test</pre></td></tr>
+<tr class="nocodegen"><td>23</td><td><pre style="display:inline;"> &nbsp; &nbsp;[Test]</pre></td></tr>
+<tr class="nocodegen"><td>24</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure CriarCliente;</pre></td></tr>
+<tr class="nocodegen"><td>25</td><td><pre style="display:inline;"> &nbsp; &nbsp;[Test]</pre></td></tr>
+<tr class="nocodegen"><td>26</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ClienteTemNome;</pre></td></tr>
+<tr class="nocodegen"><td>27</td><td><pre style="display:inline;"> &nbsp; &nbsp;[Test]</pre></td></tr>
+<tr class="nocodegen"><td>28</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ClienteTemDataNascimento;</pre></td></tr>
+<tr class="nocodegen"><td>29</td><td><pre style="display:inline;"> &nbsp; &nbsp;[Test]</pre></td></tr>
+<tr class="nocodegen"><td>30</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ClienteTemEndereco;</pre></td></tr>
+<tr class="nocodegen"><td>31</td><td><pre style="display:inline;"> &nbsp; &nbsp;[Test]</pre></td></tr>
+<tr class="nocodegen"><td>32</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ClienteTemEmail;</pre></td></tr>
+<tr class="nocodegen"><td>33</td><td><pre style="display:inline;"> &nbsp; &nbsp;[Test]</pre></td></tr>
+<tr class="nocodegen"><td>34</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ClienteTemTelefone;</pre></td></tr>
+<tr class="nocodegen"><td>35</td><td><pre style="display:inline;"> &nbsp; &nbsp;[Test]</pre></td></tr>
+<tr class="nocodegen"><td>36</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ModificarNome;</pre></td></tr>
+<tr class="nocodegen"><td>37</td><td><pre style="display:inline;"> &nbsp; &nbsp;[Test]</pre></td></tr>
+<tr class="nocodegen"><td>38</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ModificarDataNascimento;</pre></td></tr>
+<tr class="nocodegen"><td>39</td><td><pre style="display:inline;"> &nbsp; &nbsp;[Test]</pre></td></tr>
+<tr class="nocodegen"><td>40</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ModificarEndereco;</pre></td></tr>
+<tr class="nocodegen"><td>41</td><td><pre style="display:inline;"> &nbsp; &nbsp;[Test]</pre></td></tr>
+<tr class="nocodegen"><td>42</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure AtribuirNovoEndereco;</pre></td></tr>
+<tr class="nocodegen"><td>43</td><td><pre style="display:inline;"> &nbsp; &nbsp;[Test]</pre></td></tr>
+<tr class="nocodegen"><td>44</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ModificarEmail;</pre></td></tr>
+<tr class="nocodegen"><td>45</td><td><pre style="display:inline;"> &nbsp; &nbsp;[Test]</pre></td></tr>
+<tr class="nocodegen"><td>46</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure AtribuirNovoEmail;</pre></td></tr>
+<tr class="nocodegen"><td>47</td><td><pre style="display:inline;"> &nbsp; &nbsp;[Test]</pre></td></tr>
+<tr class="nocodegen"><td>48</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ModificarTelefone;</pre></td></tr>
+<tr class="nocodegen"><td>49</td><td><pre style="display:inline;"> &nbsp; &nbsp;[Test]</pre></td></tr>
+<tr class="nocodegen"><td>50</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure TestarDadosClienteValido;</pre></td></tr>
+<tr class="nocodegen"><td>51</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="notcovered"><td>52</td><td><pre style="display:inline;"> &nbsp;end;</pre></td></tr>
+<tr class="nocodegen"><td>53</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>54</td><td><pre style="display:inline;">implementation</pre></td></tr>
+<tr class="nocodegen"><td>55</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>56</td><td><pre style="display:inline;">uses</pre></td></tr>
+<tr class="nocodegen"><td>57</td><td><pre style="display:inline;"> &nbsp;System.SysUtils,</pre></td></tr>
+<tr class="nocodegen"><td>58</td><td><pre style="display:inline;"> &nbsp;System.DateUtils,</pre></td></tr>
+<tr class="nocodegen"><td>59</td><td><pre style="display:inline;"> &nbsp;pkgUtils.Intf.EMail,</pre></td></tr>
+<tr class="nocodegen"><td>60</td><td><pre style="display:inline;"> &nbsp;pkgUtils.Impl.EMail,</pre></td></tr>
+<tr class="nocodegen"><td>61</td><td><pre style="display:inline;"> &nbsp;pkgUtils.Intf.Telefone,</pre></td></tr>
+<tr class="nocodegen"><td>62</td><td><pre style="display:inline;"> &nbsp;pkgUtils.Impl.Telefone,</pre></td></tr>
+<tr class="nocodegen"><td>63</td><td><pre style="display:inline;"> &nbsp;pkgUtils.Intf.ListaRetornoValidacao,</pre></td></tr>
+<tr class="nocodegen"><td>64</td><td><pre style="display:inline;"> &nbsp;pkgUtils.Impl.ListaRetornoValidacao,</pre></td></tr>
+<tr class="nocodegen"><td>65</td><td><pre style="display:inline;"> &nbsp;pkgUtils.Intf.Endereco,</pre></td></tr>
+<tr class="nocodegen"><td>66</td><td><pre style="display:inline;"> &nbsp;pkgUtils.Impl.Endereco,</pre></td></tr>
+<tr class="nocodegen"><td>67</td><td><pre style="display:inline;"> &nbsp;OMestreDosCodigos.Intf.Cliente.Builder,</pre></td></tr>
+<tr class="nocodegen"><td>68</td><td><pre style="display:inline;"> &nbsp;OMestreDosCodigos.Impl.Cliente,</pre></td></tr>
+<tr class="nocodegen"><td>69</td><td><pre style="display:inline;"> &nbsp;OMestreDosCodigos.Impl.Cliente.Builder;</pre></td></tr>
+<tr class="nocodegen"><td>70</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>71</td><td><pre style="display:inline;">const</pre></td></tr>
+<tr class="nocodegen"><td>72</td><td><pre style="display:inline;"> &nbsp;LOGRADOURO = &apos;Av. Dr. Mario Clapier Ubinati&apos;;</pre></td></tr>
+<tr class="nocodegen"><td>73</td><td><pre style="display:inline;"> &nbsp;NUMERO = &apos;16&apos;;</pre></td></tr>
+<tr class="nocodegen"><td>74</td><td><pre style="display:inline;"> &nbsp;BAIRRO = &apos;Zona 7&apos;;</pre></td></tr>
+<tr class="nocodegen"><td>75</td><td><pre style="display:inline;"> &nbsp;CEP = &apos;87020000&apos;;</pre></td></tr>
+<tr class="nocodegen"><td>76</td><td><pre style="display:inline;"> &nbsp;COMPLEMENTO = &apos;apto 05&apos;;</pre></td></tr>
+<tr class="nocodegen"><td>77</td><td><pre style="display:inline;"> &nbsp;DATANASCIMENTO = &apos;12/11/1984&apos;;</pre></td></tr>
+<tr class="nocodegen"><td>78</td><td><pre style="display:inline;"> &nbsp;EMail = &apos;ftathiago@gmail.com&apos;;</pre></td></tr>
+<tr class="nocodegen"><td>79</td><td><pre style="display:inline;"> &nbsp;NOME = &apos;Francisco Thiago de Almeida&apos;;</pre></td></tr>
+<tr class="nocodegen"><td>80</td><td><pre style="display:inline;"> &nbsp;Telefone = &apos;67981339657&apos;;</pre></td></tr>
+<tr class="nocodegen"><td>81</td><td><pre style="display:inline;"> &nbsp;DDD = &apos;67&apos;;</pre></td></tr>
+<tr class="nocodegen"><td>82</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>83</td><td><pre style="display:inline;">procedure TTesteCliente.Setup;</pre></td></tr>
+<tr class="covered"><td>84</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>85</td><td><pre style="display:inline;"> &nbsp;FClienteCompleto := ClienteDadosCompletos;</pre></td></tr>
+<tr class="covered"><td>86</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>87</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>88</td><td><pre style="display:inline;">procedure TTesteCliente.TearDown;</pre></td></tr>
+<tr class="covered"><td>89</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>90</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>91</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>92</td><td><pre style="display:inline;">procedure TTesteCliente.ClienteTemDataNascimento;</pre></td></tr>
+<tr class="nocodegen"><td>93</td><td><pre style="display:inline;">var</pre></td></tr>
+<tr class="nocodegen"><td>94</td><td><pre style="display:inline;"> &nbsp;_dataNascimentoVazia: TDateTime;</pre></td></tr>
+<tr class="covered"><td>95</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>96</td><td><pre style="display:inline;"> &nbsp;_dataNascimentoVazia := 0;</pre></td></tr>
+<tr class="covered"><td>97</td><td><pre style="display:inline;"> &nbsp;Assert.AreNotEqual(_dataNascimentoVazia, FClienteCompleto.DATANASCIMENTO);</pre></td></tr>
+<tr class="covered"><td>98</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>99</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>100</td><td><pre style="display:inline;">procedure TTesteCliente.ClienteTemEmail;</pre></td></tr>
+<tr class="covered"><td>101</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>102</td><td><pre style="display:inline;"> &nbsp;Assert.IsTrue(Assigned(FClienteCompleto.EMail));</pre></td></tr>
+<tr class="covered"><td>103</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>104</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>105</td><td><pre style="display:inline;">procedure TTesteCliente.ClienteTemEndereco;</pre></td></tr>
+<tr class="covered"><td>106</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>107</td><td><pre style="display:inline;"> &nbsp;Assert.IsTrue(Assigned(FClienteCompleto.Endereco));</pre></td></tr>
+<tr class="covered"><td>108</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>109</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>110</td><td><pre style="display:inline;">procedure TTesteCliente.ClienteTemNome;</pre></td></tr>
+<tr class="covered"><td>111</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>112</td><td><pre style="display:inline;"> &nbsp;Assert.IsNotEmpty(FClienteCompleto.NOME);</pre></td></tr>
+<tr class="covered"><td>113</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>114</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>115</td><td><pre style="display:inline;">procedure TTesteCliente.ClienteTemTelefone;</pre></td></tr>
+<tr class="covered"><td>116</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>117</td><td><pre style="display:inline;"> &nbsp;Assert.IsNotEmpty(FClienteCompleto.Telefone.AsString);</pre></td></tr>
+<tr class="covered"><td>118</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>119</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>120</td><td><pre style="display:inline;">procedure TTesteCliente.AtribuirNovoEmail;</pre></td></tr>
+<tr class="nocodegen"><td>121</td><td><pre style="display:inline;">const</pre></td></tr>
+<tr class="nocodegen"><td>122</td><td><pre style="display:inline;"> &nbsp;NOVO_EMAIL = &apos;novoEmail@email.com&apos;;</pre></td></tr>
+<tr class="covered"><td>123</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>124</td><td><pre style="display:inline;"> &nbsp;FClienteCompleto.ModificarEmail(TEmail.New(NOVO_EMAIL));</pre></td></tr>
+<tr class="covered"><td>125</td><td><pre style="display:inline;"> &nbsp;Assert.AreEqual(NOVO_EMAIL, FClienteCompleto.EMail.AsString);</pre></td></tr>
+<tr class="covered"><td>126</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>127</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>128</td><td><pre style="display:inline;">function TTesteCliente.ClienteDadosCompletos: ICliente;</pre></td></tr>
+<tr class="nocodegen"><td>129</td><td><pre style="display:inline;">var</pre></td></tr>
+<tr class="nocodegen"><td>130</td><td><pre style="display:inline;"> &nbsp;_clienteBuilder: IClienteBuilder;</pre></td></tr>
+<tr class="covered"><td>131</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>132</td><td><pre style="display:inline;"> &nbsp;_clienteBuilder := TClienteBuilder.New</pre></td></tr>
+<tr class="nocodegen"><td>133</td><td><pre style="display:inline;"> &nbsp; &nbsp;.NOME(NOME)</pre></td></tr>
+<tr class="nocodegen"><td>134</td><td><pre style="display:inline;"> &nbsp; &nbsp;.LOGRADOURO(LOGRADOURO)</pre></td></tr>
+<tr class="nocodegen"><td>135</td><td><pre style="display:inline;"> &nbsp; &nbsp;.NUMERO(DDD)</pre></td></tr>
+<tr class="nocodegen"><td>136</td><td><pre style="display:inline;"> &nbsp; &nbsp;.BAIRRO(BAIRRO)</pre></td></tr>
+<tr class="nocodegen"><td>137</td><td><pre style="display:inline;"> &nbsp; &nbsp;.CEP(CEP)</pre></td></tr>
+<tr class="nocodegen"><td>138</td><td><pre style="display:inline;"> &nbsp; &nbsp;.COMPLEMENTO(COMPLEMENTO)</pre></td></tr>
+<tr class="nocodegen"><td>139</td><td><pre style="display:inline;"> &nbsp; &nbsp;.DATANASCIMENTO(StrToDate(DATANASCIMENTO))</pre></td></tr>
+<tr class="nocodegen"><td>140</td><td><pre style="display:inline;"> &nbsp; &nbsp;.EMail(EMail)</pre></td></tr>
+<tr class="nocodegen"><td>141</td><td><pre style="display:inline;"> &nbsp; &nbsp;.Telefone(Telefone);</pre></td></tr>
+<tr class="covered"><td>142</td><td><pre style="display:inline;"> &nbsp;_clienteBuilder.ConstruirNovaInstancia;</pre></td></tr>
+<tr class="covered"><td>143</td><td><pre style="display:inline;"> &nbsp;result := _clienteBuilder.getObjeto;</pre></td></tr>
+<tr class="covered"><td>144</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>145</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>146</td><td><pre style="display:inline;">procedure TTesteCliente.CriarCliente;</pre></td></tr>
+<tr class="nocodegen"><td>147</td><td><pre style="display:inline;">var</pre></td></tr>
+<tr class="nocodegen"><td>148</td><td><pre style="display:inline;"> &nbsp;_cliente: ICliente;</pre></td></tr>
+<tr class="covered"><td>149</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>150</td><td><pre style="display:inline;"> &nbsp;_cliente := ClienteDadosCompletos;</pre></td></tr>
+<tr class="nocodegen"><td>151</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>152</td><td><pre style="display:inline;"> &nbsp;Assert.IsTrue(Assigned(_cliente));</pre></td></tr>
+<tr class="covered"><td>153</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>154</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>155</td><td><pre style="display:inline;">procedure TTesteCliente.ModificarDataNascimento;</pre></td></tr>
+<tr class="covered"><td>156</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>157</td><td><pre style="display:inline;"> &nbsp;FClienteCompleto.DATANASCIMENTO := Now;</pre></td></tr>
+<tr class="covered"><td>158</td><td><pre style="display:inline;"> &nbsp;Assert.AreNotEqual(StrToDate(DATANASCIMENTO), FClienteCompleto.DATANASCIMENTO);</pre></td></tr>
+<tr class="covered"><td>159</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>160</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>161</td><td><pre style="display:inline;">procedure TTesteCliente.ModificarEmail;</pre></td></tr>
+<tr class="covered"><td>162</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>163</td><td><pre style="display:inline;"> &nbsp;FClienteCompleto.EMail.ModificarEmail(&apos;novoEmail@yahoo.com.br&apos;);</pre></td></tr>
+<tr class="covered"><td>164</td><td><pre style="display:inline;"> &nbsp;Assert.AreNotEqual(EMail, FClienteCompleto.EMail.AsString);</pre></td></tr>
+<tr class="covered"><td>165</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>166</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>167</td><td><pre style="display:inline;">procedure TTesteCliente.ModificarEndereco;</pre></td></tr>
+<tr class="nocodegen"><td>168</td><td><pre style="display:inline;">const</pre></td></tr>
+<tr class="nocodegen"><td>169</td><td><pre style="display:inline;"> &nbsp;NOVO_LOGRADOURO = &apos;Novo logradouro&apos;;</pre></td></tr>
+<tr class="covered"><td>170</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>171</td><td><pre style="display:inline;"> &nbsp;FClienteCompleto.Endereco.ModificarLogradouro(NOVO_LOGRADOURO);</pre></td></tr>
+<tr class="covered"><td>172</td><td><pre style="display:inline;"> &nbsp;Assert.AreEqual(NOVO_LOGRADOURO, FClienteCompleto.Endereco.LOGRADOURO);</pre></td></tr>
+<tr class="covered"><td>173</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>174</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>175</td><td><pre style="display:inline;">procedure TTesteCliente.ModificarNome;</pre></td></tr>
+<tr class="covered"><td>176</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>177</td><td><pre style="display:inline;"> &nbsp;FClienteCompleto.ModificarNome(&apos;Outro nome&apos;);</pre></td></tr>
+<tr class="covered"><td>178</td><td><pre style="display:inline;"> &nbsp;Assert.AreNotEqual(NOME, FClienteCompleto.NOME);</pre></td></tr>
+<tr class="covered"><td>179</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>180</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>181</td><td><pre style="display:inline;">procedure TTesteCliente.ModificarTelefone;</pre></td></tr>
+<tr class="covered"><td>182</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>183</td><td><pre style="display:inline;"> &nbsp;FClienteCompleto.ModificarTelefone(TTelefone.New(&apos;16999999999&apos;));</pre></td></tr>
+<tr class="covered"><td>184</td><td><pre style="display:inline;"> &nbsp;Assert.AreNotEqual(Telefone, FClienteCompleto.Telefone.AsString);</pre></td></tr>
+<tr class="covered"><td>185</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>186</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>187</td><td><pre style="display:inline;">procedure TTesteCliente.TestarDadosClienteValido;</pre></td></tr>
+<tr class="nocodegen"><td>188</td><td><pre style="display:inline;">var</pre></td></tr>
+<tr class="nocodegen"><td>189</td><td><pre style="display:inline;"> &nbsp;_listaRetornoValidacao: IListaRetornoValidacao;</pre></td></tr>
+<tr class="covered"><td>190</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>191</td><td><pre style="display:inline;"> &nbsp;_listaRetornoValidacao := TListaRetornoValidacao.New([]);</pre></td></tr>
+<tr class="covered"><td>192</td><td><pre style="display:inline;"> &nbsp;Assert.IsTrue(FClienteCompleto.Validar(_listaRetornoValidacao));</pre></td></tr>
+<tr class="covered"><td>193</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>194</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>195</td><td><pre style="display:inline;">procedure TTesteCliente.AtribuirNovoEndereco;</pre></td></tr>
+<tr class="nocodegen"><td>196</td><td><pre style="display:inline;">var</pre></td></tr>
+<tr class="nocodegen"><td>197</td><td><pre style="display:inline;"> &nbsp;_enderecoOriginal: Integer;</pre></td></tr>
+<tr class="nocodegen"><td>198</td><td><pre style="display:inline;"> &nbsp;_enderecoAposModificacao: Integer;</pre></td></tr>
+<tr class="nocodegen"><td>199</td><td><pre style="display:inline;"> &nbsp;_endereco: IEndereco;</pre></td></tr>
+<tr class="covered"><td>200</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>201</td><td><pre style="display:inline;"> &nbsp;_endereco := TEndereco.New(&apos;NOVO LOGRADOURO&apos;, NUMERO, COMPLEMENTO, CEP, BAIRRO);</pre></td></tr>
+<tr class="covered"><td>202</td><td><pre style="display:inline;"> &nbsp;_enderecoOriginal := Integer(FClienteCompleto.Endereco);</pre></td></tr>
+<tr class="nocodegen"><td>203</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>204</td><td><pre style="display:inline;"> &nbsp;FClienteCompleto.ModificarEndereco(_endereco);</pre></td></tr>
+<tr class="covered"><td>205</td><td><pre style="display:inline;"> &nbsp;_enderecoAposModificacao := Integer(FClienteCompleto.Endereco);</pre></td></tr>
+<tr class="nocodegen"><td>206</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>207</td><td><pre style="display:inline;"> &nbsp;Assert.AreNotEqual(_enderecoOriginal, _enderecoAposModificacao);</pre></td></tr>
+<tr class="covered"><td>208</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>209</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>210</td><td><pre style="display:inline;">initialization</pre></td></tr>
+<tr class="nocodegen"><td>211</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>212</td><td><pre style="display:inline;">TDUnitX.RegisterTestFixture(TTesteCliente);</pre></td></tr>
+<tr class="nocodegen"><td>213</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>214</td><td><pre style="display:inline;">end.</pre></td></tr>
+</table>
+</body>
+</html>

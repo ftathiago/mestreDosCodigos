@@ -56,7 +56,7 @@ contains
   pkgUtils.Intf.EMail in '..\pkgUtils.Intf.EMail.pas',
   pkgUtils.Intf.Telefone in '..\pkgUtils.Intf.Telefone.pas',
   pkgUtils.Intf.Validavel in '..\pkgUtils.Intf.Validavel.pas',
-  ufwAplicacao in '..\ufwAplicacao.pas',
+  pkgUtils.Intf.Aplicacao in '..\pkgUtils.Intf.Aplicacao.pas',
   pkgUtils.Intf.Endereco in '..\pkgUtils.Intf.Endereco.pas',
   pkgUtils.Impl.EMail in '..\pkgUtils.Impl.EMail.pas',
   pkgUtils.Intf.ListaRetornoValidacao in '..\pkgUtils.Intf.ListaRetornoValidacao.pas',

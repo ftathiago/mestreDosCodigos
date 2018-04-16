@@ -10,7 +10,7 @@ type
     ['{981EB473-7D12-4D4D-B7F7-8E7ED411D673}']
     function getDDD(): string;
     function getTelefone(): string;
-    function getTelefoneCompleto(): string;
+    function AsString(): string;
   end;
 
 implementation

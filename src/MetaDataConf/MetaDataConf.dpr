@@ -5,7 +5,7 @@ uses
   ufwPrincipal in 'ufwPrincipal.pas' {ffwPrincipal},
   ufwAplicacao in 'ufwAplicacao.pas',
   ufwForm in 'ufwForm.pas' {ffwForm},
-  ufwConfigEntidade in 'ufwConfigEntidade.pas' {ffwConfigEntidade},
+  MetaDataConf.UI.ffwConfigEntidade in 'MetaDataConf.UI.ffwConfigEntidade.pas' {ffwConfigEntidade},
   DataSet.Intf.MetaDataController in '..\FrameWork\MCFWComponentes\DataSet.Intf.MetaDataController.pas',
   DataSet.Impl.MetaDataController in '..\FrameWork\MCFWComponentes\DataSet.Impl.MetaDataController.pas';
 

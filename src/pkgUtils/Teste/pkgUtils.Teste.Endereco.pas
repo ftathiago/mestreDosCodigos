@@ -1,4 +1,4 @@
-unit uEnderecoTeste;
+unit pkgUtils.Teste.Endereco;
 
 interface
 

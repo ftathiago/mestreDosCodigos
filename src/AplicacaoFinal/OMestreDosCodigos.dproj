@@ -69,6 +69,8 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <BRCC_IncludePath>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\Conexao;$(BRCC_IncludePath)</BRCC_IncludePath>
+        <DCC_MapFile>3</DCC_MapFile>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Icon_MainIcon>OMestreDosCodigos_Icon.ico</Icon_MainIcon>
@@ -92,22 +94,34 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="uFrmMenu.pas">
-            <Form>Form1</Form>
+        <DCCReference Include="OMestreDosCodigos.UI.frmMenu.pas">
+            <Form>frmMenu</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\FrameWork\MCFWForms\umcForm.pas">
             <Form>fmcForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="uFrmArrayClientes.pas">
-            <Form>fmcForm1</Form>
+        <DCCReference Include="OMestreDosCodigos.UI.frmArrayClientes.pas">
+            <Form>frmArrayClientes</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="uCliente.pas"/>
-        <DCCReference Include="uICliente.pas"/>
+        <DCCReference Include="OMestreDosCodigos.Impl.Cliente.pas"/>
         <DCCReference Include="..\pkgUtils\pkgUtils.Intf.EMail.pas"/>
         <DCCReference Include="..\pkgUtils\pkgUtils.Intf.Telefone.pas"/>
+        <DCCReference Include="OMestreDosCodigos.Impl.Cliente.Builder.pas"/>
+        <DCCReference Include="OMestreDosCodigos.Intf.Cliente.pas"/>
+        <DCCReference Include="OMestreDosCodigos.Intf.Cliente.Builder.pas"/>
+        <DCCReference Include="OMestreDosCodigos.Intf.Cliente.ListaArrayDinamico.pas"/>
+        <DCCReference Include="OMestreDosCodigos.Impl.Cliente.ListaArrayDinamico.pas"/>
+        <DCCReference Include="..\MetaDataConf\ufwForm.pas">
+            <Form>ffwForm</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\MetaDataConf\MetaDataConf.UI.ffwConfigEntidade.pas">
+            <Form>ffwConfigEntidade</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -136,12 +150,27 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="ProjectiOSDeviceResourceRules">
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
@@ -495,27 +524,12 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
+                <DeployClass Name="ProjectiOSDeviceResourceRules">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>

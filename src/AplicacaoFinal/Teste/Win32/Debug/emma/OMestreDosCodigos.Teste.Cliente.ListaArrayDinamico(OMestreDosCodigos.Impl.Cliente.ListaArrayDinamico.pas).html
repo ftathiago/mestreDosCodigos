@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>Delphi CodeCoverage Coverage Report</title>
+<style type="text/css">
+table {border-spacing:0; border-collapse:collapse;}
+table, td, th {border: 1px solid black;}
+td, th {background: white; margin: 0; padding: 2px 0.5em 2px 0.5em}
+td {border-width: 0 1px 0 0;}
+th {border-width: 1px 1px 1px 0;}
+p, h1, h2, h3, th {font-family: verdana,arial,sans-serif; font-size: 10pt;}
+td {font-family: courier,monospace; font-size: 10pt;}
+th {background: #CCCCCC;}
+table.o tr td:nth-child(1) {font-weight: bold;}
+table.o tr td:nth-child(2) {text-align: right;}
+table.o tr td {border-width: 1px;}
+table.s {width: 100%;}
+table.s tr td {padding: 0 0.25em 0 0.25em;}
+table.s tr td:first-child {text-align: right; font-weight: bold;}
+table.s tr.notcovered td {background: #DDDDFF;}
+table.s tr.nocodegen td {background: #FFFFEE;}
+table.s tr.covered td {background: #CCFFCC;}
+table.s tr.covered td:first-child {color: green;}
+table.s {border-width: 1px 0 1px 1px;}
+table.sum tr td {border-width: 1px;}
+table.sum tr th {text-align:right;}
+table.sum tr th:first-child {text-align:center;}
+table.sum tr td {text-align:right;}
+table.sum tr td:first-child {text-align:left;}
+</style>
+</head>
+<body>
+<p>Coverage report for <strong>OMestreDosCodigos.Teste.Cliente.ListaArrayDinamico (C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\AplicacaoFinal\OMestreDosCodigos.Impl.Cliente.ListaArrayDinamico.pas)</strong>.</p>
+<p> Generated at 15/04/2018 19:56:21 by <a href="http://code.google.com/p/delphi-code-coverage/" title="Code Coverage for Delphi 5+">DelphiCodeCoverage</a> - an open source tool for Delphi Code Coverage.</p>
+<p> Statistics for C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\AplicacaoFinal\OMestreDosCodigos.Impl.Cliente.ListaArrayDinamico.pas </p>
+<table  class="o"><tr><td>Number of lines covered</td><td>56</td></tr><tr><td>Number of lines with code gen</td><td>66</td></tr><tr><td>Line coverage</td><td>84%</td></tr></table>
+<br /><br />
+<table  class="s">
+<tr class="nocodegen"><td>1</td><td><pre style="display:inline;">unit OMestreDosCodigos.Impl.Cliente.ListaArrayDinamico;</pre></td></tr>
+<tr class="nocodegen"><td>2</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>3</td><td><pre style="display:inline;">interface</pre></td></tr>
+<tr class="nocodegen"><td>4</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>5</td><td><pre style="display:inline;">uses</pre></td></tr>
+<tr class="nocodegen"><td>6</td><td><pre style="display:inline;"> &nbsp;System.SysUtils,</pre></td></tr>
+<tr class="nocodegen"><td>7</td><td><pre style="display:inline;"> &nbsp;OMestreDosCodigos.Intf.Cliente.ListaArrayDinamico;</pre></td></tr>
+<tr class="nocodegen"><td>8</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>9</td><td><pre style="display:inline;">type</pre></td></tr>
+<tr class="nocodegen"><td>10</td><td><pre style="display:inline;"> &nbsp;TListaArrayDinamico&lt;T&gt; = class(TInterfacedObject, IListaArrayDinamico&lt;T&gt;)</pre></td></tr>
+<tr class="nocodegen"><td>11</td><td><pre style="display:inline;"> &nbsp;private</pre></td></tr>
+<tr class="nocodegen"><td>12</td><td><pre style="display:inline;"> &nbsp; &nbsp;FArray: TArray&lt;T&gt;;</pre></td></tr>
+<tr class="nocodegen"><td>13</td><td><pre style="display:inline;"> &nbsp; &nbsp;FTamanho: Integer;</pre></td></tr>
+<tr class="nocodegen"><td>14</td><td><pre style="display:inline;"> &nbsp; &nbsp;FNotificarMudanca: TNotificarMudanca;</pre></td></tr>
+<tr class="nocodegen"><td>15</td><td><pre style="display:inline;"> &nbsp; &nbsp;function IncrementarTamanhoDoArrayEm(const Incremento: Integer): Integer;</pre></td></tr>
+<tr class="nocodegen"><td>16</td><td><pre style="display:inline;"> &nbsp; &nbsp;function UltimoIndice: Integer;</pre></td></tr>
+<tr class="nocodegen"><td>17</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ValidarAcessoAoIndice(const Index: Integer);</pre></td></tr>
+<tr class="nocodegen"><td>18</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure NotificarMudanca(const TipoAlteracao: TTipoAlteracao);</pre></td></tr>
+<tr class="nocodegen"><td>19</td><td><pre style="display:inline;"> &nbsp;protected</pre></td></tr>
+<tr class="nocodegen"><td>20</td><td><pre style="display:inline;"> &nbsp; &nbsp;function TestarEstaVazio: boolean;</pre></td></tr>
+<tr class="nocodegen"><td>21</td><td><pre style="display:inline;"> &nbsp;public</pre></td></tr>
+<tr class="nocodegen"><td>22</td><td><pre style="display:inline;"> &nbsp; &nbsp;class function New(const Itens: Array of T): IListaArrayDinamico&lt;T&gt;;</pre></td></tr>
+<tr class="nocodegen"><td>23</td><td><pre style="display:inline;"> &nbsp; &nbsp;constructor Create(const Itens: Array of T);</pre></td></tr>
+<tr class="nocodegen"><td>24</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure AdicionarArray(const NovoArray: Array of T);</pre></td></tr>
+<tr class="nocodegen"><td>25</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure Adicionar(const Item: T);</pre></td></tr>
+<tr class="nocodegen"><td>26</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure Remover(const Index: Integer);</pre></td></tr>
+<tr class="nocodegen"><td>27</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure Alterar(const Index: Integer; const NovoItem: T);</pre></td></tr>
+<tr class="nocodegen"><td>28</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure setNotificarMudanca(const AProc: TNotificarMudanca);</pre></td></tr>
+<tr class="nocodegen"><td>29</td><td><pre style="display:inline;"> &nbsp; &nbsp;function Retornar(const Index: Integer): T;</pre></td></tr>
+<tr class="nocodegen"><td>30</td><td><pre style="display:inline;"> &nbsp; &nbsp;function getTamanho: Integer;</pre></td></tr>
+<tr class="nocodegen"><td>31</td><td><pre style="display:inline;"> &nbsp; &nbsp;function getNotificarMudanca: TNotificarMudanca;</pre></td></tr>
+<tr class="nocodegen"><td>32</td><td><pre style="display:inline;"> &nbsp; &nbsp;property Tamanho: Integer read getTamanho;</pre></td></tr>
+<tr class="nocodegen"><td>33</td><td><pre style="display:inline;"> &nbsp; &nbsp;property EstaVazio: boolean read TestarEstaVazio;</pre></td></tr>
+<tr class="nocodegen"><td>34</td><td><pre style="display:inline;"> &nbsp;end;</pre></td></tr>
+<tr class="nocodegen"><td>35</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>36</td><td><pre style="display:inline;">implementation</pre></td></tr>
+<tr class="nocodegen"><td>37</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>38</td><td><pre style="display:inline;">uses</pre></td></tr>
+<tr class="nocodegen"><td>39</td><td><pre style="display:inline;"> &nbsp;System.Classes;</pre></td></tr>
+<tr class="nocodegen"><td>40</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>41</td><td><pre style="display:inline;">{ TListaArrayDinamico&lt;T&gt; }</pre></td></tr>
+<tr class="nocodegen"><td>42</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>43</td><td><pre style="display:inline;">class function TListaArrayDinamico&lt;T&gt;.New(const Itens: Array of T): IListaArrayDinamico&lt;T&gt;;</pre></td></tr>
+<tr class="covered"><td>44</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>45</td><td><pre style="display:inline;"> &nbsp;Result := Create(Itens);</pre></td></tr>
+<tr class="covered"><td>46</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>47</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>48</td><td><pre style="display:inline;">procedure TListaArrayDinamico&lt;T&gt;.NotificarMudanca(const TipoAlteracao: TTipoAlteracao);</pre></td></tr>
+<tr class="covered"><td>49</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>50</td><td><pre style="display:inline;"> &nbsp;if Assigned(FNotificarMudanca) then</pre></td></tr>
+<tr class="notcovered"><td>51</td><td><pre style="display:inline;"> &nbsp; &nbsp;FNotificarMudanca(TipoAlteracao);</pre></td></tr>
+<tr class="covered"><td>52</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>53</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>54</td><td><pre style="display:inline;">procedure TListaArrayDinamico&lt;T&gt;.Remover(const Index: Integer);</pre></td></tr>
+<tr class="nocodegen"><td>55</td><td><pre style="display:inline;">var</pre></td></tr>
+<tr class="nocodegen"><td>56</td><td><pre style="display:inline;"> &nbsp;TailElements: Cardinal;</pre></td></tr>
+<tr class="covered"><td>57</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>58</td><td><pre style="display:inline;"> &nbsp;ValidarAcessoAoIndice(Index);</pre></td></tr>
+<tr class="nocodegen"><td>59</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>60</td><td><pre style="display:inline;"> &nbsp;FinalizeArray(@FArray[Index], TypeInfo(T), 1);</pre></td></tr>
+<tr class="covered"><td>61</td><td><pre style="display:inline;"> &nbsp;TailElements := Tamanho - Index;</pre></td></tr>
+<tr class="nocodegen"><td>62</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>63</td><td><pre style="display:inline;"> &nbsp;if TailElements &gt; 0 then</pre></td></tr>
+<tr class="covered"><td>64</td><td><pre style="display:inline;"> &nbsp; &nbsp;Move(FArray[Index + 1], FArray[Index], SizeOf(T) * TailElements);</pre></td></tr>
+<tr class="nocodegen"><td>65</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>66</td><td><pre style="display:inline;"> &nbsp;InitializeArray(@FArray[Tamanho - 1], TypeInfo(T), 1);</pre></td></tr>
+<tr class="covered"><td>67</td><td><pre style="display:inline;"> &nbsp;SetLength(FArray, Tamanho - 1);</pre></td></tr>
+<tr class="covered"><td>68</td><td><pre style="display:inline;"> &nbsp;FTamanho := DynArraySize(@FArray[0]);</pre></td></tr>
+<tr class="covered"><td>69</td><td><pre style="display:inline;"> &nbsp;NotificarMudanca(taRemover);</pre></td></tr>
+<tr class="covered"><td>70</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>71</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>72</td><td><pre style="display:inline;">function TListaArrayDinamico&lt;T&gt;.Retornar(const Index: Integer): T;</pre></td></tr>
+<tr class="covered"><td>73</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>74</td><td><pre style="display:inline;"> &nbsp;ValidarAcessoAoIndice(Index);</pre></td></tr>
+<tr class="covered"><td>75</td><td><pre style="display:inline;"> &nbsp;Result := FArray[Index];</pre></td></tr>
+<tr class="covered"><td>76</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>77</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>78</td><td><pre style="display:inline;">procedure TListaArrayDinamico&lt;T&gt;.setNotificarMudanca(const AProc: TNotificarMudanca);</pre></td></tr>
+<tr class="notcovered"><td>79</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="notcovered"><td>80</td><td><pre style="display:inline;"> &nbsp;FNotificarMudanca := AProc;</pre></td></tr>
+<tr class="notcovered"><td>81</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>82</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>83</td><td><pre style="display:inline;">function TListaArrayDinamico&lt;T&gt;.TestarEstaVazio: boolean;</pre></td></tr>
+<tr class="notcovered"><td>84</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="notcovered"><td>85</td><td><pre style="display:inline;"> &nbsp;Result := FTamanho &lt;= 0;</pre></td></tr>
+<tr class="notcovered"><td>86</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>87</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>88</td><td><pre style="display:inline;">constructor TListaArrayDinamico&lt;T&gt;.Create(const Itens: Array of T);</pre></td></tr>
+<tr class="covered"><td>89</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>90</td><td><pre style="display:inline;"> &nbsp;inherited Create;</pre></td></tr>
+<tr class="covered"><td>91</td><td><pre style="display:inline;"> &nbsp;FTamanho := 0;</pre></td></tr>
+<tr class="covered"><td>92</td><td><pre style="display:inline;"> &nbsp;AdicionarArray(Itens);</pre></td></tr>
+<tr class="covered"><td>93</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>94</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>95</td><td><pre style="display:inline;">function TListaArrayDinamico&lt;T&gt;.getNotificarMudanca: TNotificarMudanca;</pre></td></tr>
+<tr class="notcovered"><td>96</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="notcovered"><td>97</td><td><pre style="display:inline;"> &nbsp;Result := FNotificarMudanca;</pre></td></tr>
+<tr class="notcovered"><td>98</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>99</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>100</td><td><pre style="display:inline;">function TListaArrayDinamico&lt;T&gt;.getTamanho: Integer;</pre></td></tr>
+<tr class="covered"><td>101</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>102</td><td><pre style="display:inline;"> &nbsp;Result := FTamanho;</pre></td></tr>
+<tr class="covered"><td>103</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>104</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>105</td><td><pre style="display:inline;">procedure TListaArrayDinamico&lt;T&gt;.AdicionarArray(const NovoArray: array of T);</pre></td></tr>
+<tr class="nocodegen"><td>106</td><td><pre style="display:inline;">var</pre></td></tr>
+<tr class="nocodegen"><td>107</td><td><pre style="display:inline;"> &nbsp;_tamanhoDoNovoArray: Integer;</pre></td></tr>
+<tr class="nocodegen"><td>108</td><td><pre style="display:inline;"> &nbsp;i: Integer;</pre></td></tr>
+<tr class="covered"><td>109</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>110</td><td><pre style="display:inline;"> &nbsp;_tamanhoDoNovoArray := Length(NovoArray);</pre></td></tr>
+<tr class="covered"><td>111</td><td><pre style="display:inline;"> &nbsp;for i := 0 to Pred(_tamanhoDoNovoArray) do</pre></td></tr>
+<tr class="covered"><td>112</td><td><pre style="display:inline;"> &nbsp; &nbsp;Adicionar(NovoArray[i]);</pre></td></tr>
+<tr class="nocodegen"><td>113</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>114</td><td><pre style="display:inline;"> &nbsp;NotificarMudanca(taAdicionar);</pre></td></tr>
+<tr class="covered"><td>115</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>116</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>117</td><td><pre style="display:inline;">procedure TListaArrayDinamico&lt;T&gt;.Alterar(const Index: Integer; const NovoItem: T);</pre></td></tr>
+<tr class="covered"><td>118</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>119</td><td><pre style="display:inline;"> &nbsp;ValidarAcessoAoIndice(Index);</pre></td></tr>
+<tr class="covered"><td>120</td><td><pre style="display:inline;"> &nbsp;FArray[Index] := NovoItem;</pre></td></tr>
+<tr class="covered"><td>121</td><td><pre style="display:inline;"> &nbsp;NotificarMudanca(taAlterar);</pre></td></tr>
+<tr class="covered"><td>122</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>123</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>124</td><td><pre style="display:inline;">procedure TListaArrayDinamico&lt;T&gt;.Adicionar(const Item: T);</pre></td></tr>
+<tr class="covered"><td>125</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>126</td><td><pre style="display:inline;"> &nbsp;IncrementarTamanhoDoArrayEm(1);</pre></td></tr>
+<tr class="covered"><td>127</td><td><pre style="display:inline;"> &nbsp;FArray[UltimoIndice] := Item;</pre></td></tr>
+<tr class="covered"><td>128</td><td><pre style="display:inline;"> &nbsp;NotificarMudanca(taAdicionar);</pre></td></tr>
+<tr class="covered"><td>129</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>130</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>131</td><td><pre style="display:inline;">function TListaArrayDinamico&lt;T&gt;.IncrementarTamanhoDoArrayEm(const Incremento: Integer): Integer;</pre></td></tr>
+<tr class="nocodegen"><td>132</td><td><pre style="display:inline;">var</pre></td></tr>
+<tr class="nocodegen"><td>133</td><td><pre style="display:inline;"> &nbsp;_tamanhoAtual: Integer;</pre></td></tr>
+<tr class="covered"><td>134</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>135</td><td><pre style="display:inline;"> &nbsp;Inc(FTamanho, Incremento);</pre></td></tr>
+<tr class="covered"><td>136</td><td><pre style="display:inline;"> &nbsp;SetLength(FArray, FTamanho);</pre></td></tr>
+<tr class="covered"><td>137</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>138</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>139</td><td><pre style="display:inline;">function TListaArrayDinamico&lt;T&gt;.UltimoIndice: Integer;</pre></td></tr>
+<tr class="covered"><td>140</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>141</td><td><pre style="display:inline;"> &nbsp;Result := Pred(FTamanho);</pre></td></tr>
+<tr class="covered"><td>142</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>143</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>144</td><td><pre style="display:inline;">procedure TListaArrayDinamico&lt;T&gt;.ValidarAcessoAoIndice(const Index: Integer);</pre></td></tr>
+<tr class="covered"><td>145</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>146</td><td><pre style="display:inline;"> &nbsp;if Index &gt;= Tamanho then</pre></td></tr>
+<tr class="covered"><td>147</td><td><pre style="display:inline;"> &nbsp; &nbsp;raise EOutOfMemory.Create(&apos;&Iacute;ndice fora intervalo&apos;);</pre></td></tr>
+<tr class="covered"><td>148</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>149</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>150</td><td><pre style="display:inline;">end.</pre></td></tr>
+</table>
+</body>
+</html>

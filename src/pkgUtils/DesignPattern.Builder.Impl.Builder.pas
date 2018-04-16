@@ -6,19 +6,19 @@ uses
   DesignPattern.Builder.Intf.Builder;
 
 type
-  TBuilder<ObjetoSQL> = class(TInterfacedObject, IBuilder<ObjetoSQL>)
+  TBuilder<Objeto> = class(TInterfacedObject, IBuilder<Objeto>)
   protected
-    FObjeto: ObjetoSQL;
+    FObjeto: Objeto;
   public
     procedure ConstruirNovaInstancia; virtual; abstract;
-    function getObjeto: ObjetoSQL;
+    function getObjeto: Objeto;
   end;
 
 implementation
 
 { TBuilder<T> }
 
-function TBuilder<ObjetoSQL>.getObjeto: ObjetoSQL;
+function TBuilder<Objeto>.getObjeto: Objeto;
 begin
   result := FObjeto;
 end;

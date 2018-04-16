@@ -16,6 +16,7 @@ type
     constructor Create(const AEMail: string);
     procedure ModificarEmail(const ANovoEmail: string);
     function Validar(const ARetornoValidacao: IListaRetornoValidacao):boolean;
+    function AsString: string;
   end;
 
 implementation
@@ -40,6 +41,11 @@ begin
   FEhValido := False;
   FEmail := AEMail;
 end;
+function TEmail.AsString: string;
+begin
+  result := FEmail;
+end;
+
 procedure TEmail.ModificarEmail(const ANovoEmail: string);
 begin
   FEmail := ANovoEmail;

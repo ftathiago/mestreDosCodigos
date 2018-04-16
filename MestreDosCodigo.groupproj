@@ -27,6 +27,9 @@
         <Projects Include="src\AplicacaoFinal\OMestreDosCodigos.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="src\AplicacaoFinal\Teste\OMestreDosCodigosTeste.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -107,14 +110,23 @@
     <Target Name="OMestreDosCodigos:Make">
         <MSBuild Projects="src\AplicacaoFinal\OMestreDosCodigos.dproj" Targets="Make"/>
     </Target>
+    <Target Name="OMestreDosCodigosTeste">
+        <MSBuild Projects="src\AplicacaoFinal\Teste\OMestreDosCodigosTeste.dproj"/>
+    </Target>
+    <Target Name="OMestreDosCodigosTeste:Clean">
+        <MSBuild Projects="src\AplicacaoFinal\Teste\OMestreDosCodigosTeste.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OMestreDosCodigosTeste:Make">
+        <MSBuild Projects="src\AplicacaoFinal\Teste\OMestreDosCodigosTeste.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="ConexaoCarregadorDPK;pkgUtils;GeradorSQL;GeradorSQLDT;MCFWComponentes;MCFWFormsDpk;MetaDataConf;OMestreDosCodigos"/>
+        <CallTarget Targets="ConexaoCarregadorDPK;pkgUtils;GeradorSQL;GeradorSQLDT;MCFWComponentes;MCFWFormsDpk;MetaDataConf;OMestreDosCodigos;OMestreDosCodigosTeste"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ConexaoCarregadorDPK:Clean;pkgUtils:Clean;GeradorSQL:Clean;GeradorSQLDT:Clean;MCFWComponentes:Clean;MCFWFormsDpk:Clean;MetaDataConf:Clean;OMestreDosCodigos:Clean"/>
+        <CallTarget Targets="ConexaoCarregadorDPK:Clean;pkgUtils:Clean;GeradorSQL:Clean;GeradorSQLDT:Clean;MCFWComponentes:Clean;MCFWFormsDpk:Clean;MetaDataConf:Clean;OMestreDosCodigos:Clean;OMestreDosCodigosTeste:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ConexaoCarregadorDPK:Make;pkgUtils:Make;GeradorSQL:Make;GeradorSQLDT:Make;MCFWComponentes:Make;MCFWFormsDpk:Make;MetaDataConf:Make;OMestreDosCodigos:Make"/>
+        <CallTarget Targets="ConexaoCarregadorDPK:Make;pkgUtils:Make;GeradorSQL:Make;GeradorSQLDT:Make;MCFWComponentes:Make;MCFWFormsDpk:Make;MetaDataConf:Make;OMestreDosCodigos:Make;OMestreDosCodigosTeste:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

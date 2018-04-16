@@ -76,17 +76,17 @@ inherited ffwConfigEntidade: TffwConfigEntidade
         AutoSize = True
         Style = tbsTextButton
       end
-      object ToolButton2: TToolButton
+      object ToolButton3: TToolButton
         Left = 121
+        Top = 0
+        Action = actApagarTodaEstrutura
+      end
+      object ToolButton2: TToolButton
+        Left = 238
         Top = 0
         Width = 10
         Caption = 'ToolButton2'
         Style = tbsSeparator
-      end
-      object ToolButton3: TToolButton
-        Left = 131
-        Top = 0
-        Action = actLimpar
       end
       object CrudToolbar: TumcFDCrudToolbar
         Left = 248
@@ -766,10 +766,10 @@ inherited ffwConfigEntidade: TffwConfigEntidade
       ImageIndex = 0
       OnExecute = actLerEstruturaDoBancoExecute
     end
-    object actLimpar: TAction
-      Caption = 'Limpar'
+    object actApagarTodaEstrutura: TAction
+      Caption = 'Apagar toda estrutura'
       ImageIndex = 1
-      OnExecute = actLimparExecute
+      OnExecute = actApagarTodaEstruturaExecute
     end
   end
   object ENTIDADE: TFDQuery
@@ -801,5 +801,82 @@ inherited ffwConfigEntidade: TffwConfigEntidade
       Origin = 'DESCRICAO'
       Size = 100
     end
+  end
+  object mcsEntidade: TMCSelect
+    Coluna = <
+      item
+        Coluna.Tabela.Nome = 'ENTIDADE'
+        Coluna.Nome = 'ID'
+      end
+      item
+        Coluna.Tabela.Nome = 'ENTIDADE'
+        Coluna.Nome = 'NOME'
+      end
+      item
+        Coluna.Tabela.Nome = 'ENTIDADE'
+        Coluna.Nome = 'DESCRICAO'
+      end>
+    From.Nome = 'ENTIDADE'
+    Juncao = <>
+    Condicao = <>
+    OrderBy = <>
+    GroupBy = <>
+    LimitarRegistros = 0
+    SaltarRegistros = 0
+    Left = 32
+    Top = 80
+  end
+  object mcsEntPropriedade: TMCSelect
+    Coluna = <
+      item
+        Coluna.Tabela.Nome = 'ENT_PROPRIEDADE'
+        Coluna.Nome = 'ID'
+      end
+      item
+        Coluna.Tabela.Nome = 'ENT_PROPRIEDADE'
+        Coluna.Nome = 'ENTIDADE_ID'
+      end
+      item
+        Coluna.Tabela.Nome = 'ENT_PROPRIEDADE'
+        Coluna.Nome = 'NOME'
+      end
+      item
+        Coluna.Tabela.Nome = 'ENT_PROPRIEDADE'
+        Coluna.Nome = 'DESCRICAO'
+      end
+      item
+        Coluna.Tabela.Nome = 'ENT_PROPRIEDADE'
+        Coluna.Nome = 'REQUERIDO'
+      end
+      item
+        Coluna.Tabela.Nome = 'ENT_PROPRIEDADE'
+        Coluna.Nome = 'SOMENTE_LEITURA'
+      end
+      item
+        Coluna.Tabela.Nome = 'ENT_PROPRIEDADE'
+        Coluna.Nome = 'VISIVEL'
+      end
+      item
+        Coluna.Tabela.Nome = 'ENT_PROPRIEDADE'
+        Coluna.Nome = 'TAMANHO_DISPLAY'
+      end
+      item
+        Coluna.Tabela.Nome = 'ENT_PROPRIEDADE'
+        Coluna.Nome = 'POSICAO'
+      end>
+    From.Nome = 'ENT_PROPRIEDADE'
+    Juncao = <>
+    Condicao = <
+      item
+        Condicao.Coluna.Tabela.Nome = 'ENT_PROPRIEDADE'
+        Condicao.Coluna.Nome = 'ENTIDADE_ID'
+        Condicao.Valor = ':ID'
+      end>
+    OrderBy = <>
+    GroupBy = <>
+    LimitarRegistros = 0
+    SaltarRegistros = 0
+    Left = 32
+    Top = 120
   end
 end

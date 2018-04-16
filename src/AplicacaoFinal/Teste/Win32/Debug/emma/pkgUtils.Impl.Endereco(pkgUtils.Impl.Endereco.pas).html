@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>Delphi CodeCoverage Coverage Report</title>
+<style type="text/css">
+table {border-spacing:0; border-collapse:collapse;}
+table, td, th {border: 1px solid black;}
+td, th {background: white; margin: 0; padding: 2px 0.5em 2px 0.5em}
+td {border-width: 0 1px 0 0;}
+th {border-width: 1px 1px 1px 0;}
+p, h1, h2, h3, th {font-family: verdana,arial,sans-serif; font-size: 10pt;}
+td {font-family: courier,monospace; font-size: 10pt;}
+th {background: #CCCCCC;}
+table.o tr td:nth-child(1) {font-weight: bold;}
+table.o tr td:nth-child(2) {text-align: right;}
+table.o tr td {border-width: 1px;}
+table.s {width: 100%;}
+table.s tr td {padding: 0 0.25em 0 0.25em;}
+table.s tr td:first-child {text-align: right; font-weight: bold;}
+table.s tr.notcovered td {background: #DDDDFF;}
+table.s tr.nocodegen td {background: #FFFFEE;}
+table.s tr.covered td {background: #CCFFCC;}
+table.s tr.covered td:first-child {color: green;}
+table.s {border-width: 1px 0 1px 1px;}
+table.sum tr td {border-width: 1px;}
+table.sum tr th {text-align:right;}
+table.sum tr th:first-child {text-align:center;}
+table.sum tr td {text-align:right;}
+table.sum tr td:first-child {text-align:left;}
+</style>
+</head>
+<body>
+<p>Coverage report for <strong>pkgUtils.Impl.Endereco (C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\pkgUtils\pkgUtils.Impl.Endereco.pas)</strong>.</p>
+<p> Generated at 15/04/2018 19:56:21 by <a href="http://code.google.com/p/delphi-code-coverage/" title="Code Coverage for Delphi 5+">DelphiCodeCoverage</a> - an open source tool for Delphi Code Coverage.</p>
+<p> Statistics for C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\pkgUtils\pkgUtils.Impl.Endereco.pas </p>
+<table  class="o"><tr><td>Number of lines covered</td><td>65</td></tr><tr><td>Number of lines with code gen</td><td>97</td></tr><tr><td>Line coverage</td><td>67%</td></tr></table>
+<br /><br />
+<table  class="s">
+<tr class="nocodegen"><td>1</td><td><pre style="display:inline;">unit pkgUtils.Impl.Endereco;</pre></td></tr>
+<tr class="nocodegen"><td>2</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>3</td><td><pre style="display:inline;">interface</pre></td></tr>
+<tr class="nocodegen"><td>4</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>5</td><td><pre style="display:inline;">uses</pre></td></tr>
+<tr class="nocodegen"><td>6</td><td><pre style="display:inline;"> &nbsp;pkgUtils.Intf.ListaRetornoValidacao,</pre></td></tr>
+<tr class="nocodegen"><td>7</td><td><pre style="display:inline;"> &nbsp;pkgUtils.Intf.Endereco;</pre></td></tr>
+<tr class="nocodegen"><td>8</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>9</td><td><pre style="display:inline;">type</pre></td></tr>
+<tr class="nocodegen"><td>10</td><td><pre style="display:inline;"> &nbsp;TEndereco = class(TInterfacedObject, IEndereco)</pre></td></tr>
+<tr class="nocodegen"><td>11</td><td><pre style="display:inline;"> &nbsp;private</pre></td></tr>
+<tr class="nocodegen"><td>12</td><td><pre style="display:inline;"> &nbsp; &nbsp;FLogradouro: string;</pre></td></tr>
+<tr class="nocodegen"><td>13</td><td><pre style="display:inline;"> &nbsp; &nbsp;FNumero: string;</pre></td></tr>
+<tr class="nocodegen"><td>14</td><td><pre style="display:inline;"> &nbsp; &nbsp;FComplemento: string;</pre></td></tr>
+<tr class="nocodegen"><td>15</td><td><pre style="display:inline;"> &nbsp; &nbsp;FCEP: string;</pre></td></tr>
+<tr class="nocodegen"><td>16</td><td><pre style="display:inline;"> &nbsp; &nbsp;FBairro: string;</pre></td></tr>
+<tr class="nocodegen"><td>17</td><td><pre style="display:inline;"> &nbsp; &nbsp;FCidade: string;</pre></td></tr>
+<tr class="nocodegen"><td>18</td><td><pre style="display:inline;"> &nbsp; &nbsp;FUF: string;</pre></td></tr>
+<tr class="nocodegen"><td>19</td><td><pre style="display:inline;"> &nbsp; &nbsp;function ValidarLogradouro(const RetornoValidacao: IListaRetornoValidacao): boolean;</pre></td></tr>
+<tr class="nocodegen"><td>20</td><td><pre style="display:inline;"> &nbsp; &nbsp;function ValidarNumero(const RetornoValidacao: IListaRetornoValidacao): boolean;</pre></td></tr>
+<tr class="nocodegen"><td>21</td><td><pre style="display:inline;"> &nbsp; &nbsp;function ValidarCEP(const RetornoValidacao: IListaRetornoValidacao): boolean;</pre></td></tr>
+<tr class="nocodegen"><td>22</td><td><pre style="display:inline;"> &nbsp; &nbsp;function ValidarUF(const RetornoValidcacao: IListaRetornoValidacao): boolean;</pre></td></tr>
+<tr class="nocodegen"><td>23</td><td><pre style="display:inline;"> &nbsp; &nbsp;function ValidarCidade(const RetornoValidacao: IListaRetornoValidacao): boolean;</pre></td></tr>
+<tr class="nocodegen"><td>24</td><td><pre style="display:inline;"> &nbsp;public</pre></td></tr>
+<tr class="nocodegen"><td>25</td><td><pre style="display:inline;"> &nbsp; &nbsp;class function New(const ALogradouro, ANumero, AComplemento, ACEP, ABairro, ACidade,</pre></td></tr>
+<tr class="nocodegen"><td>26</td><td><pre style="display:inline;"> &nbsp;AUF: string): IEndereco;</pre></td></tr>
+<tr class="nocodegen"><td>27</td><td><pre style="display:inline;"> &nbsp; &nbsp;constructor Create(const ALogradouro, ANumero, AComplemento, ACEP, ABairro, ACidade,</pre></td></tr>
+<tr class="nocodegen"><td>28</td><td><pre style="display:inline;"> &nbsp;AUF: string);</pre></td></tr>
+<tr class="nocodegen"><td>29</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ModificarBairro(const ABairro: string);</pre></td></tr>
+<tr class="nocodegen"><td>30</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ModificarCEP(const ACEP: string);</pre></td></tr>
+<tr class="nocodegen"><td>31</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ModificarComplemento(const AComplemento: string);</pre></td></tr>
+<tr class="nocodegen"><td>32</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ModificarLogradouro(const ALogradouro: string);</pre></td></tr>
+<tr class="nocodegen"><td>33</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ModificarNumero(const ANumero: string);</pre></td></tr>
+<tr class="nocodegen"><td>34</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ModificarCidade(const ACidade: string);</pre></td></tr>
+<tr class="nocodegen"><td>35</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ModificarUF(const AUF: string);</pre></td></tr>
+<tr class="nocodegen"><td>36</td><td><pre style="display:inline;"> &nbsp; &nbsp;function getBairro: string;</pre></td></tr>
+<tr class="nocodegen"><td>37</td><td><pre style="display:inline;"> &nbsp; &nbsp;function getCEP: string;</pre></td></tr>
+<tr class="nocodegen"><td>38</td><td><pre style="display:inline;"> &nbsp; &nbsp;function getComplemento: string;</pre></td></tr>
+<tr class="nocodegen"><td>39</td><td><pre style="display:inline;"> &nbsp; &nbsp;function getLogradouro: string;</pre></td></tr>
+<tr class="nocodegen"><td>40</td><td><pre style="display:inline;"> &nbsp; &nbsp;function getNumero: string;</pre></td></tr>
+<tr class="nocodegen"><td>41</td><td><pre style="display:inline;"> &nbsp; &nbsp;function getCidade: string;</pre></td></tr>
+<tr class="nocodegen"><td>42</td><td><pre style="display:inline;"> &nbsp; &nbsp;function getUF: string;</pre></td></tr>
+<tr class="nocodegen"><td>43</td><td><pre style="display:inline;"> &nbsp; &nbsp;function Validar(const RetornoValidacao: IListaRetornoValidacao): boolean;</pre></td></tr>
+<tr class="nocodegen"><td>44</td><td><pre style="display:inline;"> &nbsp;end;</pre></td></tr>
+<tr class="nocodegen"><td>45</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>46</td><td><pre style="display:inline;">implementation</pre></td></tr>
+<tr class="nocodegen"><td>47</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>48</td><td><pre style="display:inline;">uses</pre></td></tr>
+<tr class="nocodegen"><td>49</td><td><pre style="display:inline;"> &nbsp;System.SysUtils,</pre></td></tr>
+<tr class="nocodegen"><td>50</td><td><pre style="display:inline;"> &nbsp;System.RegularExpressions;</pre></td></tr>
+<tr class="nocodegen"><td>51</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>52</td><td><pre style="display:inline;">{ TEndereco }</pre></td></tr>
+<tr class="nocodegen"><td>53</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>54</td><td><pre style="display:inline;">class function TEndereco.New(const ALogradouro, ANumero, AComplemento, ACEP, ABairro, ACidade,</pre></td></tr>
+<tr class="nocodegen"><td>55</td><td><pre style="display:inline;"> &nbsp;AUF: string): IEndereco;</pre></td></tr>
+<tr class="covered"><td>56</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>57</td><td><pre style="display:inline;"> &nbsp;result := Create(ALogradouro, ANumero, AComplemento, ACEP, ABairro, ACidade, AUF);</pre></td></tr>
+<tr class="covered"><td>58</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>59</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>60</td><td><pre style="display:inline;">function TEndereco.Validar(const RetornoValidacao: IListaRetornoValidacao): boolean;</pre></td></tr>
+<tr class="covered"><td>61</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>62</td><td><pre style="display:inline;"> &nbsp;result := False;</pre></td></tr>
+<tr class="nocodegen"><td>63</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>64</td><td><pre style="display:inline;"> &nbsp;if not ValidarLogradouro(RetornoValidacao) then</pre></td></tr>
+<tr class="nocodegen"><td>65</td><td><pre style="display:inline;"> &nbsp; &nbsp;exit;</pre></td></tr>
+<tr class="nocodegen"><td>66</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>67</td><td><pre style="display:inline;"> &nbsp;if not ValidarNumero(RetornoValidacao) then</pre></td></tr>
+<tr class="nocodegen"><td>68</td><td><pre style="display:inline;"> &nbsp; &nbsp;exit;</pre></td></tr>
+<tr class="nocodegen"><td>69</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>70</td><td><pre style="display:inline;"> &nbsp;if not ValidarUF(RetornoValidacao) then</pre></td></tr>
+<tr class="nocodegen"><td>71</td><td><pre style="display:inline;"> &nbsp; &nbsp;exit;</pre></td></tr>
+<tr class="nocodegen"><td>72</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>73</td><td><pre style="display:inline;"> &nbsp;if not ValidarCidade(RetornoValidacao) then</pre></td></tr>
+<tr class="nocodegen"><td>74</td><td><pre style="display:inline;"> &nbsp; &nbsp;exit;</pre></td></tr>
+<tr class="nocodegen"><td>75</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>76</td><td><pre style="display:inline;"> &nbsp;if not ValidarCEP(RetornoValidacao) then</pre></td></tr>
+<tr class="nocodegen"><td>77</td><td><pre style="display:inline;"> &nbsp; &nbsp;exit;</pre></td></tr>
+<tr class="nocodegen"><td>78</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>79</td><td><pre style="display:inline;"> &nbsp;result := True;</pre></td></tr>
+<tr class="covered"><td>80</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>81</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>82</td><td><pre style="display:inline;">function TEndereco.ValidarCEP(const RetornoValidacao: IListaRetornoValidacao): boolean;</pre></td></tr>
+<tr class="nocodegen"><td>83</td><td><pre style="display:inline;">const</pre></td></tr>
+<tr class="nocodegen"><td>84</td><td><pre style="display:inline;"> &nbsp;CEP_REGEX = &apos;[0-9]{2}[0-9]{3}[0-9]{3}&apos;;</pre></td></tr>
+<tr class="nocodegen"><td>85</td><td><pre style="display:inline;">var</pre></td></tr>
+<tr class="nocodegen"><td>86</td><td><pre style="display:inline;"> &nbsp;_retornoValidacao: TRetornoValidacao;</pre></td></tr>
+<tr class="covered"><td>87</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>88</td><td><pre style="display:inline;"> &nbsp;result := TRegEx.IsMatch(FCEP, CEP_REGEX);</pre></td></tr>
+<tr class="covered"><td>89</td><td><pre style="display:inline;"> &nbsp;if not result then</pre></td></tr>
+<tr class="nocodegen"><td>90</td><td><pre style="display:inline;"> &nbsp;begin</pre></td></tr>
+<tr class="notcovered"><td>91</td><td><pre style="display:inline;"> &nbsp; &nbsp;_retornoValidacao.CodigoRetorno := -1;</pre></td></tr>
+<tr class="notcovered"><td>92</td><td><pre style="display:inline;"> &nbsp; &nbsp;_retornoValidacao.MensagemDeErro := &apos;O CEP informado est&aacute; inv&aacute;lido.&apos;;</pre></td></tr>
+<tr class="notcovered"><td>93</td><td><pre style="display:inline;"> &nbsp; &nbsp;RetornoValidacao.AdicionarRetorno(_retornoValidacao);</pre></td></tr>
+<tr class="nocodegen"><td>94</td><td><pre style="display:inline;"> &nbsp;end;</pre></td></tr>
+<tr class="covered"><td>95</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>96</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>97</td><td><pre style="display:inline;">function TEndereco.ValidarCidade(const RetornoValidacao: IListaRetornoValidacao): boolean;</pre></td></tr>
+<tr class="nocodegen"><td>98</td><td><pre style="display:inline;">var</pre></td></tr>
+<tr class="nocodegen"><td>99</td><td><pre style="display:inline;"> &nbsp;_retorno: TRetornoValidacao;</pre></td></tr>
+<tr class="covered"><td>100</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>101</td><td><pre style="display:inline;"> &nbsp;result := not FCidade.Trim.IsEmpty;</pre></td></tr>
+<tr class="nocodegen"><td>102</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>103</td><td><pre style="display:inline;"> &nbsp;if not result then</pre></td></tr>
+<tr class="nocodegen"><td>104</td><td><pre style="display:inline;"> &nbsp;begin</pre></td></tr>
+<tr class="notcovered"><td>105</td><td><pre style="display:inline;"> &nbsp; &nbsp;_retorno.CodigoRetorno := -1;</pre></td></tr>
+<tr class="notcovered"><td>106</td><td><pre style="display:inline;"> &nbsp; &nbsp;_retorno.MensagemDeErro := &apos;A cidade n&atilde;o foi informada&apos;;</pre></td></tr>
+<tr class="notcovered"><td>107</td><td><pre style="display:inline;"> &nbsp; &nbsp;RetornoValidacao.AdicionarRetorno(_retorno);</pre></td></tr>
+<tr class="nocodegen"><td>108</td><td><pre style="display:inline;"> &nbsp;end;</pre></td></tr>
+<tr class="covered"><td>109</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>110</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>111</td><td><pre style="display:inline;">function TEndereco.ValidarLogradouro(const RetornoValidacao: IListaRetornoValidacao): boolean;</pre></td></tr>
+<tr class="nocodegen"><td>112</td><td><pre style="display:inline;">var</pre></td></tr>
+<tr class="nocodegen"><td>113</td><td><pre style="display:inline;"> &nbsp;_retorno: TRetornoValidacao;</pre></td></tr>
+<tr class="covered"><td>114</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>115</td><td><pre style="display:inline;"> &nbsp;result := not FLogradouro.Trim.IsEmpty;</pre></td></tr>
+<tr class="covered"><td>116</td><td><pre style="display:inline;"> &nbsp;if not result then</pre></td></tr>
+<tr class="nocodegen"><td>117</td><td><pre style="display:inline;"> &nbsp;begin</pre></td></tr>
+<tr class="notcovered"><td>118</td><td><pre style="display:inline;"> &nbsp; &nbsp;_retorno.CodigoRetorno := 0;</pre></td></tr>
+<tr class="notcovered"><td>119</td><td><pre style="display:inline;"> &nbsp; &nbsp;_retorno.MensagemDeErro := &apos;O campo Logradouro est&aacute; vazio&apos;;</pre></td></tr>
+<tr class="notcovered"><td>120</td><td><pre style="display:inline;"> &nbsp; &nbsp;RetornoValidacao.AdicionarRetorno(_retorno);</pre></td></tr>
+<tr class="nocodegen"><td>121</td><td><pre style="display:inline;"> &nbsp;end;</pre></td></tr>
+<tr class="covered"><td>122</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>123</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>124</td><td><pre style="display:inline;">function TEndereco.ValidarNumero(const RetornoValidacao: IListaRetornoValidacao): boolean;</pre></td></tr>
+<tr class="nocodegen"><td>125</td><td><pre style="display:inline;">var</pre></td></tr>
+<tr class="nocodegen"><td>126</td><td><pre style="display:inline;"> &nbsp;_retorno: TRetornoValidacao;</pre></td></tr>
+<tr class="covered"><td>127</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>128</td><td><pre style="display:inline;"> &nbsp;result := not FNumero.Trim.IsEmpty;</pre></td></tr>
+<tr class="nocodegen"><td>129</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>130</td><td><pre style="display:inline;"> &nbsp;if not result then</pre></td></tr>
+<tr class="nocodegen"><td>131</td><td><pre style="display:inline;"> &nbsp;begin</pre></td></tr>
+<tr class="notcovered"><td>132</td><td><pre style="display:inline;"> &nbsp; &nbsp;_retorno.CodigoRetorno := 0;</pre></td></tr>
+<tr class="notcovered"><td>133</td><td><pre style="display:inline;"> &nbsp; &nbsp;_retorno.MensagemDeErro :=</pre></td></tr>
+<tr class="nocodegen"><td>134</td><td><pre style="display:inline;"> &nbsp; &nbsp; &nbsp;&apos;N&atilde;o foi informadoo n&uacute;mero da resid&ecirc;ncia.&apos; + #$D#$A +</pre></td></tr>
+<tr class="nocodegen"><td>135</td><td><pre style="display:inline;"> &nbsp; &nbsp; &nbsp;&apos;Utilize &quot;S/N&quot; caso que n&atilde;o tenha numera&ccedil;&atilde;o&apos;;</pre></td></tr>
+<tr class="notcovered"><td>136</td><td><pre style="display:inline;"> &nbsp; &nbsp;RetornoValidacao.AdicionarRetorno(_retorno);</pre></td></tr>
+<tr class="nocodegen"><td>137</td><td><pre style="display:inline;"> &nbsp;end;</pre></td></tr>
+<tr class="covered"><td>138</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>139</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>140</td><td><pre style="display:inline;">function TEndereco.ValidarUF(const RetornoValidcacao: IListaRetornoValidacao): boolean;</pre></td></tr>
+<tr class="nocodegen"><td>141</td><td><pre style="display:inline;">const</pre></td></tr>
+<tr class="nocodegen"><td>142</td><td><pre style="display:inline;"> &nbsp;ARRAY_UF: array [0 .. 26] of string = (&apos;AC&apos;, &apos;AL&apos;, &apos;AP&apos;, &apos;AM&apos;, &apos;BA&apos;, &apos;CE&apos;, &apos;DF&apos;, &apos;ES&apos;, &apos;GO&apos;, &apos;MA&apos;,</pre></td></tr>
+<tr class="nocodegen"><td>143</td><td><pre style="display:inline;"> &nbsp; &nbsp;&apos;MT&apos;, &apos;MS&apos;, &apos;MG&apos;, &apos;PA&apos;, &apos;PB&apos;, &apos;PR&apos;, &apos;PE&apos;, &apos;PI&apos;, &apos;RJ&apos;, &apos;RN&apos;, &apos;RS&apos;, &apos;RO&apos;, &apos;RR&apos;, &apos;SC&apos;, &apos;SP&apos;,</pre></td></tr>
+<tr class="nocodegen"><td>144</td><td><pre style="display:inline;"> &nbsp; &nbsp;&apos;SE&apos;, &apos;TO&apos;);</pre></td></tr>
+<tr class="nocodegen"><td>145</td><td><pre style="display:inline;"> &nbsp;UF_REGEX = &apos;{AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RJ|RN|RS|RO|RR|SC|SP|SE|TO}&apos;;</pre></td></tr>
+<tr class="nocodegen"><td>146</td><td><pre style="display:inline;">var</pre></td></tr>
+<tr class="nocodegen"><td>147</td><td><pre style="display:inline;"> &nbsp;_retorno: TRetornoValidacao;</pre></td></tr>
+<tr class="covered"><td>148</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>149</td><td><pre style="display:inline;"> &nbsp;result := TRegEx.IsMatch(FUF, UF_REGEX);</pre></td></tr>
+<tr class="nocodegen"><td>150</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>151</td><td><pre style="display:inline;"> &nbsp;if not result then</pre></td></tr>
+<tr class="nocodegen"><td>152</td><td><pre style="display:inline;"> &nbsp;begin</pre></td></tr>
+<tr class="notcovered"><td>153</td><td><pre style="display:inline;"> &nbsp; &nbsp;_retorno.CodigoRetorno := -1;</pre></td></tr>
+<tr class="notcovered"><td>154</td><td><pre style="display:inline;"> &nbsp; &nbsp;_retorno.MensagemDeErro := &apos;A UF digitada est&aacute; inv&aacute;lida.&apos;;</pre></td></tr>
+<tr class="notcovered"><td>155</td><td><pre style="display:inline;"> &nbsp; &nbsp;RetornoValidcacao.AdicionarRetorno(_retorno);</pre></td></tr>
+<tr class="nocodegen"><td>156</td><td><pre style="display:inline;"> &nbsp;end;</pre></td></tr>
+<tr class="covered"><td>157</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>158</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>159</td><td><pre style="display:inline;">constructor TEndereco.Create(const ALogradouro, ANumero, AComplemento, ACEP, ABairro, ACidade,</pre></td></tr>
+<tr class="nocodegen"><td>160</td><td><pre style="display:inline;"> &nbsp;AUF: string);</pre></td></tr>
+<tr class="covered"><td>161</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>162</td><td><pre style="display:inline;"> &nbsp;ModificarLogradouro(ALogradouro);</pre></td></tr>
+<tr class="covered"><td>163</td><td><pre style="display:inline;"> &nbsp;ModificarNumero(ANumero);</pre></td></tr>
+<tr class="covered"><td>164</td><td><pre style="display:inline;"> &nbsp;ModificarComplemento(AComplemento);</pre></td></tr>
+<tr class="covered"><td>165</td><td><pre style="display:inline;"> &nbsp;ModificarCEP(ACEP);</pre></td></tr>
+<tr class="covered"><td>166</td><td><pre style="display:inline;"> &nbsp;ModificarBairro(ABairro);</pre></td></tr>
+<tr class="covered"><td>167</td><td><pre style="display:inline;"> &nbsp;ModificarCidade(ACidade);</pre></td></tr>
+<tr class="covered"><td>168</td><td><pre style="display:inline;"> &nbsp;ModificarUF(AUF);</pre></td></tr>
+<tr class="covered"><td>169</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>170</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>171</td><td><pre style="display:inline;">function TEndereco.getBairro: string;</pre></td></tr>
+<tr class="notcovered"><td>172</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="notcovered"><td>173</td><td><pre style="display:inline;"> &nbsp;result := FBairro;</pre></td></tr>
+<tr class="notcovered"><td>174</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>175</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>176</td><td><pre style="display:inline;">function TEndereco.getCEP: string;</pre></td></tr>
+<tr class="notcovered"><td>177</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="notcovered"><td>178</td><td><pre style="display:inline;"> &nbsp;result := FCEP;</pre></td></tr>
+<tr class="notcovered"><td>179</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>180</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>181</td><td><pre style="display:inline;">function TEndereco.getCidade: string;</pre></td></tr>
+<tr class="notcovered"><td>182</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="notcovered"><td>183</td><td><pre style="display:inline;"> &nbsp;result := FCidade;</pre></td></tr>
+<tr class="notcovered"><td>184</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>185</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>186</td><td><pre style="display:inline;">function TEndereco.getComplemento: string;</pre></td></tr>
+<tr class="notcovered"><td>187</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="notcovered"><td>188</td><td><pre style="display:inline;"> &nbsp;result := FComplemento;</pre></td></tr>
+<tr class="notcovered"><td>189</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>190</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>191</td><td><pre style="display:inline;">function TEndereco.getLogradouro: string;</pre></td></tr>
+<tr class="covered"><td>192</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>193</td><td><pre style="display:inline;"> &nbsp;result := FLogradouro;</pre></td></tr>
+<tr class="covered"><td>194</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>195</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>196</td><td><pre style="display:inline;">function TEndereco.getNumero: string;</pre></td></tr>
+<tr class="notcovered"><td>197</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="notcovered"><td>198</td><td><pre style="display:inline;"> &nbsp;result := FNumero;</pre></td></tr>
+<tr class="notcovered"><td>199</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>200</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>201</td><td><pre style="display:inline;">function TEndereco.getUF: string;</pre></td></tr>
+<tr class="notcovered"><td>202</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="nocodegen"><td>203</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="notcovered"><td>204</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>205</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>206</td><td><pre style="display:inline;">procedure TEndereco.ModificarBairro(const ABairro: string);</pre></td></tr>
+<tr class="covered"><td>207</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>208</td><td><pre style="display:inline;"> &nbsp;FBairro := ABairro;</pre></td></tr>
+<tr class="covered"><td>209</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>210</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>211</td><td><pre style="display:inline;">procedure TEndereco.ModificarCEP(const ACEP: string);</pre></td></tr>
+<tr class="covered"><td>212</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>213</td><td><pre style="display:inline;"> &nbsp;FCEP := ACEP;</pre></td></tr>
+<tr class="covered"><td>214</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>215</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>216</td><td><pre style="display:inline;">procedure TEndereco.ModificarCidade(const ACidade: string);</pre></td></tr>
+<tr class="covered"><td>217</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>218</td><td><pre style="display:inline;"> &nbsp;FCidade := ACidade;</pre></td></tr>
+<tr class="covered"><td>219</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>220</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>221</td><td><pre style="display:inline;">procedure TEndereco.ModificarComplemento(const AComplemento: string);</pre></td></tr>
+<tr class="covered"><td>222</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>223</td><td><pre style="display:inline;"> &nbsp;FComplemento := AComplemento;</pre></td></tr>
+<tr class="covered"><td>224</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>225</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>226</td><td><pre style="display:inline;">procedure TEndereco.ModificarLogradouro(const ALogradouro: string);</pre></td></tr>
+<tr class="covered"><td>227</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>228</td><td><pre style="display:inline;"> &nbsp;FLogradouro := ALogradouro;</pre></td></tr>
+<tr class="covered"><td>229</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>230</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>231</td><td><pre style="display:inline;">procedure TEndereco.ModificarNumero(const ANumero: string);</pre></td></tr>
+<tr class="covered"><td>232</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>233</td><td><pre style="display:inline;"> &nbsp;FNumero := ANumero;</pre></td></tr>
+<tr class="covered"><td>234</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>235</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>236</td><td><pre style="display:inline;">procedure TEndereco.ModificarUF(const AUF: string);</pre></td></tr>
+<tr class="covered"><td>237</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>238</td><td><pre style="display:inline;"> &nbsp;FUF := AUF;</pre></td></tr>
+<tr class="covered"><td>239</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>240</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>241</td><td><pre style="display:inline;">end.</pre></td></tr>
+</table>
+</body>
+</html>

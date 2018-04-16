@@ -13,6 +13,7 @@ type
     function getQtd: integer;
     function getValidacao(const Numero: integer): TRetornoValidacao;
     function EstaVazio: boolean;
+    function ToString: string;
     procedure AddListaValidacoes(const AListaValidacoes: IListaRetornoValidacao);
     procedure AdicionarRetorno(const ARetornoValidacao: TRetornoValidacao);
   end;
