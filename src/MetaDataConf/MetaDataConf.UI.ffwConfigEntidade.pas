@@ -3,7 +3,7 @@ unit MetaDataConf.UI.ffwConfigEntidade;
 interface
 
 uses
-  ufwForm,
+  MetaDataConf.UI.ffwForm,
   umcFDCrudToolbar,
   DataSet.Intf.MetaDataContainer,
   DataSet.Intf.ConfiguradorMetaData,
