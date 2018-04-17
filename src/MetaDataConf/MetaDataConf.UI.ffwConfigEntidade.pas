@@ -109,7 +109,7 @@ implementation
 
 uses
   umcConstantes,
-  Conexao.Intf.Fabrica,
+  Conexao.Intf.DataFabrica,
   Conexao.Impl.Fabrica.FireDAC,
   DataSet.Impl.MetaDataController,
   DataSet.Impl.MetaDataContainer,

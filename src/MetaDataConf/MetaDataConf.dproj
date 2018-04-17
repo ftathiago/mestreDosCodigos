@@ -100,7 +100,6 @@
             <Form>ffwPrincipal</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="ufwAplicacao.pas"/>
         <DCCReference Include="ufwForm.pas">
             <Form>ffwForm</Form>
             <FormType>dfm</FormType>
@@ -109,6 +108,8 @@
             <Form>ffwConfigEntidade</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\FrameWork\MCFWComponentes\DataSet.Intf.MetaDataController.pas"/>
+        <DCCReference Include="..\FrameWork\MCFWComponentes\DataSet.Impl.MetaDataController.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -132,7 +133,7 @@
                 <Excluded_Packages/>
             </Delphi.Personality>
             <Deployment Version="2">
-                <DeployFile LocalName="Win32\Debug\MetaDataConf.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="..\..\bin\MetaDataConf.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>MetaDataConf.exe</RemoteName>
                         <Overwrite>true</Overwrite>
