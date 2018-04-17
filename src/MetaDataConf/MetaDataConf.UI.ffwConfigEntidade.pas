@@ -139,6 +139,8 @@ begin
 
   ENTIDADE.Open();
   ENT_PROPRIEDADE.Open();
+
+  Entidade.
 end;
 
 procedure TffwConfigEntidade.actLerEstruturaDoBancoExecute(Sender: TObject);

@@ -13,8 +13,9 @@ uses
   OMestreDosCodigos.Intf.Cliente.Builder in 'OMestreDosCodigos.Intf.Cliente.Builder.pas',
   OMestreDosCodigos.Intf.Cliente.ListaArrayDinamico in 'OMestreDosCodigos.Intf.Cliente.ListaArrayDinamico.pas',
   OMestreDosCodigos.Impl.Cliente.ListaArrayDinamico in 'OMestreDosCodigos.Impl.Cliente.ListaArrayDinamico.pas',
-  ufwForm in '..\MetaDataConf\ufwForm.pas' {ffwForm},
-  MetaDataConf.UI.ffwConfigEntidade in '..\MetaDataConf\MetaDataConf.UI.ffwConfigEntidade.pas' {ffwConfigEntidade};
+  MetaDataConf.UI.ffwForm in '..\MetaDataConf\MetaDataConf.UI.ffwForm.pas' {ffwForm},
+  MetaDataConf.UI.ffwConfigEntidade in '..\MetaDataConf\MetaDataConf.UI.ffwConfigEntidade.pas' {ffwConfigEntidade},
+  MetaDataConf.UI.ffwConfigEntidade.Relatorio in '..\MetaDataConf\MetaDataConf.UI.ffwConfigEntidade.Relatorio.pas' {Form1};
 
 {$R *.res}
 
