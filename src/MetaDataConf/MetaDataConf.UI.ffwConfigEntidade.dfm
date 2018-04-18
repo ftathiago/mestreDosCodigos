@@ -88,8 +88,14 @@ inherited ffwConfigEntidade: TffwConfigEntidade
         Caption = 'ToolButton2'
         Style = tbsSeparator
       end
-      object CrudToolbar: TumcFDCrudToolbar
+      object ToolButton4: TToolButton
         Left = 248
+        Top = 0
+        Caption = 'ToolButton4'
+        OnClick = ToolButton4Click
+      end
+      object CrudToolbar: TumcFDCrudToolbar
+        Left = 365
         Top = 0
         Width = 261
         Height = 52

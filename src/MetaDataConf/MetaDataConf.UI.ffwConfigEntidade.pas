@@ -80,6 +80,7 @@ type
     actApagarTodaEstrutura: TAction;
     mcsEntidade: TMCSelect;
     mcsEntPropriedade: TMCSelect;
+    ToolButton4: TToolButton;
     procedure FormCreate(Sender: TObject);
     procedure ENTIDADEAfterOpen(DataSet: TDataSet);
     procedure ENT_PROPRIEDADEAfterOpen(DataSet: TDataSet);
@@ -88,6 +89,7 @@ type
     procedure actApagarTodaEstruturaExecute(Sender: TObject);
     procedure CrudToolbarSalvarClick(const DataSet: TDataSet);
     procedure CrudToolbarDesfazerClick(const DataSet: TDataSet);
+    procedure ToolButton4Click(Sender: TObject);
   private
     { Private declarations }
     FFDConnection: TFDConnection;
@@ -109,6 +111,7 @@ implementation
 
 uses
   umcConstantes,
+  MetaDataConf.UI.ffwConfigEntidade.Relatorio,
   Conexao.Intf.DataFabrica,
   Conexao.Impl.Fabrica.FireDAC,
   DataSet.Impl.MetaDataController,
@@ -139,8 +142,6 @@ begin
 
   ENTIDADE.Open();
   ENT_PROPRIEDADE.Open();
-
-  Entidade.
 end;
 
 procedure TffwConfigEntidade.actLerEstruturaDoBancoExecute(Sender: TObject);
@@ -240,6 +241,20 @@ procedure TffwConfigEntidade.grdENTIDADEEnter(Sender: TObject);
 begin
   inherited;
   AlterarDataSourceDoToolbar(Sender);
+end;
+
+procedure TffwConfigEntidade.ToolButton4Click(Sender: TObject);
+var
+  _form: TForm1;
+begin
+  inherited;
+//
+  ENTIDADE.First;
+  _form:=  TForm1.Create(Self);
+  _form.dtsEntidade.DataSet := ENTIDADE;
+  _form.dtsEntPropriedade.DataSet := ENT_PROPRIEDADE;
+  _form.RLReport1.PreviewModal;
+  FreeAndNil(_form);
 end;
 
 initialization
