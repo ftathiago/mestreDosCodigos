@@ -64,14 +64,14 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <DCC_DcuOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\teste\lib\</DCC_DcuOutput>
-        <BRCC_OutputDir>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\teste\lib\</BRCC_OutputDir>
-        <DCC_DcpOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\teste\lib\</DCC_DcpOutput>
-        <DCC_UnitSearchPath>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\Lib;C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\dcp;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_MapFile>3</DCC_MapFile>
+        <DCC_DcuOutput>..\..\..\lib\</DCC_DcuOutput>
+        <BRCC_OutputDir>..\..\..\lib\</BRCC_OutputDir>
+        <DCC_DcpOutput>..\..\..\lib\</DCC_DcpOutput>
+        <DCC_UnitSearchPath>..\..\..\Lib;..\..\..\dcp;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_DebugDCUs>false</DCC_DebugDCUs>
         <Manifest_File>None</Manifest_File>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <BRCC_IncludePath>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\Classes;$(BRCC_IncludePath)</BRCC_IncludePath>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">

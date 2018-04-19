@@ -48,6 +48,8 @@ type
     procedure ModificarTelefone;
     [Test]
     procedure TestarDadosClienteValido;
+    [Test]
+    procedure ModificarParaCEPInvalido;
 
   end;
 
@@ -180,6 +182,16 @@ procedure TTesteCliente.ModificarNome;
 begin
   FClienteCompleto.ModificarNome('Outro nome');
   Assert.AreNotEqual(NOME, FClienteCompleto.NOME);
+end;
+
+procedure TTesteCliente.ModificarParaCEPInvalido;
+var
+  _listaRetornoValidacao: IListaRetornoValidacao;
+begin
+  _listaRetornoValidacao := TListaRetornoValidacao.New([]);
+  FClienteCompleto.Endereco.ModificarCEP('');
+  Assert.IsFalse(FClienteCompleto.Validar(_listaRetornoValidacao));
+  Assert.IsFalse(_listaRetornoValidacao.EstaVazio);
 end;
 
 procedure TTesteCliente.ModificarTelefone;

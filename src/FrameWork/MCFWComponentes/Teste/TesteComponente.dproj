@@ -66,7 +66,7 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_DebugDCUs>false</DCC_DebugDCUs>
         <Manifest_File>None</Manifest_File>
-        <DCC_UnitSearchPath>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>..\..\..\..\lib;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
@@ -104,11 +104,6 @@
                 <Source>
                     <Source Name="MainSource">TesteComponente.dpr</Source>
                 </Source>
-                <Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\FrameworkDpk.bpl">File C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\FrameworkDpk.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\dcp\GeradorSQL.bpl">File C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\dcp\GeradorSQL.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\dcp\GeradorSQLDT.bpl">File C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\dcp\GeradorSQLDT.bpl not found</Excluded_Packages>
-                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="2">
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">

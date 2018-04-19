@@ -7,15 +7,15 @@
     <srcfiles value="7"/>
     <srclines value="446"/>
     <totallines value="446"/>
-    <coveredlines value="356"/>
-    <coveredpercent value="79"/>
+    <coveredlines value="365"/>
+    <coveredpercent value="81"/>
   </stats>
   <data>
     <all name="all classes">
       <coverage type="class, %" value="100%   (10/10)"/>
-      <coverage type="method, %" value="83%   (86/104)"/>
-      <coverage type="block, %" value="80%   (356/446)"/>
-      <coverage type="line, %" value="80%   (356/446)"/>
+      <coverage type="method, %" value="85%   (88/104)"/>
+      <coverage type="block, %" value="82%   (365/446)"/>
+      <coverage type="line, %" value="82%   (365/446)"/>
       <package name="pkgUtils.Impl.Telefone">
         <coverage type="class, %" value="100%   (1/1)"/>
         <coverage type="method, %" value="67%   (6/9)"/>
@@ -82,18 +82,18 @@
       <package name="pkgUtils.Impl.Endereco">
         <coverage type="class, %" value="100%   (1/1)"/>
         <coverage type="method, %" value="73%   (16/22)"/>
-        <coverage type="block, %" value="67%   (65/97)"/>
-        <coverage type="line, %" value="67%   (65/97)"/>
+        <coverage type="block, %" value="70%   (68/97)"/>
+        <coverage type="line, %" value="70%   (68/97)"/>
         <srcfile name="pkgUtils.Impl.Endereco.pas">
           <coverage type="class, %" value="100%   (1/1)"/>
           <coverage type="method, %" value="73%   (16/22)"/>
-          <coverage type="block, %" value="67%   (65/97)"/>
-          <coverage type="line, %" value="67%   (65/97)"/>
+          <coverage type="block, %" value="70%   (68/97)"/>
+          <coverage type="line, %" value="70%   (68/97)"/>
           <class name="TEndereco">
             <coverage type="class, %" value="100%   (1/1)"/>
             <coverage type="method, %" value="73%   (16/22)"/>
-            <coverage type="block, %" value="67%   (65/97)"/>
-            <coverage type="line, %" value="67%   (65/97)"/>
+            <coverage type="block, %" value="70%   (68/97)"/>
+            <coverage type="line, %" value="70%   (68/97)"/>
             <method name="getLogradouro">
               <coverage type="method, %" value="100%   (1/1)"/>
               <coverage type="block, %" value="100%   (3/3)"/>
@@ -141,8 +141,8 @@
             </method>
             <method name="ValidarCEP">
               <coverage type="method, %" value="100%   (1/1)"/>
-              <coverage type="block, %" value="57%   (4/7)"/>
-              <coverage type="line, %" value="57%   (4/7)"/>
+              <coverage type="block, %" value="100%   (7/7)"/>
+              <coverage type="line, %" value="100%   (7/7)"/>
             </method>
             <method name="getUF">
               <coverage type="method, %" value="0%   (0/1)"/>
@@ -297,19 +297,19 @@
       </package>
       <package name="pkgUtils.Impl.ListaRetornoValidacao">
         <coverage type="class, %" value="100%   (1/1)"/>
-        <coverage type="method, %" value="40%   (4/10)"/>
-        <coverage type="block, %" value="36%   (15/42)"/>
-        <coverage type="line, %" value="36%   (15/42)"/>
+        <coverage type="method, %" value="60%   (6/10)"/>
+        <coverage type="block, %" value="50%   (21/42)"/>
+        <coverage type="line, %" value="50%   (21/42)"/>
         <srcfile name="pkgUtils.Impl.ListaRetornoValidacao.pas">
           <coverage type="class, %" value="100%   (1/1)"/>
-          <coverage type="method, %" value="40%   (4/10)"/>
-          <coverage type="block, %" value="36%   (15/42)"/>
-          <coverage type="line, %" value="36%   (15/42)"/>
+          <coverage type="method, %" value="60%   (6/10)"/>
+          <coverage type="block, %" value="50%   (21/42)"/>
+          <coverage type="line, %" value="50%   (21/42)"/>
           <class name="TListaRetornoValidacao">
             <coverage type="class, %" value="100%   (1/1)"/>
-            <coverage type="method, %" value="40%   (4/10)"/>
-            <coverage type="block, %" value="36%   (15/42)"/>
-            <coverage type="line, %" value="36%   (15/42)"/>
+            <coverage type="method, %" value="60%   (6/10)"/>
+            <coverage type="block, %" value="50%   (21/42)"/>
+            <coverage type="line, %" value="50%   (21/42)"/>
             <method name="AdicionarArrayListaRetorno">
               <coverage type="method, %" value="100%   (1/1)"/>
               <coverage type="block, %" value="60%   (3/5)"/>
@@ -331,14 +331,14 @@
               <coverage type="line, %" value="100%   (4/4)"/>
             </method>
             <method name="AdicionarRetorno">
-              <coverage type="method, %" value="0%   (0/1)"/>
-              <coverage type="block, %" value="0%   (0/3)"/>
-              <coverage type="line, %" value="0%   (0/3)"/>
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
             </method>
             <method name="EstaVazio">
-              <coverage type="method, %" value="0%   (0/1)"/>
-              <coverage type="block, %" value="0%   (0/3)"/>
-              <coverage type="line, %" value="0%   (0/3)"/>
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
             </method>
             <method name="AddListaValidacoes">
               <coverage type="method, %" value="0%   (0/1)"/>

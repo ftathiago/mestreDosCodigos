@@ -65,15 +65,15 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_MapFile>3</DCC_MapFile>
-        <DCC_DcpOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\</DCC_DcpOutput>
-        <DCC_BplOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\</DCC_BplOutput>
-        <BRCC_OutputDir>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\</BRCC_OutputDir>
+        <DCC_DcpOutput>..\..\..\lib\</DCC_DcpOutput>
+        <DCC_BplOutput>..\..\..\lib\</DCC_BplOutput>
+        <BRCC_OutputDir>..\..\..\lib\</BRCC_OutputDir>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <PostBuildEvent><![CDATA[copy $(PROJECTDIR)\CrudToolbar\*.dfm $(OUTPUTDIR)
 copy $(PROJECTDIR)\FrmConsulta\*.dfm $(OUTPUTDIR)
 $(PostBuildEvent)]]></PostBuildEvent>
         <DCC_CBuilderOutput>None</DCC_CBuilderOutput>
-        <DCC_DcuOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\</DCC_DcuOutput>
+        <DCC_DcuOutput>..\..\..\lib\</DCC_DcuOutput>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
@@ -500,7 +500,9 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>copy $(PROJECTDIR)\CrudToolbar\*.dfm $(OUTPUTDIR)&amp;&amp;copy $(PROJECTDIR)\FrmConsulta\*.dfm $(OUTPUTDIR)</PostBuildEvent>
+        <PostBuildEvent>copy $(PROJECTDIR)\CrudToolbar\*.dfm $(OUTPUTDIR)
+&amp;&amp;copy $(PROJECTDIR)\FrmConsulta\*.dfm $(OUTPUTDIR)
+</PostBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
 </Project>

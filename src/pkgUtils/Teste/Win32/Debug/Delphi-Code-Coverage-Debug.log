@@ -5,7 +5,7 @@ Will track coverage for:pkgUtils.Intf
 Will track coverage for:ufwAplicacao
 Trying to start pkgUtilsTeste.exe with the Parameters :
 Started successfully
-Create Process:944 name:pkgUtilsTeste.exe
+Create Process:2872 name:pkgUtilsTeste.exe
 Adding breakpoints for module:pkgUtilsTeste.exe
 Module name "System" did not match module from address name "" at address:00006C38
 Module name "System" did not match module from address name "" at address:00006C40
@@ -7991,20 +7991,23 @@ Module name "System.Generics.Collections" did not match module from address name
 Module name "System.TimeSpan" did not match module from address name "System.Diagnostics" at address:0013638C
 Module name "System.Diagnostics" did not match module from address name "System.SyncObjs" at address:0013665F
 Module name "System.RegularExpressions" did not match module from address name "DUnitX.Assert" at address:0018E639
-Module name "DUnitX.Loggers.Null" did not match module from address name "DUnitX.Loggers.XML.NUnit" at address:00230C2A
-Module name "pkgUtils.Impl.EMail" did not match module from address name "uEmailTeste" at address:0023737F
-Module name "pkgUtils.Impl.Endereco" did not match module from address name "uEnderecoTeste" at address:00238FA5
-Module name "uListaRetornoValidacaoTeste" did not match module from address name "pkgUtils.Impl.Telefone" at address:00239935
-Module name "pkgUtils.Impl.Telefone" did not match module from address name "uTelefoneTeste" at address:00239C9E
+Module name "DUnitX.Loggers.Null" did not match module from address name "DUnitX.Loggers.XML.NUnit" at address:00230C2E
+Module name "pkgUtils.Impl.EMail" did not match module from address name "pkgUtils.Teste.Email" at address:002374D3
+Module name "pkgUtils.Impl.Endereco" did not match module from address name "pkgUtils.Teste.Endereco" at address:002395C5
+Module name "pkgUtils.Teste.ListaRetornoValidacaoTeste" did not match module from address name "pkgUtils.Teste.Endereco" at address:00239A9D
+Module name "pkgUtils.Impl.Telefone" did not match module from address name "pkgUtils.Teste.TelefoneTeste" at address:0023A4D2
 Module C:\Builds\tp\runtime\rtl\sys\delayhlp skipped
 Module DUnitX.Banner skipped
 Module DUnitX.IoC skipped
 Module DUnitX.Loggers.Null skipped
-Module pkgUtils.Impl skipped
 Module pkgUtils.Impl.EMail skipped
 Module pkgUtils.Impl.Endereco skipped
 Module pkgUtils.Impl.ListaRetornoValidacao skipped
 Module pkgUtils.Impl.Telefone skipped
+Module pkgUtils.Teste.Email skipped
+Module pkgUtils.Teste.Endereco skipped
+Module pkgUtils.Teste.ListaRetornoValidacaoTeste skipped
+Module pkgUtils.Teste.TelefoneTeste skipped
 Module pkgUtilsTeste skipped
 Module source\pcre_compile skipped
 Module source\pcre_exec skipped
@@ -8043,61 +8046,62 @@ Module System.UITypes skipped
 Module System.Variants skipped
 Module System.VarUtils skipped
 Module System.Win.Crtl skipped
-Module uEmailTeste skipped
-Module uEnderecoTeste skipped
-Module uListaRetornoValidacaoTeste skipped
-Module uTelefoneTeste skipped
 Module Winapi.ActiveX skipped
 Module Winapi.Windows skipped
 Done adding  BreakPoints
-Loading DLL at addr:779A0000 (ntdll.dll) size :875520
+Loading DLL at addr:77A10000 (ntdll.dll) size :875520
 Done adding  BreakPoints
-UnLoading DLL:779A0000
-UnLoading DLL:779A0000
-UnLoading DLL:779A0000
-UnLoading DLL:779A0000
-Loading DLL at addr:758F0000 (C:\Windows\syswow64\kernel32.dll) size :786944
+UnLoading DLL:77A10000
+UnLoading DLL:77A10000
+UnLoading DLL:77A10000
+UnLoading DLL:77A10000
+Loading DLL at addr:76200000 (C:\Windows\syswow64\kernel32.dll) size :786944
 Done adding  BreakPoints
-Loading DLL at addr:75AC0000 (C:\Windows\syswow64\KERNELBASE.dll) size :255488
+Loading DLL at addr:765A0000 (C:\Windows\syswow64\KERNELBASE.dll) size :255488
 Done adding  BreakPoints
-Loading DLL at addr:77470000 (C:\Windows\syswow64\oleaut32.dll) size :540160
+Loading DLL at addr:76790000 (C:\Windows\syswow64\oleaut32.dll) size :540160
 Done adding  BreakPoints
-Loading DLL at addr:75D70000 (C:\Windows\syswow64\ole32.dll) size :1329664
+Loading DLL at addr:75C80000 (C:\Windows\syswow64\ole32.dll) size :1329664
 Done adding  BreakPoints
-Loading DLL at addr:75A10000 (C:\Windows\syswow64\msvcrt.dll) size :648704
+Loading DLL at addr:76040000 (C:\Windows\syswow64\msvcrt.dll) size :648704
 Done adding  BreakPoints
-Loading DLL at addr:76320000 (C:\Windows\syswow64\GDI32.dll) size :299008
+Loading DLL at addr:76370000 (C:\Windows\syswow64\GDI32.dll) size :299008
 Done adding  BreakPoints
-Loading DLL at addr:75700000 (C:\Windows\syswow64\USER32.dll) size :445440
+Loading DLL at addr:75A60000 (C:\Windows\syswow64\USER32.dll) size :445440
 Done adding  BreakPoints
-Loading DLL at addr:75B60000 (C:\Windows\syswow64\ADVAPI32.dll) size :466432
+Loading DLL at addr:75DE0000 (C:\Windows\syswow64\ADVAPI32.dll) size :466432
 Done adding  BreakPoints
-Loading DLL at addr:760D0000 (C:\Windows\SysWOW64\sechost.dll) size :77312
+Loading DLL at addr:76580000 () size :0
 Done adding  BreakPoints
-Loading DLL at addr:75C00000 (C:\Windows\syswow64\RPCRT4.dll) size :622080
+Loading DLL at addr:755D0000 (C:\Windows\syswow64\RPCRT4.dll) size :622080
 Done adding  BreakPoints
-Loading DLL at addr:75500000 (C:\Windows\syswow64\SspiCli.dll) size :88576
+Loading DLL at addr:75570000 (C:\Windows\syswow64\SspiCli.dll) size :88576
 Done adding  BreakPoints
-Loading DLL at addr:760F0000 (C:\Windows\syswow64\LPK.dll) size :22016
+Loading DLL at addr:75560000 (C:\Windows\syswow64\CRYPTBASE.dll) size :31232
 Done adding  BreakPoints
-Loading DLL at addr:77500000 (C:\Windows\syswow64\USP10.dll) size :369664
+Loading DLL at addr:757D0000 (C:\Windows\syswow64\LPK.dll) size :22016
 Done adding  BreakPoints
-Loading DLL at addr:74020000 (C:\Windows\SysWOW64\version.dll) size :17408
+Loading DLL at addr:75720000 (C:\Windows\syswow64\USP10.dll) size :369664
 Done adding  BreakPoints
-Loading DLL at addr:75300000 (C:\Windows\SysWOW64\netapi32.dll) size :52224
+Loading DLL at addr:74090000 (C:\Windows\SysWOW64\version.dll) size :17408
 Done adding  BreakPoints
-Loading DLL at addr:752F0000 (C:\Windows\SysWOW64\netutils.dll) size :17408
+Loading DLL at addr:75160000 (C:\Windows\SysWOW64\netapi32.dll) size :52224
 Done adding  BreakPoints
-Loading DLL at addr:752D0000 (C:\Windows\SysWOW64\srvcli.dll) size :51200
+Loading DLL at addr:75250000 (C:\Windows\SysWOW64\netutils.dll) size :17408
 Done adding  BreakPoints
-Loading DLL at addr:752C0000 (C:\Windows\SysWOW64\wkscli.dll) size :41472
+Loading DLL at addr:75050000 (C:\Windows\SysWOW64\srvcli.dll) size :51200
 Done adding  BreakPoints
-Couldn't find BreakPoint for exception address:77A40F3B
-Loading DLL at addr:77410000 (C:\Windows\SysWOW64\IMM32.DLL) size :93696
+Loading DLL at addr:751C0000 (C:\Windows\SysWOW64\wkscli.dll) size :41472
 Done adding  BreakPoints
-Loading DLL at addr:75820000 (C:\Windows\syswow64\MSCTF.dll) size :536576
+Couldn't find BreakPoint for exception address:77AB0F3B
+Loading DLL at addr:74170000 (C:\Windows\SysWOW64\apphelp.dll) size :242176
 Done adding  BreakPoints
-Process 944 exiting. Exit code :0
+Loading DLL at addr:765F0000 (C:\Windows\SysWOW64\IMM32.DLL) size :93696
+Done adding  BreakPoints
+WARNING: The module  was already loaded. Skipping breakpoint generation and coverage for subsequent load.
+UnLoading DLL:76820000
+Wait For Debug Event timed-out
+Process 2872 exiting. Exit code :0
 Finished processing debug events
 ProcedureReport
 Generating reports

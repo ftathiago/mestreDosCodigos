@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>Delphi CodeCoverage Coverage Report</title>
+<style type="text/css">
+table {border-spacing:0; border-collapse:collapse;}
+table, td, th {border: 1px solid black;}
+td, th {background: white; margin: 0; padding: 2px 0.5em 2px 0.5em}
+td {border-width: 0 1px 0 0;}
+th {border-width: 1px 1px 1px 0;}
+p, h1, h2, h3, th {font-family: verdana,arial,sans-serif; font-size: 10pt;}
+td {font-family: courier,monospace; font-size: 10pt;}
+th {background: #CCCCCC;}
+table.o tr td:nth-child(1) {font-weight: bold;}
+table.o tr td:nth-child(2) {text-align: right;}
+table.o tr td {border-width: 1px;}
+table.s {width: 100%;}
+table.s tr td {padding: 0 0.25em 0 0.25em;}
+table.s tr td:first-child {text-align: right; font-weight: bold;}
+table.s tr.notcovered td {background: #DDDDFF;}
+table.s tr.nocodegen td {background: #FFFFEE;}
+table.s tr.covered td {background: #CCFFCC;}
+table.s tr.covered td:first-child {color: green;}
+table.s {border-width: 1px 0 1px 1px;}
+table.sum tr td {border-width: 1px;}
+table.sum tr th {text-align:right;}
+table.sum tr th:first-child {text-align:center;}
+table.sum tr td {text-align:right;}
+table.sum tr td:first-child {text-align:left;}
+</style>
+</head>
+<body>
+<p>Coverage report for <strong>SQL.Impl.SQL (C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\GeradorSQL\RT\SQL.Impl.SQL.pas)</strong>.</p>
+<p> Generated at 19/04/2018 00:07:31 by <a href="http://code.google.com/p/delphi-code-coverage/" title="Code Coverage for Delphi 5+">DelphiCodeCoverage</a> - an open source tool for Delphi Code Coverage.</p>
+<p> Statistics for C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\GeradorSQL\RT\SQL.Impl.SQL.pas </p>
+<table  class="o"><tr><td>Number of lines covered</td><td>20</td></tr><tr><td>Number of lines with code gen</td><td>31</td></tr><tr><td>Line coverage</td><td>64%</td></tr></table>
+<br /><br />
+<table  class="s">
+<tr class="nocodegen"><td>1</td><td><pre style="display:inline;">unit SQL.Impl.SQL;</pre></td></tr>
+<tr class="nocodegen"><td>2</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>3</td><td><pre style="display:inline;">interface</pre></td></tr>
+<tr class="nocodegen"><td>4</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>5</td><td><pre style="display:inline;">uses</pre></td></tr>
+<tr class="nocodegen"><td>6</td><td><pre style="display:inline;"> &nbsp;System.SysUtils,</pre></td></tr>
+<tr class="nocodegen"><td>7</td><td><pre style="display:inline;"> &nbsp;SQL.Intf.SQL;</pre></td></tr>
+<tr class="nocodegen"><td>8</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>9</td><td><pre style="display:inline;">type</pre></td></tr>
+<tr class="nocodegen"><td>10</td><td><pre style="display:inline;"> &nbsp;TSQL = class(TInterfacedObject, ISQL)</pre></td></tr>
+<tr class="nocodegen"><td>11</td><td><pre style="display:inline;"> &nbsp;protected</pre></td></tr>
+<tr class="nocodegen"><td>12</td><td><pre style="display:inline;"> &nbsp; &nbsp;FTextoSetado: string;</pre></td></tr>
+<tr class="nocodegen"><td>13</td><td><pre style="display:inline;"> &nbsp; &nbsp;FTexto: string;</pre></td></tr>
+<tr class="nocodegen"><td>14</td><td><pre style="display:inline;"> &nbsp; &nbsp;FSQL: ISQL;</pre></td></tr>
+<tr class="nocodegen"><td>15</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure ConstruirSQL; virtual; abstract;</pre></td></tr>
+<tr class="nocodegen"><td>16</td><td><pre style="display:inline;"> &nbsp;public</pre></td></tr>
+<tr class="nocodegen"><td>17</td><td><pre style="display:inline;"> &nbsp; &nbsp;class function New: ISQL;</pre></td></tr>
+<tr class="nocodegen"><td>18</td><td><pre style="display:inline;"> &nbsp; &nbsp;constructor Create; virtual;</pre></td></tr>
+<tr class="nocodegen"><td>19</td><td><pre style="display:inline;"> &nbsp; &nbsp;function setTextoSQL(const Texto: string): ISQL;</pre></td></tr>
+<tr class="nocodegen"><td>20</td><td><pre style="display:inline;"> &nbsp; &nbsp;function setSQL(const ASQL: ISQL): ISQL;</pre></td></tr>
+<tr class="nocodegen"><td>21</td><td><pre style="display:inline;"> &nbsp; &nbsp;function ToString: string; override;</pre></td></tr>
+<tr class="nocodegen"><td>22</td><td><pre style="display:inline;"> &nbsp; &nbsp;procedure SaveToFile(const FileName: TFileName);</pre></td></tr>
+<tr class="nocodegen"><td>23</td><td><pre style="display:inline;"> &nbsp;end;</pre></td></tr>
+<tr class="nocodegen"><td>24</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>25</td><td><pre style="display:inline;">implementation</pre></td></tr>
+<tr class="nocodegen"><td>26</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>27</td><td><pre style="display:inline;">uses</pre></td></tr>
+<tr class="nocodegen"><td>28</td><td><pre style="display:inline;"> &nbsp;System.Classes;</pre></td></tr>
+<tr class="nocodegen"><td>29</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>30</td><td><pre style="display:inline;">{ TSQL }</pre></td></tr>
+<tr class="nocodegen"><td>31</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>32</td><td><pre style="display:inline;">class function TSQL.New: ISQL;</pre></td></tr>
+<tr class="notcovered"><td>33</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="notcovered"><td>34</td><td><pre style="display:inline;"> &nbsp;result := Create;</pre></td></tr>
+<tr class="notcovered"><td>35</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>36</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>37</td><td><pre style="display:inline;">constructor TSQL.Create;</pre></td></tr>
+<tr class="covered"><td>38</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>39</td><td><pre style="display:inline;"> &nbsp;inherited Create;</pre></td></tr>
+<tr class="covered"><td>40</td><td><pre style="display:inline;"> &nbsp;FTextoSetado := EmptyStr;</pre></td></tr>
+<tr class="covered"><td>41</td><td><pre style="display:inline;"> &nbsp;FTexto := EmptyStr;</pre></td></tr>
+<tr class="covered"><td>42</td><td><pre style="display:inline;"> &nbsp;FSQL := nil;</pre></td></tr>
+<tr class="covered"><td>43</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>44</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>45</td><td><pre style="display:inline;">procedure TSQL.SaveToFile(const FileName: TFileName);</pre></td></tr>
+<tr class="nocodegen"><td>46</td><td><pre style="display:inline;">var</pre></td></tr>
+<tr class="nocodegen"><td>47</td><td><pre style="display:inline;"> &nbsp;_strings: TStrings;</pre></td></tr>
+<tr class="covered"><td>48</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>49</td><td><pre style="display:inline;"> &nbsp;_strings := TStringList.Create;</pre></td></tr>
+<tr class="covered"><td>50</td><td><pre style="display:inline;"> &nbsp;try</pre></td></tr>
+<tr class="covered"><td>51</td><td><pre style="display:inline;"> &nbsp; &nbsp;_strings.add(ToString);</pre></td></tr>
+<tr class="covered"><td>52</td><td><pre style="display:inline;"> &nbsp; &nbsp;_strings.SaveToFile(FileName);</pre></td></tr>
+<tr class="nocodegen"><td>53</td><td><pre style="display:inline;"> &nbsp;finally</pre></td></tr>
+<tr class="covered"><td>54</td><td><pre style="display:inline;"> &nbsp; &nbsp;FreeAndNil(_strings);</pre></td></tr>
+<tr class="nocodegen"><td>55</td><td><pre style="display:inline;"> &nbsp;end;</pre></td></tr>
+<tr class="covered"><td>56</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>57</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>58</td><td><pre style="display:inline;">function TSQL.setSQL(const ASQL: ISQL): ISQL;</pre></td></tr>
+<tr class="notcovered"><td>59</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="notcovered"><td>60</td><td><pre style="display:inline;"> &nbsp;result := self;</pre></td></tr>
+<tr class="nocodegen"><td>61</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="notcovered"><td>62</td><td><pre style="display:inline;"> &nbsp;FSQL := ASQL;</pre></td></tr>
+<tr class="notcovered"><td>63</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>64</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>65</td><td><pre style="display:inline;">function TSQL.setTextoSQL(const Texto: string): ISQL;</pre></td></tr>
+<tr class="notcovered"><td>66</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="notcovered"><td>67</td><td><pre style="display:inline;"> &nbsp;FTextoSetado := Texto;</pre></td></tr>
+<tr class="notcovered"><td>68</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>69</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>70</td><td><pre style="display:inline;">function TSQL.ToString: string;</pre></td></tr>
+<tr class="covered"><td>71</td><td><pre style="display:inline;">begin</pre></td></tr>
+<tr class="covered"><td>72</td><td><pre style="display:inline;"> &nbsp;FTexto := FTextoSetado.Trim;</pre></td></tr>
+<tr class="nocodegen"><td>73</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>74</td><td><pre style="display:inline;"> &nbsp;if Assigned(FSQL) then</pre></td></tr>
+<tr class="notcovered"><td>75</td><td><pre style="display:inline;"> &nbsp; &nbsp;FTexto := FSQL.ToString;</pre></td></tr>
+<tr class="nocodegen"><td>76</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>77</td><td><pre style="display:inline;"> &nbsp;if FTexto.IsEmpty then</pre></td></tr>
+<tr class="covered"><td>78</td><td><pre style="display:inline;"> &nbsp; &nbsp;ConstruirSQL;</pre></td></tr>
+<tr class="nocodegen"><td>79</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="covered"><td>80</td><td><pre style="display:inline;"> &nbsp;result := FTexto.Trim;</pre></td></tr>
+<tr class="covered"><td>81</td><td><pre style="display:inline;">end;</pre></td></tr>
+<tr class="nocodegen"><td>82</td><td><pre style="display:inline;"></pre></td></tr>
+<tr class="nocodegen"><td>83</td><td><pre style="display:inline;">end.</pre></td></tr>
+</table>
+</body>
+</html>

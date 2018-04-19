@@ -3,13 +3,16 @@
         <ProjectGuid>{D16BC520-372B-41FC-BD86-F46961B8AB9C}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="dpk\pkgUtils.dproj">
+        <Projects Include="..\pkgUtils\dpk\pkgUtils.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="dpk\GeradorSQL.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="dpk\GeradorSQLDT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Teste\GeradorSQLTeste.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -21,13 +24,13 @@
         </BorlandProject>
     </ProjectExtensions>
     <Target Name="pkgUtils">
-        <MSBuild Projects="dpk\pkgUtils.dproj"/>
+        <MSBuild Projects="..\pkgUtils\dpk\pkgUtils.dproj"/>
     </Target>
     <Target Name="pkgUtils:Clean">
-        <MSBuild Projects="dpk\pkgUtils.dproj" Targets="Clean"/>
+        <MSBuild Projects="..\pkgUtils\dpk\pkgUtils.dproj" Targets="Clean"/>
     </Target>
     <Target Name="pkgUtils:Make">
-        <MSBuild Projects="dpk\pkgUtils.dproj" Targets="Make"/>
+        <MSBuild Projects="..\pkgUtils\dpk\pkgUtils.dproj" Targets="Make"/>
     </Target>
     <Target Name="GeradorSQL">
         <MSBuild Projects="dpk\GeradorSQL.dproj"/>
@@ -47,14 +50,23 @@
     <Target Name="GeradorSQLDT:Make">
         <MSBuild Projects="dpk\GeradorSQLDT.dproj" Targets="Make"/>
     </Target>
+    <Target Name="GeradorSQLTeste">
+        <MSBuild Projects="Teste\GeradorSQLTeste.dproj"/>
+    </Target>
+    <Target Name="GeradorSQLTeste:Clean">
+        <MSBuild Projects="Teste\GeradorSQLTeste.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GeradorSQLTeste:Make">
+        <MSBuild Projects="Teste\GeradorSQLTeste.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="pkgUtils;GeradorSQL;GeradorSQLDT"/>
+        <CallTarget Targets="pkgUtils;GeradorSQL;GeradorSQLDT;GeradorSQLTeste"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="pkgUtils:Clean;GeradorSQL:Clean;GeradorSQLDT:Clean"/>
+        <CallTarget Targets="pkgUtils:Clean;GeradorSQL:Clean;GeradorSQLDT:Clean;GeradorSQLTeste:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="pkgUtils:Make;GeradorSQL:Make;GeradorSQLDT:Make"/>
+        <CallTarget Targets="pkgUtils:Make;GeradorSQL:Make;GeradorSQLDT:Make;GeradorSQLTeste:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

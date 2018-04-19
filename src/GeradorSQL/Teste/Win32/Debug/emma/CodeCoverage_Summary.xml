@@ -1,0 +1,2065 @@
+<?xml version="1.0" encoding="Windows-1252" standalone="no"?>
+<report>
+  <stats>
+    <packages value="33"/>
+    <classes value="63"/>
+    <methods value="254"/>
+    <srcfiles value="33"/>
+    <srclines value="992"/>
+    <totallines value="992"/>
+    <coveredlines value="834"/>
+    <coveredpercent value="84"/>
+  </stats>
+  <data>
+    <all name="all classes">
+      <coverage type="class, %" value="90%   (57/63)"/>
+      <coverage type="method, %" value="77%   (195/254)"/>
+      <coverage type="block, %" value="84%   (834/992)"/>
+      <coverage type="line, %" value="84%   (834/992)"/>
+      <package name="SQL.Impl.Juncao.Director">
+        <coverage type="class, %" value="100%   (2/2)"/>
+        <coverage type="method, %" value="100%   (4/4)"/>
+        <coverage type="block, %" value="100%   (16/16)"/>
+        <coverage type="line, %" value="100%   (16/16)"/>
+        <srcfile name="SQL.Impl.Juncao.Director.pas">
+          <coverage type="class, %" value="100%   (2/2)"/>
+          <coverage type="method, %" value="100%   (4/4)"/>
+          <coverage type="block, %" value="100%   (16/16)"/>
+          <coverage type="line, %" value="100%   (16/16)"/>
+          <class name="TDirectorJuncao">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (7/7)"/>
+            <coverage type="line, %" value="100%   (7/7)"/>
+            <method name="Construir">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (7/7)"/>
+              <coverage type="line, %" value="100%   (7/7)"/>
+            </method>
+          </class>
+          <class name="{DesignPattern.Builder.Impl.Director}TDirector&lt;SQL.Intf.Juncao.Builder.IBuilderJuncao,SQL.Intf.Juncao.ISQLJuncao&gt;">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (3/3)"/>
+            <coverage type="block, %" value="100%   (9/9)"/>
+            <coverage type="line, %" value="100%   (9/9)"/>
+            <method name="getObjetoPronto">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="setBuilder">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.Coluna.Lista">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="100%   (1/1)"/>
+        <coverage type="block, %" value="100%   (12/12)"/>
+        <coverage type="line, %" value="100%   (12/12)"/>
+        <srcfile name="SQL.Impl.Coluna.Lista.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="100%   (1/1)"/>
+          <coverage type="block, %" value="100%   (12/12)"/>
+          <coverage type="line, %" value="100%   (12/12)"/>
+          <class name="TListaColunaSelect">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (12/12)"/>
+            <coverage type="line, %" value="100%   (12/12)"/>
+            <method name="ToString">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (12/12)"/>
+              <coverage type="line, %" value="100%   (12/12)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="uSQLSelectTeste">
+        <coverage type="class, %" value="100%   (2/2)"/>
+        <coverage type="method, %" value="83%   (5/6)"/>
+        <coverage type="block, %" value="96%   (22/23)"/>
+        <coverage type="line, %" value="96%   (22/23)"/>
+        <srcfile name="uSQLSelectTeste.pas">
+          <coverage type="class, %" value="100%   (2/2)"/>
+          <coverage type="method, %" value="83%   (5/6)"/>
+          <coverage type="block, %" value="96%   (22/23)"/>
+          <coverage type="line, %" value="96%   (22/23)"/>
+          <class name="uSQLSelectTeste">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (2/2)"/>
+            <coverage type="line, %" value="100%   (2/2)"/>
+            <method name="Initialization">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (2/2)"/>
+              <coverage type="line, %" value="100%   (2/2)"/>
+            </method>
+          </class>
+          <class name="TSQLSelectTeste">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="80%   (4/5)"/>
+            <coverage type="block, %" value="95%   (20/21)"/>
+            <coverage type="line, %" value="95%   (20/21)"/>
+            <method name="TestarSaveToFile">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (5/5)"/>
+              <coverage type="line, %" value="100%   (5/5)"/>
+            </method>
+            <method name="Setup">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (8/8)"/>
+              <coverage type="line, %" value="100%   (8/8)"/>
+            </method>
+            <method name="Log">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="TestarSelect">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="TearDown">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="Teste.Builder.Tabela">
+        <coverage type="class, %" value="100%   (3/3)"/>
+        <coverage type="method, %" value="100%   (6/6)"/>
+        <coverage type="block, %" value="100%   (18/18)"/>
+        <coverage type="line, %" value="100%   (18/18)"/>
+        <srcfile name="Teste.Builder.Tabela.pas">
+          <coverage type="class, %" value="100%   (3/3)"/>
+          <coverage type="method, %" value="100%   (6/6)"/>
+          <coverage type="block, %" value="100%   (18/18)"/>
+          <coverage type="line, %" value="100%   (18/18)"/>
+          <class name="TCBTabelaComNomeEAlias">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (2/2)"/>
+            <coverage type="block, %" value="100%   (6/6)"/>
+            <coverage type="line, %" value="100%   (6/6)"/>
+            <method name="buildNomeTabela">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="buildAliasTabela">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+          <class name="TCBTabelaComNomeApenas">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (2/2)"/>
+            <coverage type="block, %" value="100%   (6/6)"/>
+            <coverage type="line, %" value="100%   (6/6)"/>
+            <method name="buildNomeTabela">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="buildAliasTabela">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+          <class name="TCBTabelaBase">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (2/2)"/>
+            <coverage type="block, %" value="100%   (6/6)"/>
+            <coverage type="line, %" value="100%   (6/6)"/>
+            <method name="buildSQL">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (2/2)"/>
+              <coverage type="line, %" value="100%   (2/2)"/>
+            </method>
+            <method name="AfterConstruction">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="Teste.Builder.Select">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="86%   (12/14)"/>
+        <coverage type="block, %" value="95%   (70/74)"/>
+        <coverage type="line, %" value="95%   (70/74)"/>
+        <srcfile name="Teste.Builder.Select.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="86%   (12/14)"/>
+          <coverage type="block, %" value="95%   (70/74)"/>
+          <coverage type="line, %" value="95%   (70/74)"/>
+          <class name="TCBSelectSimples">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="86%   (12/14)"/>
+            <coverage type="block, %" value="95%   (70/74)"/>
+            <coverage type="line, %" value="95%   (70/74)"/>
+            <method name="getCampo">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (7/7)"/>
+              <coverage type="line, %" value="100%   (7/7)"/>
+            </method>
+            <method name="buildOrderBy">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (5/5)"/>
+              <coverage type="line, %" value="100%   (5/5)"/>
+            </method>
+            <method name="AfterConstruction">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="buildCampo">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (6/6)"/>
+              <coverage type="line, %" value="100%   (6/6)"/>
+            </method>
+            <method name="buildJuncao">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (10/10)"/>
+              <coverage type="line, %" value="100%   (10/10)"/>
+            </method>
+            <method name="buildGroupBy">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (2/2)"/>
+              <coverage type="line, %" value="100%   (2/2)"/>
+            </method>
+            <method name="buildSalto">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (2/2)"/>
+              <coverage type="line, %" value="100%   (2/2)"/>
+            </method>
+            <method name="buildSQL">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (2/2)"/>
+              <coverage type="line, %" value="100%   (2/2)"/>
+            </method>
+            <method name="buildWhere">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (16/16)"/>
+              <coverage type="line, %" value="100%   (16/16)"/>
+            </method>
+            <method name="buildSQLApos">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/2)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="getCampoVirtual">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (7/7)"/>
+              <coverage type="line, %" value="100%   (7/7)"/>
+            </method>
+            <method name="buildFrom">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (7/7)"/>
+              <coverage type="line, %" value="100%   (7/7)"/>
+            </method>
+            <method name="buildSQLAntes">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/2)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="buildLimite">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (2/2)"/>
+              <coverage type="line, %" value="100%   (2/2)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.Condicao.Lista">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="100%   (1/1)"/>
+        <coverage type="block, %" value="100%   (15/15)"/>
+        <coverage type="line, %" value="100%   (15/15)"/>
+        <srcfile name="SQL.Impl.Condicao.Lista.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="100%   (1/1)"/>
+          <coverage type="block, %" value="100%   (15/15)"/>
+          <coverage type="line, %" value="100%   (15/15)"/>
+          <class name="TListaCondicao">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (15/15)"/>
+            <coverage type="line, %" value="100%   (15/15)"/>
+            <method name="ToString">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (15/15)"/>
+              <coverage type="line, %" value="100%   (15/15)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="uSQLTabelaTeste">
+        <coverage type="class, %" value="100%   (2/2)"/>
+        <coverage type="method, %" value="83%   (5/6)"/>
+        <coverage type="block, %" value="95%   (21/22)"/>
+        <coverage type="line, %" value="95%   (21/22)"/>
+        <srcfile name="uSQLTabelaTeste.pas">
+          <coverage type="class, %" value="100%   (2/2)"/>
+          <coverage type="method, %" value="83%   (5/6)"/>
+          <coverage type="block, %" value="95%   (21/22)"/>
+          <coverage type="line, %" value="95%   (21/22)"/>
+          <class name="uSQLTabelaTeste">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (2/2)"/>
+            <coverage type="line, %" value="100%   (2/2)"/>
+            <method name="Initialization">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (2/2)"/>
+              <coverage type="line, %" value="100%   (2/2)"/>
+            </method>
+          </class>
+          <class name="TSQLTabelaTeste">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="80%   (4/5)"/>
+            <coverage type="block, %" value="95%   (19/20)"/>
+            <coverage type="line, %" value="95%   (19/20)"/>
+            <method name="ApenasComNome">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (7/7)"/>
+              <coverage type="line, %" value="100%   (7/7)"/>
+            </method>
+            <method name="Setup">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Log">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="ComNomeEAlias">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (7/7)"/>
+              <coverage type="line, %" value="100%   (7/7)"/>
+            </method>
+            <method name="TearDown">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (2/2)"/>
+              <coverage type="line, %" value="100%   (2/2)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.Select">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="65%   (17/26)"/>
+        <coverage type="block, %" value="70%   (69/99)"/>
+        <coverage type="line, %" value="70%   (69/99)"/>
+        <srcfile name="SQL.Impl.Select.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="65%   (17/26)"/>
+          <coverage type="block, %" value="70%   (69/99)"/>
+          <coverage type="line, %" value="70%   (69/99)"/>
+          <class name="TSQLSelect">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="65%   (17/26)"/>
+            <coverage type="block, %" value="70%   (69/99)"/>
+            <coverage type="line, %" value="70%   (69/99)"/>
+            <method name="getSQLApos">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getSQLAntes">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getListaJuncao">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="addJuncao">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="addCondicao">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="injectSQLApos">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/4)"/>
+            </method>
+            <method name="getTabela">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Create">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (10/10)"/>
+              <coverage type="line, %" value="100%   (10/10)"/>
+            </method>
+            <method name="injectSQLAntes">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/4)"/>
+            </method>
+            <method name="Destroy">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (13/13)"/>
+              <coverage type="line, %" value="100%   (13/13)"/>
+            </method>
+            <method name="getOrderBy">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getGroupBy">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getJuncoes">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="addOrderBy">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="getListaCondicoes">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="addGroupBy">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="getSaltar">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="getColunas">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getLimite">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="setLimite">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/4)"/>
+            </method>
+            <method name="getListaColuna">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="getCondicoes">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="setSaltar">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="setTabela">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="addColuna">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="Teste.Builder.Coluna">
+        <coverage type="class, %" value="75%   (3/4)"/>
+        <coverage type="method, %" value="75%   (9/12)"/>
+        <coverage type="block, %" value="76%   (25/33)"/>
+        <coverage type="line, %" value="76%   (25/33)"/>
+        <srcfile name="Teste.Builder.Coluna.pas">
+          <coverage type="class, %" value="75%   (3/4)"/>
+          <coverage type="method, %" value="75%   (9/12)"/>
+          <coverage type="block, %" value="76%   (25/33)"/>
+          <coverage type="line, %" value="76%   (25/33)"/>
+          <class name="TCBColunaNomeVirtual">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/3)"/>
+            <coverage type="block, %" value="0%   (0/8)"/>
+            <coverage type="line, %" value="0%   (0/8)"/>
+            <method name="buildNomeVirtual">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="buildTabela">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/2)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="buildNome">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+          </class>
+          <class name="TCBColunaTotalmenteVirtual">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (3/3)"/>
+            <coverage type="block, %" value="100%   (8/8)"/>
+            <coverage type="line, %" value="100%   (8/8)"/>
+            <method name="buildNomeVirtual">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="buildTabela">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (2/2)"/>
+              <coverage type="line, %" value="100%   (2/2)"/>
+            </method>
+            <method name="buildNome">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+          <class name="TCBColunaSimples">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (4/4)"/>
+            <coverage type="block, %" value="100%   (11/11)"/>
+            <coverage type="line, %" value="100%   (11/11)"/>
+            <method name="buildNomeVirtual">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="AfterConstruction">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="buildTabela">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (2/2)"/>
+              <coverage type="line, %" value="100%   (2/2)"/>
+            </method>
+            <method name="buildNome">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+          <class name="TCBColunaBase">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (2/2)"/>
+            <coverage type="block, %" value="100%   (6/6)"/>
+            <coverage type="line, %" value="100%   (6/6)"/>
+            <method name="buildSQL">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (2/2)"/>
+              <coverage type="line, %" value="100%   (2/2)"/>
+            </method>
+            <method name="AfterConstruction">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.Coluna.Director">
+        <coverage type="class, %" value="100%   (2/2)"/>
+        <coverage type="method, %" value="100%   (4/4)"/>
+        <coverage type="block, %" value="100%   (17/17)"/>
+        <coverage type="line, %" value="100%   (17/17)"/>
+        <srcfile name="SQL.Impl.Coluna.Director.pas">
+          <coverage type="class, %" value="100%   (2/2)"/>
+          <coverage type="method, %" value="100%   (4/4)"/>
+          <coverage type="block, %" value="100%   (17/17)"/>
+          <coverage type="line, %" value="100%   (17/17)"/>
+          <class name="TDirectorColuna">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (8/8)"/>
+            <coverage type="line, %" value="100%   (8/8)"/>
+            <method name="Construir">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (8/8)"/>
+              <coverage type="line, %" value="100%   (8/8)"/>
+            </method>
+          </class>
+          <class name="{DesignPattern.Builder.Impl.Director}TDirector&lt;SQL.Intf.Coluna.Builder.IBuilderColuna,SQL.Intf.Coluna.ISQLColuna&gt;">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (3/3)"/>
+            <coverage type="block, %" value="100%   (9/9)"/>
+            <coverage type="line, %" value="100%   (9/9)"/>
+            <method name="getObjetoPronto">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="setBuilder">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.PadraoSQL3.Fabrica">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="100%   (5/5)"/>
+        <coverage type="block, %" value="100%   (15/15)"/>
+        <coverage type="line, %" value="100%   (15/15)"/>
+        <srcfile name="SQL.Impl.PadraoSQL3.Fabrica.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="100%   (5/5)"/>
+          <coverage type="block, %" value="100%   (15/15)"/>
+          <coverage type="line, %" value="100%   (15/15)"/>
+          <class name="TSQL3Fabrica">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (5/5)"/>
+            <coverage type="block, %" value="100%   (15/15)"/>
+            <coverage type="line, %" value="100%   (15/15)"/>
+            <method name="Coluna">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Condicao">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Tabela">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Select">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Juncao">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="Teste.Builder.Condicao">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="100%   (6/6)"/>
+        <coverage type="block, %" value="100%   (22/22)"/>
+        <coverage type="line, %" value="100%   (22/22)"/>
+        <srcfile name="Teste.Builder.Condicao.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="100%   (6/6)"/>
+          <coverage type="block, %" value="100%   (22/22)"/>
+          <coverage type="line, %" value="100%   (22/22)"/>
+          <class name="TCBCondicaoValor">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (6/6)"/>
+            <coverage type="block, %" value="100%   (22/22)"/>
+            <coverage type="line, %" value="100%   (22/22)"/>
+            <method name="buildOperadorLogico">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="buildSQL">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (2/2)"/>
+              <coverage type="line, %" value="100%   (2/2)"/>
+            </method>
+            <method name="buildValor">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="buildColuna">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (7/7)"/>
+              <coverage type="line, %" value="100%   (7/7)"/>
+            </method>
+            <method name="buildOperadorComparacao">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="AfterConstruction">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.Tabela.Builder">
+        <coverage type="class, %" value="100%   (3/3)"/>
+        <coverage type="method, %" value="75%   (6/8)"/>
+        <coverage type="block, %" value="91%   (20/22)"/>
+        <coverage type="line, %" value="91%   (20/22)"/>
+        <srcfile name="SQL.Impl.Tabela.Builder.pas">
+          <coverage type="class, %" value="100%   (3/3)"/>
+          <coverage type="method, %" value="75%   (6/8)"/>
+          <coverage type="block, %" value="91%   (20/22)"/>
+          <coverage type="line, %" value="91%   (20/22)"/>
+          <class name="{SQL.Impl.Builder}TSQLBuilder&lt;SQL.Intf.Tabela.ISQLTabela&gt;">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (3/3)"/>
+            <coverage type="block, %" value="100%   (10/10)"/>
+            <coverage type="line, %" value="100%   (10/10)"/>
+            <method name="setOtimizarPara">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getOtimizarPara">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Create">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+          </class>
+          <class name="{DesignPattern.Builder.Impl.Builder}TBuilder&lt;SQL.Intf.Tabela.ISQLTabela&gt;">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (3/3)"/>
+            <coverage type="line, %" value="100%   (3/3)"/>
+            <method name="getObjeto">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+          <class name="TBuilderTabela">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="50%   (2/4)"/>
+            <coverage type="block, %" value="78%   (7/9)"/>
+            <coverage type="line, %" value="78%   (7/9)"/>
+            <method name="ConstruirNovaInstancia">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="buildAliasTabela">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="buildNomeTabela">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.Select.Builder">
+        <coverage type="class, %" value="100%   (3/3)"/>
+        <coverage type="method, %" value="38%   (6/16)"/>
+        <coverage type="block, %" value="66%   (19/29)"/>
+        <coverage type="line, %" value="66%   (19/29)"/>
+        <srcfile name="SQL.Impl.Select.Builder.pas">
+          <coverage type="class, %" value="100%   (3/3)"/>
+          <coverage type="method, %" value="38%   (6/16)"/>
+          <coverage type="block, %" value="66%   (19/29)"/>
+          <coverage type="line, %" value="66%   (19/29)"/>
+          <class name="TBuilderSelect">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="17%   (2/12)"/>
+            <coverage type="block, %" value="38%   (6/16)"/>
+            <coverage type="line, %" value="38%   (6/16)"/>
+            <method name="buildSalto">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="buildWhere">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="buildSQLApos">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="buildOrderBy">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="buildFrom">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="buildCampo">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="buildSQLAntes">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="buildJuncao">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="buildGroupBy">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="ConstruirNovaInstancia">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="buildLimite">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+          <class name="{SQL.Impl.Builder}TSQLBuilder&lt;SQL.Intf.Select.ISQLSelect&gt;">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (3/3)"/>
+            <coverage type="block, %" value="100%   (10/10)"/>
+            <coverage type="line, %" value="100%   (10/10)"/>
+            <method name="setOtimizarPara">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getOtimizarPara">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Create">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+          </class>
+          <class name="{DesignPattern.Builder.Impl.Builder}TBuilder&lt;SQL.Intf.Select.ISQLSelect&gt;">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (3/3)"/>
+            <coverage type="line, %" value="100%   (3/3)"/>
+            <method name="getObjeto">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.PadraoSQL3.Coluna">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="100%   (8/8)"/>
+        <coverage type="block, %" value="100%   (38/38)"/>
+        <coverage type="line, %" value="100%   (38/38)"/>
+        <srcfile name="SQL.Impl.PadraoSQL3.Coluna.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="100%   (8/8)"/>
+          <coverage type="block, %" value="100%   (38/38)"/>
+          <coverage type="line, %" value="100%   (38/38)"/>
+          <class name="TSQL3Coluna">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (8/8)"/>
+            <coverage type="block, %" value="100%   (38/38)"/>
+            <coverage type="line, %" value="100%   (38/38)"/>
+            <method name="setColuna">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="setNomeVirtual">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="getOrigemDoCampo">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (8/8)"/>
+              <coverage type="line, %" value="100%   (8/8)"/>
+            </method>
+            <method name="Create">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (6/6)"/>
+              <coverage type="line, %" value="100%   (6/6)"/>
+            </method>
+            <method name="TestarNomeVirtualFoiInformado">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="setTabela">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="ConstruirSQL">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (6/6)"/>
+              <coverage type="line, %" value="100%   (6/6)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="uSQLColunaTeste">
+        <coverage type="class, %" value="100%   (2/2)"/>
+        <coverage type="method, %" value="90%   (9/10)"/>
+        <coverage type="block, %" value="98%   (44/45)"/>
+        <coverage type="line, %" value="98%   (44/45)"/>
+        <srcfile name="uSQLColunaTeste.pas">
+          <coverage type="class, %" value="100%   (2/2)"/>
+          <coverage type="method, %" value="90%   (9/10)"/>
+          <coverage type="block, %" value="98%   (44/45)"/>
+          <coverage type="line, %" value="98%   (44/45)"/>
+          <class name="TSQLColunaTeste">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="89%   (8/9)"/>
+            <coverage type="block, %" value="98%   (42/43)"/>
+            <coverage type="line, %" value="98%   (42/43)"/>
+            <method name="ColunaComAliasETabela">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (6/6)"/>
+              <coverage type="line, %" value="100%   (6/6)"/>
+            </method>
+            <method name="getColunaSimples">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (6/6)"/>
+              <coverage type="line, %" value="100%   (6/6)"/>
+            </method>
+            <method name="Log">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="ColunaSimplesComTabela">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="ColunaComAlias">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (6/6)"/>
+              <coverage type="line, %" value="100%   (6/6)"/>
+            </method>
+            <method name="getColunaComTabela">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (12/12)"/>
+              <coverage type="line, %" value="100%   (12/12)"/>
+            </method>
+            <method name="ColunaSimples">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Setup">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="TearDown">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (2/2)"/>
+              <coverage type="line, %" value="100%   (2/2)"/>
+            </method>
+          </class>
+          <class name="uSQLColunaTeste">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (2/2)"/>
+            <coverage type="line, %" value="100%   (2/2)"/>
+            <method name="Initialization">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (2/2)"/>
+              <coverage type="line, %" value="100%   (2/2)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.Condicao.Director">
+        <coverage type="class, %" value="100%   (2/2)"/>
+        <coverage type="method, %" value="100%   (4/4)"/>
+        <coverage type="block, %" value="100%   (18/18)"/>
+        <coverage type="line, %" value="100%   (18/18)"/>
+        <srcfile name="SQL.Impl.Condicao.Director.pas">
+          <coverage type="class, %" value="100%   (2/2)"/>
+          <coverage type="method, %" value="100%   (4/4)"/>
+          <coverage type="block, %" value="100%   (18/18)"/>
+          <coverage type="line, %" value="100%   (18/18)"/>
+          <class name="TDirectorCondicao">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (9/9)"/>
+            <coverage type="line, %" value="100%   (9/9)"/>
+            <method name="Construir">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (9/9)"/>
+              <coverage type="line, %" value="100%   (9/9)"/>
+            </method>
+          </class>
+          <class name="{DesignPattern.Builder.Impl.Director}TDirector&lt;SQL.Intf.Condicao.Builder.IBuilderCondicao,SQL.Intf.Condicao.ISQLCondicao&gt;">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (3/3)"/>
+            <coverage type="block, %" value="100%   (9/9)"/>
+            <coverage type="line, %" value="100%   (9/9)"/>
+            <method name="getObjetoPronto">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="setBuilder">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.PadraoSQL3.Juncao">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="80%   (8/10)"/>
+        <coverage type="block, %" value="83%   (40/48)"/>
+        <coverage type="line, %" value="83%   (40/48)"/>
+        <srcfile name="SQL.Impl.PadraoSQL3.Juncao.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="80%   (8/10)"/>
+          <coverage type="block, %" value="83%   (40/48)"/>
+          <coverage type="line, %" value="83%   (40/48)"/>
+          <class name="TSQL3Juncao">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="80%   (8/10)"/>
+            <coverage type="block, %" value="83%   (40/48)"/>
+            <coverage type="line, %" value="83%   (40/48)"/>
+            <method name="setTipoJuncao">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/4)"/>
+            </method>
+            <method name="ToString">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getTabelaEstrangeira">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="addCondicao">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="Create">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (6/6)"/>
+              <coverage type="line, %" value="100%   (6/6)"/>
+            </method>
+            <method name="setTabelaEstrangeira">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="getListaCondicoes">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Destroy">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (5/5)"/>
+              <coverage type="line, %" value="100%   (5/5)"/>
+            </method>
+            <method name="PegarCondicoesEmString">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="92%   (12/13)"/>
+              <coverage type="line, %" value="92%   (12/13)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.PadraoSQL3.Tabela">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="100%   (8/8)"/>
+        <coverage type="block, %" value="100%   (30/30)"/>
+        <coverage type="line, %" value="100%   (30/30)"/>
+        <srcfile name="SQL.Impl.PadraoSQL3.Tabela.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="100%   (8/8)"/>
+          <coverage type="block, %" value="100%   (30/30)"/>
+          <coverage type="line, %" value="100%   (30/30)"/>
+          <class name="TSQL3Tabela">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (8/8)"/>
+            <coverage type="block, %" value="100%   (30/30)"/>
+            <coverage type="line, %" value="100%   (30/30)"/>
+            <method name="setAlias">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="setNome">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="Create">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (5/5)"/>
+              <coverage type="line, %" value="100%   (5/5)"/>
+            </method>
+            <method name="TestarAliasEstaPreenchido">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getAlias">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getNome">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="ToString">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (5/5)"/>
+              <coverage type="line, %" value="100%   (5/5)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="uSQLCondicaoTeste">
+        <coverage type="class, %" value="100%   (2/2)"/>
+        <coverage type="method, %" value="83%   (5/6)"/>
+        <coverage type="block, %" value="96%   (22/23)"/>
+        <coverage type="line, %" value="96%   (22/23)"/>
+        <srcfile name="uSQLCondicaoTeste.pas">
+          <coverage type="class, %" value="100%   (2/2)"/>
+          <coverage type="method, %" value="83%   (5/6)"/>
+          <coverage type="block, %" value="96%   (22/23)"/>
+          <coverage type="line, %" value="96%   (22/23)"/>
+          <class name="TSQLCondicaoTeste">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="80%   (4/5)"/>
+            <coverage type="block, %" value="95%   (20/21)"/>
+            <coverage type="line, %" value="95%   (20/21)"/>
+            <method name="TestarCondicao">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="TestarComColuna">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (7/7)"/>
+              <coverage type="line, %" value="100%   (7/7)"/>
+            </method>
+            <method name="Setup">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (6/6)"/>
+              <coverage type="line, %" value="100%   (6/6)"/>
+            </method>
+            <method name="Log">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="TearDown">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+          <class name="uSQLCondicaoTeste">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (2/2)"/>
+            <coverage type="line, %" value="100%   (2/2)"/>
+            <method name="Initialization">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (2/2)"/>
+              <coverage type="line, %" value="100%   (2/2)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.Juncao.Builder">
+        <coverage type="class, %" value="100%   (3/3)"/>
+        <coverage type="method, %" value="75%   (6/8)"/>
+        <coverage type="block, %" value="90%   (19/21)"/>
+        <coverage type="line, %" value="90%   (19/21)"/>
+        <srcfile name="SQL.Impl.Juncao.Builder.pas">
+          <coverage type="class, %" value="100%   (3/3)"/>
+          <coverage type="method, %" value="75%   (6/8)"/>
+          <coverage type="block, %" value="90%   (19/21)"/>
+          <coverage type="line, %" value="90%   (19/21)"/>
+          <class name="TBuilderJuncao">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="50%   (2/4)"/>
+            <coverage type="block, %" value="75%   (6/8)"/>
+            <coverage type="line, %" value="75%   (6/8)"/>
+            <method name="ConstruirNovaInstancia">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="buildCondicoes">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="buildTabela">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+          <class name="{DesignPattern.Builder.Impl.Builder}TBuilder&lt;SQL.Intf.Juncao.ISQLJuncao&gt;">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (3/3)"/>
+            <coverage type="line, %" value="100%   (3/3)"/>
+            <method name="getObjeto">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+          <class name="{SQL.Impl.Builder}TSQLBuilder&lt;SQL.Intf.Juncao.ISQLJuncao&gt;">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (3/3)"/>
+            <coverage type="block, %" value="100%   (10/10)"/>
+            <coverage type="line, %" value="100%   (10/10)"/>
+            <method name="setOtimizarPara">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getOtimizarPara">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Create">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Enums">
+        <coverage type="class, %" value="0%   (0/4)"/>
+        <coverage type="method, %" value="0%   (0/7)"/>
+        <coverage type="block, %" value="0%   (0/36)"/>
+        <coverage type="line, %" value="0%   (0/36)"/>
+        <srcfile name="SQL.Enums.pas">
+          <coverage type="class, %" value="0%   (0/4)"/>
+          <coverage type="method, %" value="0%   (0/7)"/>
+          <coverage type="block, %" value="0%   (0/36)"/>
+          <coverage type="line, %" value="0%   (0/36)"/>
+          <class name="TOperadorLogicoHelper">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/9)"/>
+            <coverage type="line, %" value="0%   (0/9)"/>
+            <method name="getSQLString">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/6)"/>
+            </method>
+            <method name="getNome">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+          </class>
+          <class name="FTipoJuncaoHelper">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/10)"/>
+            <coverage type="line, %" value="0%   (0/10)"/>
+            <method name="getSQLString">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/7)"/>
+              <coverage type="line, %" value="0%   (0/7)"/>
+            </method>
+            <method name="getNome">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+          </class>
+          <class name="TOtimizarParaHelper">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/1)"/>
+            <coverage type="block, %" value="0%   (0/3)"/>
+            <coverage type="line, %" value="0%   (0/3)"/>
+            <method name="getNome">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+          </class>
+          <class name="TOperadorComparacaoHelper">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/14)"/>
+            <coverage type="line, %" value="0%   (0/14)"/>
+            <method name="getSQLString">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/11)"/>
+              <coverage type="line, %" value="0%   (0/11)"/>
+            </method>
+            <method name="getNome">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.Tabela.Director">
+        <coverage type="class, %" value="100%   (2/2)"/>
+        <coverage type="method, %" value="100%   (4/4)"/>
+        <coverage type="block, %" value="100%   (16/16)"/>
+        <coverage type="line, %" value="100%   (16/16)"/>
+        <srcfile name="SQL.Impl.Tabela.Director.pas">
+          <coverage type="class, %" value="100%   (2/2)"/>
+          <coverage type="method, %" value="100%   (4/4)"/>
+          <coverage type="block, %" value="100%   (16/16)"/>
+          <coverage type="line, %" value="100%   (16/16)"/>
+          <class name="TDirectorTabela">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (7/7)"/>
+            <coverage type="line, %" value="100%   (7/7)"/>
+            <method name="Construir">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (7/7)"/>
+              <coverage type="line, %" value="100%   (7/7)"/>
+            </method>
+          </class>
+          <class name="{DesignPattern.Builder.Impl.Director}TDirector&lt;SQL.Intf.Tabela.Builder.IBuilderTabela,SQL.Intf.Tabela.ISQLTabela&gt;">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (3/3)"/>
+            <coverage type="block, %" value="100%   (9/9)"/>
+            <coverage type="line, %" value="100%   (9/9)"/>
+            <method name="getObjetoPronto">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="setBuilder">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.Coluna.Builder">
+        <coverage type="class, %" value="100%   (3/3)"/>
+        <coverage type="method, %" value="60%   (6/10)"/>
+        <coverage type="block, %" value="76%   (19/25)"/>
+        <coverage type="line, %" value="76%   (19/25)"/>
+        <srcfile name="SQL.Impl.Coluna.Builder.pas">
+          <coverage type="class, %" value="100%   (3/3)"/>
+          <coverage type="method, %" value="60%   (6/10)"/>
+          <coverage type="block, %" value="76%   (19/25)"/>
+          <coverage type="line, %" value="76%   (19/25)"/>
+          <class name="TBuilderColuna">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="33%   (2/6)"/>
+            <coverage type="block, %" value="50%   (6/12)"/>
+            <coverage type="line, %" value="50%   (6/12)"/>
+            <method name="buildNomeVirtual">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="buildNome">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="ConstruirNovaInstancia">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="AdicionarTabela">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="buildTabela">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+          <class name="{DesignPattern.Builder.Impl.Builder}TBuilder&lt;SQL.Intf.Coluna.ISQLColuna&gt;">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (3/3)"/>
+            <coverage type="line, %" value="100%   (3/3)"/>
+            <method name="getObjeto">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+          <class name="{SQL.Impl.Builder}TSQLBuilder&lt;SQL.Intf.Coluna.ISQLColuna&gt;">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (3/3)"/>
+            <coverage type="block, %" value="100%   (10/10)"/>
+            <coverage type="line, %" value="100%   (10/10)"/>
+            <method name="setOtimizarPara">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getOtimizarPara">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Create">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.SQL">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="50%   (3/6)"/>
+        <coverage type="block, %" value="65%   (20/31)"/>
+        <coverage type="line, %" value="65%   (20/31)"/>
+        <srcfile name="SQL.Impl.SQL.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="50%   (3/6)"/>
+          <coverage type="block, %" value="65%   (20/31)"/>
+          <coverage type="line, %" value="65%   (20/31)"/>
+          <class name="TSQL">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="50%   (3/6)"/>
+            <coverage type="block, %" value="65%   (20/31)"/>
+            <coverage type="line, %" value="65%   (20/31)"/>
+            <method name="ToString">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="88%   (7/8)"/>
+              <coverage type="line, %" value="88%   (7/8)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="setTextoSQL">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="setSQL">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/4)"/>
+            </method>
+            <method name="SaveToFile">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (7/7)"/>
+              <coverage type="line, %" value="100%   (7/7)"/>
+            </method>
+            <method name="Create">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (6/6)"/>
+              <coverage type="line, %" value="100%   (6/6)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="uSQLJuncaoTeste">
+        <coverage type="class, %" value="100%   (2/2)"/>
+        <coverage type="method, %" value="100%   (4/4)"/>
+        <coverage type="block, %" value="100%   (15/15)"/>
+        <coverage type="line, %" value="100%   (15/15)"/>
+        <srcfile name="uSQLJuncaoTeste.pas">
+          <coverage type="class, %" value="100%   (2/2)"/>
+          <coverage type="method, %" value="100%   (4/4)"/>
+          <coverage type="block, %" value="100%   (15/15)"/>
+          <coverage type="line, %" value="100%   (15/15)"/>
+          <class name="uSQLJuncaoTeste">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (2/2)"/>
+            <coverage type="line, %" value="100%   (2/2)"/>
+            <method name="Initialization">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (2/2)"/>
+              <coverage type="line, %" value="100%   (2/2)"/>
+            </method>
+          </class>
+          <class name="TSQLJuncaoTeste">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (3/3)"/>
+            <coverage type="block, %" value="100%   (13/13)"/>
+            <coverage type="line, %" value="100%   (13/13)"/>
+            <method name="TestarComTabelaEDuasCondicoes">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="TestarComTabelaEUmaCondicao">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Setup">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (6/6)"/>
+              <coverage type="line, %" value="100%   (6/6)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.Select.Director">
+        <coverage type="class, %" value="100%   (2/2)"/>
+        <coverage type="method, %" value="100%   (4/4)"/>
+        <coverage type="block, %" value="100%   (22/22)"/>
+        <coverage type="line, %" value="100%   (22/22)"/>
+        <srcfile name="SQL.Impl.Select.Director.pas">
+          <coverage type="class, %" value="100%   (2/2)"/>
+          <coverage type="method, %" value="100%   (4/4)"/>
+          <coverage type="block, %" value="100%   (22/22)"/>
+          <coverage type="line, %" value="100%   (22/22)"/>
+          <class name="TDirectorSelect">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (13/13)"/>
+            <coverage type="line, %" value="100%   (13/13)"/>
+            <method name="Construir">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (13/13)"/>
+              <coverage type="line, %" value="100%   (13/13)"/>
+            </method>
+          </class>
+          <class name="{DesignPattern.Builder.Impl.Director}TDirector&lt;SQL.Intf.Select.Builder.IBuilderSelect,SQL.Intf.Select.ISQLSelect&gt;">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (3/3)"/>
+            <coverage type="block, %" value="100%   (9/9)"/>
+            <coverage type="line, %" value="100%   (9/9)"/>
+            <method name="getObjetoPronto">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="setBuilder">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.PadraoSQL3.Condicao">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="100%   (9/9)"/>
+        <coverage type="block, %" value="100%   (40/40)"/>
+        <coverage type="line, %" value="100%   (40/40)"/>
+        <srcfile name="SQL.Impl.PadraoSQL3.Condicao.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="100%   (9/9)"/>
+          <coverage type="block, %" value="100%   (40/40)"/>
+          <coverage type="line, %" value="100%   (40/40)"/>
+          <class name="TSQL3Condicao">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (9/9)"/>
+            <coverage type="block, %" value="100%   (40/40)"/>
+            <coverage type="line, %" value="100%   (40/40)"/>
+            <method name="setColuna">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="getColuna">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="setOperadorLogico">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="Create">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (7/7)"/>
+              <coverage type="line, %" value="100%   (7/7)"/>
+            </method>
+            <method name="setValor">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (8/8)"/>
+              <coverage type="line, %" value="100%   (8/8)"/>
+            </method>
+            <method name="ConstruirSQL">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="setOperadorComparacao">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="getOperadorLogico">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.PadraoSQL3.Select">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="100%   (9/9)"/>
+        <coverage type="block, %" value="94%   (48/51)"/>
+        <coverage type="line, %" value="94%   (48/51)"/>
+        <srcfile name="SQL.Impl.PadraoSQL3.Select.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="100%   (9/9)"/>
+          <coverage type="block, %" value="94%   (48/51)"/>
+          <coverage type="line, %" value="94%   (48/51)"/>
+          <class name="TSQL3Select">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (9/9)"/>
+            <coverage type="block, %" value="94%   (48/51)"/>
+            <coverage type="line, %" value="94%   (48/51)"/>
+            <method name="MontarOrderBy">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="MontarLimite">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="75%   (3/4)"/>
+              <coverage type="line, %" value="75%   (3/4)"/>
+            </method>
+            <method name="MontarISQL">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="75%   (3/4)"/>
+              <coverage type="line, %" value="75%   (3/4)"/>
+            </method>
+            <method name="MontarFrom">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (5/5)"/>
+              <coverage type="line, %" value="100%   (5/5)"/>
+            </method>
+            <method name="ConstruirSQL">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (18/18)"/>
+              <coverage type="line, %" value="100%   (18/18)"/>
+            </method>
+            <method name="MontarJuncoes">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="MontarWhere">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="MontarColunas">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="MontarGroupBy">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="75%   (3/4)"/>
+              <coverage type="line, %" value="75%   (3/4)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.Condicao.Builder">
+        <coverage type="class, %" value="100%   (3/3)"/>
+        <coverage type="method, %" value="43%   (6/14)"/>
+        <coverage type="block, %" value="54%   (19/35)"/>
+        <coverage type="line, %" value="54%   (19/35)"/>
+        <srcfile name="SQL.Impl.Condicao.Builder.pas">
+          <coverage type="class, %" value="100%   (3/3)"/>
+          <coverage type="method, %" value="43%   (6/14)"/>
+          <coverage type="block, %" value="54%   (19/35)"/>
+          <coverage type="line, %" value="54%   (19/35)"/>
+          <class name="TBuilderCondicao">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="20%   (2/10)"/>
+            <coverage type="block, %" value="27%   (6/22)"/>
+            <coverage type="line, %" value="27%   (6/22)"/>
+            <method name="setColuna">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="buildColuna">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="buildOperadorComparacao">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="setOperadorLogico">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="setValor">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="ConstruirNovaInstancia">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="buildValor">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="setOperadorComparacao">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="buildOperadorLogico">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+          <class name="{SQL.Impl.Builder}TSQLBuilder&lt;SQL.Intf.Condicao.ISQLCondicao&gt;">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (3/3)"/>
+            <coverage type="block, %" value="100%   (10/10)"/>
+            <coverage type="line, %" value="100%   (10/10)"/>
+            <method name="setOtimizarPara">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="getOtimizarPara">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Create">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+          </class>
+          <class name="{DesignPattern.Builder.Impl.Builder}TBuilder&lt;SQL.Intf.Condicao.ISQLCondicao&gt;">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (3/3)"/>
+            <coverage type="line, %" value="100%   (3/3)"/>
+            <method name="getObjeto">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.Juncao.Lista">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="100%   (1/1)"/>
+        <coverage type="block, %" value="100%   (10/10)"/>
+        <coverage type="line, %" value="100%   (10/10)"/>
+        <srcfile name="SQL.Impl.Juncao.Lista.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="100%   (1/1)"/>
+          <coverage type="block, %" value="100%   (10/10)"/>
+          <coverage type="line, %" value="100%   (10/10)"/>
+          <class name="TListaJuncao">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (1/1)"/>
+            <coverage type="block, %" value="100%   (10/10)"/>
+            <coverage type="line, %" value="100%   (10/10)"/>
+            <method name="ToString">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (10/10)"/>
+              <coverage type="line, %" value="100%   (10/10)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="Teste.Builder.Juncao">
+        <coverage type="class, %" value="67%   (2/3)"/>
+        <coverage type="method, %" value="62%   (5/8)"/>
+        <coverage type="block, %" value="58%   (23/40)"/>
+        <coverage type="line, %" value="58%   (23/40)"/>
+        <srcfile name="Teste.Builder.Juncao.pas">
+          <coverage type="class, %" value="67%   (2/3)"/>
+          <coverage type="method, %" value="62%   (5/8)"/>
+          <coverage type="block, %" value="58%   (23/40)"/>
+          <coverage type="line, %" value="58%   (23/40)"/>
+          <class name="TCBJuncaoApenasTabela">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/3)"/>
+            <coverage type="block, %" value="0%   (0/17)"/>
+            <coverage type="line, %" value="0%   (0/17)"/>
+            <method name="getTabela">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/6)"/>
+            </method>
+            <method name="buildCondicoes">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/8)"/>
+              <coverage type="line, %" value="0%   (0/8)"/>
+            </method>
+            <method name="buildTabela">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+          </class>
+          <class name="TCBJuncaoBase">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (2/2)"/>
+            <coverage type="block, %" value="100%   (6/6)"/>
+            <coverage type="line, %" value="100%   (6/6)"/>
+            <method name="buildSQL">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (2/2)"/>
+              <coverage type="line, %" value="100%   (2/2)"/>
+            </method>
+            <method name="AfterConstruction">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+          </class>
+          <class name="TCBJuncaoTabelaComAlias">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (3/3)"/>
+            <coverage type="block, %" value="100%   (17/17)"/>
+            <coverage type="line, %" value="100%   (17/17)"/>
+            <method name="getTabela">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (6/6)"/>
+              <coverage type="line, %" value="100%   (6/6)"/>
+            </method>
+            <method name="buildCondicoes">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (8/8)"/>
+              <coverage type="line, %" value="100%   (8/8)"/>
+            </method>
+            <method name="buildTabela">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="SQL.Impl.Fabrica">
+        <coverage type="class, %" value="100%   (1/1)"/>
+        <coverage type="method, %" value="100%   (9/9)"/>
+        <coverage type="block, %" value="97%   (30/31)"/>
+        <coverage type="line, %" value="97%   (30/31)"/>
+        <srcfile name="SQL.Impl.Fabrica.pas">
+          <coverage type="class, %" value="100%   (1/1)"/>
+          <coverage type="method, %" value="100%   (9/9)"/>
+          <coverage type="block, %" value="97%   (30/31)"/>
+          <coverage type="line, %" value="97%   (30/31)"/>
+          <class name="TFabrica">
+            <coverage type="class, %" value="100%   (1/1)"/>
+            <coverage type="method, %" value="100%   (9/9)"/>
+            <coverage type="block, %" value="97%   (30/31)"/>
+            <coverage type="line, %" value="97%   (30/31)"/>
+            <method name="Coluna">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Condicao">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="New">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Tabela">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Select">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="Create">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="AfterConstruction">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (4/4)"/>
+              <coverage type="line, %" value="100%   (4/4)"/>
+            </method>
+            <method name="Juncao">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="100%   (3/3)"/>
+              <coverage type="line, %" value="100%   (3/3)"/>
+            </method>
+            <method name="InicializarFabrica">
+              <coverage type="method, %" value="100%   (1/1)"/>
+              <coverage type="block, %" value="80%   (4/5)"/>
+              <coverage type="line, %" value="80%   (4/5)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+    </all>
+  </data>
+</report>
