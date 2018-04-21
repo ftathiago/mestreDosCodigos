@@ -7,6 +7,8 @@ uses
   OMestreDosCodigos.Intf.Cliente.ListaArrayDinamico;
 
 type
+  EIndexOutOfBounds = class(Exception);
+
   TListaArrayDinamico<T> = class(TInterfacedObject, IListaArrayDinamico<T>)
   private
     FArray: TArray<T>;
@@ -144,7 +146,7 @@ end;
 procedure TListaArrayDinamico<T>.ValidarAcessoAoIndice(const Index: Integer);
 begin
   if Index >= Tamanho then
-    raise EOutOfMemory.Create('Índice fora intervalo');
+    raise EIndexOutOfBounds.Create('Índice fora intervalo');
 end;
 
 end.

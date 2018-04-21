@@ -1,2 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FDBS Version="15"><Manager UpdatesRegistry="True"><TableList><Table Name="ENTIDADE" SourceName="entidade" SourceID="1" TabID="0" EnforceConstraints="False" MinimumCapacity="50"><ColumnList><Column Name="ID" SourceName="ID" SourceID="1" DataType="Int32" Searchable="True" AllowNull="True" AutoInc="True" Base="True" AutoIncrementSeed="-1" AutoIncrementStep="-1" Caption="Código" OAllowNull="True" OReadOnly="True" OInUpdate="True" OInWhere="True" OInKey="True" OAfterInsChanged="True" OriginTabName="ENTIDADE" OriginColName="ID" SourceGenerator="GEN_ENTIDADE_ID"/><Column Name="NOME" SourceName="NOME" SourceID="2" DataType="AnsiString" Size="100" Searchable="True" AllowNull="True" Base="True" Caption="Nome" OAllowNull="True" OReadOnly="True" OInUpdate="True" OInWhere="True" OriginTabName="ENTIDADE" OriginColName="NOME" SourceSize="100" SourceGenerator="GEN_ENTIDADE_ID"/><Column Name="DESCRICAO" SourceName="DESCRICAO" SourceID="3" DataType="AnsiString" Size="100" Searchable="True" AllowNull="True" Base="True" Caption="Descrição" OAllowNull="True" OReadOnly="True" OInUpdate="True" OInWhere="True" OriginTabName="ENTIDADE" OriginColName="DESCRICAO" SourceSize="100" SourceGenerator="GEN_ENTIDADE_ID"/></ColumnList><ConstraintList/><ViewList/><RowList><Row RowID="0"><Original ID="1" NOME="ALTERNATIVA" DESCRICAO="ALTERNATIVA"/></Row><Row RowID="1"><Original ID="2" NOME="ENTIDADE" DESCRICAO="ENTIDADE"/></Row><Row RowID="2"><Original ID="3" NOME="ENT_PROPRIEDADE" DESCRICAO="ENT_PROPRIEDADE"/></Row><Row RowID="3"><Original ID="4" NOME="PERGUNTAS" DESCRICAO="PERGUNTAS"/></Row><Row RowID="4"><Original ID="5" NOME="PESQUISA" DESCRICAO="PESQUISA"/></Row><Row RowID="5"><Original ID="6" NOME="PESSOA" DESCRICAO="PESSOA"/></Row><Row RowID="6"><Original ID="7" NOME="RESPOSTA" DESCRICAO="RESPOSTA"/></Row></RowList></Table></TableList><RelationList/><UpdatesJournal><Changes/></UpdatesJournal></Manager></FDBS>
+<FDBS Version="15">
+	<Manager UpdatesRegistry="True">
+		<TableList>
+			<Table Name="ENTIDADE" SourceName="entidade" SourceID="1" TabID="0" EnforceConstraints="False" MinimumCapacity="50">
+				<ColumnList>
+					<Column Name="ID" SourceName="ID" SourceID="1" DataType="Int32" Searchable="True" AllowNull="True" AutoInc="True" Base="True" AutoIncrementSeed="-1" AutoIncrementStep="-1" Caption="Código" OAllowNull="True" OReadOnly="True" OInUpdate="True" OInWhere="True" OInKey="True" OAfterInsChanged="True" OriginTabName="ENTIDADE" OriginColName="ID" SourceGenerator="GEN_ENTIDADE_ID"/>
+					<Column Name="NOME" SourceName="NOME" SourceID="2" DataType="AnsiString" Size="100" Searchable="True" AllowNull="True" Base="True" Caption="Nome" OAllowNull="True" OReadOnly="True" OInUpdate="True" OInWhere="True" OriginTabName="ENTIDADE" OriginColName="NOME" SourceSize="100" SourceGenerator="GEN_ENTIDADE_ID"/>
+					<Column Name="DESCRICAO" SourceName="DESCRICAO" SourceID="3" DataType="AnsiString" Size="100" Searchable="True" AllowNull="True" Base="True" Caption="Descrição" OAllowNull="True" OReadOnly="True" OInUpdate="True" OInWhere="True" OriginTabName="ENTIDADE" OriginColName="DESCRICAO" SourceSize="100" SourceGenerator="GEN_ENTIDADE_ID"/>
+				</ColumnList>
+				<ConstraintList/>
+				<ViewList/>
+				<RowList>
+					<Row RowID="0"><Original ID="1" NOME="ALTERNATIVA" DESCRICAO="ALTERNATIVA"/></Row>
+					<Row RowID="1"><Original ID="2" NOME="ENTIDADE" DESCRICAO="ENTIDADE"/></Row>
+					<Row RowID="2"><Original ID="3" NOME="ENT_PROPRIEDADE" DESCRICAO="ENT_PROPRIEDADE"/></Row>
+					<Row RowID="3"><Original ID="4" NOME="PERGUNTAS" DESCRICAO="PERGUNTAS"/></Row>
+					<Row RowID="4"><Original ID="5" NOME="PESQUISA" DESCRICAO="PESQUISA"/></Row>
+					<Row RowID="5"><Original ID="6" NOME="PESSOA" DESCRICAO="PESSOA"/></Row>
+					<Row RowID="6"><Original ID="7" NOME="RESPOSTA" DESCRICAO="RESPOSTA"/></Row>
+				</RowList>
+			</Table>
+		</TableList>
+		<RelationList/>
+		<UpdatesJournal>
+			<Changes/>
+		</UpdatesJournal>
+	</Manager>
+</FDBS>

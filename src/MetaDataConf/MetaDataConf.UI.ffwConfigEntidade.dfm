@@ -5,6 +5,7 @@ inherited ffwConfigEntidade: TffwConfigEntidade
   DefaultMonitor = dmMainForm
   WindowState = wsMaximized
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   ExplicitWidth = 781
   ExplicitHeight = 537
   PixelsPerInch = 96

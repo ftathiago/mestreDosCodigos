@@ -90,6 +90,7 @@ type
     procedure CrudToolbarSalvarClick(const DataSet: TDataSet);
     procedure CrudToolbarDesfazerClick(const DataSet: TDataSet);
     procedure ToolButton4Click(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
     FFDConnection: TFDConnection;
@@ -127,6 +128,13 @@ begin
   FConfiguradorMetaData := TConfiguradorMetaData.New(FMetaData.ENTIDADE, FMetaData.EntPropriedade);
 
   ConfigurarDataSets(FFDConnection);
+end;
+
+procedure TffwConfigEntidade.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  FFDConnection.Close;
+  FreeAndNil(FFDConnection);
 end;
 
 procedure TffwConfigEntidade.ConfigurarDataSets(const FDConnection: TFDConnection);
@@ -232,9 +240,6 @@ begin
   inherited;
   result := TmcMetaDataController.New(FFDConnection);
   result.SetMetaDataContainer(FMetaData);
-  _metaDataController.Limpar;
-  ENTIDADE.Close;
-  ENTIDADE.Open();
 end;
 
 procedure TffwConfigEntidade.grdENTIDADEEnter(Sender: TObject);
@@ -248,7 +253,6 @@ var
   _form: TForm1;
 begin
   inherited;
-//
   ENTIDADE.First;
   _form:=  TForm1.Create(Self);
   _form.dtsEntidade.DataSet := ENTIDADE;
