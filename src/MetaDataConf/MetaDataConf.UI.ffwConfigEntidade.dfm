@@ -6,6 +6,7 @@ inherited ffwConfigEntidade: TffwConfigEntidade
   WindowState = wsMaximized
   OnCreate = FormCreate
   OnDestroy = FormDestroy
+  ExplicitTop = -52
   ExplicitWidth = 781
   ExplicitHeight = 537
   PixelsPerInch = 96
@@ -92,8 +93,7 @@ inherited ffwConfigEntidade: TffwConfigEntidade
       object ToolButton4: TToolButton
         Left = 248
         Top = 0
-        Caption = 'ToolButton4'
-        OnClick = ToolButton4Click
+        Action = actRelatorio
       end
       object CrudToolbar: TumcFDCrudToolbar
         Left = 365
@@ -777,6 +777,10 @@ inherited ffwConfigEntidade: TffwConfigEntidade
       Caption = 'Apagar toda estrutura'
       ImageIndex = 1
       OnExecute = actApagarTodaEstruturaExecute
+    end
+    object actRelatorio: TAction
+      Caption = 'Relat'#243'rio'
+      OnExecute = actRelatorioExecute
     end
   end
   object ENTIDADE: TFDQuery

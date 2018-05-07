@@ -1,14 +1,14 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{E4B1278F-4003-4493-AE06-67D1CAB089AD}</ProjectGuid>
-        <MainSource>GeradorSQL.dpk</MainSource>
+        <ProjectGuid>{E78403D0-E578-42DD-8D08-F6F2BE78692D}</ProjectGuid>
+        <ProjectVersion>18.0</ProjectVersion>
+        <MainSource>MVCTeste.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <TargetedPlatforms>1</TargetedPlatforms>
-        <AppType>Package</AppType>
-        <FrameworkType>VCL</FrameworkType>
-        <ProjectVersion>18.0</ProjectVersion>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <TargetedPlatforms>1</TargetedPlatforms>
+        <AppType>Console</AppType>
+        <FrameworkType>VCL</FrameworkType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -18,158 +18,127 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
         <Cfg_1>true</Cfg_1>
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
+        <Cfg_1_Win32>true</Cfg_1_Win32>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
         <Cfg_2>true</Cfg_2>
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
-        <Cfg_2_Win32>true</Cfg_2_Win32>
-        <CfgParent>Cfg_2</CfgParent>
-        <Cfg_2>true</Cfg_2>
-        <Base>true</Base>
-    </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <DCC_N>true</DCC_N>
-        <DCC_DebugInformation>1</DCC_DebugInformation>
-        <DCC_OutputNeverBuildDcps>true</DCC_OutputNeverBuildDcps>
-        <SanitizedProjectName>GeradorSQL</SanitizedProjectName>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_UnitSearchPath>$(DUnitX);$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <UsingDelphiRTL>true</UsingDelphiRTL>
+        <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
+        <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
+        <SanitizedProjectName>MVCTeste</SanitizedProjectName>
+        <DCC_Define>TESTINSIGHT;$(DCC_Define)</DCC_Define>
+        <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
+        <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
         <DCC_E>false</DCC_E>
-        <GenPackage>true</GenPackage>
-        <DCC_K>false</DCC_K>
-        <DCC_F>false</DCC_F>
-        <VerInfo_Locale>1046</VerInfo_Locale>
-        <GenDll>true</GenDll>
-        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <DCC_N>false</DCC_N>
         <DCC_S>false</DCC_S>
-        <DCC_ImageBase>00400000</DCC_ImageBase>
+        <DCC_F>false</DCC_F>
+        <DCC_K>false</DCC_K>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <DCC_UsePackage>rtl;$(DCC_UsePackage)</DCC_UsePackage>
-        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
-        <Icon_MainIcon>Package1_Icon.ico</Icon_MainIcon>
-        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
+        <DCC_UsePackage>DBXSqliteDriver;RESTComponents;DataSnapServerMidas;DBXDb2Driver;DBXInterBaseDriver;MCFWComponentes;vclactnband;vclFireDAC;emsclientfiredac;DataSnapFireDAC;svnui;tethering;JvGlobus;FireDACADSDriver;GeradorSQLDT;JvPluginSystem;DBXMSSQLDriver;JvMM;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;vcltouch;JvBands;vcldb;bindcompfmx;svn;JvJans;DBXOracleDriver;JvNet;inetdb;JvAppFrm;JvDotNetCtrls;FireDACIBDriver;fmx;fmxdae;JvWizards;FireDACDBXDriver;dbexpress;IndyCore;vclx;JvPageComps;dsnap;DataSnapCommon;emsclient;FireDACCommon;JvDB;RESTBackendComponents;DataSnapConnectors;VCLRESTComponents;soapserver;JclDeveloperTools;vclie;bindengine;DBXMySQLDriver;FireDACOracleDriver;CloudService;FireDACMySQLDriver;DBXFirebirdDriver;JvCmp;JvHMI;FireDACCommonDriver;DataSnapClient;inet;bindcompdbx;IndyIPCommon;JvCustom;vcl;DBXSybaseASEDriver;IndyIPServer;JvXPCtrls;IndySystem;GeradorSQL;FireDACDb2Driver;dsnapcon;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;Jcl;FireDAC;JvCore;JvCrypt;FireDACSqliteDriver;FireDACPgDriver;FireDACASADriver;DBXOdbcDriver;FireDACTDataDriver;soaprtl;DbxCommonDriver;JvDlgs;JvRuntimeDesign;JvManagedThreads;DataSnapServer;xmlrtl;soapmidas;DataSnapNativeClient;fmxobj;vclwinx;FireDACDSDriver;rtl;JvTimeFramework;DbxClientDriver;DBXSybaseASADriver;CustomIPTransport;vcldsnap;JvSystem;JvStdCtrls;bindcomp;appanalytics;DBXInformixDriver;IndyIPClient;frce;bindcompvcl;vclribbon;dbxcds;VclSmp;JvDocking;adortl;FireDACODBCDriver;JvPascalInterpreter;ConexaoCarregadorDPK;JclVcl;DataSnapIndy10ServerTransport;dsnapxml;DataSnapProviderClient;dbrtl;inetdbxpress;FireDACMongoDBDriver;IndyProtocols;JvControls;JvPrintPreview;JclContainers;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
-        <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
-        <DCC_DebugInformation>0</DCC_DebugInformation>
-        <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
-        <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+        <DCC_DebugDCUs>true</DCC_DebugDCUs>
         <DCC_Optimize>false</DCC_Optimize>
         <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+        <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+        <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <DCC_MapFile>3</DCC_MapFile>
-        <DCC_BplOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\dcp\</DCC_BplOutput>
-        <DCC_DcpOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\dcp\</DCC_DcpOutput>
-        <DCC_UnitSearchPath>..\..\..\Lib;..\..\..\dcp;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
-        <DCC_DcuOutput>..\..\..\Lib\</DCC_DcuOutput>
-        <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_Build>314</VerInfo_Build>
-        <DCC_OutputXMLDocumentation>true</DCC_OutputXMLDocumentation>
-        <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.314;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-        <BRCC_OutputDir>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\dpk\bin\</BRCC_OutputDir>
+    <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <DCC_RemoteDebug>false</DCC_RemoteDebug>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+        <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+        <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+        <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="rtl.dcp"/>
-        <DCCReference Include="..\..\pkgUtils\DesignPattern.Builder.Impl.Builder.pas"/>
-        <DCCReference Include="..\..\pkgUtils\DesignPattern.Builder.Impl.Director.pas"/>
-        <DCCReference Include="..\..\pkgUtils\DesignPattern.Builder.Intf.Builder.pas"/>
-        <DCCReference Include="..\..\pkgUtils\DesignPattern.Builder.Intf.Director.pas"/>
-        <DCCReference Include="..\RT\SQL.Enums.pas"/>
-        <DCCReference Include="..\RT\SQL.Exceptions.pas"/>
-        <DCCReference Include="..\RT\SQL.Mensagens.pas"/>
-        <DCCReference Include="..\RT\SQL.Constantes.pas"/>
-        <DCCReference Include="..\RT\SQL.Intf.Fabrica.pas"/>
-        <DCCReference Include="..\RT\SQL.Intf.Coluna.pas"/>
-        <DCCReference Include="..\RT\SQL.Intf.Condicao.pas"/>
-        <DCCReference Include="..\RT\SQL.Intf.Juncao.pas"/>
-        <DCCReference Include="..\RT\SQL.Intf.SQL.pas"/>
-        <DCCReference Include="..\RT\SQL.Intf.Tabela.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.SQL.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.Fabrica.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.Condicao.Lista.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.Coluna.Lista.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.PadraoSQL3.Coluna.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.PadraoSQL3.Condicao.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.PadraoSQL3.Juncao.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.PadraoSQL3.Tabela.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.PadraoSQL3.Fabrica.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.PadraoSQL3.Select.pas"/>
-        <DCCReference Include="..\RT\SQL.Intf.Coluna.Builder.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.Coluna.Builder.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.Coluna.Director.pas"/>
-        <DCCReference Include="..\RT\SQL.Intf.Coluna.Director.pas"/>
-        <DCCReference Include="..\RT\SQL.Intf.Condicao.Builder.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.Condicao.Builder.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.Condicao.Director.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.Juncao.Director.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.Juncao.Builder.pas"/>
-        <DCCReference Include="..\RT\SQL.Intf.Juncao.Builder.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.Juncao.Lista.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.Select.Builder.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.Select.Director.pas"/>
-        <DCCReference Include="..\RT\SQL.Intf.Select.Builder.pas"/>
-        <DCCReference Include="..\RT\SQL.Intf.Select.pas"/>
-        <DCCReference Include="..\RT\SQL.Intf.Tabela.Builder.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.Tabela.Builder.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.Tabela.Director.pas"/>
-        <DCCReference Include="..\RT\SQL.Intf.Insert.pas"/>
-        <DCCReference Include="..\RT\SQL.Intf.ParColunaValor.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.ParColunaValor.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.PadraoSQL3.Insert.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.ParColunaValor.Lista.pas"/>
-        <DCCReference Include="..\RT\SQL.Intf.Builder.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.Builder.pas"/>
-        <DCCReference Include="..\RT\SQL.Impl.Select.pas"/>
-        <BuildConfiguration Include="Debug">
+        <DCCReference Include="MVC.Teste.View.pas"/>
+        <DCCReference Include="..\MVC.Intf.View.pas"/>
+        <DCCReference Include="..\MVC.Impl.View.pas">
+            <Form>FormView</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="MVC.Teste.Controller.pas"/>
+        <DCCReference Include="..\MVC.Intf.Controller.pas"/>
+        <DCCReference Include="..\MVC.Impl.Controller.pas"/>
+        <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
         </BuildConfiguration>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
-        <BuildConfiguration Include="Release">
+        <BuildConfiguration Include="Debug">
             <Key>Cfg_1</Key>
             <CfgParent>Base</CfgParent>
         </BuildConfiguration>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Delphi.Personality.12</Borland.Personality>
-        <Borland.ProjectType>Package</Borland.ProjectType>
+        <Borland.ProjectType>Console</Borland.ProjectType>
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">GeradorSQL.dpk</Source>
+                    <Source Name="MainSource">MVCTeste.dpr</Source>
                 </Source>
-                <Excluded_Packages/>
             </Delphi.Personality>
-            <Platforms>
-                <Platform value="Win32">True</Platform>
-            </Platforms>
             <Deployment Version="2">
-                <DeployFile LocalName="..\..\..\dcp\GeradorSQL.bpl" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>GeradorSQL.bpl</RemoteName>
+                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win32\Debug\MVCTeste.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>MVCTeste.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\Resources</RemoteDir>
@@ -483,16 +452,7 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
@@ -501,6 +461,9 @@
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
             </Deployment>
+            <Platforms>
+                <Platform value="Win32">True</Platform>
+            </Platforms>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>

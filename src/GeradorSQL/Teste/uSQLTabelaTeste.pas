@@ -50,7 +50,6 @@ begin
   FTabela := FDirectorTabela.getObjetoPronto;
 
   Assert.AreEqual(TABELA_SEM_ALIAS, FTabela.ToString);
-
 end;
 
 procedure TSQLTabelaTeste.ComNomeEAlias;

@@ -21,6 +21,9 @@
         <Projects Include="src\FrameWork\MCFWForms\MCFWFormsDpk.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="src\MVC\MVC.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="src\MetaDataConf\MetaDataConf.dproj">
             <Dependencies/>
         </Projects>
@@ -92,6 +95,15 @@
     <Target Name="MCFWFormsDpk:Make">
         <MSBuild Projects="src\FrameWork\MCFWForms\MCFWFormsDpk.dproj" Targets="Make"/>
     </Target>
+    <Target Name="MVC">
+        <MSBuild Projects="src\MVC\MVC.dproj"/>
+    </Target>
+    <Target Name="MVC:Clean">
+        <MSBuild Projects="src\MVC\MVC.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MVC:Make">
+        <MSBuild Projects="src\MVC\MVC.dproj" Targets="Make"/>
+    </Target>
     <Target Name="MetaDataConf">
         <MSBuild Projects="src\MetaDataConf\MetaDataConf.dproj"/>
     </Target>
@@ -120,13 +132,13 @@
         <MSBuild Projects="src\AplicacaoFinal\Teste\OMestreDosCodigosTeste.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="ConexaoCarregadorDPK;pkgUtils;GeradorSQL;GeradorSQLDT;MCFWComponentes;MCFWFormsDpk;MetaDataConf;OMestreDosCodigos;OMestreDosCodigosTeste"/>
+        <CallTarget Targets="ConexaoCarregadorDPK;pkgUtils;GeradorSQL;GeradorSQLDT;MCFWComponentes;MCFWFormsDpk;MVC;MetaDataConf;OMestreDosCodigos;OMestreDosCodigosTeste"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ConexaoCarregadorDPK:Clean;pkgUtils:Clean;GeradorSQL:Clean;GeradorSQLDT:Clean;MCFWComponentes:Clean;MCFWFormsDpk:Clean;MetaDataConf:Clean;OMestreDosCodigos:Clean;OMestreDosCodigosTeste:Clean"/>
+        <CallTarget Targets="ConexaoCarregadorDPK:Clean;pkgUtils:Clean;GeradorSQL:Clean;GeradorSQLDT:Clean;MCFWComponentes:Clean;MCFWFormsDpk:Clean;MVC:Clean;MetaDataConf:Clean;OMestreDosCodigos:Clean;OMestreDosCodigosTeste:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ConexaoCarregadorDPK:Make;pkgUtils:Make;GeradorSQL:Make;GeradorSQLDT:Make;MCFWComponentes:Make;MCFWFormsDpk:Make;MetaDataConf:Make;OMestreDosCodigos:Make;OMestreDosCodigosTeste:Make"/>
+        <CallTarget Targets="ConexaoCarregadorDPK:Make;pkgUtils:Make;GeradorSQL:Make;GeradorSQLDT:Make;MCFWComponentes:Make;MCFWFormsDpk:Make;MVC:Make;MetaDataConf:Make;OMestreDosCodigos:Make;OMestreDosCodigosTeste:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

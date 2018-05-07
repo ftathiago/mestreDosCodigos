@@ -37,7 +37,7 @@ type
     procedure InicializarPropriedade(AConnection: TFDCustomConnection);
     procedure DoCarregar;
     function InsertEntidade: integer;
-    procedure CarregarPropriedade(const AEntidadeID: integer; const ANomeEntidade: string);
+    procedure CarregarPropriedades(const AEntidadeID: integer; const ANomeEntidade: string);
     procedure FiltrarPropriedades(const ANomeEntidade: string);
     procedure InsertPropridade(const EntidadeID: integer);
     function getProximoEntidade: integer;
@@ -76,7 +76,7 @@ begin
   DoCarregar;
 end;
 
-procedure TmcMetaDataController.CarregarPropriedade(const AEntidadeID: integer;
+procedure TmcMetaDataController.CarregarPropriedades(const AEntidadeID: integer;
   const ANomeEntidade: string);
 begin
   FiltrarPropriedades(ANomeEntidade);
@@ -139,7 +139,7 @@ begin
     while not FTabelas.Eof do
     begin
       _idEntidade := InsertEntidade();
-      CarregarPropriedade(_idEntidade, FTabelasTABLE_NAME.AsString);
+      CarregarPropriedades(_idEntidade, FTabelasTABLE_NAME.AsString);
       FTabelas.Next;
     end;
     FConnection.Commit;
