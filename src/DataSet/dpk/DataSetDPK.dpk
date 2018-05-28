@@ -1,0 +1,63 @@
+package DataSetDPK;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  xmlrtl,
+  vcl,
+  dbrtl,
+  DbxCommonDriver,
+  vclFireDAC,
+  FireDAC,
+  FireDACCommonDriver,
+  FireDACCommon,
+  FireDACPgDriver,
+  FireDACODBCDriver,
+  FireDACIBDriver,
+  FireDACMySQLDriver,
+  dbexpress,
+  FireDACDb2Driver,
+  FireDACMSSQLDriver,
+  FireDACOracleDriver,
+  FireDACDBXDriver,
+  ConexaoCarregadorDPK;
+
+contains
+  DataSet.Impl.ConfiguradorMetaData in '..\DataSet.Impl.ConfiguradorMetaData.pas',
+  DataSet.Impl.MetaDataContainer in '..\DataSet.Impl.MetaDataContainer.pas',
+  DataSet.Impl.MetaDataController in '..\DataSet.Impl.MetaDataController.pas',
+  DataSet.Intf.ConfiguradorMetaData in '..\DataSet.Intf.ConfiguradorMetaData.pas',
+  DataSet.Intf.DataSetContainer in '..\DataSet.Intf.DataSetContainer.pas',
+  DataSet.Intf.MetaDataContainer in '..\DataSet.Intf.MetaDataContainer.pas',
+  DataSet.Intf.MetaDataController in '..\DataSet.Intf.MetaDataController.pas',
+  DataSet.Constantes in '..\DataSet.Constantes.pas',
+  DataSet.Proxy.DataSource.DataStateChange in '..\DataSet.Proxy.DataSource.DataStateChange.pas',
+  DataSet.Proxy.DataSource.UpdateData in '..\DataSet.Proxy.DataSource.UpdateData.pas';
+
+end.

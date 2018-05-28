@@ -111,12 +111,11 @@ inherited frmArrayClientes: TfrmArrayClientes
       WordWrap = True
     end
     object btnAlterar: TButton
-      Left = 138
+      Left = 145
       Top = 331
       Width = 112
       Height = 43
       Action = actAlterar
-      Enabled = False
       Images = ImageList1
       TabOrder = 6
       WordWrap = True
@@ -294,6 +293,7 @@ inherited frmArrayClientes: TfrmArrayClientes
     end
     object actAlterar: TAction
       Caption = 'Alterar selecionado'
+      Enabled = False
       ImageIndex = 2
       OnExecute = actAlterarExecute
     end

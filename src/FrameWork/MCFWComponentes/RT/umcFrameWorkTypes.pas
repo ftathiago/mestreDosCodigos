@@ -14,6 +14,7 @@ type
 
   TDataSetClick = procedure(const DataSet: TDataSet) of Object;
   TDataSetAtualizarClick = procedure(const DataSet: TDataSet; Atualizado: boolean = false) of object;
+  TDataSetEventoCancelavel = procedure(const ADataSet: TDataSet; var AContinuar: boolean) of object;
   TPesquisarClick = procedure(const Conteudo: string; const Campo: TField) of object;
 
 implementation

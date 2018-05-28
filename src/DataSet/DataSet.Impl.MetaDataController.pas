@@ -58,12 +58,9 @@ type
 implementation
 
 uses
-  System.SysUtils,
-  System.Variants,
-  System.VarUtils,
-  FireDac.Stan.Intf,
-  FireDac.Phys.Intf,
-  umcConstantes;
+  System.SysUtils,  System.Variants,  System.VarUtils,
+  FireDac.Stan.Intf, FireDac.Phys.Intf,
+  DataSet.Constantes;
 
 { TmcMetaDataController }
 
@@ -107,7 +104,7 @@ procedure TmcMetaDataController.InicializarTabela(AConnection: TFDCustomConnecti
 begin
   FTabelas := TFDMetaInfoQuery.Create(nil);
   FTabelas.Connection := AConnection;
-  FTabelas.TableKinds := [tkTable];
+  FTabelas.TableKinds := [tkTable, tkView];
   FTabelas.Open();
 
   FTabelasTABLE_NAME := FTabelas.FindField('TABLE_NAME') as TWideStringField;

@@ -1,0 +1,44 @@
+object fmcConsulta: TfmcConsulta
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = 'fmcConsulta'
+  ClientHeight = 401
+  ClientWidth = 461
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object fmcFrmConsulta: TfmcFrmConsulta
+    Left = 0
+    Top = 0
+    Width = 461
+    Height = 401
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    OnSelecionarClick = fmcFrmConsultaSelecionarClick
+    ExplicitWidth = 451
+    ExplicitHeight = 391
+  end
+  object selPesquisa: TMCSelect
+    Coluna = <>
+    Juncao = <>
+    Condicao = <>
+    OrderBy = <>
+    GroupBy = <>
+    LimitarRegistros = 0
+    SaltarRegistros = 0
+    Left = 408
+    Top = 64
+  end
+end

@@ -6,7 +6,6 @@ inherited ffwConfigEntidade: TffwConfigEntidade
   WindowState = wsMaximized
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  ExplicitTop = -52
   ExplicitWidth = 781
   ExplicitHeight = 537
   PixelsPerInch = 96

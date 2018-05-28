@@ -25,7 +25,7 @@ package pkgUtils;
 {$IMAGEBASE $400000}
 {$DEFINE DEBUG}
 {$ENDIF IMPLICITBUILDING}
-{$IMPLICITBUILD ON}
+
 
 requires
   rtl,
@@ -46,7 +46,8 @@ requires
   FireDACMSSQLDriver,
   FireDACOracleDriver,
   FireDACDBXDriver,
-  ConexaoCarregadorDPK;
+  ConexaoCarregadorDPK,
+  DataSetDPK;
 
 contains
   DesignPattern.Builder.Impl.Builder in '..\DesignPattern.Builder.Impl.Builder.pas',
@@ -62,7 +63,8 @@ contains
   pkgUtils.Impl.ListaRetornoValidacao in '..\pkgUtils.Impl.ListaRetornoValidacao.pas',
   pkgUtils.Impl.Endereco in '..\pkgUtils.Impl.Endereco.pas',
   pkgUtils.Impl.Telefone in '..\pkgUtils.Impl.Telefone.pas',
-  pkgUtils.Intf.Aplicacao in '..\pkgUtils.Intf.Aplicacao.pas';
-
+  pkgUtils.Intf.Aplicacao in '..\pkgUtils.Intf.Aplicacao.pas',
+  pkgUtils.Impl.RTTIUtils in '..\pkgUtils.Impl.RTTIUtils.pas';
 end.
+
 

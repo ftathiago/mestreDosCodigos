@@ -1,9 +1,9 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{2B254C1F-E79E-4828-BEFA-0264DD8E4257}</ProjectGuid>
-        <MainSource>MVC.dpk</MainSource>
+        <ProjectGuid>{4A88360B-BD5F-4CC1-8A50-ED6C76685966}</ProjectGuid>
+        <MainSource>DataSetDPK.dpk</MainSource>
         <ProjectVersion>18.0</ProjectVersion>
-        <FrameworkType>VCL</FrameworkType>
+        <FrameworkType>None</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
@@ -11,11 +11,6 @@
         <AppType>Package</AppType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
-        <Base>true</Base>
-    </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Android' and '$(Base)'=='true') or '$(Base_Android)'!=''">
-        <Base_Android>true</Base_Android>
-        <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
@@ -41,10 +36,10 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
         <GenDll>true</GenDll>
-        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <GenPackage>true</GenPackage>
-        <SanitizedProjectName>MVC</SanitizedProjectName>
+        <SanitizedProjectName>DataSetDPK</SanitizedProjectName>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
         <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
         <DCC_E>false</DCC_E>
@@ -53,14 +48,12 @@
         <DCC_F>false</DCC_F>
         <DCC_K>false</DCC_K>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_Android)'!=''">
-        <DCC_CBuilderOutput>None</DCC_CBuilderOutput>
-    </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
-        <VerInfo_Locale>1033</VerInfo_Locale>
+        <DCC_UsePackage>rtl;xmlrtl;vcl;dbrtl;DbxCommonDriver;vclFireDAC;FireDAC;FireDACCommonDriver;FireDACCommon;FireDACPgDriver;FireDACODBCDriver;FireDACIBDriver;FireDACMySQLDriver;dbexpress;FireDACDb2Driver;FireDACMSSQLDriver;FireDACOracleDriver;FireDACDBXDriver;ConexaoCarregadorDPK;MCFWComponentes;$(DCC_UsePackage)</DCC_UsePackage>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
@@ -71,12 +64,13 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <DCC_BplOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\</DCC_BplOutput>
-        <DCC_DcpOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\dcp\</DCC_DcpOutput>
+        <DCC_DcuOutput>..\..\..\lib\</DCC_DcuOutput>
+        <DCC_BplOutput>..\..\..\lib\</DCC_BplOutput>
+        <DCC_DcpOutput>..\..\..\lib\</DCC_DcpOutput>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <DCC_MapFile>3</DCC_MapFile>
+        <DCC_UnitSearchPath>..\..\..\lib\;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <DCC_DcuOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\</DCC_DcuOutput>
+        <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -89,14 +83,34 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="rtl.dcp"/>
+        <DCCReference Include="xmlrtl.dcp"/>
         <DCCReference Include="vcl.dcp"/>
-        <DCCReference Include="MVC.Impl.Controller.pas"/>
-        <DCCReference Include="MVC.Impl.View.pas">
-            <Form>FormView</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="MVC.Intf.Controller.pas"/>
-        <DCCReference Include="MVC.Intf.View.pas"/>
+        <DCCReference Include="dbrtl.dcp"/>
+        <DCCReference Include="DbxCommonDriver.dcp"/>
+        <DCCReference Include="vclFireDAC.dcp"/>
+        <DCCReference Include="FireDAC.dcp"/>
+        <DCCReference Include="FireDACCommonDriver.dcp"/>
+        <DCCReference Include="FireDACCommon.dcp"/>
+        <DCCReference Include="FireDACPgDriver.dcp"/>
+        <DCCReference Include="FireDACODBCDriver.dcp"/>
+        <DCCReference Include="FireDACIBDriver.dcp"/>
+        <DCCReference Include="FireDACMySQLDriver.dcp"/>
+        <DCCReference Include="dbexpress.dcp"/>
+        <DCCReference Include="FireDACDb2Driver.dcp"/>
+        <DCCReference Include="FireDACMSSQLDriver.dcp"/>
+        <DCCReference Include="FireDACOracleDriver.dcp"/>
+        <DCCReference Include="FireDACDBXDriver.dcp"/>
+        <DCCReference Include="ConexaoCarregadorDPK.dcp"/>
+        <DCCReference Include="..\DataSet.Impl.ConfiguradorMetaData.pas"/>
+        <DCCReference Include="..\DataSet.Impl.MetaDataContainer.pas"/>
+        <DCCReference Include="..\DataSet.Impl.MetaDataController.pas"/>
+        <DCCReference Include="..\DataSet.Intf.ConfiguradorMetaData.pas"/>
+        <DCCReference Include="..\DataSet.Intf.DataSetContainer.pas"/>
+        <DCCReference Include="..\DataSet.Intf.MetaDataContainer.pas"/>
+        <DCCReference Include="..\DataSet.Intf.MetaDataController.pas"/>
+        <DCCReference Include="..\DataSet.Constantes.pas"/>
+        <DCCReference Include="..\DataSet.Proxy.DataSource.DataStateChange.pas"/>
+        <DCCReference Include="..\DataSet.Proxy.DataSource.UpdateData.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -115,9 +129,10 @@
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">MVC.dpk</Source>
+                    <Source Name="MainSource">DataSetDPK.dpk</Source>
                 </Source>
                 <Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\MCFWFormsDPk.bpl">(untitled)</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k230.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp230.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
@@ -138,9 +153,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\..\..\..\..\..\Public\Documents\Embarcadero\Studio\17.0\Bpl\MVC.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="..\..\..\lib\DataSetDPK.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>MVC.bpl</RemoteName>
+                        <RemoteName>DataSetDPK.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -477,7 +492,6 @@
                 <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
             </Deployment>
             <Platforms>
-                <Platform value="Android">False</Platform>
                 <Platform value="Win32">True</Platform>
             </Platforms>
         </BorlandProject>

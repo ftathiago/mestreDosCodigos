@@ -58,7 +58,4 @@ contains
   Conexao.Impl.Fabrica.FireDac in 'Conexao.Impl.Fabrica.FireDac.pas',
   Conexao.Constantes in 'Conexao.Constantes.pas',
   Conexao.Intf.Configuracao.Fabrica in 'Conexao.Intf.Configuracao.Fabrica.pas';
-
 end.
-
-

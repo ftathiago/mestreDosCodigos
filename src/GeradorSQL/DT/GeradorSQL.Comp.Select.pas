@@ -19,7 +19,6 @@ uses
 type
   TMCSelect = class(TComponent)
   private
-    FSelect: ISQLSelect;
     FOtimizarPara: TOtimizarPara;
     FFrom: TTabela;
     FColuna: TColunaCollection;
@@ -37,7 +36,7 @@ type
     procedure SetColuna(const Value: TColunaCollection);
     procedure SetCondicao(const Value: TCondicaoCollection);
     procedure SetJuncao(const Value: TJuncaoCollection);
-    procedure ConstruirSelect;
+    function ConstruirSelect: ISQLSelect;
     procedure SetOrderBy(const Value: TColunaCollection);
     procedure SetGroupBy(const Value: TColunaCollection);
     procedure SetLimitarRegistros(const Value: integer);
@@ -49,18 +48,16 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     function GerarSQL: string;
-    procedure AddColuna(const NomeColuna: string; const NomeVirtual: string = '';
-      const Tabela: string = ''; const AliasTabela: string = '');
+    procedure AddColuna(const NomeColuna: string; const NomeVirtual: string = ''; const Tabela: string = '';
+      const AliasTabela: string = '');
     procedure setTabela(const NomeTabela: string; const Alias: string = ''); overload;
     procedure setTabela(const SQL: string); overload;
-    procedure AddJuncao(const TipoJuncao: TTipoJuncao; const Tabela: string;
-      const Condicao: string);
+    procedure AddJuncao(const TipoJuncao: TTipoJuncao; const Tabela: string; const Condicao: string);
     procedure AddCondicao(const Condicao: string);
   published
     property InjetarSQLAntes: string read FInjetarSQLAntes write SetInjetarSQLAntes;
     property InjetarSQLApos: string read FInjetarSQLApos write SetInjetarSQLApos;
-    property OtimizarPara: TOtimizarPara read FOtimizarPara write SetOtimizarPara
-      Default opPadraoSQL3;
+    property OtimizarPara: TOtimizarPara read FOtimizarPara write SetOtimizarPara Default opPadraoSQL3;
     property Coluna: TColunaCollection read FColuna write SetColuna;
     property From: TTabela read FFrom write SetFrom;
     property Juncao: TJuncaoCollection read FJuncao write SetJuncao;
@@ -73,7 +70,6 @@ type
   end;
 
 implementation
-
 
 uses
   System.SysUtils,
@@ -96,8 +92,7 @@ begin
   _condicao.Condicao.OperadorLogico := olAnd;
 end;
 
-procedure TMCSelect.AddJuncao(const TipoJuncao: TTipoJuncao; const Tabela: string;
-  const Condicao: string);
+procedure TMCSelect.AddJuncao(const TipoJuncao: TTipoJuncao; const Tabela: string; const Condicao: string);
 var
   _juncao: TJuncaoCollectionItem;
   _condicao: TCondicaoCollectionItem;
@@ -113,8 +108,8 @@ begin
   _condicao.Condicao.SQLTexto.Text := Condicao;
 end;
 
-procedure TMCSelect.AddColuna(const NomeColuna: string; const NomeVirtual: string = '';
-  const Tabela: string = ''; const AliasTabela: string = '');
+procedure TMCSelect.AddColuna(const NomeColuna: string; const NomeVirtual: string = ''; const Tabela: string = '';
+  const AliasTabela: string = '');
 var
   _coluna: TColunaCollectionItem;
 begin
@@ -126,21 +121,18 @@ begin
   _coluna.Coluna.NomeVirtual := NomeVirtual;
 end;
 
-procedure TMCSelect.ConstruirSelect;
+function TMCSelect.ConstruirSelect: ISQLSelect;
 var
   _director: IDirector<IBuilderSelect, ISQLSelect>;
   _builder: IBuilderSelect;
 begin
-  if Assigned(FSelect) then
-    exit;
-
   _builder := TCBSelectComponente.New(Self);
 
   _director := TDirectorSelect.New;
   _director.setBuilder(_builder);
   _director.Construir;
 
-  FSelect := _director.getObjetoPronto;
+  result := _director.getObjetoPronto;
 end;
 
 constructor TMCSelect.Create(AOwner: TComponent);
@@ -177,8 +169,7 @@ end;
 
 function TMCSelect.GerarSQL: string;
 begin
-  ConstruirSelect;
-  result := FSelect.ToString;
+  result := ConstruirSelect.ToString;
 end;
 
 procedure TMCSelect.SetColuna(const Value: TColunaCollection);

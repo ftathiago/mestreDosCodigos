@@ -15,7 +15,10 @@ uses
   OMestreDosCodigos.Impl.Cliente.ListaArrayDinamico in 'OMestreDosCodigos.Impl.Cliente.ListaArrayDinamico.pas',
   MetaDataConf.UI.ffwForm in '..\MetaDataConf\MetaDataConf.UI.ffwForm.pas' {ffwForm},
   MetaDataConf.UI.ffwConfigEntidade in '..\MetaDataConf\MetaDataConf.UI.ffwConfigEntidade.pas' {ffwConfigEntidade},
-  MetaDataConf.UI.ffwConfigEntidade.Relatorio in '..\MetaDataConf\MetaDataConf.UI.ffwConfigEntidade.Relatorio.pas' {Form1};
+  MetaDataConf.UI.ffwConfigEntidade.Relatorio in '..\MetaDataConf\MetaDataConf.UI.ffwConfigEntidade.Relatorio.pas' {frmRelatorio},
+  OMestreDosCodigos.UI.frmPerguntasAlternativas in 'OMestreDosCodigos.UI.frmPerguntasAlternativas.pas' {frmPerguntasAlternativas},
+  OMestreDosCodigos.UI.frmConstPesquisa in 'OMestreDosCodigos.UI.frmConstPesquisa.pas' {frmConsPesquisa},
+  OMestreDosCodigos.UI.frmPesquisas in 'OMestreDosCodigos.UI.frmPesquisas.pas' {frmCadPesquisa};
 
 {$R *.res}
 
@@ -24,4 +27,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmMenu, frmMenu);
   Application.Run;
+
 end.

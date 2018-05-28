@@ -3,48 +3,78 @@ unit MVC.Impl.Controller;
 interface
 
 uses
-  System.Generics.Collections, System.Classes, VCL.Forms, MVC.Intf.Controller, MVC.Intf.View;
+  System.SysUtils, System.Generics.Collections, System.Classes, Data.DB, VCL.Forms, MVC.Intf.Controller, MVC.Intf.View,
+  MVC.Intf.ControlaExibicao, MVC.Intf.Conectavel;
 
 type
+  TController = class;
+  TControllerClass = class of TController;
+
   TController = class(TInterfacedObject, IController)
   private
-    FView: IView;
+    FConnection: TCustomConnection;
+    FView: TComponent;
   protected
-    function View: IView;
-    procedure AposViewCriada; virtual;
+    function View: TComponent;
+    procedure AposCriarAView; virtual;
+    procedure AoDestruirView; virtual;
+    procedure AoMostrar; virtual;
   public
-    procedure CriarForm(const FormClass: TFormClass; const Owner: TComponent); virtual;
-    class function New: IController; virtual;
+    class function New(): IController;
+    constructor Create(); virtual;
+    function RetornarConexao: TCustomConnection; virtual;
+    procedure DefinirConexao(const AConexao: TCustomConnection); virtual;
+    procedure setView(const AView: TComponent);
   end;
 
 implementation
 
-procedure TController.AposViewCriada;
-begin
-
-end;
-
-procedure TController.CriarForm(const FormClass: TFormClass; const Owner: TComponent);
-begin
-  FView := Nil;
-  FView := FormClass.Create(Owner) as IView;
-  FView.DefinirController(Self);
-
-  AposViewCriada;
-
-  FView.ShowModal;
-end;
-
-class function TController.New: IController;
+class function TController.New(): IController;
 begin
   result := Create;
 end;
 
-function TController.View: IView;
+procedure TController.AoDestruirView;
+begin
+
+end;
+
+procedure TController.AoMostrar;
+begin
+
+end;
+
+procedure TController.AposCriarAView;
+begin
+
+end;
+
+constructor TController.Create();
+begin
+
+end;
+
+procedure TController.DefinirConexao(const AConexao: TCustomConnection);
+begin
+  if FConnection = AConexao then
+    exit;
+
+  FConnection := AConexao;
+end;
+
+function TController.RetornarConexao: TCustomConnection;
+begin
+  result := FConnection;
+end;
+
+procedure TController.setView(const AView: TComponent);
+begin
+  FView := AView;
+end;
+
+function TController.View: TComponent;
 begin
   result := FView;
 end;
-
-initialization
 
 end.

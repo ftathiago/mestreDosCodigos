@@ -49,7 +49,7 @@
         <DCC_K>false</DCC_K>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <DCC_UsePackage>rtl;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>rtl;xmlrtl;vcl;dbrtl;DbxCommonDriver;vclFireDAC;FireDAC;FireDACCommonDriver;FireDACCommon;FireDACPgDriver;FireDACODBCDriver;FireDACIBDriver;FireDACMySQLDriver;dbexpress;FireDACDb2Driver;FireDACMSSQLDriver;FireDACOracleDriver;FireDACDBXDriver;ConexaoCarregadorDPK;DataSetDPK;$(DCC_UsePackage)</DCC_UsePackage>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -65,10 +65,10 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_MapFile>3</DCC_MapFile>
-        <DCC_BplOutput>..\..\..\dcp\</DCC_BplOutput>
+        <DCC_BplOutput>..\..\..\lib\</DCC_BplOutput>
         <DCC_DcuOutput>..\..\..\lib</DCC_DcuOutput>
         <DCC_UnitSearchPath>..\..\..\lib;..\..\..\dcp;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
-        <DCC_DcpOutput>..\..\..\dcp\</DCC_DcpOutput>
+        <DCC_DcpOutput>..\..\..\lib\</DCC_DcpOutput>
         <BRCC_OutputDir>..\..\..\Lib\</BRCC_OutputDir>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <BRCC_IncludePath>..\..\..\Lib;..\..\..\dcp;$(BRCC_IncludePath)</BRCC_IncludePath>
@@ -104,6 +104,7 @@
         <DCCReference Include="FireDACOracleDriver.dcp"/>
         <DCCReference Include="FireDACDBXDriver.dcp"/>
         <DCCReference Include="ConexaoCarregadorDPK.dcp"/>
+        <DCCReference Include="DataSetDPK.dcp"/>
         <DCCReference Include="..\DesignPattern.Builder.Impl.Builder.pas"/>
         <DCCReference Include="..\DesignPattern.Builder.Impl.Director.pas"/>
         <DCCReference Include="..\DesignPattern.Builder.Intf.Builder.pas"/>
@@ -118,6 +119,7 @@
         <DCCReference Include="..\pkgUtils.Impl.Endereco.pas"/>
         <DCCReference Include="..\pkgUtils.Impl.Telefone.pas"/>
         <DCCReference Include="..\pkgUtils.Intf.Aplicacao.pas"/>
+        <DCCReference Include="..\pkgUtils.Impl.RTTIUtils.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -138,9 +140,18 @@
                 <Source>
                     <Source Name="MainSource">pkgUtils.dpk</Source>
                 </Source>
-                <Excluded_Packages/>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k230.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp230.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="2">
+                <DeployFile LocalName="..\..\..\lib\pkgUtils.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>pkgUtils.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
                         <Overwrite>true</Overwrite>
@@ -153,12 +164,6 @@
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="..\..\..\dcp\pkgUtils.bpl" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>pkgUtils.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

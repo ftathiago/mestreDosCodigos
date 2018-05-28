@@ -1,12 +1,15 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{D59D35BE-8D3F-4931-8137-193812226B18}</ProjectGuid>
+        <ProjectGuid>{E64C5F38-53D4-4F83-9BE8-D4FA2C475FA2}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="MVC.dproj">
+        <Projects Include="dpk\MVCPkg.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Teste\MVCTeste.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Sample\MVCSample.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -17,14 +20,14 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="MVC">
-        <MSBuild Projects="MVC.dproj"/>
+    <Target Name="MVCPkg">
+        <MSBuild Projects="dpk\MVCPkg.dproj"/>
     </Target>
-    <Target Name="MVC:Clean">
-        <MSBuild Projects="MVC.dproj" Targets="Clean"/>
+    <Target Name="MVCPkg:Clean">
+        <MSBuild Projects="dpk\MVCPkg.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="MVC:Make">
-        <MSBuild Projects="MVC.dproj" Targets="Make"/>
+    <Target Name="MVCPkg:Make">
+        <MSBuild Projects="dpk\MVCPkg.dproj" Targets="Make"/>
     </Target>
     <Target Name="MVCTeste">
         <MSBuild Projects="Teste\MVCTeste.dproj"/>
@@ -35,14 +38,23 @@
     <Target Name="MVCTeste:Make">
         <MSBuild Projects="Teste\MVCTeste.dproj" Targets="Make"/>
     </Target>
+    <Target Name="MVCSample">
+        <MSBuild Projects="Sample\MVCSample.dproj"/>
+    </Target>
+    <Target Name="MVCSample:Clean">
+        <MSBuild Projects="Sample\MVCSample.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MVCSample:Make">
+        <MSBuild Projects="Sample\MVCSample.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="MVC;MVCTeste"/>
+        <CallTarget Targets="MVCPkg;MVCTeste;MVCSample"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="MVC:Clean;MVCTeste:Clean"/>
+        <CallTarget Targets="MVCPkg:Clean;MVCTeste:Clean;MVCSample:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="MVC:Make;MVCTeste:Make"/>
+        <CallTarget Targets="MVCPkg:Make;MVCTeste:Make;MVCSample:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

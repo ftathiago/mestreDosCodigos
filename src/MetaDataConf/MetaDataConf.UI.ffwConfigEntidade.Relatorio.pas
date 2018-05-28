@@ -9,7 +9,7 @@ uses
   FireDAC.Stan.StorageBin, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
-  TForm1 = class(TForm)
+  TfrmRelatorio = class(TForm)
     RLReport1: TRLReport;
     FDMemTable1: TFDMemTable;
     dtsEntidade: TDataSource;
@@ -64,7 +64,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  frmRelatorio: TfrmRelatorio;
 
 implementation
 

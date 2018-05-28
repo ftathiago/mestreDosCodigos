@@ -5,8 +5,9 @@ interface
 uses
   System.Classes,
   Vcl.Forms,
-  Conexao.Intf.ConfiguracaoDeConexao,
-  Conexao.Intf.Configuracao;
+  Data.DB,
+  DataSet.Intf.ConfiguradorMetaData,
+  Conexao.Intf.ConfiguracaoDeConexao,  Conexao.Intf.Configuracao;
 
 type
   TAplicacao = class
@@ -23,7 +24,9 @@ type
     class function NewInstance: TObject; override;
     function GetConfiguracaoConexao: IConexaoConfiguracao;
     procedure ConfigurarConexao(Configurador: IFDConfiguracaoDeConexao);
-    procedure CriarFormulario(const NomeDoForm: string; const Owner: TForm; out obj);
+    procedure CriarFormulario(const NomeDoForm: string; const Owner: TForm; out obj); overload;
+    procedure CriarFormulario(const NomeDoForm: string; const Owner: TForm; const AConnection: TCustomConnection;
+      const AConfiguradorMetaData: IConfiguradorMetaData; out obj); overload;
     destructor Destroy; override;
   end;
 
@@ -53,6 +56,12 @@ procedure TAplicacao.CriarConexaoConfiguracao;
 begin
   FConexaoConfiguracao := TumcConexaoConfiguracao.New;
   GetCarregadorINI.CarregarConfiguracoes(FConexaoConfiguracao);
+end;
+
+procedure TAplicacao.CriarFormulario(const NomeDoForm: string; const Owner: TForm; const AConnection: TCustomConnection;
+  const AConfiguradorMetaData: IConfiguradorMetaData; out obj);
+begin
+
 end;
 
 procedure TAplicacao.CriarFormulario(const NomeDoForm: string; const Owner: TForm; out obj);

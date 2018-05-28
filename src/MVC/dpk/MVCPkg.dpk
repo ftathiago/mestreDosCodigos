@@ -1,0 +1,56 @@
+package MVCPkg;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  pkgUtils,
+  rtl,
+  dbrtl,
+  vcl;
+
+contains
+  MVC.Anotacoes.Anotacao in '..\MVC.Anotacoes.Anotacao.pas',
+  MVC.Anotacoes.View in '..\MVC.Anotacoes.View.pas',
+  MVC.Controller.Impl.Factory in '..\MVC.Controller.Impl.Factory.pas',
+  MVC.Controller.Intf.Factory in '..\MVC.Controller.Intf.Factory.pas',
+  MVC.Impl.CDI in '..\MVC.Impl.CDI.pas',
+  MVC.Impl.Controller in '..\MVC.Impl.Controller.pas',
+  MVC.Impl.LocalizadorController in '..\MVC.Impl.LocalizadorController.pas',
+  MVC.Impl.View.FrameView in '..\MVC.Impl.View.FrameView.pas' {FrameView: TFrame},
+  MVC.Impl.View in '..\MVC.Impl.View.pas' {FormView},
+  MVC.Intf.CDI in '..\MVC.Intf.CDI.pas',
+  MVC.Intf.Conectavel in '..\MVC.Intf.Conectavel.pas',
+  MVC.Intf.ControlaExibicao in '..\MVC.Intf.ControlaExibicao.pas',
+  MVC.Intf.Controller in '..\MVC.Intf.Controller.pas',
+  MVC.Intf.LocalizadorController in '..\MVC.Intf.LocalizadorController.pas',
+  MVC.Intf.View in '..\MVC.Intf.View.pas',
+  MVC.RegistroDeClasses in '..\MVC.RegistroDeClasses.pas',
+  MVC.Exception in '..\MVC.Exception.pas';
+
+end.
+

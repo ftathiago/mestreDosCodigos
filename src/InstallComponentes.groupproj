@@ -1,0 +1,96 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{C75105BF-889A-429A-8DE8-F4BB6DCA940A}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Conexao\ConexaoCarregadorDPK.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="pkgUtils\dpk\pkgUtils.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GeradorSQL\dpk\GeradorSQL.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GeradorSQL\dpk\GeradorSQLDT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="FrameWork\MCFWComponentes\MCFWComponentes.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="FrameWork\MCFWForms\MCFWFormsDPk.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ConexaoCarregadorDPK">
+        <MSBuild Projects="Conexao\ConexaoCarregadorDPK.dproj"/>
+    </Target>
+    <Target Name="ConexaoCarregadorDPK:Clean">
+        <MSBuild Projects="Conexao\ConexaoCarregadorDPK.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ConexaoCarregadorDPK:Make">
+        <MSBuild Projects="Conexao\ConexaoCarregadorDPK.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="pkgUtils">
+        <MSBuild Projects="pkgUtils\dpk\pkgUtils.dproj"/>
+    </Target>
+    <Target Name="pkgUtils:Clean">
+        <MSBuild Projects="pkgUtils\dpk\pkgUtils.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgUtils:Make">
+        <MSBuild Projects="pkgUtils\dpk\pkgUtils.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GeradorSQL">
+        <MSBuild Projects="GeradorSQL\dpk\GeradorSQL.dproj"/>
+    </Target>
+    <Target Name="GeradorSQL:Clean">
+        <MSBuild Projects="GeradorSQL\dpk\GeradorSQL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GeradorSQL:Make">
+        <MSBuild Projects="GeradorSQL\dpk\GeradorSQL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GeradorSQLDT">
+        <MSBuild Projects="GeradorSQL\dpk\GeradorSQLDT.dproj"/>
+    </Target>
+    <Target Name="GeradorSQLDT:Clean">
+        <MSBuild Projects="GeradorSQL\dpk\GeradorSQLDT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GeradorSQLDT:Make">
+        <MSBuild Projects="GeradorSQL\dpk\GeradorSQLDT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MCFWComponentes">
+        <MSBuild Projects="FrameWork\MCFWComponentes\MCFWComponentes.dproj"/>
+    </Target>
+    <Target Name="MCFWComponentes:Clean">
+        <MSBuild Projects="FrameWork\MCFWComponentes\MCFWComponentes.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MCFWComponentes:Make">
+        <MSBuild Projects="FrameWork\MCFWComponentes\MCFWComponentes.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MCFWFormsDPk">
+        <MSBuild Projects="FrameWork\MCFWForms\MCFWFormsDPk.dproj"/>
+    </Target>
+    <Target Name="MCFWFormsDPk:Clean">
+        <MSBuild Projects="FrameWork\MCFWForms\MCFWFormsDPk.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MCFWFormsDPk:Make">
+        <MSBuild Projects="FrameWork\MCFWForms\MCFWFormsDPk.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ConexaoCarregadorDPK;pkgUtils;GeradorSQL;GeradorSQLDT;MCFWComponentes;MCFWFormsDPk"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ConexaoCarregadorDPK:Clean;pkgUtils:Clean;GeradorSQL:Clean;GeradorSQLDT:Clean;MCFWComponentes:Clean;MCFWFormsDPk:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ConexaoCarregadorDPK:Make;pkgUtils:Make;GeradorSQL:Make;GeradorSQLDT:Make;MCFWComponentes:Make;MCFWFormsDPk:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

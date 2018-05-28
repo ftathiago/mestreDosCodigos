@@ -1,6 +1,6 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{E78403D0-E578-42DD-8D08-F6F2BE78692D}</ProjectGuid>
+        <ProjectGuid>{E6751D87-C933-46B8-8521-45BF91E52CDA}</ProjectGuid>
         <ProjectVersion>18.0</ProjectVersion>
         <MainSource>MVCTeste.dpr</MainSource>
         <Base>True</Base>
@@ -35,13 +35,13 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <DCC_UnitSearchPath>$(DUnitX);$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
-        <UsingDelphiRTL>true</UsingDelphiRTL>
-        <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
-        <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
-        <SanitizedProjectName>MVCTeste</SanitizedProjectName>
         <DCC_Define>TESTINSIGHT;$(DCC_Define)</DCC_Define>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
+        <UsingDelphiRTL>true</UsingDelphiRTL>
+        <SanitizedProjectName>MVCTeste</SanitizedProjectName>
+        <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
+        <DCC_UnitSearchPath>$(DUnitX);$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
         <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
         <DCC_E>false</DCC_E>
@@ -65,6 +65,12 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <DCC_DebugDCUs>false</DCC_DebugDCUs>
+        <DCC_RunTimeTypeInfo>true</DCC_RunTimeTypeInfo>
+        <BRCC_IncludePath>C:\Users\Ambiente\Documents\Delphi\delphi-leakcheck\External\DUnit;C:\Users\Ambiente\Documents\Delphi\delphi-leakcheck\External\DUnitX;$(BRCC_IncludePath)</BRCC_IncludePath>
+        <DCC_DUPLICATE_CTOR_DTOR>false</DCC_DUPLICATE_CTOR_DTOR>
+        <Manifest_File>None</Manifest_File>
+        <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -77,15 +83,30 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="MVC.Teste.View.pas"/>
         <DCCReference Include="..\MVC.Intf.View.pas"/>
+        <DCCReference Include="..\MVC.Intf.Controller.pas"/>
+        <DCCReference Include="..\MVC.Intf.ControlaExibicao.pas"/>
+        <DCCReference Include="..\MVC.Intf.Conectavel.pas"/>
         <DCCReference Include="..\MVC.Impl.View.pas">
             <Form>FormView</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="MVC.Teste.Controller.pas"/>
-        <DCCReference Include="..\MVC.Intf.Controller.pas"/>
+        <DCCReference Include="..\MVC.Impl.View.FrameView.pas">
+            <Form>FrameView</Form>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
         <DCCReference Include="..\MVC.Impl.Controller.pas"/>
+        <DCCReference Include="..\MVC.Controller.Intf.Factory.pas"/>
+        <DCCReference Include="..\MVC.Controller.Impl.Factory.pas"/>
+        <DCCReference Include="..\MVC.RegistroDeClasses.pas"/>
+        <DCCReference Include="..\MVC.Impl.LocalizadorController.pas"/>
+        <DCCReference Include="..\MVC.Intf.LocalizadorController.pas"/>
+        <DCCReference Include="..\MVC.Anotacoes.View.pas"/>
+        <DCCReference Include="..\MVC.Anotacoes.Anotacao.pas"/>
+        <DCCReference Include="Teste.Controller.Factory.pas"/>
+        <DCCReference Include="Teste.Atributos.View.pas"/>
+        <DCCReference Include="Teste.Mock.ControllerMock.pas"/>
+        <DCCReference Include="Teste.LocalizadorController.pas"/>
+        <DCCReference Include="Teste.Mock.ViewMock.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -106,6 +127,10 @@
                 <Source>
                     <Source Name="MainSource">MVCTeste.dpr</Source>
                 </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k230.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp230.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="2">
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">

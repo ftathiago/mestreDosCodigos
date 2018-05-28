@@ -1,7 +1,6 @@
 package MCFWComponentes;
 
 {$R *.res}
-{$R 'umcFrmConsulta.dcr'}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
 {$ALIGN 8}
 {$ASSERTIONS ON}
@@ -46,6 +45,7 @@ requires
   FireDACMSSQLDriver,
   FireDACOracleDriver,
   FireDACDBXDriver,
+  DataSetDPK,
   ConexaoCarregadorDPK;
 
 contains
@@ -53,14 +53,10 @@ contains
   umcRegistrationUnit in 'umcRegistrationUnit.pas',
   umcFrameWorkTypes in 'RT\umcFrameWorkTypes.pas',
   umcCrudToolbar in 'CrudToolbar\umcCrudToolbar.pas' {CrudToolbar: TFrame},
-  DataSet.Intf.ConfiguradorMetaData in 'DataSet.Intf.ConfiguradorMetaData.pas',
-  DataSet.Impl.ConfiguradorMetaData in 'DataSet.Impl.ConfiguradorMetaData.pas',
+  umcFDCrudToolbar in 'FDCrudToolbar\umcFDCrudToolbar.pas',
   umcConstantes in 'RT\umcConstantes.pas',
   uRTTIUtils in 'uRTTIUtils.pas',
-  DataSet.Intf.DataSetContainer in 'DataSet.Intf.DataSetContainer.pas',
-  DataSet.Intf.MetaDataContainer in 'DataSet.Intf.MetaDataContainer.pas',
-  DataSet.Impl.MetaDataContainer in 'DataSet.Impl.MetaDataContainer.pas',
-  umcFDCrudToolbar in 'FDCrudToolbar\umcFDCrudToolbar.pas';
+  umcExceptions in 'RT\umcExceptions.pas';
 
 end.
 

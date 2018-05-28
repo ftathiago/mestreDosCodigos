@@ -87,6 +87,8 @@ begin
       result := '>=';
     ocEntre:
       result := 'between';
+    ocContenha :
+      result := 'like';
   else
     raise ENotImplemented.CreateFmt(SQL.Mensagens.RECURSO_NAO_IMPLEMENTADO,
       [self.getNome, 'TOperadorComparacaoHelper']);

@@ -112,11 +112,9 @@ implementation
 { TConfiguradorMetaData }
 
 uses
+  DataSet.Constantes,
   FireDAC.Stan.Intf,
-  System.Rtti,
-  System.SysUtils,
-  umcConstantes,
-  uRTTIUtils;
+  System.Rtti, System.SysUtils;
 
 procedure TConfiguradorMetaData.ConfigurarEntidade(const Entidade: string; DataSet: TDataSet);
 var
@@ -144,8 +142,8 @@ begin
 
     _field.Required := FEntPropriedade.Requerido;
     _field.ReadOnly := FEntPropriedade.SomenteLeitura;
-    _field.Visible := FEntPropriedade.Visivel;
-
+    _field.Visible := FEntPropriedade.Visivel;    
+    
     if not (FEntPropriedade.Posicao = INTEIRO_INDEFINIDO) then
       _field.Index := Pred(FEntPropriedade.Posicao);
 
@@ -183,11 +181,10 @@ var
   i: integer;
 begin
   for i := 0 to Pred(Length(Entidade)) do
-    ConfigurarEntidade(Entidade[i], DataSet);
+    ConfigurarEntidade(Entidade[i].ToUpper, DataSet);
 end;
 
 { TEntPropriedadeContainer }
-
 
 constructor TEntPropriedadeContainer.Create(ADataSet: TFDDataSet);
 begin

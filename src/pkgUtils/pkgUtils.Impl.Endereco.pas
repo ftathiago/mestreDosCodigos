@@ -22,10 +22,8 @@ type
     function ValidarUF(const RetornoValidcacao: IListaRetornoValidacao): boolean;
     function ValidarCidade(const RetornoValidacao: IListaRetornoValidacao): boolean;
   public
-    class function New(const ALogradouro, ANumero, AComplemento, ACEP, ABairro, ACidade,
-  AUF: string): IEndereco;
-    constructor Create(const ALogradouro, ANumero, AComplemento, ACEP, ABairro, ACidade,
-  AUF: string);
+    class function New(const ALogradouro, ANumero, AComplemento, ACEP, ABairro, ACidade, AUF: string): IEndereco;
+    constructor Create(const ALogradouro, ANumero, AComplemento, ACEP, ABairro, ACidade, AUF: string);
     procedure ModificarBairro(const ABairro: string);
     procedure ModificarCEP(const ACEP: string);
     procedure ModificarComplemento(const AComplemento: string);
@@ -51,8 +49,7 @@ uses
 
 { TEndereco }
 
-class function TEndereco.New(const ALogradouro, ANumero, AComplemento, ACEP, ABairro, ACidade,
-  AUF: string): IEndereco;
+class function TEndereco.New(const ALogradouro, ANumero, AComplemento, ACEP, ABairro, ACidade, AUF: string): IEndereco;
 begin
   result := Create(ALogradouro, ANumero, AComplemento, ACEP, ABairro, ACidade, AUF);
 end;
@@ -130,8 +127,7 @@ begin
   if not result then
   begin
     _retorno.CodigoRetorno := 0;
-    _retorno.MensagemDeErro :=
-      'Não foi informadoo número da residência.' + #$D#$A +
+    _retorno.MensagemDeErro := 'Não foi informadoo número da residência.' + #$D#$A +
       'Utilize "S/N" caso que não tenha numeração';
     RetornoValidacao.AdicionarRetorno(_retorno);
   end;
@@ -139,14 +135,18 @@ end;
 
 function TEndereco.ValidarUF(const RetornoValidcacao: IListaRetornoValidacao): boolean;
 const
-  ARRAY_UF: array [0 .. 26] of string = ('AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA',
-    'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP',
-    'SE', 'TO');
-  UF_REGEX = '{AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RJ|RN|RS|RO|RR|SC|SP|SE|TO}';
+  ARRAY_UF: array [0 .. 26] of string = ('AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG',
+    'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO');
 var
   _retorno: TRetornoValidacao;
+  i: integer;
 begin
-  result := TRegEx.IsMatch(FUF, UF_REGEX);
+  for i := 0 to High(ARRAY_UF) do
+  begin
+    result := SameText(FUF, ARRAY_UF[i]);
+    if result then
+      break;
+  end;
 
   if not result then
   begin
@@ -156,8 +156,7 @@ begin
   end;
 end;
 
-constructor TEndereco.Create(const ALogradouro, ANumero, AComplemento, ACEP, ABairro, ACidade,
-  AUF: string);
+constructor TEndereco.Create(const ALogradouro, ANumero, AComplemento, ACEP, ABairro, ACidade, AUF: string);
 begin
   ModificarLogradouro(ALogradouro);
   ModificarNumero(ANumero);

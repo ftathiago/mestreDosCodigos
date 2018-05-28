@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{10495490-3F2F-46CB-B289-653BD4F63D03}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="..\pkgUtils\dpk\pkgUtils.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\MVC\dpk\MVCPkg.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ExecSQL.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="pkgUtils">
+        <MSBuild Projects="..\pkgUtils\dpk\pkgUtils.dproj"/>
+    </Target>
+    <Target Name="pkgUtils:Clean">
+        <MSBuild Projects="..\pkgUtils\dpk\pkgUtils.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgUtils:Make">
+        <MSBuild Projects="..\pkgUtils\dpk\pkgUtils.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MVCPkg">
+        <MSBuild Projects="..\MVC\dpk\MVCPkg.dproj"/>
+    </Target>
+    <Target Name="MVCPkg:Clean">
+        <MSBuild Projects="..\MVC\dpk\MVCPkg.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MVCPkg:Make">
+        <MSBuild Projects="..\MVC\dpk\MVCPkg.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ExecSQL">
+        <MSBuild Projects="ExecSQL.dproj"/>
+    </Target>
+    <Target Name="ExecSQL:Clean">
+        <MSBuild Projects="ExecSQL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ExecSQL:Make">
+        <MSBuild Projects="ExecSQL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="pkgUtils;MVCPkg;ExecSQL"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="pkgUtils:Clean;MVCPkg:Clean;ExecSQL:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="pkgUtils:Make;MVCPkg:Make;ExecSQL:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

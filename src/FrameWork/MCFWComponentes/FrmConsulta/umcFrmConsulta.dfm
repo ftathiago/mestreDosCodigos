@@ -11,17 +11,22 @@ object fmcFrmConsulta: TfmcFrmConsulta
   ParentFont = False
   TabOrder = 0
   object grDados: TDBGrid
-    Left = 0
-    Top = 52
-    Width = 494
-    Height = 136
+    AlignWithMargins = True
+    Left = 3
+    Top = 55
+    Width = 488
+    Height = 130
     Align = alClient
-    TabOrder = 0
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    ReadOnly = True
+    TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnDblClick = grDadosDblClick
+    OnMouseMove = grDadosMouseMove
     OnTitleClick = grDadosTitleClick
   end
   object tblComandos: TToolBar
@@ -39,7 +44,7 @@ object fmcFrmConsulta: TfmcFrmConsulta
     ParentShowHint = False
     ShowCaptions = True
     ShowHint = True
-    TabOrder = 1
+    TabOrder = 2
     TabStop = True
     object btnSelecionar: TToolButton
       Left = 0
@@ -78,7 +83,7 @@ object fmcFrmConsulta: TfmcFrmConsulta
     Align = alTop
     BevelOuter = bvNone
     ShowCaption = False
-    TabOrder = 2
+    TabOrder = 0
     object Label1: TLabel
       Left = 8
       Top = 4

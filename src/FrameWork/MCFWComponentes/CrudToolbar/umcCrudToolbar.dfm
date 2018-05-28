@@ -6,7 +6,7 @@ object CrudToolbar: TCrudToolbar
   Align = alBottom
   AutoSize = True
   TabOrder = 0
-  object ToolBar: TToolBar
+  object tblCrud: TToolBar
     Left = 0
     Top = 0
     Width = 451
@@ -15,7 +15,7 @@ object CrudToolbar: TCrudToolbar
     AutoSize = True
     ButtonHeight = 52
     ButtonWidth = 50
-    Caption = 'ToolBar'
+    Caption = 'tblCrud'
     DisabledImages = ImageListDisabled
     DrawingStyle = dsGradient
     Images = ImageList

@@ -2,8 +2,8 @@ object FormView: TFormView
   Left = 0
   Top = 0
   Caption = 'FormView'
-  ClientHeight = 202
-  ClientWidth = 447
+  ClientHeight = 357
+  ClientWidth = 667
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,6 +11,10 @@ object FormView: TFormView
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
 end

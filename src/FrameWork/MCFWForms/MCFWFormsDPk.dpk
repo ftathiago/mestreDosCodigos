@@ -35,12 +35,19 @@ requires
   FireDACCommonDriver,
   FireDACCommon,
   vcldb,
+  ConexaoCarregadorDPK,
+  DataSetDPK,
+  GeradorSQL,
+  GeradorSQLDT,
   MCFWComponentes;
 
 contains
   umcForm in 'umcForm.pas' {fmcForm},
   umcDBForm in 'umcDBForm.pas' {fmcDBForm},
   umcDBPesquisa in 'umcDBPesquisa.pas' {fmcDBPesquisa},
-  umcCRUD in 'umcCRUD.pas' {fmcCRUD};
+  umcCRUD in 'umcCRUD.pas' {fmcCRUD},
+  umcFDCRUD in 'umcFDCRUD.pas' {fmcFDCRUD},
+  umcFormFactory in 'umcFormFactory.pas',
+  umcConsulta in 'umcConsulta.pas' {fmcConsulta};
 
 end.

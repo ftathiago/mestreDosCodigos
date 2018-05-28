@@ -69,7 +69,11 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <BRCC_IncludePath>..\Conexao;$(BRCC_IncludePath)</BRCC_IncludePath>
+        <DCC_DcpOutput>..\..\lib\</DCC_DcpOutput>
+        <DCC_UnitSearchPath>..\..\lib\;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <Debugger_DebugSourcePath>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\GeradorSQL\DT\;C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\FrameWork\MCFWForms\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
+        <DCC_DebugDCUs>false</DCC_DebugDCUs>
+        <BRCC_IncludePath>..\Conexao;C:\Users\Ambiente\Documents\Delphi\fortesreport-ce\Binary\LibD23;$(BRCC_IncludePath)</BRCC_IncludePath>
         <DCC_MapFile>3</DCC_MapFile>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -123,7 +127,19 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\MetaDataConf\MetaDataConf.UI.ffwConfigEntidade.Relatorio.pas">
-            <Form>Form1</Form>
+            <Form>frmRelatorio</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="OMestreDosCodigos.UI.frmPerguntasAlternativas.pas">
+            <Form>frmPerguntasAlternativas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="OMestreDosCodigos.UI.frmConstPesquisa.pas">
+            <Form>frmConsPesquisa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="OMestreDosCodigos.UI.frmPesquisas.pas">
+            <Form>frmCadPesquisa</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
@@ -146,6 +162,10 @@
                 <Source>
                     <Source Name="MainSource">OMestreDosCodigos.dpr</Source>
                 </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k230.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp230.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="2">
                 <DeployFile LocalName="..\..\bin\OMestreDosCodigos.exe" Configuration="Debug" Class="ProjectOutput">

@@ -3,49 +3,17 @@ unit MetaDataConf.UI.ffwConfigEntidade;
 interface
 
 uses
-  MetaDataConf.UI.ffwForm,
-  umcFDCrudToolbar,
-  DataSet.Intf.MetaDataContainer,
-  DataSet.Intf.ConfiguradorMetaData,
-  DataSet.Intf.MetaDataController,
-  Winapi.Windows,
-  Winapi.Messages,
-  System.SysUtils,
-  System.Variants,
-  System.Classes,
-  System.Actions,
-  System.ImageList,
+  Winapi.Windows, Winapi.Messages,
+  System.SysUtils, System.Variants, System.Classes, System.Actions, System.ImageList,
+  DataSet.Intf.MetaDataContainer, DataSet.Intf.ConfiguradorMetaData, DataSet.Intf.MetaDataController,
+  umcCrudToolbar, umcFDCrudToolbar,
+  GeradorSQL.Comp.Select, MetaDataConf.UI.ffwForm,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.ToolWin,
+  Vcl.ActnList, Vcl.ImgList,
   Data.DB,
-  Vcl.Graphics,
-  Vcl.Controls,
-  Vcl.Forms,
-  Vcl.Dialogs,
-  Vcl.Grids,
-  Vcl.DBGrids,
-  Vcl.ExtCtrls,
-  Vcl.ComCtrls,
-  Vcl.ToolWin,
-  Vcl.ActnList,
-  Vcl.ImgList,
-  FireDAC.Stan.Intf,
-  FireDAC.Stan.Option,
-  FireDAC.Stan.Param,
-  FireDAC.Stan.Error,
-  FireDAC.DatS,
-  FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf,
-  FireDAC.Stan.Async,
-  FireDAC.DApt,
-  FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client,
-  FireDAC.Stan.StorageBin,
-  umcCrudToolbar,
-  GeradorSQL.Comp.Select,
-  FireDAC.UI.Intf,
-  FireDAC.Stan.Def,
-  FireDAC.Stan.Pool,
-  FireDAC.Phys,
-  FireDAC.VCLUI.Wait;
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  FireDAC.Stan.StorageBin, FireDAC.UI.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.VCLUI.Wait;
 
 type
   TffwConfigEntidade = class(TffwForm)
@@ -110,7 +78,6 @@ implementation
 
 {$R *.dfm}
 
-
 uses
   umcConstantes,
   MetaDataConf.UI.ffwConfigEntidade.Relatorio,
@@ -161,11 +128,11 @@ end;
 
 procedure TffwConfigEntidade.actRelatorioExecute(Sender: TObject);
 var
-  _form: TForm1;
+  _form: TfrmRelatorio;
 begin
   inherited;
   ENTIDADE.First;
-  _form:=  TForm1.Create(Self);
+  _form := TfrmRelatorio.Create(Self);
   _form.dtsEntidade.DataSet := ENTIDADE;
   _form.dtsEntPropriedade.DataSet := ENT_PROPRIEDADE;
   _form.RLReport1.PreviewModal;

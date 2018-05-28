@@ -71,15 +71,15 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <DCC_MapFile>3</DCC_MapFile>
-        <DCC_BplOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\dcp\</DCC_BplOutput>
-        <DCC_DcpOutput>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\dcp\</DCC_DcpOutput>
-        <DCC_UnitSearchPath>..\..\..\Lib;..\..\..\dcp;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_BplOutput>..\..\..\lib\</DCC_BplOutput>
+        <DCC_DcpOutput>..\..\..\lib\</DCC_DcpOutput>
+        <DCC_UnitSearchPath>..\..\..\lib\;..\..\..\dcp;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_DcuOutput>..\..\..\Lib\</DCC_DcuOutput>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_Build>314</VerInfo_Build>
+        <VerInfo_Build>371</VerInfo_Build>
         <DCC_OutputXMLDocumentation>true</DCC_OutputXMLDocumentation>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.314;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.371;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <BRCC_OutputDir>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\dpk\bin\</BRCC_OutputDir>
     </PropertyGroup>
     <ItemGroup>
@@ -87,10 +87,9 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="rtl.dcp"/>
-        <DCCReference Include="..\..\pkgUtils\DesignPattern.Builder.Impl.Builder.pas"/>
-        <DCCReference Include="..\..\pkgUtils\DesignPattern.Builder.Impl.Director.pas"/>
-        <DCCReference Include="..\..\pkgUtils\DesignPattern.Builder.Intf.Builder.pas"/>
         <DCCReference Include="..\..\pkgUtils\DesignPattern.Builder.Intf.Director.pas"/>
+        <DCCReference Include="..\..\pkgUtils\DesignPattern.Builder.Intf.Builder.pas"/>
+        <DCCReference Include="..\..\pkgUtils\DesignPattern.Builder.Impl.Director.pas"/>
         <DCCReference Include="..\RT\SQL.Enums.pas"/>
         <DCCReference Include="..\RT\SQL.Exceptions.pas"/>
         <DCCReference Include="..\RT\SQL.Mensagens.pas"/>
@@ -137,6 +136,7 @@
         <DCCReference Include="..\RT\SQL.Intf.Builder.pas"/>
         <DCCReference Include="..\RT\SQL.Impl.Builder.pas"/>
         <DCCReference Include="..\RT\SQL.Impl.Select.pas"/>
+        <DCCReference Include="..\..\pkgUtils\DesignPattern.Builder.Impl.Builder.pas"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -157,19 +157,31 @@
                 <Source>
                     <Source Name="MainSource">GeradorSQL.dpk</Source>
                 </Source>
-                <Excluded_Packages/>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k230.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp230.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Platforms>
                 <Platform value="Win32">True</Platform>
             </Platforms>
             <Deployment Version="2">
-                <DeployFile LocalName="..\..\..\dcp\GeradorSQL.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="..\..\..\lib\GeradorSQL.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>GeradorSQL.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\Resources</RemoteDir>
@@ -483,16 +495,7 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>

@@ -16,6 +16,10 @@ inherited fmcCRUD: TfmcCRUD
     TabOrder = 0
     object tbsPesquisa: TTabSheet
       Caption = ' Pesquisa '
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object fmcFrmConsulta: TfmcFrmConsulta
         Left = 0
         Top = 0
@@ -28,10 +32,11 @@ inherited fmcCRUD: TfmcCRUD
         Font.Style = []
         ParentFont = False
         TabOrder = 0
-        DataSource = dsDataSet
+        DataSource = dsPesquisa
         OnSelecionarClick = fmcFrmConsultaSelecionarClick
         OnNovoClick = fmcFrmConsultaNovoClick
         OnFecharClick = fmcFrmConsultaFecharClick
+        OnPesquisar = fmcFrmConsultaPesquisar
       end
     end
     object tbsCadastro: TTabSheet
@@ -50,14 +55,26 @@ inherited fmcCRUD: TfmcCRUD
         AutoSize = True
         TabOrder = 0
         DataSource = dsDataSet
-        OnSalvarClick = CrudToolbarSalvarClick
-        OnDesfazerClick = CrudToolbarDesfazerClick
-        OnApagarClick = CrudToolbarApagarClick
       end
     end
   end
+  object mcsPesquisa: TMCSelect [1]
+    Coluna = <>
+    Juncao = <>
+    Condicao = <>
+    OrderBy = <>
+    GroupBy = <>
+    LimitarRegistros = 0
+    SaltarRegistros = 0
+    Left = 64
+    Top = 168
+  end
   inherited dsDataSet: TDataSource
     Left = 660
+    Top = 8
+  end
+  object dsPesquisa: TDataSource
+    Left = 624
     Top = 8
   end
 end

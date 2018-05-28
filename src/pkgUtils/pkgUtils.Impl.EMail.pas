@@ -56,6 +56,7 @@ var
   _retornoValidacao: TRetornoValidacao;
 begin
   FEhValido := TRegEx.IsMatch(FEmail, EMAIL_REGEX);
+
   if not FEhValido then
   begin
     _retornoValidacao.CodigoRetorno := 1;

@@ -52,7 +52,7 @@
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <DCC_UsePackage>rtl;vcl;dbrtl;vcldb;dxCoreRS23;cxLibraryRS23;dxGDIPlusRS23;dxThemeRS23;DbxCommonDriver;vclFireDAC;FireDAC;FireDACCommon;FireDACPgDriver;FireDACODBCDriver;FireDACIBDriver;FireDACMySQLDriver;dbexpress;FireDACDb2Driver;FireDACMSSQLDriver;FireDACOracleDriver;FireDACDBXDriver;ConexaoCarregadorDPK;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_UsePackage>rtl;vcl;dbrtl;vcldb;dxCoreRS23;cxLibraryRS23;dxGDIPlusRS23;dxThemeRS23;DbxCommonDriver;vclFireDAC;FireDAC;FireDACCommon;FireDACPgDriver;FireDACODBCDriver;FireDACIBDriver;FireDACMySQLDriver;dbexpress;FireDACDb2Driver;FireDACMSSQLDriver;FireDACOracleDriver;FireDACDBXDriver;ConexaoCarregadorDPK;DataSetDPK;$(DCC_UsePackage)</DCC_UsePackage>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
@@ -64,6 +64,7 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <DCC_UnitSearchPath>..\..\..\lib\;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_MapFile>3</DCC_MapFile>
         <DCC_DcpOutput>..\..\..\lib\</DCC_DcpOutput>
         <DCC_BplOutput>..\..\..\lib\</DCC_BplOutput>
@@ -87,7 +88,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="umcFrmConsulta.dcr"/>
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="dbrtl.dcp"/>
@@ -105,6 +105,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DCCReference Include="FireDACMSSQLDriver.dcp"/>
         <DCCReference Include="FireDACOracleDriver.dcp"/>
         <DCCReference Include="FireDACDBXDriver.dcp"/>
+        <DCCReference Include="DataSetDPK.dcp"/>
         <DCCReference Include="ConexaoCarregadorDPK.dcp"/>
         <DCCReference Include="FrmConsulta\umcFrmConsulta.pas">
             <Form>fmcFrmConsulta</Form>
@@ -114,17 +115,12 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DCCReference Include="RT\umcFrameWorkTypes.pas"/>
         <DCCReference Include="CrudToolbar\umcCrudToolbar.pas">
             <Form>CrudToolbar</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
-        <DCCReference Include="DataSet.Intf.ConfiguradorMetaData.pas"/>
-        <DCCReference Include="DataSet.Impl.ConfiguradorMetaData.pas"/>
+        <DCCReference Include="FDCrudToolbar\umcFDCrudToolbar.pas"/>
         <DCCReference Include="RT\umcConstantes.pas"/>
         <DCCReference Include="uRTTIUtils.pas"/>
-        <DCCReference Include="DataSet.Intf.DataSetContainer.pas"/>
-        <DCCReference Include="DataSet.Intf.MetaDataContainer.pas"/>
-        <DCCReference Include="DataSet.Impl.MetaDataContainer.pas"/>
-        <DCCReference Include="FDCrudToolbar\umcFDCrudToolbar.pas"/>
+        <DCCReference Include="RT\umcExceptions.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -145,16 +141,29 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 <Source>
                     <Source Name="MainSource">MCFWComponentes.dpk</Source>
                 </Source>
-                <Excluded_Packages/>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k230.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp230.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\MCFWFormsDpk.bpl">(untitled)</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="2">
-                <DeployFile LocalName="..\..\lib\MCFWComponentes.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="..\..\..\lib\MCFWComponentes.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>MCFWComponentes.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\Resources</RemoteDir>
@@ -468,16 +477,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
@@ -500,9 +500,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>copy $(PROJECTDIR)\CrudToolbar\*.dfm $(OUTPUTDIR)
-&amp;&amp;copy $(PROJECTDIR)\FrmConsulta\*.dfm $(OUTPUTDIR)
-</PostBuildEvent>
+        <PostBuildEvent>copy $(PROJECTDIR)\CrudToolbar\*.dfm $(OUTPUTDIR)&amp;&amp;copy $(PROJECTDIR)\FrmConsulta\*.dfm $(OUTPUTDIR)</PostBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
 </Project>
