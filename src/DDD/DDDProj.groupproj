@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{DCEF09C4-2D94-4B06-A6CD-BDB9A78383EF}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="dpk\DDDdpk.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Teste\DDDTest.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DDDdpk">
+        <MSBuild Projects="dpk\DDDdpk.dproj"/>
+    </Target>
+    <Target Name="DDDdpk:Clean">
+        <MSBuild Projects="dpk\DDDdpk.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DDDdpk:Make">
+        <MSBuild Projects="dpk\DDDdpk.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DDDTest">
+        <MSBuild Projects="Teste\DDDTest.dproj"/>
+    </Target>
+    <Target Name="DDDTest:Clean">
+        <MSBuild Projects="Teste\DDDTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DDDTest:Make">
+        <MSBuild Projects="Teste\DDDTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DDDdpk;DDDTest"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DDDdpk:Clean;DDDTest:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DDDdpk:Make;DDDTest:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

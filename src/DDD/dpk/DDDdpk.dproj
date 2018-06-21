@@ -1,14 +1,14 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{EEA1174C-18E6-4BC9-A3A4-2E241E05D34C}</ProjectGuid>
+        <ProjectGuid>{44EFCE8B-062D-4568-BA2E-9A384E74E7A1}</ProjectGuid>
+        <MainSource>DDDdpk.dpk</MainSource>
         <ProjectVersion>18.0</ProjectVersion>
-        <FrameworkType>VCL</FrameworkType>
-        <MainSource>OMestreDosCodigos.dpr</MainSource>
+        <FrameworkType>None</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
-        <AppType>Application</AppType>
+        <AppType>Package</AppType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -34,16 +34,12 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
-        <Cfg_2_Win32>true</Cfg_2_Win32>
-        <CfgParent>Cfg_2</CfgParent>
-        <Cfg_2>true</Cfg_2>
-        <Base>true</Base>
-    </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <SanitizedProjectName>OMestreDosCodigos</SanitizedProjectName>
-        <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
+        <GenDll>true</GenDll>
+        <GenPackage>true</GenPackage>
+        <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
+        <SanitizedProjectName>DDDdpk</SanitizedProjectName>
         <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
         <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
         <DCC_E>false</DCC_E>
@@ -53,11 +49,9 @@
         <DCC_K>false</DCC_K>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <VerInfo_Locale>1033</VerInfo_Locale>
-        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
-        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <DCC_UsePackage>DBXSqliteDriver;DBXDb2Driver;MCFWComponentes;dxCoreRS23;vclactnband;dxPSdxLCLnkRS23;vclFireDAC;dxPSLnksRS23;tethering;cxDataRS23;dxPSdxOCLnkRS23;dxTabbedMDIRS23;FireDACADSDriver;dxSkinBlackRS23;dxSkinLondonLiquidSkyRS23;GeradorSQLDT;dxDBXServerModeRS23;dxHttpIndyRequestRS23;dxPScxGridLnkRS23;cxSchedulerRS23;FireDACMSSQLDriver;vcltouch;vcldb;svn;dxWizardControlRS23;dxPScxCommonRS23;dxSkinMcSkinRS23;dxSkinOffice2007BlueRS23;dxBarRS23;cxSchedulerRibbonStyleEventEditorRS23;dxSkinOffice2013WhiteRS23;cxLibraryRS23;dxSkinVisualStudio2013LightRS23;cxPivotGridChartRS23;dxSkinSummer2008RS23;dxPSdxDBOCLnkRS23;dxGDIPlusRS23;dxSkinDarkSideRS23;FireDACDBXDriver;dxSkinFoggyRS23;dxSkinSevenRS23;vclx;dxSkinOffice2010SilverRS23;dxdborRS23;RESTBackendComponents;dxLayoutControlRS23;dxPSPrVwRibbonRS23;VCLRESTComponents;dxSkinDevExpressStyleRS23;dxSkinWhiteprintRS23;vclie;bindengine;CloudService;FireDACMySQLDriver;dxSkinOffice2013DarkGrayRS23;DataSnapClient;dxPScxPCProdRS23;bindcompdbx;DBXSybaseASEDriver;IndyIPServer;dxSkinPumpkinRS23;IndySystem;dsnapcon;cxTreeListdxBarPopupMenuRS23;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;dxSkinLilianRS23;dxBarDBNavRS23;dxFlowChartRS23;dxSkinOffice2016ColorfulRS23;DBXOdbcDriver;FireDACTDataDriver;soaprtl;DbxCommonDriver;dxSpreadSheetRS23;dxSkinOffice2007PinkRS23;dxPSdxSpreadSheetLnkRS23;xmlrtl;soapmidas;DataSnapNativeClient;fmxobj;dxSkinHighContrastRS23;dxSkinSevenClassicRS23;rtl;dxSkinTheAsphaltWorldRS23;DbxClientDriver;dxSkinDevExpressDarkStyleRS23;DBXSybaseASADriver;dxNavBarRS23;dxSkinMetropolisDarkRS23;dxRichEditControlRS23;appanalytics;cxPivotGridRS23;dxSkinsdxDLPainterRS23;IndyIPClient;dxRibbonRS23;dxPScxVGridLnkRS23;bindcompvcl;dxPScxTLLnkRS23;dxSkinOffice2007SilverRS23;dxMapControlRS23;VclSmp;dxPScxSchedulerLnkRS23;cxTreeListRS23;FireDACODBCDriver;ConexaoCarregadorDPK;DataSnapIndy10ServerTransport;dxRibbonCustomizationFormRS23;dxPSRichEditControlLnkRS23;dxBarExtDBItemsRS23;DataSnapProviderClient;FireDACMongoDBDriver;dxSkiniMaginaryRS23;dxSpellCheckerRS23;dxSkinsdxBarPainterRS23;dxSkinCoffeeRS23;DataSnapServerMidas;RESTComponents;DBXInterBaseDriver;dxADOServerModeRS23;emsclientfiredac;DataSnapFireDAC;svnui;dxmdsRS23;dxSkinLiquidSkyRS23;dxdbtrRS23;dxSkinSpringTimeRS23;dxPSCoreRS23;dxSkinscxPCPainterRS23;DBXMSSQLDriver;dxSkinXmas2008BlueRS23;DatasnapConnectorsFreePascal;bindcompfmx;DBXOracleDriver;dxSkinSilverRS23;dxSkinValentineRS23;inetdb;dxBarExtItemsRS23;FireDACIBDriver;fmx;fmxdae;dxServerModeRS23;dxPsPrVwAdvRS23;dxSkinOffice2010BlackRS23;FrameConsultaDpk;cxPageControlRS23;dxSkinStardustRS23;cxSchedulerGridRS23;dbexpress;IndyCore;dxSkinSharpPlusRS23;dsnap;DataSnapCommon;emsclient;FireDACCommon;dxSkinOffice2010BlueRS23;dxSkinVS2010RS23;dxSkinMetropolisRS23;DataSnapConnectors;cxVerticalGridRS23;MCFWFormsDPk;soapserver;dxSkinCaramelRS23;dxTileControlRS23;cxGridRS23;FireDACOracleDriver;DBXMySQLDriver;DBXFirebirdDriver;FireDACCommonDriver;inet;IndyIPCommon;dxSkinDarkRoomRS23;dxDockingRS23;vcl;dxSkinOffice2007GreenRS23;dxPScxExtCommonRS23;dxSkinsCoreRS23;FireDACDb2Driver;dxThemeRS23;GeradorSQL;dxSkinsdxRibbonPainterRS23;dxSkinVisualStudio2013BlueRS23;dxSkinMoneyTwinsRS23;dxPSdxFCLnkRS23;dxtrmdRS23;cxSchedulerTreeBrowserRS23;FireDAC;dxFireDACServerModeRS23;dxSkinBlueRS23;FireDACSqliteDriver;FireDACPgDriver;FireDACASADriver;cxEditorsRS23;dxSkinGlassOceansRS23;dxSkinsdxNavBarPainterRS23;dxGaugeControlRS23;cxPivotGridOLAPRS23;dxSkinSharpRS23;DataSnapServer;vclwinx;FireDACDSDriver;dxSkinBlueprintRS23;dxSkinOffice2007BlackRS23;CustomIPTransport;vcldsnap;dxSkinOffice2013LightGrayRS23;bindcomp;DBXInformixDriver;dxPSdxGaugeControlLnkRS23;dxPScxPivotGridLnkRS23;dxorgcRS23;dxPSdxDBTVLnkRS23;vclribbon;dbxcds;adortl;dxComnRS23;dsnapxml;dbrtl;inetdbxpress;IndyProtocols;cxExportRS23;dxSkinOffice2016DarkRS23;dxSkinVisualStudio2013DarkRS23;dxSkinscxSchedulerPainterRS23;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
@@ -69,19 +63,6 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <DCC_DcpOutput>..\..\lib\</DCC_DcpOutput>
-        <DCC_UnitSearchPath>..\..\lib\;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
-        <Debugger_DebugSourcePath>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\GeradorSQL\DT\;C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\FrameWork\MCFWForms\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
-        <DCC_DebugDCUs>false</DCC_DebugDCUs>
-        <BRCC_IncludePath>..\Conexao;C:\Users\Ambiente\Documents\Delphi\fortesreport-ce\Binary\LibD23;$(BRCC_IncludePath)</BRCC_IncludePath>
-        <DCC_MapFile>3</DCC_MapFile>
-        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Locale>1033</VerInfo_Locale>
-        <Icon_MainIcon>OMestreDosCodigos_Icon.ico</Icon_MainIcon>
-        <DCC_DcuOutput>..\..\lib\</DCC_DcuOutput>
-        <DCC_ExeOutput>..\..\bin\</DCC_ExeOutput>
-        <AppEnableHighDPI>true</AppEnableHighDPI>
-        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -90,58 +71,28 @@
         <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <AppEnableHighDPI>true</AppEnableHighDPI>
-        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-    </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="OMestreDosCodigos.UI.frmMenu.pas">
-            <Form>frmMenu</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="..\FrameWork\MCFWForms\umcForm.pas">
-            <Form>fmcForm</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="OMestreDosCodigos.UI.frmArrayClientes.pas">
-            <Form>frmArrayClientes</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="OMestreDosCodigos.Impl.Cliente.pas"/>
-        <DCCReference Include="..\pkgUtils\pkgUtils.Intf.EMail.pas"/>
-        <DCCReference Include="..\pkgUtils\pkgUtils.Intf.Telefone.pas"/>
-        <DCCReference Include="OMestreDosCodigos.Impl.Cliente.Builder.pas"/>
-        <DCCReference Include="OMestreDosCodigos.Intf.Cliente.pas"/>
-        <DCCReference Include="OMestreDosCodigos.Intf.Cliente.Builder.pas"/>
-        <DCCReference Include="OMestreDosCodigos.Intf.Cliente.ListaArrayDinamico.pas"/>
-        <DCCReference Include="OMestreDosCodigos.Impl.Cliente.ListaArrayDinamico.pas"/>
-        <DCCReference Include="..\MetaDataConf\MetaDataConf.UI.ffwForm.pas">
-            <Form>ffwForm</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="..\MetaDataConf\MetaDataConf.UI.ffwConfigEntidade.pas">
-            <Form>ffwConfigEntidade</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="..\MetaDataConf\MetaDataConf.UI.ffwConfigEntidade.Relatorio.pas">
-            <Form>frmRelatorio</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="OMestreDosCodigos.UI.frmPerguntasAlternativas.pas">
-            <Form>frmPerguntasAlternativas</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="OMestreDosCodigos.UI.frmConstPesquisa.pas">
-            <Form>frmConsPesquisa</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="OMestreDosCodigos.UI.frmPesquisas.pas">
-            <Form>frmCadPesquisa</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
+        <DCCReference Include="rtl.dcp"/>
+        <DCCReference Include="vcl.dcp"/>
+        <DCCReference Include="dbrtl.dcp"/>
+        <DCCReference Include="pkgUtils.dcp"/>
+        <DCCReference Include="FireDAC.dcp"/>
+        <DCCReference Include="FireDACCommonDriver.dcp"/>
+        <DCCReference Include="FireDACCommon.dcp"/>
+        <DCCReference Include="..\Core\DDD.Core.Intf.Entidade.pas"/>
+        <DCCReference Include="..\Core\DDD.Core.Intf.Agregado.pas"/>
+        <DCCReference Include="..\Core\DDD.Core.Impl.Agregado.pas"/>
+        <DCCReference Include="..\Core\DDD.Core.Impl.Entidade.pas"/>
+        <DCCReference Include="..\Core\DDD.Core.Intf.ID.pas"/>
+        <DCCReference Include="..\Core\DDD.Core.Impl.ID.pas"/>
+        <DCCReference Include="..\Modulo\DDD.Modulo.Intf.Adaptador.pas"/>
+        <DCCReference Include="..\Modulo\DDD.Modulo.Impl.Adaptador.DataSetEntidade.pas"/>
+        <DCCReference Include="..\Anotacao\DDD.Anotacao.Entidade.Propriedade.pas"/>
+        <DCCReference Include="..\Anotacao\DDD.Anotacao.Entidade.pas"/>
+        <DCCReference Include="..\Anotacao\DDD.Anotacao.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -156,21 +107,32 @@
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Delphi.Personality.12</Borland.Personality>
-        <Borland.ProjectType>Application</Borland.ProjectType>
+        <Borland.ProjectType>Package</Borland.ProjectType>
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">OMestreDosCodigos.dpr</Source>
+                    <Source Name="MainSource">DDDdpk.dpk</Source>
                 </Source>
-                <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k230.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp230.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
-                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="2">
-                <DeployFile LocalName="..\..\bin\OMestreDosCodigos.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\..\..\..\Public\Documents\Embarcadero\Studio\17.0\Bpl\DDDdpk.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>OMestreDosCodigos.exe</RemoteName>
+                        <RemoteName>DDDdpk.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -179,20 +141,7 @@
                         <Operation>0</Operation>
                         <Extensions>.dll;.bpl</Extensions>
                     </Platform>
-                    <Platform Name="iOSDevice64">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
                     <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
                         <Extensions>.dylib</Extensions>
                     </Platform>
@@ -214,11 +163,7 @@
                         <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>0</Operation>
                     </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                    </Platform>
                     <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -253,7 +198,6 @@
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice32">
@@ -272,7 +216,6 @@
                         <Operation>0</Operation>
                     </Platform>
                     <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                         <Extensions>.framework</Extensions>
                     </Platform>
@@ -326,17 +269,7 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="ProjectiOSInfoPList">
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSDevice64">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
+                <DeployClass Name="ProjectiOSInfoPList"/>
                 <DeployClass Name="AndroidLibnativeArmeabiFile">
                     <Platform Name="Android">
                         <RemoteDir>library\lib\armeabi</RemoteDir>
@@ -351,7 +284,6 @@
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -395,16 +327,7 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="ProjectiOSEntitlements">
-                    <Platform Name="iOSDevice64">
-                        <RemoteDir>../</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSDevice32">
-                        <RemoteDir>../</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
+                <DeployClass Name="ProjectiOSEntitlements"/>
                 <DeployClass Name="Android_LauncherIcon72">
                     <Platform Name="Android">
                         <RemoteDir>res\drawable-hdpi</RemoteDir>
@@ -417,18 +340,8 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="ProjectOSXInfoPList">
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectOSXEntitlements">
-                    <Platform Name="OSX32">
-                        <RemoteDir>../</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
+                <DeployClass Name="ProjectOSXInfoPList"/>
+                <DeployClass Name="ProjectOSXEntitlements"/>
                 <DeployClass Name="iPad_Launch2048">
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
@@ -488,7 +401,6 @@
                         <Operation>0</Operation>
                     </Platform>
                     <Platform Name="OSX32">
-                        <RemoteDir>Contents\Resources\StartUp\</RemoteDir>
                         <Operation>0</Operation>
                     </Platform>
                     <Platform Name="iOSDevice32">
@@ -517,7 +429,6 @@
                         <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                         <Extensions>.dylib</Extensions>
                     </Platform>
@@ -548,26 +459,18 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="ProjectiOSDeviceResourceRules">
-                    <Platform Name="iOSDevice64">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
-                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
             </Deployment>
             <Platforms>
                 <Platform value="Win32">True</Platform>
             </Platforms>
-            <ModelSupport>False</ModelSupport>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>

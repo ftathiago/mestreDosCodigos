@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<test-results name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\DDD\Teste\Win32\Debug\DDDTest.exe" total="1" errors="0" failures="0" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2018-06-20" time="57.389">
+  <culture-info current-culture="en" current-uiculture="en" />
+  <test-suite type="Assembly" name="DDDTest.exe" executed="true" result="Success" success="True" time="57.389" asserts="0">
+    <results>
+        <test-suite type="Namespace" name="DDD" executed="true" result="Success" success="True" time="57.388" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TAdaptadorTest" executed="True" result="Success" success="True" time="57.388" >
+                <results>
+                  <test-case name="TestarAdaptar" executed="True" result="Success" success="True" time="53.510" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+    </results>
+  </test-suite>
+</test-results>
