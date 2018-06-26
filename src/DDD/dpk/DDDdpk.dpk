@@ -42,12 +42,16 @@ contains
   DDD.Core.Impl.Agregado in '..\Core\DDD.Core.Impl.Agregado.pas',
   DDD.Core.Impl.Entidade in '..\Core\DDD.Core.Impl.Entidade.pas',
   DDD.Core.Intf.ID in '..\Core\DDD.Core.Intf.ID.pas',
-  DDD.Core.Impl.ID in '..\Core\DDD.Core.Impl.ID.pas',
+  DDD.Core.Impl.IDRandomico in '..\Core\DDD.Core.Impl.IDRandomico.pas',
   DDD.Modulo.Intf.Adaptador in '..\Modulo\DDD.Modulo.Intf.Adaptador.pas',
   DDD.Modulo.Impl.Adaptador.DataSetEntidade in '..\Modulo\DDD.Modulo.Impl.Adaptador.DataSetEntidade.pas',
   DDD.Anotacao.Entidade.Propriedade in '..\Anotacao\DDD.Anotacao.Entidade.Propriedade.pas',
   DDD.Anotacao.Entidade in '..\Anotacao\DDD.Anotacao.Entidade.pas',
-  DDD.Anotacao in '..\Anotacao\DDD.Anotacao.pas';
+  DDD.Anotacao in '..\Anotacao\DDD.Anotacao.pas',
+  DDD.Modulo.Intf.IDFactory in '..\Modulo\DDD.Modulo.Intf.IDFactory.pas',
+  DDD.Modulo.Impl.IDFactory in '..\Modulo\DDD.Modulo.Impl.IDFactory.pas',
+  DDD.Modulo.Impl.Adaptador.EntidadeDataSet in '..\Modulo\DDD.Modulo.Impl.Adaptador.EntidadeDataSet.pas',
+  DDD.Core.Impl.NullableType in '..\Core\DDD.Core.Impl.NullableType.pas';
 
 end.
 

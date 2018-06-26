@@ -65,6 +65,8 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <Manifest_File>None</Manifest_File>
+        <VerInfo_Locale>1033</VerInfo_Locale>
         <Debugger_DebugSourcePath>C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\src\pkgUtils\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
@@ -78,20 +80,25 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="DDD.Teste.Modulo.Agregado.pas"/>
-        <DCCReference Include="..\Modulo\DDD.Modulo.Intf.Adaptador.pas"/>
-        <DCCReference Include="..\Modulo\DDD.Modulo.Impl.Adaptador.DataSetEntidade.pas"/>
-        <DCCReference Include="..\Core\DDD.Core.Intf.ID.pas"/>
-        <DCCReference Include="..\Core\DDD.Core.Intf.Entidade.pas"/>
-        <DCCReference Include="..\Core\DDD.Core.Intf.Agregado.pas"/>
-        <DCCReference Include="..\Core\DDD.Core.Impl.ID.pas"/>
-        <DCCReference Include="..\Core\DDD.Core.Impl.Entidade.pas"/>
-        <DCCReference Include="..\Core\DDD.Core.Impl.Agregado.pas"/>
+        <DCCReference Include="DDD.Teste.Modulo.Adaptador.pas"/>
         <DCCReference Include="..\Anotacao\DDD.Anotacao.pas"/>
         <DCCReference Include="..\Anotacao\DDD.Anotacao.Entidade.Propriedade.pas"/>
         <DCCReference Include="..\Anotacao\DDD.Anotacao.Entidade.pas"/>
         <DCCReference Include="DDD.Teste.Mock.Entidade.pas"/>
         <DCCReference Include="DDD.Teste.Entidade.pas"/>
+        <DCCReference Include="DDD.Teste.Agregado.pas"/>
+        <DCCReference Include="DDD.Teste.Mock.Agregado.pas"/>
+        <DCCReference Include="DDD.Teste.IDRandomico.pas"/>
+        <DCCReference Include="..\Modulo\DDD.Modulo.Intf.IDFactory.pas"/>
+        <DCCReference Include="..\Modulo\DDD.Modulo.Intf.Adaptador.pas"/>
+        <DCCReference Include="..\Modulo\DDD.Modulo.Impl.IDFactory.pas"/>
+        <DCCReference Include="..\Modulo\DDD.Modulo.Impl.Adaptador.DataSetEntidade.pas"/>
+        <DCCReference Include="..\Core\DDD.Core.Intf.ID.pas"/>
+        <DCCReference Include="..\Core\DDD.Core.Intf.Entidade.pas"/>
+        <DCCReference Include="..\Core\DDD.Core.Intf.Agregado.pas"/>
+        <DCCReference Include="..\Core\DDD.Core.Impl.IDRandomico.pas"/>
+        <DCCReference Include="..\Core\DDD.Core.Impl.Entidade.pas"/>
+        <DCCReference Include="..\Core\DDD.Core.Impl.Agregado.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -112,6 +119,11 @@
                 <Source>
                     <Source Name="MainSource">DDDTest.dpr</Source>
                 </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k230.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp230.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\MCFWFormsDpk.bpl">(untitled)</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="2">
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
@@ -135,7 +147,16 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\Resources</RemoteDir>
@@ -449,16 +470,7 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>

@@ -27,7 +27,6 @@ implementation
 uses
   System.SysUtils, Data.DB, DDD.Modulo.Impl.Adaptador.DataSetEntidade;
 
-{ TEntidadeTest }
 
 procedure TEntidadeTest.Setup;
 begin
@@ -48,6 +47,7 @@ end;
 procedure TEntidadeTest.TestarCriarEntidade;
 begin
   FMockEntidade := TMockEntidade.New;
+  Assert.IsTrue(Assigned(FMockEntidade));
 end;
 
 initialization

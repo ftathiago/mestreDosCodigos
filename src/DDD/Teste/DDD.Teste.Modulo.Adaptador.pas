@@ -1,4 +1,4 @@
-unit DDD.Teste.Modulo.Agregado;
+unit DDD.Teste.Modulo.Adaptador;
 
 interface
 
@@ -35,7 +35,6 @@ begin
   ConfigurarDataSet(FDataSet);
   InserirDadosPadrao(FDataSet);
   FMockEntidade := TMockEntidade.New;
-;
 end;
 
 procedure TAdaptadorTest.TearDown;
@@ -50,7 +49,6 @@ begin
   Assert.AreEqual(VALOR_CAMPO1, FMockEntidade.Campo1, FMockEntidade.Campo1);
   Assert.AreEqual(VALOR_CAMPO2, FMockEntidade.Campo2);
 end;
-
 
 procedure TAdaptadorTest.TestarCriarAdaptador;
 begin

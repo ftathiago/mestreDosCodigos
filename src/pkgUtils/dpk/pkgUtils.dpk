@@ -25,7 +25,7 @@ package pkgUtils;
 {$IMAGEBASE $400000}
 {$DEFINE DEBUG}
 {$ENDIF IMPLICITBUILDING}
-
+{$IMPLICITBUILD ON}
 
 requires
   rtl,
@@ -64,7 +64,10 @@ contains
   pkgUtils.Impl.Endereco in '..\pkgUtils.Impl.Endereco.pas',
   pkgUtils.Impl.Telefone in '..\pkgUtils.Impl.Telefone.pas',
   pkgUtils.Intf.Aplicacao in '..\pkgUtils.Intf.Aplicacao.pas',
-  pkgUtils.Impl.RTTIUtils in '..\pkgUtils.Impl.RTTIUtils.pas';
+  pkgUtils.Impl.RTTIUtils in '..\pkgUtils.Impl.RTTIUtils.pas',
+  pkgUtils.Intf.DataSetPropriedadesTemporarias in '..\pkgUtils.Intf.DataSetPropriedadesTemporarias.pas',
+  pkgUtils.Impl.FDDataSetPropriedadesTemporarias in '..\pkgUtils.Impl.FDDataSetPropriedadesTemporarias.pas';
+
 end.
 
 

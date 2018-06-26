@@ -1,4 +1,4 @@
-unit DDD.Modulo.Impl.Adaptador.DataSetEntidade;
+unit DDD.Modulo.Impl.Adaptador.EntidadeDataSet;
 
 interface
 
@@ -6,7 +6,7 @@ uses
   Data.DB, DDD.Core.Intf.Entidade, DDD.Modulo.Intf.Adaptador;
 
 type
-  TAdaptadorEntidadeDataSet<T: IEntidade> = class(TInterfacedObject, IAdaptador)
+  TAdaptadorDataSetEntidade<T: IEntidade> = class(TInterfacedObject, IAdaptador)
   private
     FDataSet: TDataSet;
     FEntidade: IEntidade;
@@ -22,18 +22,18 @@ uses
   DDD.Anotacao.Entidade.Propriedade,
   pkgUtils.Impl.RttiUtils, System.Rtti;
 
-constructor TAdaptadorEntidadeDataSet<T>.Create(const ADataSet: TDataSet; const AEntidade: T);
+constructor TAdaptadorDataSetEntidade<T>.Create(const ADataSet: TDataSet; const AEntidade: T);
 begin
   FDataSet := ADataSet;
   FEntidade := AEntidade;
 end;
 
-class function TAdaptadorEntidadeDataSet<T>.New(const ADataSet: TDataSet; const AEntidade: T): IAdaptador;
+class function TAdaptadorDataSetEntidade<T>.New(const ADataSet: TDataSet; const AEntidade: T): IAdaptador;
 begin
   result := Create(ADataSet, AEntidade);
 end;
 
-procedure TAdaptadorEntidadeDataSet<T>.Adaptar;
+procedure TAdaptadorDataSetEntidade<T>.Adaptar;
 var
   i: Integer;
   _propriedades: TArray<TRttiProperty>;
@@ -46,6 +46,7 @@ begin
     _anotacao := TPropriedadeAttribute.ExtrairAnotacao(_propriedade) as TPropriedadeAttribute;
     if not Assigned(_anotacao) then
       continue;
+
     RttiUtils.FieldToValue(FDataSet.FieldByName(_anotacao.NomePropriedade), FEntidade as TObject,
       _propriedade.Name);
   end;

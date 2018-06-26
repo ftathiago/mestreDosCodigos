@@ -4,10 +4,12 @@ interface
 
 uses
   Data.DB, FireDac.Comp.Client,
-  DDD.Anotacao.Entidade.Propriedade, DDD.Core.Intf.Entidade, DDD.Core.Impl.Entidade;
+  DDD.Anotacao.Entidade.Propriedade, DDD.Core.Intf.Entidade, DDD.Core.Impl.Entidade, DDD.Core.Impl.Agregado,
+  DDD.Core.Intf.Agregado;
 
 type
   IMockEntidade = Interface(IEntidade)
+    ['{A7C455EE-EDEE-4687-9B42-0D1966097EA0}']
     function GetCampo1: string;
     function GetCampo2: integer;
     procedure SetCampo1(const Value: string);
