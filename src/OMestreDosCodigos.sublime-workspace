@@ -23,6 +23,23 @@
 				"buffer_size": 2559,
 				"line_ending": "Windows"
 			}
+		},
+		{
+			"file": "DDD/Core/DDD.Core.Impl.NullableType.pas",
+			"settings":
+			{
+				"buffer_size": 3043,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Implict - para conversões implícitas.\nLida com o uso da variável quando é utilizada em operações em que é exigida a conversão de um tipo para outro implicitamente. O compilador analisa o contexto e escolhe a função com o tipo de retorno mais adequado.\n\nTIntRec = record\n  TIntRec = record\n  private\n    FValor: integer;\n  public\n    function getValor: integer;\n    procedure setValor(const Value: integer);\n    class operator implicit(ARight: integer): TIntRec;\n    class operator implicit(ARight: TIntRec): integer;\n  end;\n\n...\n\nclass operator TIntRec.implicit(ARight: integer): TIntRec;\nbegin\n  result.setValor(ARight);\nend;\n\nclass operator TIntRec.implicit(ARight: TIntRec): integer;\nbegin\n  result := ARight.getValor;\nend;\n",
+			"settings":
+			{
+				"buffer_size": 727,
+				"line_ending": "Windows",
+				"name": "Implict - para conversões implícitas."
+			}
 		}
 	],
 	"build_system": "",
@@ -84,7 +101,7 @@
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 27.0
 	},
 	"find_in_files":
 	{
@@ -98,6 +115,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"explicit",
+			"implicit"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -115,7 +134,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -145,7 +164,7 @@
 						"translation.y": 378.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -175,7 +194,65 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "DDD/Core/DDD.Core.Impl.NullableType.pas",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3043,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1886,
+								1894
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Pascal/Pascal.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 206.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 727,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								727,
+								727
+							]
+						],
+						"settings":
+						{
+							"auto_name": "Implict - para conversões implícitas.",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -183,7 +260,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 27.0
 	},
 	"input":
 	{
@@ -220,7 +297,7 @@
 	"project": "OMestreDosCodigos.sublime-project",
 	"replace":
 	{
-		"height": 0.0
+		"height": 50.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -229,6 +306,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"nullable",
+				"DDD\\Core\\DDD.Core.Impl.NullableType.pas"
+			]
 		],
 		"width": 0.0
 	},

@@ -66,7 +66,9 @@ contains
   pkgUtils.Intf.Aplicacao in '..\pkgUtils.Intf.Aplicacao.pas',
   pkgUtils.Impl.RTTIUtils in '..\pkgUtils.Impl.RTTIUtils.pas',
   pkgUtils.Intf.DataSetPropriedadesTemporarias in '..\pkgUtils.Intf.DataSetPropriedadesTemporarias.pas',
-  pkgUtils.Impl.FDDataSetPropriedadesTemporarias in '..\pkgUtils.Impl.FDDataSetPropriedadesTemporarias.pas';
+  pkgUtils.Impl.FDDataSetPropriedadesTemporarias in '..\pkgUtils.Impl.FDDataSetPropriedadesTemporarias.pas',
+  pkgUtils.Impl.Nullable in '..\pkgUtils.Impl.Nullable.pas',
+  pkgUtils.Impl.Types in '..\pkgUtils.Impl.Types.pas';
 
 end.
 

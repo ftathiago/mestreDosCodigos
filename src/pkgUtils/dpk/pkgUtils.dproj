@@ -122,6 +122,8 @@
         <DCCReference Include="..\pkgUtils.Impl.RTTIUtils.pas"/>
         <DCCReference Include="..\pkgUtils.Intf.DataSetPropriedadesTemporarias.pas"/>
         <DCCReference Include="..\pkgUtils.Impl.FDDataSetPropriedadesTemporarias.pas"/>
+        <DCCReference Include="..\pkgUtils.Impl.Nullable.pas"/>
+        <DCCReference Include="..\pkgUtils.Impl.Types.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

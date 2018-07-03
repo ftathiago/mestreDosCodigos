@@ -50,8 +50,7 @@ contains
   DDD.Anotacao in '..\Anotacao\DDD.Anotacao.pas',
   DDD.Modulo.Intf.IDFactory in '..\Modulo\DDD.Modulo.Intf.IDFactory.pas',
   DDD.Modulo.Impl.IDFactory in '..\Modulo\DDD.Modulo.Impl.IDFactory.pas',
-  DDD.Modulo.Impl.Adaptador.EntidadeDataSet in '..\Modulo\DDD.Modulo.Impl.Adaptador.EntidadeDataSet.pas',
-  DDD.Core.Impl.NullableType in '..\Core\DDD.Core.Impl.NullableType.pas';
+  DDD.Modulo.Impl.Adaptador.EntidadeDataSet in '..\Modulo\DDD.Modulo.Impl.Adaptador.EntidadeDataSet.pas';
 
 end.
 

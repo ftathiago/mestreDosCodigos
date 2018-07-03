@@ -1,28 +1,30 @@
-unit DDD.Core.Impl.NullableType;
+unit pkgUtils.Impl.Nullable;
 
 interface
 
 uses
-  System.Generics.Defaults, System.SysUtils;
+  System.Types, System.Generics.Defaults, System.SysUtils;
 
 type
-
   Nullable<T> = record
   private
     FValue: T;
     FHasValue: IInterface;
     function GetValue: T;
-    function GetHasValue: Boolean;
+    function GetHasValue: boolean;
   public
     constructor Create(AValue: T);
     function GetValueOrDefault: T; overload;
     function GetValueOrDefault(Default: T): T; overload;
-    property HasValue: Boolean read GetHasValue;
+    property HasValue: boolean read GetHasValue;
     property Value: T read GetValue;
-    class operator NotEqual(const ALeft, ARight: Nullable<T>): Boolean;
-    class operator Equal(ALeft, ARight: Nullable<T>): Boolean;
     class operator Implicit(Value: Nullable<T>): T;
     class operator Implicit(Value: T): Nullable<T>;
+    class operator GreaterThan(aLeft, aRight: Nullable<T>): boolean;
+    class operator GreaterThanOrEqual(aLeft, aRight: Nullable<T>): boolean;
+    class operator LessThan(aLeft, aRight: Nullable<T>):boolean;
+    class operator NotEqual(const aLeft, aRight: Nullable<T>): boolean;
+    class operator Equal(aLeft, aRight: Nullable<T>): boolean;
   end;
 
 procedure SetFlagInterface(var Intf: IInterface);
@@ -62,20 +64,20 @@ begin
   SetFlagInterface(FHasValue);
 end;
 
-class operator Nullable<T>.Equal(ALeft, ARight: Nullable<T>): Boolean;
+class operator Nullable<T>.Equal(aLeft, aRight: Nullable<T>): boolean;
 var
   Comparer: IEqualityComparer<T>;
 begin
-  if ALeft.HasValue and ARight.HasValue then
+  if aLeft.HasValue and aRight.HasValue then
   begin
     Comparer := TEqualityComparer<T>.Default;
-    Result := Comparer.Equals(ALeft.Value, ARight.Value);
+    Result := Comparer.Equals(aLeft.Value, aRight.Value);
   end
   else
-    Result := ALeft.HasValue = ARight.HasValue;
+    Result := aLeft.HasValue = aRight.HasValue;
 end;
 
-function Nullable<T>.GetHasValue: Boolean;
+function Nullable<T>.GetHasValue: boolean;
 begin
   Result := FHasValue <> nil;
 end;
@@ -103,6 +105,34 @@ begin
     Result := FValue;
 end;
 
+class operator Nullable<T>.GreaterThan(aLeft, aRight: Nullable<T>): boolean;
+var
+  _comparer: IComparer<T>;
+  _relacao: TValueRelationship;
+begin
+  if not aLeft.HasValue then
+    Exit(False);
+
+  if not aRight.HasValue then
+    Exit(True);
+
+  _comparer := TComparer<T>.Default;
+  _relacao := TValueRelationship(_comparer.Compare(aLeft, aRight));
+  result := _relacao = GreaterThanValue;
+end;
+
+class operator Nullable<T>.GreaterThanOrEqual(aLeft, aRight: Nullable<T>): boolean;
+var
+  _comparer: IComparer<T>;
+  _relacao: TValueRelationship;
+begin
+  if (not aLeft.HasValue) and (not aRight.HasValue) then
+    Exit(True);
+  _comparer := TComparer<T>.Default;
+  _relacao := TValueRelationship(_comparer.Compare(aLeft, aRight));
+  Result := _relacao in [EqualsValue, GreaterThanValue];
+end;
+
 class operator Nullable<T>.Implicit(Value: Nullable<T>): T;
 begin
   Result := Value.Value;
@@ -113,17 +143,22 @@ begin
   Result := Nullable<T>.Create(Value);
 end;
 
-class operator Nullable<T>.NotEqual(const ALeft, ARight: Nullable<T>): Boolean;
+class operator Nullable<T>.LessThan(aLeft, aRight: Nullable<T>): boolean;
+begin
+
+end;
+
+class operator Nullable<T>.NotEqual(const aLeft, aRight: Nullable<T>): boolean;
 var
   Comparer: IEqualityComparer<T>;
 begin
-  if ALeft.HasValue and ARight.HasValue then
+  if aLeft.HasValue and aRight.HasValue then
   begin
     Comparer := TEqualityComparer<T>.Default;
-    Result := not Comparer.Equals(ALeft.Value, ARight.Value);
+    Result := not Comparer.Equals(aLeft.Value, aRight.Value);
   end
   else
-    Result := ALeft.HasValue <> ARight.HasValue;
+    Result := aLeft.HasValue <> aRight.HasValue;
 end;
 
 end.

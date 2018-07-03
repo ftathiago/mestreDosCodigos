@@ -3,10 +3,16 @@
         <ProjectGuid>{DCEF09C4-2D94-4B06-A6CD-BDB9A78383EF}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
+        <Projects Include="..\pkgUtils\dpk\pkgUtils.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="dpk\DDDdpk.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Teste\DDDTest.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\pkgUtils\Teste\pkgUtilsTeste.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -17,6 +23,15 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
+    <Target Name="pkgUtils">
+        <MSBuild Projects="..\pkgUtils\dpk\pkgUtils.dproj"/>
+    </Target>
+    <Target Name="pkgUtils:Clean">
+        <MSBuild Projects="..\pkgUtils\dpk\pkgUtils.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgUtils:Make">
+        <MSBuild Projects="..\pkgUtils\dpk\pkgUtils.dproj" Targets="Make"/>
+    </Target>
     <Target Name="DDDdpk">
         <MSBuild Projects="dpk\DDDdpk.dproj"/>
     </Target>
@@ -35,14 +50,23 @@
     <Target Name="DDDTest:Make">
         <MSBuild Projects="Teste\DDDTest.dproj" Targets="Make"/>
     </Target>
+    <Target Name="pkgUtilsTeste">
+        <MSBuild Projects="..\pkgUtils\Teste\pkgUtilsTeste.dproj"/>
+    </Target>
+    <Target Name="pkgUtilsTeste:Clean">
+        <MSBuild Projects="..\pkgUtils\Teste\pkgUtilsTeste.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pkgUtilsTeste:Make">
+        <MSBuild Projects="..\pkgUtils\Teste\pkgUtilsTeste.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="DDDdpk;DDDTest"/>
+        <CallTarget Targets="pkgUtils;DDDdpk;DDDTest;pkgUtilsTeste"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="DDDdpk:Clean;DDDTest:Clean"/>
+        <CallTarget Targets="pkgUtils:Clean;DDDdpk:Clean;DDDTest:Clean;pkgUtilsTeste:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="DDDdpk:Make;DDDTest:Make"/>
+        <CallTarget Targets="pkgUtils:Make;DDDdpk:Make;DDDTest:Make;pkgUtilsTeste:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

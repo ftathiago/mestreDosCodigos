@@ -96,7 +96,6 @@
         <DCCReference Include="..\Modulo\DDD.Modulo.Intf.IDFactory.pas"/>
         <DCCReference Include="..\Modulo\DDD.Modulo.Impl.IDFactory.pas"/>
         <DCCReference Include="..\Modulo\DDD.Modulo.Impl.Adaptador.EntidadeDataSet.pas"/>
-        <DCCReference Include="..\Core\DDD.Core.Impl.NullableType.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

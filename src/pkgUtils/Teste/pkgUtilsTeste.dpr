@@ -23,7 +23,10 @@ uses
   pkgUtils.Intf.Telefone in '..\pkgUtils.Intf.Telefone.pas',
   pkgUtils.Intf.Validavel in '..\pkgUtils.Intf.Validavel.pas',
   pkgUtils.Teste.TelefoneTeste in 'pkgUtils.Teste.TelefoneTeste.pas',
-  pkgUtils.Impl.Telefone in '..\pkgUtils.Impl.Telefone.pas';
+  pkgUtils.Impl.Telefone in '..\pkgUtils.Impl.Telefone.pas',
+  pkgUtils.Impl.Types in '..\pkgUtils.Impl.Types.pas',
+  pkgUtils.Teste.NullableTeste in 'pkgUtils.Teste.NullableTeste.pas',
+  pkgUtils.Impl.Nullable in '..\pkgUtils.Impl.Nullable.pas';
 
 var
   runner : ITestRunner;
