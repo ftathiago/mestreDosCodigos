@@ -25,7 +25,8 @@ type
 implementation
 
 uses
-  System.SysUtils, Data.DB, DDD.Modulo.Impl.Adaptador.DataSetEntidade;
+  System.SysUtils, Data.DB, DDD.Modulo.Impl.Adaptador.DataSetEntidade, DDD.Modulo.Intf.IDFactory,
+  DDD.Modulo.Impl.IDFactory;
 
 
 procedure TEntidadeTest.Setup;
@@ -46,7 +47,7 @@ end;
 
 procedure TEntidadeTest.TestarCriarEntidade;
 begin
-  FMockEntidade := TMockEntidade.New;
+  FMockEntidade := TMockEntidade.New(TIDFactory.New(tiRandomico).NovoID);
   Assert.IsTrue(Assigned(FMockEntidade));
 end;
 

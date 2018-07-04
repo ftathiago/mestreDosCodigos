@@ -80,7 +80,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="DDD.Teste.Modulo.Adaptador.pas"/>
+        <DCCReference Include="DDD.Teste.Modulo.AdaptadorDataSetEntidade.pas"/>
         <DCCReference Include="..\Anotacao\DDD.Anotacao.pas"/>
         <DCCReference Include="..\Anotacao\DDD.Anotacao.Entidade.Propriedade.pas"/>
         <DCCReference Include="..\Anotacao\DDD.Anotacao.Entidade.pas"/>
@@ -99,6 +99,8 @@
         <DCCReference Include="..\Core\DDD.Core.Impl.IDRandomico.pas"/>
         <DCCReference Include="..\Core\DDD.Core.Impl.Entidade.pas"/>
         <DCCReference Include="..\Core\DDD.Core.Impl.Agregado.pas"/>
+        <DCCReference Include="..\Modulo\DDD.Modulo.Impl.Adaptador.EntidadeDataSet.pas"/>
+        <DCCReference Include="DDD.Teste.Modulo.AdaptadorEntidadeDataSet.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -147,16 +149,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
                 <DeployClass Name="ProjectOSXResource">
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\Resources</RemoteDir>
@@ -470,7 +463,16 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                </DeployClass>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>

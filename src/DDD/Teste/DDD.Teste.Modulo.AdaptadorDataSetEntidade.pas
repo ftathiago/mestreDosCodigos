@@ -1,4 +1,4 @@
-unit DDD.Teste.Modulo.Adaptador;
+unit DDD.Teste.Modulo.AdaptadorDataSetEntidade;
 
 interface
 
@@ -27,14 +27,15 @@ type
 implementation
 
 uses
-  System.SysUtils, Data.DB, DDD.Modulo.Impl.Adaptador.DataSetEntidade;
+  System.SysUtils, Data.DB, DDD.Modulo.Impl.Adaptador.DataSetEntidade, DDD.Modulo.Intf.IDFactory,
+  DDD.Modulo.Impl.IDFactory;
 
 procedure TAdaptadorTest.Setup;
 begin
   FDataSet := TFDMemTable.Create(Nil);
   ConfigurarDataSet(FDataSet);
   InserirDadosPadrao(FDataSet);
-  FMockEntidade := TMockEntidade.New;
+  FMockEntidade := TMockEntidade.New(TIDFactory.New(tiRandomico).NovoID);
 end;
 
 procedure TAdaptadorTest.TearDown;

@@ -11,7 +11,7 @@ uses
   DUnitX.Loggers.Console,
   DUnitX.Loggers.Xml.NUnit,
   DUnitX.TestFramework,
-  DDD.Teste.Modulo.Adaptador in 'DDD.Teste.Modulo.Adaptador.pas',
+  DDD.Teste.Modulo.AdaptadorDataSetEntidade in 'DDD.Teste.Modulo.AdaptadorDataSetEntidade.pas',
   DDD.Anotacao in '..\Anotacao\DDD.Anotacao.pas',
   DDD.Anotacao.Entidade.Propriedade in '..\Anotacao\DDD.Anotacao.Entidade.Propriedade.pas',
   DDD.Anotacao.Entidade in '..\Anotacao\DDD.Anotacao.Entidade.pas',
@@ -29,7 +29,9 @@ uses
   DDD.Core.Intf.Agregado in '..\Core\DDD.Core.Intf.Agregado.pas',
   DDD.Core.Impl.IDRandomico in '..\Core\DDD.Core.Impl.IDRandomico.pas',
   DDD.Core.Impl.Entidade in '..\Core\DDD.Core.Impl.Entidade.pas',
-  DDD.Core.Impl.Agregado in '..\Core\DDD.Core.Impl.Agregado.pas';
+  DDD.Core.Impl.Agregado in '..\Core\DDD.Core.Impl.Agregado.pas',
+  DDD.Modulo.Impl.Adaptador.EntidadeDataSet in '..\Modulo\DDD.Modulo.Impl.Adaptador.EntidadeDataSet.pas',
+  DDD.Teste.Modulo.AdaptadorEntidadeDataSet in 'DDD.Teste.Modulo.AdaptadorEntidadeDataSet.pas';
 
 var
   runner : ITestRunner;

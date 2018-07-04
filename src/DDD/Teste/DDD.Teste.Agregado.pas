@@ -28,7 +28,7 @@ type
 implementation
 
 uses
-  System.SysUtils, DDD.Core.Intf.ID;
+  System.SysUtils, DDD.Core.Intf.ID, DDD.Modulo.Intf.IDFactory, DDD.Modulo.Impl.IDFactory;
 
 procedure TAgregadoTest.AgregadoCriaNovoID;
 var
@@ -47,6 +47,7 @@ end;
 procedure TAgregadoTest.Setup;
 begin
   FAgregado := TMockEntidadeAgregado.Create(Nil);
+  ConfigurarDataSet(FAgregado);
 end;
 
 procedure TAgregadoTest.TearDown;
@@ -58,7 +59,7 @@ procedure TAgregadoTest.TestarIncluirEntidade;
 var
   _mockEntidade: IMockEntidade;
 begin
-  _mockEntidade := TMockEntidade.New;
+  _mockEntidade := TMockEntidade.New(TIDFactory.New(tiRandomico).NovoID);
   _mockEntidade.DefinirNovoID(FAgregado.NovoID);
   _mockEntidade.Campo1 := VALOR_CAMPO1;
   _mockEntidade.Campo2 := VALOR_CAMPO2;

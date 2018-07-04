@@ -5,7 +5,7 @@ interface
 uses
   Data.DB, FireDac.Comp.Client,
   DDD.Anotacao.Entidade.Propriedade, DDD.Core.Intf.Entidade, DDD.Core.Impl.Entidade, DDD.Core.Impl.Agregado,
-  DDD.Core.Intf.Agregado;
+  DDD.Core.Intf.ID, DDD.Core.Intf.Agregado;
 
 type
   IMockEntidade = Interface(IEntidade)
@@ -19,6 +19,7 @@ type
   end;
 
   TMockEntidade = class(TEntidade, IMockEntidade)
+  private
   protected
     FCampo2: integer;
     FCampo1: string;
@@ -28,7 +29,10 @@ type
     procedure SetCampo2(const Value: integer);
     function GetNomeEntidade: string; override;
   public
-    class function New: IMockEntidade;
+    class function New(const ID: IID): IMockEntidade;
+    constructor Create(const ID: IID);
+    [TPropriedade('ID', ftInteger, True)]
+    property ID;
     [TPropriedade('CAMPO1', ftString, False)]
     property Campo1: string read GetCampo1 write SetCampo1;
     [TPropriedade('CAMPO2', ftInteger, False)]
@@ -39,14 +43,26 @@ const
   NOME_ENTIDADE_MOCK = 'NomeEntidade';
   VALOR_CAMPO1 = 'Valor campo1';
   VALOR_CAMPO2 = 1;
+  ID = 1;
 
 procedure ConfigurarDataSet(const ADataSet: TFDMemTable);
 procedure InserirDadosPadrao(const ADataSet: TFDMemTable);
 
 implementation
 
+class function TMockEntidade.New(const ID: IID): IMockEntidade;
+begin
+  result := Create(ID);
+end;
+
+constructor TMockEntidade.Create(const ID: IID);
+begin
+  DefinirNovoID(ID);
+end;
+
 procedure ConfigurarDataSet(const ADataSet: TFDMemTable);
 begin
+  ADataSet.FieldDefs.Add('ID', ftInteger);
   ADataSet.FieldDefs.Add('Campo1', ftString, 30);
   ADataSet.FieldDefs.Add('Campo2', ftInteger);
   ADataSet.CreateDataSet;
@@ -73,11 +89,6 @@ end;
 function TMockEntidade.GetNomeEntidade: string;
 begin
   result := NOME_ENTIDADE_MOCK;
-end;
-
-class function TMockEntidade.New: IMockEntidade;
-begin
-  result := Create;
 end;
 
 procedure TMockEntidade.SetCampo1(const Value: string);

@@ -3,7 +3,7 @@ unit DDD.Teste.Mock.Agregado;
 interface
 
 uses DDD.Core.Impl.Agregado, DDD.Core.Intf.Agregado, DDD.Teste.Mock.Entidade, DDD.Core.Intf.ID,
-  DDD.Core.Impl.IDRandomico;
+  DDD.Core.Impl.IDRandomico, DDD.Modulo.Intf.Adaptador;
 
 type
   IMockEntidadeAgregado = interface(IInterface)
@@ -11,6 +11,9 @@ type
   end;
 
   TMockEntidadeAgregado = class(TAgregado<IMockEntidade>, IMockEntidadeAgregado)
+  private
+    FAdaptarEntidadeDataSet: IAdaptador;
+  public
     procedure Apagar(const AEntidade: IMockEntidade); override;
     procedure Incluir(const AEntidade: IMockEntidade); override;
     function Localizar(const AID: IID): IMockEntidade; override;
@@ -21,7 +24,7 @@ implementation
 
 uses
   pkgUtils.Intf.DataSetPropriedadesTemporarias, pkgUtils.Impl.FDDataSetPropriedadesTemporarias,
-  DDD.Modulo.Impl.IDFactory, DDD.Modulo.Intf.IDFactory;
+  DDD.Modulo.Impl.IDFactory, DDD.Modulo.Intf.IDFactory, DDD.Modulo.Impl.Adaptador.EntidadeDataSet;
 
 procedure TMockEntidadeAgregado.Apagar(const AEntidade: IMockEntidade);
 var
@@ -38,7 +41,8 @@ end;
 procedure TMockEntidadeAgregado.Incluir(const AEntidade: IMockEntidade);
 begin
   inherited;
-
+  FAdaptarEntidadeDataSet := TAdaptadorEntidadeDataSet<IMockEntidade>.New(Self, AEntidade);
+  FAdaptarEntidadeDataSet.Adaptar;
 end;
 
 function TMockEntidadeAgregado.Localizar(const AID: IID): IMockEntidade;
@@ -48,7 +52,7 @@ end;
 
 function TMockEntidadeAgregado.NovoID: IID;
 begin
-  result :=  TIDFactory.New(tiRandomico).NovoID;
+  result := TIDFactory.New(tiRandomico).NovoID;
 end;
 
 end.

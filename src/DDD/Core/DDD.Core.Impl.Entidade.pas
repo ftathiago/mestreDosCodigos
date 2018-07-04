@@ -14,6 +14,7 @@ type
   public
     procedure DefinirNovoID(const AID: IID);
     function GetID: IID;
+    property ID: IID read GetID;
   end;
 
 implementation
