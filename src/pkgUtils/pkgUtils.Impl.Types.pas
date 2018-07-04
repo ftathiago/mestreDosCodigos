@@ -8,8 +8,8 @@ uses
 type
   IntegerNull = Nullable<Integer>;
   StringNull = Nullable<String>;
-  RealNull = Nullable<Real>;
   DoubleNull = Nullable<Double>;
+  CurrencyNull = Nullable<Currency>;
   TDateTimeNull = Nullable<TDateTime>;
 
 implementation

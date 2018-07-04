@@ -1,4 +1,4 @@
-unit pkgUtils.Teste.NullableTeste;
+unit pkgUtils.Teste.IntegerNull;
 
 interface
 
@@ -11,7 +11,7 @@ uses
 type
 
   [TestFixture]
-  TNullableTest = class(TObject)
+  TIntegerNullTest = class(TObject)
   private
     FintNull: IntegerNull;
   public
@@ -24,9 +24,11 @@ type
     [Test]
     procedure TestarMaioridade;
     [Test]
-    procedure TesarMaiorOuIgualdade;
+    procedure TestarMaiorOuIgualdade;
     [Test]
     procedure TestarMenoridade;
+    [Test]
+    procedure TestarMenorOuIgual;
   end;
 
 implementation
@@ -36,14 +38,14 @@ const
   IGUAL = 0;
   MAIOR = 1;
 
-procedure TNullableTest.TesarMaiorOuIgualdade;
+procedure TIntegerNullTest.TestarMaiorOuIgualdade;
 begin
   FintNull := MAIOR;
   Assert.IsTrue(FintNull >= MAIOR);
   Assert.IsTrue(FintNull >= MENOR);
 end;
 
-procedure TNullableTest.TestarEhIgual;
+procedure TIntegerNullTest.TestarEhIgual;
 begin
   FintNull := IGUAL;
   Assert.AreEqual(IGUAL, Integer(FintNull));
@@ -52,24 +54,31 @@ begin
 end;
 
 
-procedure TNullableTest.TestarMaioridade;
+procedure TIntegerNullTest.TestarMaioridade;
 begin
   FintNull := MAIOR;
   Assert.IsTrue(FintNull > Igual);
 end;
 
-procedure TNullableTest.TestarMenoridade;
+procedure TIntegerNullTest.TestarMenoridade;
 begin
   FintNull := MENOR;
   Assert.IsTrue(Integer(FintNull) < IGUAL);
 end;
 
-procedure TNullableTest.Setup;
+procedure TIntegerNullTest.TestarMenorOuIgual;
+begin
+  FintNull := MENOR;
+  Assert.IsTrue(FintNull <= IGUAL);
+  Assert.IsTrue(FintNull <= MENOR);
+end;
+
+procedure TIntegerNullTest.Setup;
 begin
 
 end;
 
-procedure TNullableTest.TearDown;
+procedure TIntegerNullTest.TearDown;
 begin
 
 end;
@@ -77,6 +86,6 @@ end;
 
 initialization
 
-TDUnitX.RegisterTestFixture(TNullableTest);
+TDUnitX.RegisterTestFixture(TIntegerNullTest);
 
 end.

@@ -22,7 +22,8 @@ type
     class operator Implicit(Value: T): Nullable<T>;
     class operator GreaterThan(aLeft, aRight: Nullable<T>): boolean;
     class operator GreaterThanOrEqual(aLeft, aRight: Nullable<T>): boolean;
-    class operator LessThan(aLeft, aRight: Nullable<T>):boolean;
+    class operator LessThan(aLeft, aRight: Nullable<T>): boolean;
+    class operator LessThanOrEqual(aLeft, aRight: Nullable<T>): boolean;
     class operator NotEqual(const aLeft, aRight: Nullable<T>): boolean;
     class operator Equal(aLeft, aRight: Nullable<T>): boolean;
   end;
@@ -118,7 +119,7 @@ begin
 
   _comparer := TComparer<T>.Default;
   _relacao := TValueRelationship(_comparer.Compare(aLeft, aRight));
-  result := _relacao = GreaterThanValue;
+  result := _relacao > EqualsValue;
 end;
 
 class operator Nullable<T>.GreaterThanOrEqual(aLeft, aRight: Nullable<T>): boolean;
@@ -130,7 +131,7 @@ begin
     Exit(True);
   _comparer := TComparer<T>.Default;
   _relacao := TValueRelationship(_comparer.Compare(aLeft, aRight));
-  Result := _relacao in [EqualsValue, GreaterThanValue];
+  Result := _relacao >= 0;
 end;
 
 class operator Nullable<T>.Implicit(Value: Nullable<T>): T;
@@ -144,8 +145,28 @@ begin
 end;
 
 class operator Nullable<T>.LessThan(aLeft, aRight: Nullable<T>): boolean;
+var
+  _comparer: IComparer<T>;
+  _relacao: TValueRelationship;
 begin
+  _comparer := TComparer<T>.Default;
+  _relacao := TValueRelationship(_comparer.Compare(aLeft, aRight));
+  Result := _relacao = LessThanValue;
+end;
 
+class operator Nullable<T>.LessThanOrEqual(aLeft, aRight: Nullable<T>): boolean;
+var
+  _comparer: IComparer<T>;
+  _relacao: TValueRelationship;
+begin
+  result := False;
+
+  if (not aLeft.HasValue) and (not aRight.HasValue) then
+    Exit(True);
+
+  _comparer := TComparer<T>.Default;
+  _relacao := TValueRelationship(_comparer.Compare(aLeft, aRight));
+  result := _relacao <= 0;
 end;
 
 class operator Nullable<T>.NotEqual(const aLeft, aRight: Nullable<T>): boolean;

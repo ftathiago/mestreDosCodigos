@@ -25,8 +25,12 @@ uses
   pkgUtils.Teste.TelefoneTeste in 'pkgUtils.Teste.TelefoneTeste.pas',
   pkgUtils.Impl.Telefone in '..\pkgUtils.Impl.Telefone.pas',
   pkgUtils.Impl.Types in '..\pkgUtils.Impl.Types.pas',
-  pkgUtils.Teste.NullableTeste in 'pkgUtils.Teste.NullableTeste.pas',
-  pkgUtils.Impl.Nullable in '..\pkgUtils.Impl.Nullable.pas';
+  pkgUtils.Teste.IntegerNull in 'pkgUtils.Teste.IntegerNull.pas',
+  pkgUtils.Impl.Nullable in '..\pkgUtils.Impl.Nullable.pas',
+  pkgUtils.Teste.StringNull in 'pkgUtils.Teste.StringNull.pas',
+  pkgUtils.Teste.DoubleNull in 'pkgUtils.Teste.DoubleNull.pas',
+  pkgUtils.Teste.CurrencyNull in 'pkgUtils.Teste.CurrencyNull.pas',
+  pkgUtils.Teste.DateTimeNull in 'pkgUtils.Teste.DateTimeNull.pas';
 
 var
   runner : ITestRunner;

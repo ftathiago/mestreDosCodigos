@@ -65,6 +65,7 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <DCC_DebugDCUs>false</DCC_DebugDCUs>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Manifest_File>None</Manifest_File>
         <DCC_MapFile>3</DCC_MapFile>
@@ -94,8 +95,12 @@
         <DCCReference Include="pkgUtils.Teste.TelefoneTeste.pas"/>
         <DCCReference Include="..\pkgUtils.Impl.Telefone.pas"/>
         <DCCReference Include="..\pkgUtils.Impl.Types.pas"/>
-        <DCCReference Include="pkgUtils.Teste.NullableTeste.pas"/>
+        <DCCReference Include="pkgUtils.Teste.IntegerNull.pas"/>
         <DCCReference Include="..\pkgUtils.Impl.Nullable.pas"/>
+        <DCCReference Include="pkgUtils.Teste.StringNull.pas"/>
+        <DCCReference Include="pkgUtils.Teste.DoubleNull.pas"/>
+        <DCCReference Include="pkgUtils.Teste.CurrencyNull.pas"/>
+        <DCCReference Include="pkgUtils.Teste.DateTimeNull.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -116,6 +121,11 @@
                 <Source>
                     <Source Name="MainSource">pkgUtilsTeste.dpr</Source>
                 </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k230.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp230.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Ambiente\Documents\Delphi\mestreDosCodigos\lib\MCFWFormsDpk.bpl">(untitled)</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="2">
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">

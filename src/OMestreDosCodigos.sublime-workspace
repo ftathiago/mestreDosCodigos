@@ -28,7 +28,7 @@
 			"file": "DDD/Core/DDD.Core.Impl.NullableType.pas",
 			"settings":
 			{
-				"buffer_size": 3043,
+				"buffer_size": 2894,
 				"line_ending": "Windows"
 			}
 		},
@@ -91,6 +91,7 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Ambiente/Documents/Delphi/mestreDosCodigos/src/pkgUtils/Teste/Unit1.pas",
 		"/C/Users/Ambiente/Documents/Delphi/mestreDosCodigos/src/DDD/Core/DDD.Core.Impl.Agregado.pas",
 		"/C/Users/Ambiente/Downloads/VCLFixPack14/VCLFixPack.pas",
 		"/C/Users/Ambiente/Documents/Delphi/mestreDosCodigos/.git/config",
@@ -203,15 +204,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3043,
+						"buffer_size": 2894,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1886,
-								1894
+								0,
+								0
 							]
 						],
 						"settings":
