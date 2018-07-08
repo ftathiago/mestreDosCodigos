@@ -9,38 +9,39 @@ type
 
   RTTIUtils = class
   private
-    class var _ctx: TRttiContext;
-    class function ctx: TRttiContext;
+    class var _ctx:TRttiContext;
+    class function ctx:TRttiContext;
+    class procedure RecordSetValue(AInstance:TObject; AProperty:TRttiProperty; AValue:TValue); static;
   public
-    class function TValueNumericIsEmpty(AValue: TValue; ZeroIsEmpty: boolean = True): boolean;
-    class function TValueStringIsEmpty(AValue: TValue): boolean;
-    class function getType(Kind: TTypeKind): string; overload;
-    class function getType(const Value: Variant): string; overload;
-    class function getInstanceType(AQualifiedClassName: string): TRttiInstanceType;
-    class function getRttiType(AQualifiedClassName: string): TRttiType;
-    class function CreateObject(AQualifiedClassName: string): TObject; overload;
-    class function CreateObject(ARttiType: TRttiType): TObject; overload;
-    class function getProperty(Instance: TObject; PropertyName: string): TRttiProperty;
-    class function getObjectProperty(Instance: TObject; PropertyName: string): TObject;
-    class function getIndexedProperty(Instance: TObject; PropertyName: string): TRttiIndexedProperty;
-    class function getProperties(Instance: TObject): TArray<TRttiProperty>;
-    class function getMethod(Instance: TObject; MethodName: string): TRttiMethod;
-    class function ForceGetPropValue(var Instance: TObject; const PropName: string): TValue;
-    class procedure ForceSetPropValue(var Instance: TObject; const PropName: string; const Value: TValue);
-    class procedure FieldToValue(AField: TField; Instance: TObject; APropertyName: string);
-    class procedure setValue(AValue: TValue; Instance: TObject; var AProperty: TRttiProperty);
+    class function TValueNumericIsEmpty(AValue:TValue; ZeroIsEmpty:boolean = True):boolean;
+    class function TValueStringIsEmpty(AValue:TValue):boolean;
+    class function getType(Kind:TTypeKind):string; overload;
+    class function getType(const Value:Variant):string; overload;
+    class function getInstanceType(AQualifiedClassName:string):TRttiInstanceType;
+    class function getRttiType(AQualifiedClassName:string):TRttiType;
+    class function CreateObject(AQualifiedClassName:string):TObject; overload;
+    class function CreateObject(ARttiType:TRttiType):TObject; overload;
+    class function getProperty(Instance:TObject; PropertyName:string):TRttiProperty;
+    class function getObjectProperty(Instance:TObject; PropertyName:string):TObject;
+    class function getIndexedProperty(Instance:TObject; PropertyName:string):TRttiIndexedProperty;
+    class function getProperties(Instance:TObject):TArray<TRttiProperty>;
+    class function getMethod(Instance:TObject; MethodName:string):TRttiMethod;
+    class function ForceGetPropValue(var Instance:TObject; const PropName:string):TValue;
+    class procedure ForceSetPropValue(var Instance:TObject; const PropName:string; const Value:TValue);
+    class procedure FieldToValue(AField:TField; Instance:TObject; APropertyName:string);
+    class procedure setValue(AValue:TValue; Instance:TObject; var AProperty:TRttiProperty);
   end;
 
 implementation
 
 uses Winapi.Windows, System.Classes, System.Variants, System.Generics.Collections, System.TypInfo,
-  System.DateUtils, Vcl.Forms;
+  System.DateUtils, Vcl.Forms, pkgUtils.Impl.Nullable, DataSet.Constantes;
 
 { TRttiUtils }
 
-class function RTTIUtils.CreateObject(AQualifiedClassName: string): TObject;
+class function RTTIUtils.CreateObject(AQualifiedClassName:string):TObject;
 var
-  RttiType: TRttiType;
+  RttiType:TRttiType;
 begin
   RttiType := RTTIUtils.ctx.FindType(AQualifiedClassName);
   if Assigned(RttiType) then
@@ -49,10 +50,10 @@ begin
     Result := nil;
 end;
 
-class function RTTIUtils.CreateObject(ARttiType: TRttiType): TObject;
+class function RTTIUtils.CreateObject(ARttiType:TRttiType):TObject;
 var
-  Method: TRttiMethod;
-  metaClass: TClass;
+  Method:TRttiMethod;
+  metaClass:TClass;
 begin
   { First solution, clear and slow }
   metaClass := nil;
@@ -74,14 +75,14 @@ begin
   // .Invoke(ARttiType.AsInstance.MetaclassType, []).AsObject);
 end;
 
-class function RTTIUtils.ctx: TRttiContext;
+class function RTTIUtils.ctx:TRttiContext;
 begin
   Result := RTTIUtils._ctx;
 end;
 
-class procedure RTTIUtils.FieldToValue(AField: TField; Instance: TObject; APropertyName: string);
+class procedure RTTIUtils.FieldToValue(AField:TField; Instance:TObject; APropertyName:string);
 var
-  _Property: TRttiProperty;
+  _propriedade:TRttiProperty;
 begin
   if AField.IsNull then
   begin
@@ -89,15 +90,15 @@ begin
   end
   else
   begin
-    _Property := RTTIUtils.getProperty(Instance, APropertyName);
-    case _Property.PropertyType.TypeKind of
+    _propriedade := RTTIUtils.getProperty(Instance, APropertyName);
+    case _propriedade.PropertyType.TypeKind of
       tkString, tkUString:
         RTTIUtils.ForceSetPropValue(Instance, APropertyName, AField.AsString);
       tkInteger:
         RTTIUtils.ForceSetPropValue(Instance, APropertyName, AField.AsInteger);
       tkEnumeration:
         begin
-          if _Property.PropertyType.Handle^.TypeData^.BaseType^ = TypeInfo(boolean) then
+          if _propriedade.PropertyType.Handle^.TypeData^.BaseType^ = TypeInfo(boolean) then
           begin
             if AField.DataType = ftBoolean then
               RTTIUtils.ForceSetPropValue(Instance, APropertyName, AField.AsBoolean)
@@ -110,10 +111,10 @@ begin
           begin
             if AField.DataType = ftInteger then
               RTTIUtils.ForceSetPropValue(Instance, APropertyName,
-                TValue.FromOrdinal(_Property.PropertyType.Handle, AField.AsInteger))
+                TValue.FromOrdinal(_propriedade.PropertyType.Handle, AField.AsInteger))
             else
-              RTTIUtils.ForceSetPropValue(Instance, APropertyName, GetEnumValue(_Property.PropertyType.Handle,
-                AField.AsString))
+              RTTIUtils.ForceSetPropValue(Instance, APropertyName,
+                GetEnumValue(_propriedade.PropertyType.Handle, AField.AsString))
           end;
         end;
       tkFloat:
@@ -122,14 +123,27 @@ begin
         RTTIUtils.ForceSetPropValue(Instance, APropertyName, TValue.From<Variant>(AField.Value));
       tkInt64:
         RTTIUtils.ForceSetPropValue(Instance, APropertyName, AField.AsInteger);
+      tkRecord:
+        begin
+          if AField.DataType in FieldTypeString then
+            RTTIUtils.ForceSetPropValue(Instance, APropertyName, AField.AsString)
+          else if AField.DataType = ftCurrency then
+            RTTIUtils.ForceSetPropValue(Instance, APropertyName, AField.AsCurrency)
+          else if AField.DataType in FieldTypeReal  then
+            RTTIUtils.ForceSetPropValue(Instance, APropertyName, AField.AsFloat)
+          else if AField.DataType in FieldTypeInteiro then
+            RTTIUtils.ForceSetPropValue(Instance, APropertyName, AField.AsInteger)
+          else if AField.DataType in [ftDate, ftTime, ftDateTime] then
+            RTTIUtils.ForceSetPropValue(Instance, APropertyName, AField.AsDateTime)
+        end;
     end;
   end;
 end;
 
-class function RTTIUtils.ForceGetPropValue(var Instance: TObject; const PropName: string): TValue;
+class function RTTIUtils.ForceGetPropValue(var Instance:TObject; const PropName:string):TValue;
 var
-  obj: TObject;
-  _nomeCampo: string;
+  obj:TObject;
+  _nomeCampo:string;
 begin
   if PropName.Contains('.') then
   begin
@@ -147,12 +161,11 @@ begin
     Result := RTTIUtils.getProperty(Instance, PropName).GetValue(Instance);
 end;
 
-class procedure RTTIUtils.ForceSetPropValue(var Instance: TObject; const PropName: string;
-  const Value: TValue);
+class procedure RTTIUtils.ForceSetPropValue(var Instance:TObject; const PropName:string; const Value:TValue);
 var
-  obj: TObject;
-  _nomeCampo: string;
-  _rttiProperty: TRttiProperty;
+  obj:TObject;
+  _nomeCampo:string;
+  _rttiProperty:TRttiProperty;
 begin
   if PropName.Contains('.') then
   begin
@@ -169,13 +182,12 @@ begin
   begin
     _rttiProperty := RTTIUtils.getProperty(Instance, PropName);
     RTTIUtils.setValue(Value, Instance, _rttiProperty);
-    // SetPropValue(Instance,PropName,Value);
   end;
 end;
 
-class function RTTIUtils.getObjectProperty(Instance: TObject; PropertyName: string): TObject;
+class function RTTIUtils.getObjectProperty(Instance:TObject; PropertyName:string):TObject;
 var
-  PropertyRTTI: TRttiProperty;
+  PropertyRTTI:TRttiProperty;
 begin
   PropertyRTTI := RTTIUtils.getProperty(Instance, PropertyName);
   if PropertyRTTI.PropertyType.TypeKind <> tkClass then
@@ -188,20 +200,20 @@ begin
   end;
 end;
 
-class function RTTIUtils.getProperties(Instance: TObject): TArray<TRttiProperty>;
+class function RTTIUtils.getProperties(Instance:TObject):TArray<TRttiProperty>;
 var
-  ClassRtti: TRttiType;
+  ClassRtti:TRttiType;
 begin
   ClassRtti := RTTIUtils.ctx.getType(Instance.ClassInfo);
   Result := ClassRtti.getProperties;
 end;
 
-class function RTTIUtils.getProperty(Instance: TObject; PropertyName: string): TRttiProperty;
+class function RTTIUtils.getProperty(Instance:TObject; PropertyName:string):TRttiProperty;
 var
-  ClassRtti: TRttiType;
+  ClassRtti:TRttiType;
 
-  obj: TObject;
-  _nomeCampo: string;
+  obj:TObject;
+  _nomeCampo:string;
 begin
   if PropertyName.Contains('.') then
   begin
@@ -221,12 +233,12 @@ begin
   end;
 end;
 
-class function RTTIUtils.getRttiType(AQualifiedClassName: string): TRttiType;
+class function RTTIUtils.getRttiType(AQualifiedClassName:string):TRttiType;
 begin
   Result := RTTIUtils.ctx.FindType(AQualifiedClassName);
 end;
 
-class function RTTIUtils.getType(const Value: Variant): string;
+class function RTTIUtils.getType(const Value:Variant):string;
 begin
   case TVarData(Value).VType of
     varEmpty:
@@ -270,7 +282,7 @@ begin
   end;
 end;
 
-class function RTTIUtils.getType(Kind: TTypeKind): string;
+class function RTTIUtils.getType(Kind:TTypeKind):string;
 begin
   case Kind of
     tkUnknown:
@@ -320,7 +332,7 @@ begin
   end;
 end;
 
-class procedure RTTIUtils.setValue(AValue: TValue; Instance: TObject; var AProperty: TRttiProperty);
+class procedure RTTIUtils.setValue(AValue:TValue; Instance:TObject; var AProperty:TRttiProperty);
 begin
   if AValue.IsEmpty then
     Exit;
@@ -364,35 +376,104 @@ begin
       AProperty.setValue(Instance, AValue);
     tkInt64:
       AProperty.setValue(Instance, AValue.AsInt64);
+    tkRecord:
+      begin
+        RecordSetValue(Instance, AProperty, AValue);
+      end;
   end;
 end;
 
-class function RTTIUtils.TValueNumericIsEmpty(AValue: TValue; ZeroIsEmpty: boolean): boolean;
+class procedure RTTIUtils.RecordSetValue(AInstance:TObject; AProperty:TRttiProperty; AValue:TValue);
+  procedure StringToRecord;
+  var
+    _recordString:Nullable<String>;
+  begin
+    _recordString := AValue.ToString;
+    AProperty.setValue(AInstance, TValue.From < Nullable < string >> (_recordString));
+  end;
+
+  procedure IntegerToRecord;
+  var
+    _recordInteger:Nullable<Integer>;
+  begin
+    _recordInteger := AValue.AsInteger;
+    AProperty.setValue(AInstance, TValue.From < Nullable < Integer >> (_recordInteger));
+  end;
+
+  procedure DoubleToRecord;
+  var
+    _recordDouble:Nullable<Double>;
+  begin
+    _recordDouble := AValue.AsExtended;
+    AProperty.setValue(AInstance, TValue.From < Nullable < Double >> (_recordDouble));
+  end;
+
+  procedure CurrencyToRecord;
+  var
+    _recordCurrency:Nullable<Currency>;
+  begin
+    _recordCurrency := AValue.AsCurrency;
+    AProperty.setValue(AInstance, TValue.From < Nullable < Currency >> (_recordCurrency));
+  end;
+
+  procedure DateTimeToRecord;
+  var
+    _recordDateTime:Nullable<TDateTime>;
+  begin
+    _recordDateTime := AValue.AsType<TDateTime>;
+    AProperty.setValue(AInstance, TValue.From < Nullable < TDateTime >> (_recordDateTime));
+  end;
+
+var
+  _nome:string;
+begin
+  if AValue.IsEmpty then
+    exit;
+
+  _nome := AProperty.PropertyType.AsRecord.Name.ToUpper;
+  if not _nome.Contains('NULLABLE') then
+    Exit;
+
+  if _nome.Contains('STRING') then
+    StringToRecord
+  else if _nome.Contains('INTEGER') then
+    IntegerToRecord
+  else if _nome.Contains('DOUBLE') then
+    DoubleToRecord
+  else if _nome.Contains('CURRENCY') then
+    CurrencyToRecord
+  else if _nome.Contains('TDATETIME') then
+    DateTimeToRecord
+  else
+    raise ERttiUtils.CreateFmt('Não foi encontrado um parser para o tipo %s', [_nome]);
+end;
+
+class function RTTIUtils.TValueNumericIsEmpty(AValue:TValue; ZeroIsEmpty:boolean):boolean;
 begin
   Result := AValue.IsEmpty or AValue.ToString.Trim.IsEmpty or ((AValue.AsInteger = 0) and ZeroIsEmpty);
 end;
 
-class function RTTIUtils.TValueStringIsEmpty(AValue: TValue): boolean;
+class function RTTIUtils.TValueStringIsEmpty(AValue:TValue):boolean;
 begin
   Result := AValue.IsEmpty or AValue.ToString.Trim.IsEmpty or AValue.AsString.Trim.IsEmpty;
 end;
 
-class function RTTIUtils.getIndexedProperty(Instance: TObject; PropertyName: string): TRttiIndexedProperty;
+class function RTTIUtils.getIndexedProperty(Instance:TObject; PropertyName:string):TRttiIndexedProperty;
 var
-  ClassRtti: TRttiType;
+  ClassRtti:TRttiType;
 begin
   ClassRtti := RTTIUtils.ctx.getType(Instance.ClassInfo);
   Result := ClassRtti.getIndexedProperty(PropertyName);
 end;
 
-class function RTTIUtils.getInstanceType(AQualifiedClassName: string): TRttiInstanceType;
+class function RTTIUtils.getInstanceType(AQualifiedClassName:string):TRttiInstanceType;
 begin
   Result := getRttiType(AQualifiedClassName) as TRttiInstanceType;
 end;
 
-class function RTTIUtils.getMethod(Instance: TObject; MethodName: string): TRttiMethod;
+class function RTTIUtils.getMethod(Instance:TObject; MethodName:string):TRttiMethod;
 var
-  ClassRtti: TRttiType;
+  ClassRtti:TRttiType;
 begin
   ClassRtti := RTTIUtils.ctx.getType(Instance.ClassInfo);
   Result := ClassRtti.getMethod(MethodName);

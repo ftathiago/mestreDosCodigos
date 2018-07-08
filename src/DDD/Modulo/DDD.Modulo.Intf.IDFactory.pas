@@ -20,7 +20,8 @@ type
 
 implementation
 
-uses DDD.Core.Impl.IDRandomico;
+uses
+  DDD.Core.Impl.IDRandomico;
 
 function TTipoIDHelper.PegarClasseID: TClass;
 begin

@@ -5,28 +5,34 @@ interface
 uses
   Data.DB, FireDac.Comp.Client,
   DDD.Anotacao.Entidade.Propriedade, DDD.Core.Intf.Entidade, DDD.Core.Impl.Entidade, DDD.Core.Impl.Agregado,
-  DDD.Core.Intf.ID, DDD.Core.Intf.Agregado;
+  DDD.Core.Intf.ID, DDD.Core.Intf.Agregado, pkgUtils.Impl.Types;
 
 type
   IMockEntidade = Interface(IEntidade)
     ['{A7C455EE-EDEE-4687-9B42-0D1966097EA0}']
-    function GetCampo1: string;
-    function GetCampo2: integer;
-    procedure SetCampo1(const Value: string);
-    procedure SetCampo2(const Value: integer);
-    property Campo1: string read GetCampo1 write SetCampo1;
-    property Campo2: integer read GetCampo2 write SetCampo2;
+    function GetCampo1: StringNull;
+    function GetCampo2: IntegerNull;
+    function GetCampo3: TDateTimeNull;
+    procedure SetCampo1(const Value: StringNull);
+    procedure SetCampo2(const Value: IntegerNull);
+    procedure SetCampo3(const Value: TDateTimeNull);
+    property Campo1: StringNull read GetCampo1 write SetCampo1;
+    property Campo2: IntegerNull read GetCampo2 write SetCampo2;
+    property Campo3: TDateTimeNull read GetCampo3 write SetCampo3;
   end;
 
   TMockEntidade = class(TEntidade, IMockEntidade)
   private
   protected
-    FCampo2: integer;
-    FCampo1: string;
-    function GetCampo1: string;
-    function GetCampo2: integer;
-    procedure SetCampo1(const Value: string);
-    procedure SetCampo2(const Value: integer);
+    FCampo1: StringNull;
+    FCampo2: IntegerNull;
+    FCampo3: TDateTimeNull;
+    function GetCampo1: StringNull;
+    function GetCampo2: IntegerNull;
+    function GetCampo3: TDateTimeNull;
+    procedure SetCampo1(const Value: StringNull);
+    procedure SetCampo2(const Value: IntegerNull);
+    procedure SetCampo3(const Value: TDateTimeNull);
     function GetNomeEntidade: string; override;
   public
     class function New(const ID: IID): IMockEntidade;
@@ -34,9 +40,11 @@ type
     [TPropriedade('ID', ftInteger, True)]
     property ID;
     [TPropriedade('CAMPO1', ftString, False)]
-    property Campo1: string read GetCampo1 write SetCampo1;
+    property Campo1: StringNull read GetCampo1 write SetCampo1;
     [TPropriedade('CAMPO2', ftInteger, False)]
-    property Campo2: integer read GetCampo2 write SetCampo2;
+    property Campo2: IntegerNull read GetCampo2 write SetCampo2;
+    [TPropriedade('CAMPO3', ftDateTime, False)]
+    property Campo3: TDateTimeNull read GetCampo3 write SetCampo3;
   end;
 
 const
@@ -65,6 +73,7 @@ begin
   ADataSet.FieldDefs.Add('ID', ftInteger);
   ADataSet.FieldDefs.Add('Campo1', ftString, 30);
   ADataSet.FieldDefs.Add('Campo2', ftInteger);
+  ADataSet.FieldDefs.Add('Campo3', ftDateTime);
   ADataSet.CreateDataSet;
 end;
 
@@ -76,14 +85,19 @@ begin
   ADataSet.Post;
 end;
 
-function TMockEntidade.GetCampo1: string;
+function TMockEntidade.GetCampo1: StringNull;
 begin
   result := FCampo1;
 end;
 
-function TMockEntidade.GetCampo2: integer;
+function TMockEntidade.GetCampo2: IntegerNull;
 begin
   result := FCampo2;
+end;
+
+function TMockEntidade.GetCampo3: TDateTimeNull;
+begin
+  result := FCampo3
 end;
 
 function TMockEntidade.GetNomeEntidade: string;
@@ -91,14 +105,19 @@ begin
   result := NOME_ENTIDADE_MOCK;
 end;
 
-procedure TMockEntidade.SetCampo1(const Value: string);
+procedure TMockEntidade.SetCampo1(const Value: StringNull);
 begin
   FCampo1 := Value;
 end;
 
-procedure TMockEntidade.SetCampo2(const Value: integer);
+procedure TMockEntidade.SetCampo2(const Value: IntegerNull);
 begin
   FCampo2 := Value;
+end;
+
+procedure TMockEntidade.SetCampo3(const Value: TDateTimeNull);
+begin
+  FCampo3 := Value;
 end;
 
 end.

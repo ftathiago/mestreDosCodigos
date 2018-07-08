@@ -13,11 +13,13 @@ type
   [TestFixture]
   TDateTimeNullTest = class(TObject)
   private
-    FCurrencyNull: CurrencyNull;
+    FDateTimeNull: TDateTimeNull;
     function Menor: TDateTime;
     function Maior: TDateTime;
     function Igual: TDateTime;
   public
+    [Setup]
+    procedure Setup;
     [Test]
     procedure TestarEhIgual;
     [Test]
@@ -28,6 +30,8 @@ type
     procedure TestarMenoridade;
     [Test]
     procedure TestarMenorOuIgual;
+    [Test]
+    procedure TestarEstaVazio;
   end;
 
 implementation
@@ -37,9 +41,9 @@ uses
 
 procedure TDateTimeNullTest.TestarMaiorOuIgualdade;
 begin
-  FCurrencyNull := Maior;
-  Assert.IsTrue(FCurrencyNull >= Maior);
-  Assert.IsTrue(FCurrencyNull >= Menor);
+  FDateTimeNull := Maior;
+  Assert.IsTrue(FDateTimeNull >= Maior);
+  Assert.IsTrue(FDateTimeNull >= Menor);
 end;
 
 function TDateTimeNullTest.Igual: TDateTime;
@@ -57,31 +61,41 @@ begin
   result := IncDay(Now, -1);
 end;
 
+procedure TDateTimeNullTest.Setup;
+begin
+  FDateTimeNull.Limpar;
+end;
+
 procedure TDateTimeNullTest.TestarEhIgual;
 begin
-  FCurrencyNull := Igual;
-  Assert.IsTrue(Igual = FCurrencyNull);
+  FDateTimeNull := Igual;
+  Assert.IsTrue(Igual = FDateTimeNull);
   Assert.IsFalse(Igual = Maior);
+end;
+
+procedure TDateTimeNullTest.TestarEstaVazio;
+begin
+  Assert.IsFalse(FDateTimeNull.TemValor, DateToStr(FDateTimeNull.Valor));
 end;
 
 procedure TDateTimeNullTest.TestarMaioridade;
 begin
-  FCurrencyNull := Maior;
+  FDateTimeNull := Maior;
   Assert.IsTrue(Maior > Igual, 'Constantes com erro');
-  Assert.IsTrue(FCurrencyNull > Igual);
+  Assert.IsTrue(FDateTimeNull > Igual);
 end;
 
 procedure TDateTimeNullTest.TestarMenoridade;
 begin
-  FCurrencyNull := Menor;
-  Assert.IsTrue(Double(FCurrencyNull) < Igual);
+  FDateTimeNull := Menor;
+  Assert.IsTrue(Double(FDateTimeNull) < Igual);
 end;
 
 procedure TDateTimeNullTest.TestarMenorOuIgual;
 begin
-  FCurrencyNull := Menor;
-  Assert.IsTrue(FCurrencyNull <= Igual);
-  Assert.IsTrue(FCurrencyNull <= Menor);
+  FDateTimeNull := Menor;
+  Assert.IsTrue(FDateTimeNull <= Igual);
+  Assert.IsTrue(FDateTimeNull <= Menor);
 end;
 
 initialization

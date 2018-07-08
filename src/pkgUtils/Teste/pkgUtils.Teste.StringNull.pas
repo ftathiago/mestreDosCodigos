@@ -13,7 +13,7 @@ type
   [TestFixture]
   TStringNullTest = class(TObject)
   private
-    FStringNull: StringNull;
+    FStringNull:StringNull;
   public
     [Setup]
     procedure Setup;
@@ -29,6 +29,8 @@ type
     procedure TestarMenoridade;
     [Test]
     procedure TestarMenorOuIgual;
+    [Test]
+    procedure EstaVazio;
   end;
 
 implementation
@@ -57,7 +59,7 @@ procedure TStringNullTest.TestarMaioridade;
 begin
   FStringNull := MAIOR;
   Assert.IsTrue(MAIOR > IGUAL, 'Constantes com erro');
-  Assert.IsTrue(FStringNull > Igual);
+  Assert.IsTrue(FStringNull > IGUAL);
 end;
 
 procedure TStringNullTest.TestarMenoridade;
@@ -73,6 +75,12 @@ begin
   Assert.IsTrue(FStringNull <= MENOR);
 end;
 
+procedure TStringNullTest.EstaVazio;
+begin
+  FStringNull.Limpar;
+  Assert.IsFalse(FStringNull.TemValor);
+end;
+
 procedure TStringNullTest.Setup;
 begin
 
@@ -82,7 +90,6 @@ procedure TStringNullTest.TearDown;
 begin
 
 end;
-
 
 initialization
 

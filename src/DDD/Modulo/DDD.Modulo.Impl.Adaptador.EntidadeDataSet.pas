@@ -3,15 +3,14 @@ unit DDD.Modulo.Impl.Adaptador.EntidadeDataSet;
 interface
 
 uses
-  System.Generics.Collections, System.Rtti, Data.DB,
-  FireDac.Comp.DataSet,
-  DDD.Core.Intf.Entidade, DDD.Modulo.Intf.Adaptador;
+  System.Rtti, System.Generics.Collections, FireDac.Comp.DataSet, Data.DB,
+  DDD.Modulo.Intf.Adaptador, DDD.Core.Intf.Entidade;
 
 type
-  TNomeCampoPropriedade = TPair<String, TRttiProperty>;
-  TNomeCampoPropriedadeDic = TDictionary<String, TRttiProperty>;
+  TNomeCampoPropriedade=TPair<String, TRttiProperty>;
+  TNomeCampoPropriedadeDic=TDictionary<String, TRttiProperty>;
 
-  TAdaptadorEntidadeDataSet<T: IEntidade> = class(TInterfacedObject, IAdaptador)
+  TAdaptadorEntidadeDataSet<T: IEntidade> =class(TInterfacedObject, IAdaptador)
   private
     FDataSet: TFDDataSet;
     FEntidade: IEntidade;
@@ -20,6 +19,8 @@ type
     function RegistroJaExiste: boolean;
     procedure MapearPropriedadeField(const APropriedade: TRttiProperty);
     procedure InserirOuEditar;
+    procedure TratarCampoNullable(const ACampoNullable: TNomeCampoPropriedade);
+    procedure TratarCampoID(const ACampoID: TField; const ACampoPropriedade: TNomeCampoPropriedade);
   public
     class function New(const ADataSet: TFDDataSet; const AEntidade: T): IAdaptador;
     constructor Create(const ADataSet: TFDDataSet; const AEntidade: T);
@@ -30,9 +31,9 @@ type
 implementation
 
 uses
-  DDD.Anotacao.Entidade.Propriedade, System.SysUtils,
-  pkgUtils.Impl.RttiUtils, pkgUtils.Impl.FDDataSetPropriedadesTemporarias,
-  pkgUtils.Intf.DataSetPropriedadesTemporarias, DataSet.Constantes, DDD.Core.Intf.ID;
+  System.SysUtils, pkgUtils.Impl.RTTIUtils, DDD.Anotacao.Entidade.Propriedade, DataSet.Constantes,
+  DDD.Core.Intf.ID, pkgUtils.Impl.Nullable, pkgUtils.Intf.DataSetPropriedadesTemporarias,
+  pkgUtils.Impl.FDDataSetPropriedadesTemporarias;
 
 class function TAdaptadorEntidadeDataSet<T>.New(const ADataSet: TFDDataSet; const AEntidade: T): IAdaptador;
 begin
@@ -66,7 +67,7 @@ var
   _propriedades: TArray<TRttiProperty>;
   _propriedade: TRttiProperty;
 begin
-  _propriedades := RttiUtils.getProperties(FEntidade as TObject);
+  _propriedades := RTTIUtils.getProperties(FEntidade as TObject);
   for _propriedade in _propriedades do
   begin
     MapearPropriedadeField(_propriedade);
@@ -109,12 +110,19 @@ begin
   for _campoPropriedade in FPropriedadeCampoDic do
   begin
     _campo := FDataSet.FindField(_campoPropriedade.Key);
-    _atualizarChave := (FDataSet.State = dsInsert) and _campoPropriedade.Key.Equals('ID');
-    if _atualizarChave then
+
+    if _campoPropriedade.Key.Equals('ID') then
     begin
-      _campo.AsInteger := (_campoPropriedade.Value.GetValue(FEntidade as TObject).AsInterface as IID).Valor;
+      TratarCampoID(_campo, _campoPropriedade);
       continue;
     end;
+
+    if _campoPropriedade.Value.PropertyType.IsRecord then
+    begin
+      TratarCampoNullable(_campoPropriedade);
+      continue;
+    end;
+
     if _campo.DataType in FieldTypeInteiro then
     begin
       _campo.AsInteger := _campoPropriedade.Value.GetValue(FEntidade as TObject).AsInteger;
@@ -137,6 +145,49 @@ begin
     end;
   end;
   FDataSet.Post;
+end;
+
+procedure TAdaptadorEntidadeDataSet<T>.TratarCampoID(const ACampoID: TField;
+  const ACampoPropriedade: TNomeCampoPropriedade);
+var
+  _atualizarChave: boolean;
+begin
+  _atualizarChave := (FDataSet.State=dsInsert);
+
+  if _atualizarChave then
+    ACampoID.AsInteger := (ACampoPropriedade.Value.GetValue(FEntidade as TObject).AsInterface as IID).Valor;
+end;
+
+procedure TAdaptadorEntidadeDataSet<T>.TratarCampoNullable(const ACampoNullable: TNomeCampoPropriedade);
+var
+  _campo: TField;
+begin
+  _campo := FDataSet.FindField(ACampoNullable.Key);
+  if _campo.DataType in FieldTypeString then
+  begin
+    if ACampoNullable.Value.GetValue(FEntidade as TObject).AsType<Nullable<String>>.TemValor then
+      _campo.AsString := ACampoNullable.Value.GetValue(FEntidade as TObject).AsType<Nullable<String>>
+  end
+  else if _campo.DataType = ftCurrency then
+  begin
+    if ACampoNullable.Value.GetValue(FEntidade as TObject).AsType<Nullable<Currency>>.TemValor then
+      _campo.AsCurrency := ACampoNullable.Value.GetValue(FEntidade as TObject).AsType<Nullable<Currency>>
+  end
+  else if _campo.DataType in FieldTypeInteiro then
+  begin
+    if ACampoNullable.Value.GetValue(FEntidade as TObject).AsType<Nullable<Integer>>.TemValor then
+      _campo.AsInteger := ACampoNullable.Value.GetValue(FEntidade as TObject).AsType<Nullable<Integer>>
+  end
+  else if _campo.DataType in FieldTypeReal then
+  begin
+    if ACampoNullable.Value.GetValue(FEntidade as TObject).AsType<Nullable<Double>>.TemValor then
+      _campo.AsFloat := ACampoNullable.Value.GetValue(FEntidade as TObject).AsType<Nullable<Double>>
+  end
+  else if _campo.DataType in [ftDate, ftTime, ftDateTime] then
+  begin
+    if ACampoNullable.Value.GetValue(FEntidade as TObject).AsType<Nullable<TDateTime>>.TemValor then
+      _campo.AsDateTime := ACampoNullable.Value.GetValue(FEntidade as TObject).AsType<Nullable<TDateTime>>
+  end;
 end;
 
 procedure TAdaptadorEntidadeDataSet<T>.InserirOuEditar;

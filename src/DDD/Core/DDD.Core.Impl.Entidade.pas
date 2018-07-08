@@ -19,7 +19,6 @@ type
 
 implementation
 
-{ TEntidade }
 
 procedure TEntidade.DefinirNovoID(const AID: IID);
 begin

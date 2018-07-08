@@ -10,9 +10,9 @@ type
   [TestFixture]
   TAdaptadorEntidadeDataSetTest = class(TObject)
   private
-    FDataSet: TFDMemTable;
-    FAdaptador: IAdaptador;
-    FMockEntidade: IMockEntidade;
+    FDataSet:TFDMemTable;
+    FAdaptador:IAdaptador;
+    FMockEntidade:IMockEntidade;
   public
     [Setup]
     procedure Setup;
@@ -52,8 +52,9 @@ begin
   CriarAdaptador;
   Adaptar;
   Assert.AreEqual(FMockEntidade.ID.Valor, FDataSet.FieldByName('ID').AsInteger);
-  Assert.AreEqual(FMockEntidade.Campo1, FDataSet.FieldByName('Campo1').AsString);
-  Assert.AreEqual(FMockEntidade.Campo2, FDataSet.FieldByName('Campo2').AsInteger);
+  Assert.AreEqual(FMockEntidade.Campo1.Valor, FDataSet.FieldByName('Campo1').AsString);
+  Assert.AreEqual(FMockEntidade.Campo2.Valor, FDataSet.FieldByName('Campo2').AsInteger);
+  Assert.IsTrue(FDataSet.FieldByName('CAMPO3').IsNull);
 end;
 
 procedure TAdaptadorEntidadeDataSetTest.CriarAdaptador;

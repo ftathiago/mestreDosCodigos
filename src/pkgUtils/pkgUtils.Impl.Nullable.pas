@@ -8,16 +8,17 @@ uses
 type
   Nullable<T> = record
   private
-    FValue: T;
-    FHasValue: IInterface;
-    function GetValue: T;
-    function GetHasValue: boolean;
+    FValor: T;
+    FTemValor: IInterface;
+    function PegarValor: T;
+    function TestarTemValor: boolean;
   public
     constructor Create(AValue: T);
-    function GetValueOrDefault: T; overload;
-    function GetValueOrDefault(Default: T): T; overload;
-    property HasValue: boolean read GetHasValue;
-    property Value: T read GetValue;
+    function PegarValorOuPadrao: T; overload;
+    function PegarValorOuPadrao(Default: T): T; overload;
+    procedure Limpar;
+    property TemValor: boolean read TestarTemValor;
+    property Valor: T read PegarValor;
     class operator Implicit(Value: Nullable<T>): T;
     class operator Implicit(Value: T): Nullable<T>;
     class operator GreaterThan(aLeft, aRight: Nullable<T>): boolean;
@@ -61,49 +62,49 @@ end;
 
 constructor Nullable<T>.Create(AValue: T);
 begin
-  FValue := AValue;
-  SetFlagInterface(FHasValue);
+  FValor := AValue;
+  SetFlagInterface(FTemValor);
 end;
 
 class operator Nullable<T>.Equal(aLeft, aRight: Nullable<T>): boolean;
 var
   Comparer: IEqualityComparer<T>;
 begin
-  if aLeft.HasValue and aRight.HasValue then
+  if aLeft.TemValor and aRight.TemValor then
   begin
     Comparer := TEqualityComparer<T>.Default;
-    Result := Comparer.Equals(aLeft.Value, aRight.Value);
+    Result := Comparer.Equals(aLeft.Valor, aRight.Valor);
   end
   else
-    Result := aLeft.HasValue = aRight.HasValue;
+    Result := aLeft.TemValor = aRight.TemValor;
 end;
 
-function Nullable<T>.GetHasValue: boolean;
+function Nullable<T>.TestarTemValor: boolean;
 begin
-  Result := FHasValue <> nil;
+  Result := FTemValor <> nil;
 end;
 
-function Nullable<T>.GetValue: T;
+function Nullable<T>.PegarValor: T;
 begin
-  if not HasValue then
-    raise Exception.Create('Invalid operation, Nullable type has no value');
-  Result := FValue;
+  if not TestarTemValor then
+    exit;
+  Result := FValor;
 end;
 
-function Nullable<T>.GetValueOrDefault: T;
+function Nullable<T>.PegarValorOuPadrao: T;
 begin
-  if HasValue then
-    Result := FValue
+  if TemValor then
+    Result := FValor
   else
     Result := Default (T);
 end;
 
-function Nullable<T>.GetValueOrDefault(Default: T): T;
+function Nullable<T>.PegarValorOuPadrao(Default: T): T;
 begin
-  if not HasValue then
+  if not TemValor then
     Result := Default
   else
-    Result := FValue;
+    Result := FValor;
 end;
 
 class operator Nullable<T>.GreaterThan(aLeft, aRight: Nullable<T>): boolean;
@@ -111,10 +112,10 @@ var
   _comparer: IComparer<T>;
   _relacao: TValueRelationship;
 begin
-  if not aLeft.HasValue then
+  if not aLeft.TemValor then
     Exit(False);
 
-  if not aRight.HasValue then
+  if not aRight.TemValor then
     Exit(True);
 
   _comparer := TComparer<T>.Default;
@@ -127,7 +128,7 @@ var
   _comparer: IComparer<T>;
   _relacao: TValueRelationship;
 begin
-  if (not aLeft.HasValue) and (not aRight.HasValue) then
+  if (not aLeft.TemValor) and (not aRight.TemValor) then
     Exit(True);
   _comparer := TComparer<T>.Default;
   _relacao := TValueRelationship(_comparer.Compare(aLeft, aRight));
@@ -136,7 +137,7 @@ end;
 
 class operator Nullable<T>.Implicit(Value: Nullable<T>): T;
 begin
-  Result := Value.Value;
+  Result := Value.Valor;
 end;
 
 class operator Nullable<T>.Implicit(Value: T): Nullable<T>;
@@ -161,7 +162,7 @@ var
 begin
   result := False;
 
-  if (not aLeft.HasValue) and (not aRight.HasValue) then
+  if (not aLeft.TemValor) and (not aRight.TemValor) then
     Exit(True);
 
   _comparer := TComparer<T>.Default;
@@ -169,17 +170,23 @@ begin
   result := _relacao <= 0;
 end;
 
+procedure Nullable<T>.Limpar;
+begin
+  FTemValor := nil;
+  Finalize(FValor);
+end;
+
 class operator Nullable<T>.NotEqual(const aLeft, aRight: Nullable<T>): boolean;
 var
   Comparer: IEqualityComparer<T>;
 begin
-  if aLeft.HasValue and aRight.HasValue then
+  if aLeft.TemValor and aRight.TemValor then
   begin
     Comparer := TEqualityComparer<T>.Default;
-    Result := not Comparer.Equals(aLeft.Value, aRight.Value);
+    Result := not Comparer.Equals(aLeft.Valor, aRight.Valor);
   end
   else
-    Result := aLeft.HasValue <> aRight.HasValue;
+    Result := aLeft.TemValor <> aRight.TemValor;
 end;
 
 end.

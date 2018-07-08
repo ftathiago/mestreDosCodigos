@@ -47,8 +47,8 @@ procedure TAdaptadorTest.TestarAdaptar;
 begin
   TestarCriarAdaptador;
   FAdaptador.Adaptar;
-  Assert.AreEqual(VALOR_CAMPO1, FMockEntidade.Campo1, FMockEntidade.Campo1);
-  Assert.AreEqual(VALOR_CAMPO2, FMockEntidade.Campo2);
+  Assert.AreEqual(VALOR_CAMPO1, string(FMockEntidade.Campo1), FMockEntidade.Campo1+' asdf');
+  Assert.AreEqual(VALOR_CAMPO2, integer(FMockEntidade.Campo2));
 end;
 
 procedure TAdaptadorTest.TestarCriarAdaptador;

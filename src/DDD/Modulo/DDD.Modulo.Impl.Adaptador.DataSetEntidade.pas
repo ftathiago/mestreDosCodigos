@@ -19,8 +19,7 @@ type
 implementation
 
 uses
-  DDD.Anotacao.Entidade.Propriedade,
-  pkgUtils.Impl.RttiUtils, System.Rtti;
+  System.Rtti, pkgUtils.Impl.RTTIUtils, DDD.Anotacao.Entidade.Propriedade;
 
 constructor TAdaptadorDataSetEntidade<T>.Create(const ADataSet: TDataSet; const AEntidade: T);
 begin
@@ -35,7 +34,6 @@ end;
 
 procedure TAdaptadorDataSetEntidade<T>.Adaptar;
 var
-  i: Integer;
   _propriedades: TArray<TRttiProperty>;
   _propriedade: TRttiProperty;
   _anotacao: TPropriedadeAttribute;

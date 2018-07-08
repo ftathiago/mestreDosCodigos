@@ -11,43 +11,21 @@ type
   end;
 
   TMockEntidadeAgregado = class(TAgregado<IMockEntidade>, IMockEntidadeAgregado)
-  private
-    FAdaptarEntidadeDataSet: IAdaptador;
+  protected
+    procedure CriarEntidade(var AEntidade: IMockEntidade); override;
   public
-    procedure Apagar(const AEntidade: IMockEntidade); override;
-    procedure Incluir(const AEntidade: IMockEntidade); override;
-    function Localizar(const AID: IID): IMockEntidade; override;
     function NovoID: IID; override;
   end;
 
 implementation
 
 uses
-  pkgUtils.Intf.DataSetPropriedadesTemporarias, pkgUtils.Impl.FDDataSetPropriedadesTemporarias,
-  DDD.Modulo.Impl.IDFactory, DDD.Modulo.Intf.IDFactory, DDD.Modulo.Impl.Adaptador.EntidadeDataSet;
+  DDD.Modulo.Intf.IDFactory, DDD.Modulo.Impl.IDFactory;
 
-procedure TMockEntidadeAgregado.Apagar(const AEntidade: IMockEntidade);
-var
-  FDPropTemp: IDataSetPropriedadesTemporarias;
+procedure TMockEntidadeAgregado.CriarEntidade(var AEntidade: IMockEntidade);
 begin
   inherited;
-  FDPropTemp := TFDDataSetPropriedadesTemporarias.New(Self);
-  Self.IndexFieldNames := 'ID';
-  if not Self.FindKey([AEntidade.ID]) then
-    exit;
-  Self.Delete;
-end;
-
-procedure TMockEntidadeAgregado.Incluir(const AEntidade: IMockEntidade);
-begin
-  inherited;
-  FAdaptarEntidadeDataSet := TAdaptadorEntidadeDataSet<IMockEntidade>.New(Self, AEntidade);
-  FAdaptarEntidadeDataSet.Adaptar;
-end;
-
-function TMockEntidadeAgregado.Localizar(const AID: IID): IMockEntidade;
-begin
-
+  AEntidade := TMockEntidade.New(TIDFactory.New(tiRandomico).InicializarID(FieldByName('ID').AsInteger));
 end;
 
 function TMockEntidadeAgregado.NovoID: IID;
